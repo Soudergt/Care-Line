@@ -17,10 +17,10 @@ import { ContactComponent } from './contact/contact.component';
     ContactComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    AppRoutingModule
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
