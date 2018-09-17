@@ -1,4 +1,26 @@
 .main-nav {
   background-color: #04376a;
   color: #61da97;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.main-nav>span {
+  flex: 1;
+}
+
+.nav-links {
+  padding-left: 12px;
+  flex: 0 1 auto;
+}
+
+.nav-links>a {
+  color: #FFF;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.nav-links>a:hover {
+  text-decoration: underline;
 }
