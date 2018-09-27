@@ -9,6 +9,7 @@
   -webkit-transition-duration: $duration
 }
 
+
 .main-nav {
   background-image: linear-gradient(to bottom right, #04376a, #61da97);
 	color: #FFF;
@@ -16,6 +17,7 @@
 	align-items: flex-end;
   height: 150px;
   width: 100%;
+  box-shadow: 0 3px 12px 0px #333;
 
   .logo {
     width: 200px;
@@ -48,7 +50,7 @@
       content: '';
       display: block;
       height: 0px;
-      border-bottom: 1px solid;
+      border-bottom: 2px solid #04376a;
       margin-top: 2px;
       opacity: 0;
       @include transform(scale(0, 1));
