@@ -1,0 +1,64 @@
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+@mixin transition($property, $duration) {
+  -webkit-transition-property: $property;
+  -webkit-transition-duration: $duration
+}
+
+.main-nav {
+  background-image: linear-gradient(to bottom right, #04376a, #61da97);
+	color: #FFF;
+	display: flex;
+	align-items: flex-end;
+  height: 150px;
+  width: 100%;
+
+  .logo {
+    width: 200px;
+		flex: 0 1 auto;
+		position: relative;
+		top: 95px;
+	}
+
+	.logo-text {
+		flex: 0 1 auto;
+		width: 200px;
+	}
+
+  .nav-link-container {
+		flex: 1 1 auto;
+		display: inline-flex;
+		flex-direction: row-reverse;
+		align-self: flex-end;
+		margin-bottom: 24px;
+
+		a.nav-link {
+			flex: 0 1 auto;
+			margin-left: 20px;
+			margin-right: 20px;
+			color: #FFF;
+			text-decoration: none;
+		}
+
+    a.nav-link:after {
+      content: '';
+      display: block;
+      height: 0px;
+      border-bottom: 1px solid;
+      margin-top: 2px;
+      opacity: 0;
+      @include transform(scale(0, 1));
+      @include transition(opacity, 0.35s);
+      @include transition(transform, 0.35s);
+    }
+
+    a.nav-link:hover:after {
+      opacity: 1;
+      @include transform(scale(1));
+    }
+  }
+}
