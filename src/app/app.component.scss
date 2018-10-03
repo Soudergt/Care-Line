@@ -43,9 +43,9 @@ $secondary-color: #61da97;
 
   .nav-link-container {
     flex: 1 1 auto;
-    display: inline-flex;
-    flex-direction: row-reverse;
-    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     margin-bottom: 24px;
 
     a.nav-link {
