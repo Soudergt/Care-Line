@@ -2,5 +2,18 @@ $accent-color: #E0E0E4;
 $primary-color: #04376a;
 $secondary-color: #61da97;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'tahoma', sans-serif; background-color: #F3F3F3; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'tahoma', sans-serif;
+  background-color: #F3F3F3;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('/src/assets/images/trianglify.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
