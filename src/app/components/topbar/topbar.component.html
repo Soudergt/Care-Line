@@ -5,7 +5,7 @@
     <a class="nav-link" routerLink="/dashboard">Dashboard</a>
     <a class="nav-link" routerLink="/about">About</a>
     <a class="nav-link" routerLink="/contact">Contact</a>
-    <a class="nav-link">Login</a>
+    <a class="nav-link" (click)="openDialog()">Login</a>
   </nav>
   <div>
     <button class="nav-menu-btn" mat-icon-button [matMenuTriggerFor]="menu" fxHide fxShow.xs>
