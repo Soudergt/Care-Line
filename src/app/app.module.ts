@@ -1,19 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { AppRoutingModule } from './app-routing.module';
+import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
+import { LogindialogComponent } from './components/logindialog/logindialog.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,8 @@ import { TopbarComponent } from './components/topbar/topbar.component';
     DashboardComponent,
     AboutComponent,
     ContactComponent,
-    TopbarComponent
+    TopbarComponent,
+    LogindialogComponent
   ],
   imports: [
     AppRoutingModule,
@@ -32,9 +37,15 @@ import { TopbarComponent } from './components/topbar/topbar.component';
     MatCardModule,
     MatMenuModule,
     MatIconModule,
-    HttpClientModule
+    MatInputModule,
+    MatDialogModule,
+    HttpClientModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
+  entryComponents: [
+    LogindialogComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
