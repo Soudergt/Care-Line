@@ -1,0 +1,33 @@
+<mat-toolbar class="main-nav">
+  <img class="logo drop-shadow" fxShow fxHide.sm fxHide.xs src="../assets/images/ClineLogo.png" alt="CareLine Logo" aria-label="careline title text">
+  <img class="logo-text" src="../assets/images/CLineText.png" alt="CareLine Title Text" aria-label="careline title text">
+  <nav class="nav-link-container" fxShow fxHide.xs>
+    <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+    <a class="nav-link" routerLink="/about">About</a>
+    <a class="nav-link" routerLink="/contact">Contact</a>
+    <a class="nav-link">Login</a>
+  </nav>
+  <div>
+    <button class="nav-menu-btn" mat-icon-button [matMenuTriggerFor]="menu" fxHide fxShow.xs>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span>
+          <a class="menu-link" routerLink="/dashboard">Dashboard</a>
+        </span>
+      </button>
+      <button mat-menu-item>
+        <span>        
+          <a class="menu-link" routerLink="/about">About</a>
+        </span>
+      </button>
+      <button mat-menu-item>
+        <span>
+          <a class="menu-link" routerLink="/contact">Contact</a>
+        </span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+<div class="space"></div>

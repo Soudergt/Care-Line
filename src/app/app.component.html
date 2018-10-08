@@ -1,14 +1,4 @@
 <div layout="row">
-  <mat-toolbar class="main-nav">
-		<img class="logo drop-shadow" src="../assets/images/ClineLogo.png" alt="CareLine Logo" aria-label="careline title text">
-		<img class="logo-text" src="../assets/images/CLineText.png" alt="CareLine Title Text" aria-label="careline title text">
-    <nav class="nav-link-container">
-			<a class="nav-link" routerLink="/dashboard">Dashboard</a>
-			<a class="nav-link" routerLink="/about">About</a>
-			<a class="nav-link" routerLink="/contact">Contact</a>
-			<a class="nav-link">Login</a>
-    </nav>
-	</mat-toolbar>
-	<div class="space"></div>
+  <app-topbar></app-topbar>
 </div>
 <router-outlet></router-outlet>
