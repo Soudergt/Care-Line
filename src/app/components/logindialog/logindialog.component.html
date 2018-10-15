@@ -1,11 +1,11 @@
 <h1 mat-dialog-title>Login</h1>
 <div mat-dialog-content fxLayout="row" fxLayoutAlign="center center">
-  <form (ngSubmit)="login()" class="login-form" fxFlex="1 1 auto">
+  <form (ngSubmit)="login()" [formGroup]="loginForm" class="login-form" fxFlex="1 1 auto">
     <mat-form-field>
-      <input matInput type="text" placeholder="Username" aria-label="username" required>
+      <input matInput type="text" placeholder="Username" name="username" formControlName="username" aria-label="username" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="Password" aria-label="password" required>
+      <input matInput type="text" placeholder="Password" name="password" formControlName="password" aria-label="password" required>
     </mat-form-field>
     <button type="submit" class="login-btn" mat-raised-button>Login</button>
   </form>

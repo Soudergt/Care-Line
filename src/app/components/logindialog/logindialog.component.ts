@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { LoginService } from './../../providers/login/login.service';
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -17,17 +18,26 @@ export interface DialogData {
 export class LogindialogComponent {
 
   public loginForm: FormGroup;
+  public STATUSES: any = {
+    UNTOUCHED: 0,
+    LOGGING_IN: 1,
+    BAD_FORM: 2,
+    BAD_REQUEST: 3
+  };
+  public status: BehaviorSubject<number>;
 
   constructor(
     public dialogRef: MatDialogRef<LogindialogComponent>,
     private loginService: LoginService,
     private formBuilder: FormBuilder,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+    this.status = new BehaviorSubject<number>(this.STATUSES.UNTOUCHED);
   }
 
   onNoClick(): void {
@@ -35,6 +45,12 @@ export class LogindialogComponent {
   }
 
   public async login() {
+    if (this.loginForm.invalid) {
+      return this.status.next(this.STATUSES.BAD_FORM);
+    }
+
+    this.status.next(this.STATUSES.LOGGING_IN);
+
     this.loginService.login(
       this.loginForm.controls.username.value,
       this.loginForm.controls.password.value
@@ -43,7 +59,8 @@ export class LogindialogComponent {
         console.log('error');
       },
       next: () => {
-        console.log('logged in');
+        this.router.navigate(['dashboard']);
+        this.dialogRef.close();
       }
     });
   }
