@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
@@ -20,6 +20,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { LogindialogComponent } from './components/logindialog/logindialog.component';
+import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
+import { CardListComponent } from './components/card-list/card-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { LogindialogComponent } from './components/logindialog/logindialog.compo
     AboutComponent,
     ContactComponent,
     TopbarComponent,
-    LogindialogComponent
+    LogindialogComponent,
+    UserDashboardComponent,
+    CardListComponent
   ],
   imports: [
     AppRoutingModule,
@@ -36,6 +40,7 @@ import { LogindialogComponent } from './components/logindialog/logindialog.compo
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatCardModule,
     MatMenuModule,
