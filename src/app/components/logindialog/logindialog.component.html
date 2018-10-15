@@ -1,11 +1,12 @@
 <h1 mat-dialog-title>Login</h1>
-<div mat-dialog-content>
-  <form class="login-form">
+<div mat-dialog-content fxLayout="row" fxLayoutAlign="center center">
+  <form class="login-form" fxFlex="1 1 auto">
     <mat-form-field>
-      <input matInput type="text" placeholder="Username" aria-label="username">
+      <input matInput type="text" placeholder="Username" aria-label="username" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="Password" aria-label="password">
+      <input matInput type="text" placeholder="Password" aria-label="password" required>
     </mat-form-field>
+    <button type="submit" class="login-btn" mat-raised-button>Login</button>
   </form>
 </div>

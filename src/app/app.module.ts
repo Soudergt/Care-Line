@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
@@ -39,6 +40,7 @@ import { LogindialogComponent } from './components/logindialog/logindialog.compo
     MatIconModule,
     MatInputModule,
     MatDialogModule,
+    MatButtonModule,
     HttpClientModule,
     SweetAlert2Module.forRoot()
   ],
