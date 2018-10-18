@@ -1,6 +1,9 @@
-<div class="card-list-container" fxLayout="row" fxLayoutAlign="space-around" fxLayoutGap="12px;">
+<div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px;">
   <mat-card class="patient-card" *ngFor="let patient of patients" fxFlex="1 1 auto;">
-    <mat-card-title>{{ patient.name }}</mat-card-title>
-    <mat-card-content>Testing test test</mat-card-content>
+    <div class="user-img drop-shadow"></div>
+    <div class="card-content">
+      <mat-card-title>{{ patient.name }}</mat-card-title>
+      <mat-card-content>Testing test test</mat-card-content>
+    </div>
   </mat-card>
 </div>
