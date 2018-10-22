@@ -1,11 +1,12 @@
 import * as Fastify from 'fastify';
+import routes from './routes';
 
 const main = async () => {
   const fastify = Fastify();
 
   try {
     fastify.after(() => {
-
+      routes.forEach(Route => new Route(fastify));
     });
 
     fastify.listen(3000, '0.0.0.0', (err?: Error) => {
@@ -23,4 +24,5 @@ const main = async () => {
     process.exit(1);
   }
 };
+main();
 
