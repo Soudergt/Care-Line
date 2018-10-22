@@ -22,6 +22,7 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { LogindialogComponent } from './components/logindialog/logindialog.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { CardListComponent } from './components/card-list/card-list.component';
+import { PatientComponent } from './pages/patient/patient.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CardListComponent } from './components/card-list/card-list.component';
     TopbarComponent,
     LogindialogComponent,
     UserDashboardComponent,
-    CardListComponent
+    CardListComponent,
+    PatientComponent
   ],
   imports: [
     AppRoutingModule,
