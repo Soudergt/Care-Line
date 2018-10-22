@@ -2,7 +2,9 @@ import * as Fastify from 'fastify';
 import routes from './routes';
 
 const main = async () => {
-  const fastify = Fastify();
+  const fastify = Fastify({
+    logger: true
+  });
 
   try {
     fastify.after(() => {
