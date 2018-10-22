@@ -10,7 +10,7 @@
     "compile:dev": "./node_modules/.bin/tsc --watch",
     "start": "node build/index.js",
     "start:dev": "./node_modules/.bin/nodemon --watch build build/index.js",
-    "start:alt": "node_modules/.bin/concurrently --kill-others \"npm run server:run\" \"ng serve \"",
+    "start:both": "node_modules/.bin/concurrently --kill-others \"npm run server:run\" \"ng serve \"",
     "server:run": "nodemon --delay 5 server/index.js",
     "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
     "precommit": "lint-staged"
