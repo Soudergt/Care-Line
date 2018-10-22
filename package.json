@@ -3,11 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "compile": "./node_modules/.bin/tsc",
+    "compile:dev": "./node_modules/.bin/tsc --watch",
+    "start": "node build/index.js",
+    "start:dev": "./node_modules/.bin/nodemon --watch build build/index.js",
+    "start:alt": "node_modules/.bin/concurrently --kill-others \"npm run server:run\" \"ng serve \"",
+    "server:run": "nodemon --delay 5 server/index.js",
+    "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
+    "precommit": "lint-staged"
   },
   "private": true,
   "dependencies": {
@@ -46,6 +52,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "nodemon": "^1.18.4",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
