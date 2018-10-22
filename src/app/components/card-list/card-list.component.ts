@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/classes/patient';
 
@@ -21,9 +22,15 @@ export class CardListComponent implements OnInit {
 
   patients = PATIENTS;
 
-  constructor() { }
+  constructor(
+    private router: Router
+    ) { }
 
   ngOnInit() {
+  }
+
+  goToPatient() {
+    this.router.navigateByUrl('/patient');
   }
 
 }

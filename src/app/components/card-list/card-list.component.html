@@ -1,5 +1,5 @@
 <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px;">
-  <mat-card class="patient-card" *ngFor="let patient of patients" fxFlex="1 1 auto;">
+  <mat-card class="patient-card" *ngFor="let patient of patients" fxFlex="1 1 auto;" (click)="goToPatient()">
     <div class="user-img drop-shadow"></div>
     <div class="card-content">
       <mat-card-title>{{ patient.name }}</mat-card-title>
