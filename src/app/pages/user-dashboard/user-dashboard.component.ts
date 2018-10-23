@@ -1,5 +1,6 @@
+import { Observable } from 'rxjs';
+import { UserService } from './../../providers/user/user.service';
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from '../../providers/dashboard/dashboard.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -7,13 +8,19 @@ import { DashboardService } from '../../providers/dashboard/dashboard.service';
   styleUrls: ['./user-dashboard.component.scss']
 })
 export class UserDashboardComponent implements OnInit {
-  data: String;
+  data: Observable<any[]>;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     try {
-      this.data = this.dashboardService.getDash();
+      this.userService.getUser('1').subscribe({
+        error: (err) => {
+          console.log(err);
+        },
+        next: user => this.data
+      });
+      console.log(this.data);
     } catch (err) {
       console.log(err);
     }
