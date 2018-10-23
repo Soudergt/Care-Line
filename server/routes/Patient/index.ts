@@ -29,7 +29,7 @@ export class PatientRoute {
           }
         }
       },
-      url: '/getPatients'
+      url: '/patient/getPatients'
     });
   }
 

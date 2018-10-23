@@ -29,7 +29,7 @@ export class UserRoute {
           }
         }
       },
-      url: '/getUser'
+      url: '/user/getUser'
     });
   }
 
