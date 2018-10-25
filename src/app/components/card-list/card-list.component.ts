@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/classes/patient';
-import { url } from 'inspector';
 
 const PATIENTS: Patient[] = [
   { id: 1, name: 'Cathy', img: 'url(/src/assets/images/people/cathy.jpg)'},
