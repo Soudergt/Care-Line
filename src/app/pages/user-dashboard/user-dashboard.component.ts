@@ -14,13 +14,13 @@ export class UserDashboardComponent implements OnInit {
 
   ngOnInit() {
     try {
-      this.userService.getUser('1').subscribe({
-        error: (err) => {
-          console.log(err);
-        },
-        next: user => this.data
-      });
-      console.log(this.data);
+      // this.userService.getUser('1').subscribe({
+      //   error: (err) => {
+      //     console.log(err);
+      //   },
+      //   next: user => this.data
+      // });
+      // console.log(this.data);
     } catch (err) {
       console.log(err);
     }
