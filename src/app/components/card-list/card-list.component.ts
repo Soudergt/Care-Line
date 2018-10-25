@@ -1,16 +1,17 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/classes/patient';
+import { url } from 'inspector';
 
 const PATIENTS: Patient[] = [
-  { id: 1, name: 'Cathy' },
-  { id: 2, name: 'Bobby' },
-  { id: 3, name: 'Tammy' },
-  { id: 4, name: 'Frank' },
-  { id: 5, name: 'Bethany' },
-  { id: 6, name: 'George' },
-  { id: 7, name: 'Susie' },
-  { id: 8, name: 'Duke' },
+  { id: 1, name: 'Cathy', img: 'url(/src/assets/images/people/cathy.jpg)'},
+  { id: 2, name: 'Bobby', img: 'url(/src/assets/images/people/bobby.jpg)' },
+  { id: 3, name: 'Tammy', img: 'url(/src/assets/images/people/brenda.jpg)'},
+  { id: 4, name: 'Frank', img: 'url(/src/assets/images/people/frank.jpg)' },
+  // { id: 5, name: 'Bethany' },
+  { id: 6, name: 'George', img: 'url(/src/assets/images/people/george.jpg)'},
+  { id: 7, name: 'Patrick', img: 'url(/src/assets/images/people/patrick.jpg)'},
+  { id: 8, name: 'Duke', img: 'url(/src/assets/images/people/duke.jpg)'},
 ];
 
 @Component({
@@ -29,8 +30,8 @@ export class CardListComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToPatient() {
-    this.router.navigateByUrl('/patient');
+  goToPatient(patient) {
+    this.router.navigateByUrl(`/patient/${patient.id}`);
   }
 
 }
