@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'localhost:4500',
+  api: 'http://localhost:4500',
   name: 'CareLine'
 };
 
