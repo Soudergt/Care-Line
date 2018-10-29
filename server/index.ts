@@ -1,7 +1,6 @@
 import * as Fastify from 'fastify';
 import * as fastifyCORS from 'fastify-cors';
 import routes from './routes';
-console.log(fastifyCORS);
 const main = async () => {
   const fastify = Fastify({
     logger: true
