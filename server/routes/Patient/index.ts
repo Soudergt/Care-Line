@@ -57,7 +57,7 @@ export class PatientRoute {
           }
         }
       },
-      url: '/patient/getPatient'
+      url: '/backend/patient/getPatient/:id'
     });
   }
 

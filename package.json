@@ -10,7 +10,8 @@
     "compile:dev": "./node_modules/.bin/tsc --watch",
     "start": "node build/index.js",
     "start:dev": "./node_modules/.bin/nodemon --watch build build/index.js",
-    "start:both": "node_modules/.bin/concurrently --kill-others \"npm run server:run\" \"ng serve \"",
+    "start:both": "node_modules/.bin/concurrently --kill-others \"npm run server:run\" \"ng serve --proxy-config proxy.conf.json\"",
+    "start:client": "ng serve --proxy-config proxy.conf.json",
     "server:run": "nodemon --delay 5 server/index.js",
     "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
     "precommit": "lint-staged"
@@ -34,6 +35,7 @@
     "concurrently": "^4.0.1",
     "config": "^2.0.1",
     "core-js": "^2.5.4",
+    "cors": "^2.8.4",
     "fastify": "^1.12.1",
     "fastify-cors": "^0.1.0",
     "rxjs": "~6.2.0",

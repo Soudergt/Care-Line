@@ -1,21 +1,13 @@
 import * as Fastify from 'fastify';
 import * as fastifyCORS from 'fastify-cors';
-import routes from './routes';
+import routes from './routes/index';
+
 const main = async () => {
   const fastify = Fastify({
     logger: true
   });
 
-  fastify.register(fastifyCORS, {
-    origin: true,
-    methods: [
-      'GET',
-      'POST',
-      'PUT',
-      'DELETE',
-      'OPTIONS'
-    ]
-  });
+  fastify.use(require('cors')());
 
   try {
     fastify.after(() => {

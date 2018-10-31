@@ -13,7 +13,7 @@ export class PatientService {
 
   getPatient(id: string): Observable<any> {
     return this.http.get(
-      `http://0.0.0.0:3000/patient/getPatient/${id}`
+      `/backend/patient/getPatient/${id}`
     ).pipe(map((body: { data: { patient: any } }) => {
       return body.data.patient;
     }));
