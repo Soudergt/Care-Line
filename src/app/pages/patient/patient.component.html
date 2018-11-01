@@ -7,11 +7,21 @@
       <h1 class="patient-name">Duke</h1>
     </div>
   </div>
-  <div class="patient-content" fxLayout="row" fxLayoutGap="12px">
-    <div class="note-section" fxFlex="1 1 auto">
-      <mat-form-field>
-        <textarea matInput placeholder="Daily Notes"></textarea>
-      </mat-form-field>
+  <div class="patient-content" fxLayout="row" fxLayoutGap="30px">
+    <div class="note-section" fxFlex="1 1 0px">
+      <div fxLayout="column">
+        <div class="header" fxLayout="row" fxFlex="1 1 auto">
+          <div class="module-logo" fxFlex="0 0 75px">
+            <fa-icon [icon]="faNotesMedical" size="3x" [inverse]="true"></fa-icon>
+          </div>
+          <div class="header-text" fxFlex="1 1 auto">Medical Notes</div>
+        </div>
+        <div class="content" fxFlex="1 1 auto">
+          <mat-form-field>
+            <textarea matInput placeholder="Note"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
     </div>
     <div class="info-section" fxFlex="1 1 auto">
       

@@ -1,6 +1,7 @@
 import { PatientService } from './../../providers/patient/patient.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { faNotesMedical } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-patient',
@@ -11,20 +12,22 @@ export class PatientComponent implements OnInit {
   sub;
   id;
   patient;
+  faNotesMedical = faNotesMedical;
 
   constructor(private activatedRoute: ActivatedRoute, private patientService:PatientService) { }
 
   ngOnInit() {
-    this.sub = this.activatedRoute.params.subscribe(params => {
-      this.id = params['id'];
-      this.patientService.getPatient(this.id).subscribe(patient => {
-        this.patient = patient;
-        console.log(this.patient);
-      });
-    });
+    // this.sub = this.activatedRoute.params.subscribe(params => {
+    //   this.id = params['id'];
+    //   this.patientService.getPatient(this.id).subscribe(patient => {
+    //     this.patient = patient;
+    //     console.log(this.patient);
+    //   });
+    // });
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 }
+ 
