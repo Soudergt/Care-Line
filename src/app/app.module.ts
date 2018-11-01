@@ -12,6 +12,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -51,7 +53,8 @@ import { PatientComponent } from './pages/patient/patient.component';
     MatDialogModule,
     MatButtonModule,
     HttpClientModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    FontAwesomeModule
   ],
   providers: [],
   entryComponents: [
