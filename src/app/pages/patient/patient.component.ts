@@ -1,7 +1,7 @@
 import { PatientService } from './../../providers/patient/patient.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { faNotesMedical } from '@fortawesome/free-solid-svg-icons';
+import { faNotesMedical, faInfo } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-patient',
@@ -13,6 +13,8 @@ export class PatientComponent implements OnInit {
   id;
   patient;
   faNotesMedical = faNotesMedical;
+  faInfo = faInfo;
+
 
   constructor(private activatedRoute: ActivatedRoute, private patientService:PatientService) { }
 
