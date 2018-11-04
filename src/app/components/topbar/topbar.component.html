@@ -1,13 +1,14 @@
-<mat-toolbar class="main-nav">
+<mat-toolbar class="main-nav" [ngStyle.xs]="{'height': '80px'}" [ngStyle.sm]="{'height': '80px'}">
   <img class="logo drop-shadow" fxShow fxHide.sm fxHide.xs src="../assets/images/logos/ClineLogo.png" alt="CareLine Logo" aria-label="careline title text">
-  <img class="logo-text" src="../assets/images/logos/CLineText.png" alt="CareLine Title Text" aria-label="careline title text" routerlink="">
+  <img class="logo-text" src="../assets/images/logos/CLineText.png" alt="CareLine Title Text" aria-label="careline title text" [routerLink]=""
+  [ngStyle.xs]="{'height': '75px'}" [ngStyle.sm]="{'height': '75px'}">
   <nav class="nav-link-container" fxShow fxHide.xs>
     <a class="nav-link" routerLink="/dashboard">Dashboard</a>
     <a class="nav-link" routerLink="/about">About</a>
     <a class="nav-link" routerLink="/contact">Contact</a>
     <a class="nav-link" (click)="openDialog()">Login</a>
   </nav>
-  <div>
+  <div class="main-nav-menu" [ngStyle.xs]="{'top': '20px'}">
     <button class="nav-menu-btn" mat-icon-button [matMenuTriggerFor]="menu" fxHide fxShow.xs>
       <mat-icon>menu</mat-icon>
     </button>
