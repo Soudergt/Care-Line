@@ -1,14 +1,15 @@
 <div class="content">
-  <div class="patient-header">
+  <div class="patient-header" [ngStyle.xs]="{'margin-top': '0px'}" [ngStyle.sm]="{'margin-top': '0px'}">
     <div class="photo-container">
-      <div class="user-img drop-shadow"></div>
+      <div class="user-img drop-shadow" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}">
+      </div>
     </div>
     <div class="patient-info-container">
       <h1 class="patient-name">Duke</h1>
     </div>
   </div>
-  <div class="patient-content" fxLayout="row" fxLayoutGap="30px">
-    <div class="note-section" fxFlex="1 1 0px">
+  <div class="patient-content" fxLayout="row wrap">
+    <div class="note-section card-shadow" fxFlex="1 1 auto" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
       <div fxLayout="column">
         <div class="header" fxLayout="row" fxFlex="1 1 auto">
           <div class="module-logo" fxFlex="0 0 75px">
@@ -23,8 +24,23 @@
         </div>
       </div>
     </div>
-    <div class="info-section" fxFlex="1 1 auto">
-      
+    <div class="note-section card-shadow" fxFlex="1 1 auto" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
+      <div fxLayout="column">
+        <div class="header" fxLayout="row" fxFlex="1 1 auto">
+          <div class="module-logo" fxFlex="0 0 75px">
+            <fa-icon [icon]="faNotesMedical" size="3x" [inverse]="true"></fa-icon>
+          </div>
+          <div class="header-text" fxFlex="1 1 auto">Medical Notes</div>
+        </div>
+        <div class="content" fxFlex="1 1 auto">
+          <mat-form-field>
+            <textarea matInput placeholder="Note"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
     </div>
+    <!-- <div class="info-section card-shadow" fxFlex="1 1 auto">
+      
+    </div> -->
   </div>
 </div>
