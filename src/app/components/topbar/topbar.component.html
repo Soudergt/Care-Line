@@ -1,7 +1,9 @@
 <mat-toolbar class="main-nav" [ngStyle.xs]="{'height': '80px'}" [ngStyle.sm]="{'height': '80px'}">
   <img class="logo drop-shadow" fxShow fxHide.sm fxHide.xs src="../assets/images/logos/ClineLogo.png" alt="CareLine Logo" aria-label="careline title text">
-  <img class="logo-text" src="../assets/images/logos/CLineText.png" alt="CareLine Title Text" aria-label="careline title text" [routerLink]=""
+  <a [routerLink]="'/'">
+    <img class="logo-text" src="../assets/images/logos/CLineText.png" alt="CareLine Title Text" aria-label="careline title text" [routerLink]=""
   [ngStyle.xs]="{'height': '75px'}" [ngStyle.sm]="{'height': '75px'}">
+  </a>
   <nav class="nav-link-container" fxShow fxHide.xs>
     <a class="nav-link" routerLink="/dashboard">Dashboard</a>
     <a class="nav-link" routerLink="/about">About</a>
