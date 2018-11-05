@@ -5,12 +5,12 @@
         <div class="user-img drop-shadow" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}">
         </div>
       </div>
-      <div class="patient-info" fxFlex="1 1 200px">
-        <div class="patient-name">Duke</div>
+      <div class="patient-info" fxFlex="1 1 auto">
+        <div class="patient-name">Duke L. James</div>
         <div class="patient-clinic">CareLine Clinic</div>
       </div>
     </div>
-    <div class="patient-cal-container" fxFlex="4 0 auto">
+    <!-- <div class="patient-cal-container" fxFlex="4 0 auto">
       <div class="patient-cal" fxLayout="column">
         <div class="patient-cal-header" fxFlex="1 1 auto">
           <div class="patient-cal-cell" fxFlex="1 1 11em">Monday</div>
@@ -27,7 +27,7 @@
           <div class="patient-cal-cell" fxFlex="1 1 11em"></div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="patient-content" fxLayout="row wrap">
     <div class="note-section card-shadow" fxFlex="1 1 auto" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
@@ -39,9 +39,58 @@
           <div class="header-text" fxFlex="1 1 auto">Patient Information</div>
         </div>
         <div class="content" fxFlex="1 1 auto">
-          <mat-form-field>
-            <textarea matInput placeholder="Note"></textarea>
-          </mat-form-field>
+          <div fxLayout="row wrap">
+            <div fxFlex="1 1 auto">
+              <h3>General Info</h3>
+              <mat-list>
+                <mat-list-item>
+                  <label class="info-label" for="bloodType">Birthday:</label>
+                  <span id="bloodType">May, 5, 1942</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <label class="info-label" for="bloodType">Gender:</label>
+                  <span id="bloodType">Male</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <label class="info-label" for="bloodType">Height:</label>
+                  <span id="bloodType">6'2''</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <label class="info-label" for="bloodType">Weight:</label>
+                  <span id="bloodType">160 lbs</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <label class="info-label" for="bloodType">Blood Type:</label>
+                  <span id="bloodType">O Positive</span>
+                </mat-list-item>
+              </mat-list>
+            </div>
+            <div fxFlex="1 1 auto">
+              <h3>Emergency Contact</h3>
+              <mat-list>
+                <mat-list-item>
+                  <label class="info-label" for="bloodType">Name:</label>
+                  <span id="bloodType">Lauren James</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <label class="info-label" for="bloodType">Address:</label>
+                  <span id="bloodType">127 Oak Lane, Cincinnati, Ohio, 44221</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <label class="info-label" for="bloodType">Phone:</label>
+                  <span id="bloodType">(111)-111-1111</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <label class="info-label" for="bloodType">Email:</label>
+                  <span id="bloodType">lauren.james@email.com</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <label class="info-label" for="bloodType">Blood Type:</label>
+                  <span id="bloodType">O Positive</span>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </div>
         </div>
       </div>
     </div>
