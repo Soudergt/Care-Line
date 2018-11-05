@@ -22,8 +22,6 @@
   }
 
   .patient-info-container {
-    
-
     .patient-info {
       flex: 1 1 auto;
       align-self: flex-start;
@@ -47,7 +45,6 @@
 
 .patient-content {
   padding: 15px;
-  // margin: 15px;
 
   .note-section {
     background-color: #FFF;
@@ -108,4 +105,21 @@
   border-radius: 50%;
   -webkit-filter: drop-shadow(-3px 2px 2px rgba(0, 0, 0, 0.8));
   filter: drop-shadow(-5px 2px 2px rgba(0, 0, 0, 1));
+}
+
+.patient-cal {
+  background-color: #FFF;
+  height: 175px;
+
+  .patient-cal-header {
+    .patient-cal-cell {
+      border: 1px solid #CCC;
+    }
+  }
+
+  .patient-cal-body {
+    .patient-cal-cell {
+      border: 1px solid #CCC;
+    }
+  }
 }

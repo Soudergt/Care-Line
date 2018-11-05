@@ -1,6 +1,6 @@
 <div class="content">
   <div class="patient-header" fxLayout="row wrap" [ngStyle.xs]="{'margin-top': '0px'}" [ngStyle.sm]="{'margin-top': '0px'}">
-    <div class="patient-info-container" fxLayout="row" fxFlex="1 1 auto">
+    <div class="patient-info-container" fxLayout="row" fxFlex="1 2 auto">
       <div class="photo-container" fxFlex="1 1 150px">
         <div class="user-img drop-shadow" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}">
         </div>
@@ -10,9 +10,22 @@
         <div class="patient-clinic">CareLine Clinic</div>
       </div>
     </div>
-    <div class="patient-cal-container" fxFlex="1 1 auto">
-      <div class="patient-cal">
-        
+    <div class="patient-cal-container" fxFlex="4 0 auto">
+      <div class="patient-cal" fxLayout="column">
+        <div class="patient-cal-header" fxFlex="1 1 auto">
+          <div class="patient-cal-cell" fxFlex="1 1 11em">Monday</div>
+          <div class="patient-cal-cell" fxFlex="1 1 11em">Tuesday</div>
+          <div class="patient-cal-cell" fxFlex="1 1 11em">Wednesday</div>
+          <div class="patient-cal-cell" fxFlex="1 1 11em">Thursday</div>
+          <div class="patient-cal-cell" fxFlex="1 1 11em">Friday</div>
+        </div>
+        <div class="patient-cal-body" fxFlex="2 1 auto" fxLayout="row">
+          <div class="patient-cal-cell" fxFlex="1 1 11em"></div>
+          <div class="patient-cal-cell" fxFlex="1 1 11em"></div>
+          <div class="patient-cal-cell" fxFlex="1 1 11em"></div>
+          <div class="patient-cal-cell" fxFlex="1 1 11em"></div>
+          <div class="patient-cal-cell" fxFlex="1 1 11em"></div>
+        </div>
       </div>
     </div>
   </div>
