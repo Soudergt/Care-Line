@@ -1,6 +1,7 @@
 .patient-header {
   margin-top: 36px;
   margin-bottom: 15px;
+  margin: 36px 12px 15px 12px;
   padding: 15px;
   display: flex;
   align-items: center;
@@ -127,4 +128,8 @@
 .info-label {
   font-weight: 600;
   margin-right: 12px;
+}
+
+.section-header {
+  margin: 12px 0px 6px 0px;
 }
