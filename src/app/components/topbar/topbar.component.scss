@@ -28,7 +28,7 @@ $secondary-color: #61da97;
   width: 100%;
   z-index: 100;
   box-shadow: 0 3px 12px 0px #333;
-  padding: 0px;
+  padding: 0px 15px;
 
   .logo {
     width: 150px;
@@ -38,8 +38,13 @@ $secondary-color: #61da97;
     left: 15px;
   }
 
-  .logo-text {
+  .logo-text-link {
     flex: 0 1 auto;
+    position: relative;
+    top: 8px;
+  }
+
+  .logo-text {
     width: 200px;
   }
 
