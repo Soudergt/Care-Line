@@ -6,7 +6,7 @@
         </div>
       </div>
       <div class="patient-info" fxFlex="1 1 auto">
-        <div class="patient-name">Duke L. James</div>
+        <div class="patient-name">{{patient.fn}} {{patient.mi}} {{patient.ln}}</div>
         <div class="patient-clinic">CareLine Clinic</div>
       </div>
     </div>
@@ -45,23 +45,23 @@
               <mat-list>
                 <mat-list-item>
                   <label class="info-label" for="bday">Birthday:</label>
-                  <span id="bday">May, 5, 1942</span>
+                  <span id="bday">{{patient.bday}}</span>
                 </mat-list-item>
                 <mat-list-item>
                   <label class="info-label" for="gender">Gender:</label>
-                  <span id="gender">Male</span>
+                  <span id="gender">{{patient.gender}}</span>
                 </mat-list-item>
                 <mat-list-item>
                   <label class="info-label" for="height">Height:</label>
-                  <span id="height">6'0''</span>
+                  <span id="height">{{patient.height}}</span>
                 </mat-list-item>
                 <mat-list-item>
                   <label class="info-label" for="weight">Weight:</label>
-                  <span id="weight">160 lbs</span>
+                  <span id="weight">{{patient.weight}}</span>
                 </mat-list-item>
                 <mat-list-item>
                   <label class="info-label" for="bloodType">Blood Type:</label>
-                  <span id="bloodType">O Positive</span>
+                  <span id="bloodType">{{patient.bloodtype}}</span>
                 </mat-list-item>
               </mat-list>
             </div>
@@ -70,19 +70,19 @@
               <mat-list>
                 <mat-list-item>
                   <label class="info-label" for="name">Name:</label>
-                  <span id="name">Lauren James</span>
+                  <span id="name">{{patient.emergency.fn}} {{patient.emergency.ln}}</span>
                 </mat-list-item>
                 <mat-list-item>
                   <label class="info-label" for="address">Address:</label>
-                  <span id="address">127 Oak Lane, Cincinnati, Ohio, 44221</span>
+                  <span id="address">{{patient.emergency.address}}</span>
                 </mat-list-item>
                 <mat-list-item>
                   <label class="info-label" for="phone">Phone:</label>
-                  <span id="phone">(111)-111-1111</span>
+                  <span id="phone">{{patient.emergency.phone}}</span>
                 </mat-list-item>
                 <mat-list-item>
                   <label class="info-label" for="email">Email:</label>
-                  <span id="email">lauren.james@email.com</span>
+                  <span id="email">{{patient.emergency.email}}</span>
                 </mat-list-item>
               </mat-list>
             </div>
@@ -105,8 +105,5 @@
         </div>
       </div>
     </div>
-    <!-- <div class="info-section card-shadow" fxFlex="1 1 auto">
-      
-    </div> -->
   </div>
 </div>

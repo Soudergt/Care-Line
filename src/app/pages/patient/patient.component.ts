@@ -11,10 +11,26 @@ import { faNotesMedical, faInfo } from '@fortawesome/free-solid-svg-icons';
 export class PatientComponent implements OnInit {
   sub;
   id;
-  patient;
   faNotesMedical = faNotesMedical;
   faInfo = faInfo;
-
+  patient = {
+    fn: 'Duke',
+    mi: 'L.',
+    ln: 'James',
+    bday: 'May, 5, 1942',
+    gender: 'male',
+    bloodtype: 'O+',
+    height: "6'0''",
+    weight: '160 lbs',
+    emergency: {
+      fn: 'Lauren',
+      ln: 'James',
+      address: '127 Oak Lane, Cincinnati, Ohio, 44221',
+      phone: '111-111-1111',
+      email: 'lauren.james@email.com'
+    }
+  };
+  
 
   constructor(private activatedRoute: ActivatedRoute, private patientService:PatientService) { }
 
