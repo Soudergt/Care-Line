@@ -11,12 +11,12 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUser(uid: string): Observable<any> {
-    return this.http.get(
-      `${environment.api}/user/getUser/${uid}`,
-      { withCredentials: true }
-    ).pipe(map((body: { data: { user: any } }) => {
-      return body.data.user;
-    }));
-  }
+  // getUser(uid: string): Observable<any> {
+  //   return this.http.get(
+  //     `${environment.api}/user/getUser/${uid}`,
+  //     { withCredentials: true }
+  //   ).pipe(map((body: { data: { user: any } }) => {
+  //     return body.data.user;
+  //   }));
+  // }
 }
