@@ -17,6 +17,7 @@ export class PatientComponent implements OnInit {
     fn: 'Duke',
     mi: 'L.',
     ln: 'James',
+    clinic: 'Careline Clinic',
     bday: 'May, 5, 1942',
     gender: 'male',
     bloodtype: 'O+',

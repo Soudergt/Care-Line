@@ -2,12 +2,11 @@
   <div class="patient-header" fxLayout="row wrap" [ngStyle.xs]="{'margin-top': '0px'}" [ngStyle.sm]="{'margin-top': '0px'}">
     <div class="patient-info-container" fxLayout="row" fxFlex="1 2 auto">
       <div class="photo-container" fxFlex="1 1 150px">
-        <div class="user-img drop-shadow" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}">
-        </div>
+        <div class="user-img drop-shadow" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
       </div>
       <div class="patient-info" fxFlex="1 1 auto">
         <div class="patient-name">{{patient.fn}} {{patient.mi}} {{patient.ln}}</div>
-        <div class="patient-clinic">CareLine Clinic</div>
+        <div class="patient-clinic">{{patient.clinic}}</div>
       </div>
     </div>
     <!-- <div class="patient-cal-container" fxFlex="4 0 auto">
