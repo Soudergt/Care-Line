@@ -5,6 +5,7 @@ $secondary-color: #61da97;
 html,
 body {
   height: 100%;
+  color: #FFF;
 }
 
 body {
@@ -25,4 +26,8 @@ body {
 
 .card-shadow {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, .4);
+}
+
+.content {
+  margin-top: 36px;
 }
