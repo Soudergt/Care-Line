@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -56,7 +57,8 @@ import { PatientComponent } from './pages/patient/patient.component';
     MatListModule,
     HttpClientModule,
     SweetAlert2Module.forRoot(),
-    FontAwesomeModule
+    FontAwesomeModule,
+    RoundProgressModule
   ],
   providers: [],
   entryComponents: [
