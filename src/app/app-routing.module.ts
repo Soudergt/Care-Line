@@ -5,13 +5,15 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { PatientComponent } from './pages/patient/patient.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'dashboard', component: UserDashboardComponent },
-  { path: 'patient/:id', component:  PatientComponent }
+  { path: 'patient/:id', component:  PatientComponent },
+  { path: 'signup', component: SignupComponent }
 ];
 
 @NgModule({

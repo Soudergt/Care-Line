@@ -27,6 +27,7 @@ import { LogindialogComponent } from './components/logindialog/logindialog.compo
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { PatientComponent } from './pages/patient/patient.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PatientComponent } from './pages/patient/patient.component';
     LogindialogComponent,
     UserDashboardComponent,
     CardListComponent,
-    PatientComponent
+    PatientComponent,
+    SignupComponent
   ],
   imports: [
     AppRoutingModule,
