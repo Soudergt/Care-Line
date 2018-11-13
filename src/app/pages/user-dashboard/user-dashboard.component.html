@@ -1,3 +1,34 @@
-<div class="card-list-container">
-  <app-card-list></app-card-list>
+<div class="content">
+  <div class="user-header" fxLayout="row wrap" [ngStyle.xs]="{'margin-top': '0px'}" [ngStyle.sm]="{'margin-top': '0px'}">
+    <div class="user-info-container" fxLayout="row" fxFlex="1 2 auto">
+      <div class="photo-container" fxFlex="1 1 150px">
+        <div class="user-img drop-shadow" [ngStyle]="{'background-image': user.img.path}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
+      </div>
+      <div class="user-info">
+        <div class="user-name">{{user.fn}} {{user.ln}}</div>
+        <div class="user-clinic">{{user.clinic}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="section-container" fxLayout="row wrap" fxLayoutAlign="space-around space-around" fxLayoutGap="30px">
+    <div class="user-analytics card-shadow" fxFlex="1 1 350px" fxFlexOffset="30px" fxFlexAlign="center center">
+      <div class="progress-container">
+        <round-progress style="margin:auto" [current]="3" [max]="8" [stroke]="25" [responsive]="true"></round-progress>
+      </div>
+      <h2>Patient Progress</h2>
+    </div>
+    <div class="user-analytics card-shadow" fxFlex="1 1 350px" fxFlexOffset="30px" fxFlexAlign="center center">
+      <div class="progress-container">
+        <round-progress style="margin:auto" [current]="3" [max]="8" [stroke]="25" [responsive]="true"></round-progress>
+      </div>
+      <h2>Patient Progress</h2>
+    </div>
+  </div>
+  <div class="section-container">
+    <h3 class="header">Patients</h3>
+    <div class="patient-list">
+      <app-card-list></app-card-list>
+    </div>
+  </div>
 </div>
+

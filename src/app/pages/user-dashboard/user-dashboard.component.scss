@@ -1,0 +1,71 @@
+.user-header {
+  margin: 36px 12px 15px 12px;
+  padding: 15px;
+  display: flex;
+
+  .user-info-container {
+    .photo-container {
+      margin-right: 15px;
+      flex: 0 1 auto;
+    
+      .user-img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        background-image: url('/src/assets/images/people/patients/duke.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 2px solid #61da97;
+      }
+    }
+
+    .user-info {
+      flex: 1 1 auto;
+      align-self: flex-start;
+      padding-left: 12px;
+    }
+
+    .user-name {
+      font-size: 35px;
+      font-weight: 600;
+      color: #FFF;
+      text-shadow: 1px 1px 1px #000;
+      margin: 12px 0px 12px 0px;
+    }
+
+    .user-clinic {
+      font-size: 22px;
+      color: #FFF;
+      text-shadow: 1px 1px 1px #000;
+    }
+  }
+}
+
+.section-container {
+  margin: 30px;
+
+  .header {
+    font-size: 35px;    
+    text-shadow: 1px 1px 1px #000;
+    margin: 0px 15px;
+  }
+
+  .section-content {
+    margin-top: 30px;
+  }
+
+  .user-analytics {
+    text-align: center;
+    background-color: #FFF;
+    color: #000;
+    padding: 15px;
+
+    .progress-container {
+      margin-top: 15px;
+      width: 80%;
+      height: 80%;
+      margin: 15px auto 0px auto;
+    }
+  }
+}

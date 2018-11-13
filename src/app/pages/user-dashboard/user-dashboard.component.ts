@@ -9,6 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDashboardComponent implements OnInit {
   data: Observable<any[]>;
+  user = {
+    fn: 'Taylor',
+    ln: 'Williams',
+    clinic: 'Careline Clinic',
+    img: {
+      path: "url('/src/assets/images/people/caretakers/taylorwilliams.jpg')"
+    }
+  };
+
+  current: 3;
+  max: 8;
 
   constructor(private userService: UserService) { }
 
