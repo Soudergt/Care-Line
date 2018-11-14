@@ -14,7 +14,7 @@ export class UserDashboardComponent implements OnInit {
     ln: 'Williams',
     clinic: 'Careline Clinic',
     img: {
-      path: "url('/src/assets/images/people/caretakers/taylorwilliams.jpg')"
+      path: "url('/assets/images/people/caretakers/taylorwilliams.jpg')"
     }
   };
 
