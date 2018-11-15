@@ -29,7 +29,7 @@ export class PatientRoute {
           }
         }
       },
-      url: '/patient/getPatients'
+      url: '/api/patient/getPatients'
     });
 
     fastify.route({
@@ -57,7 +57,7 @@ export class PatientRoute {
           }
         }
       },
-      url: '/backend/patient/getPatient/:id'
+      url: '/api/patient/getPatient/:id'
     });
   }
 

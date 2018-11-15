@@ -1,30 +1,50 @@
-import * as Fastify from 'fastify';
-import * as fastifyCORS from 'fastify-cors';
+import * as fastify from 'fastify';
+import * as cors from 'cors';
+import * as http from 'http';
 import routes from './routes/index';
 
 const main = async () => {
-  const fastify = Fastify({
+  const server = fastify({
     logger: true
   });
 
-  fastify.use(require('cors')());
 
   try {
-    fastify.after(() => {
-      routes.forEach(Route => new Route(fastify));
-    });
-    
-    fastify.listen(3000, '0.0.0.0', (err?: Error) => {
-      if (err) {
-        fastify.log.error(err);
-
-        return process.exit(1);
+    const opts = {
+      schema: {
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              hello: {
+                type: 'string'
+              }
+            }
+          }
+        }
       }
+    }
+    
+    function getHelloHandler (req: fastify.FastifyRequest<http.IncomingMessage>,
+        reply: fastify.FastifyReply<http.ServerResponse>) {
+      reply.header('Content-Type', 'application/json').code(200)
+      reply.send({ hello: 'world' })
+    }
 
-      fastify.log.info('Server is listening on port 3000');
+    server.use(cors());
+    server.get('/', opts, getHelloHandler);
+
+
+    // server.after(() => {
+    //   routes.forEach(Route => new Route(server));
+    // });
+    
+    server.listen(3000, err => {
+      if (err) throw err
+      console.log(`server listening on ${server.server.address().port}`)
     });
   } catch (err) {
-    fastify.log.info('Failed to start server');
+    server.log.info('Failed to start server');
 
     process.exit(1);
   }
