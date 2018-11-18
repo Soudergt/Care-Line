@@ -14,7 +14,6 @@ import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
 import { AppComponent } from './app.component';
