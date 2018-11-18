@@ -5,31 +5,79 @@
         <div class="user-img drop-shadow" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
       </div>
       <div class="patient-info" fxFlex="1 1 auto">
-        <div class="patient-name">{{patient.fn}} {{patient.mi}} {{patient.ln}}</div>
+        <div class="patient-name">{{patient.fn}} {{patient.mi}}. {{patient.ln}}</div>
         <div class="patient-clinic">{{patient.clinic}}</div>
       </div>
     </div>
-    <!-- <div class="patient-cal-container" fxFlex="4 0 auto">
-      <div class="patient-cal" fxLayout="column">
-        <div class="patient-cal-header" fxFlex="1 1 auto">
-          <div class="patient-cal-cell" fxFlex="1 1 11em">Monday</div>
-          <div class="patient-cal-cell" fxFlex="1 1 11em">Tuesday</div>
-          <div class="patient-cal-cell" fxFlex="1 1 11em">Wednesday</div>
-          <div class="patient-cal-cell" fxFlex="1 1 11em">Thursday</div>
-          <div class="patient-cal-cell" fxFlex="1 1 11em">Friday</div>
+    <div class="patient-cal card-shadow" fxFlex="4 0 auto" fxLayout="column">
+      <div class="patient-cal-header" fxFlex="1 1 50px">
+        <div class="patient-cal-cell" fxFlex="1 1 12em" fxLayout="column" fxLayoutAlign="center center">Sunday</div>
+        <div class="patient-cal-cell" fxFlex="1 1 12em" fxLayout="column" fxLayoutAlign="center center">Monday</div>
+        <div class="patient-cal-cell" fxFlex="1 1 12em" fxLayout="column" fxLayoutAlign="center center">Tuesday</div>
+        <div class="patient-cal-cell" fxFlex="1 1 12em" fxLayout="column" fxLayoutAlign="center center">Wednesday</div>
+        <div class="patient-cal-cell" fxFlex="1 1 12em" fxLayout="column" fxLayoutAlign="center center">Thursday</div>
+        <div class="patient-cal-cell" fxFlex="1 1 12em" fxLayout="column" fxLayoutAlign="center center">Friday</div>
+        <div class="patient-cal-cell" fxFlex="1 1 12em" fxLayout="column" fxLayoutAlign="center center">Saturday</div>
+      </div>
+      <div class="patient-cal-body" fxFlex="2 1 200px" fxLayout="row">
+        <div class="patient-cal-cell" fxFlex="1 1 12em">
+          <mat-list>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+          </mat-list>
         </div>
-        <div class="patient-cal-body" fxFlex="2 1 auto" fxLayout="row">
-          <div class="patient-cal-cell" fxFlex="1 1 11em"></div>
-          <div class="patient-cal-cell" fxFlex="1 1 11em"></div>
-          <div class="patient-cal-cell" fxFlex="1 1 11em"></div>
-          <div class="patient-cal-cell" fxFlex="1 1 11em"></div>
-          <div class="patient-cal-cell" fxFlex="1 1 11em"></div>
+        <div class="patient-cal-cell" fxFlex="1 1 12em">
+          <mat-list>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+          </mat-list>
+        </div>
+        <div class="patient-cal-cell" fxFlex="1 1 12em">
+          <mat-list>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+          </mat-list>
+        </div>
+        <div class="patient-cal-cell" fxFlex="1 1 12em">
+          <mat-list>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+          </mat-list>
+        </div>
+        <div class="patient-cal-cell" fxFlex="1 1 12em">
+          <mat-list>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+          </mat-list>
+        </div>
+        <div class="patient-cal-cell" fxFlex="1 1 12em">
+          <mat-list>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+          </mat-list>
+        </div>
+        <div class="patient-cal-cell" fxFlex="1 1 12em">
+          <mat-list>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+            <mat-list-item>Appointment</mat-list-item>
+          </mat-list>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
   <div class="patient-content" fxLayout="row wrap">
-    <div class="note-section card-shadow" fxFlex="1 1 auto" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
+    <div class="info-section card-shadow" fxFlex="1 1 auto" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}"
+      [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
       <div fxLayout="column">
         <div class="header" fxLayout="row" fxFlex="1 1 auto">
           <div class="module-logo" fxFlex="0 0 75px">
@@ -89,18 +137,59 @@
         </div>
       </div>
     </div>
-    <div class="note-section card-shadow" fxFlex="3 1 auto" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
+    <div class="note-section card-shadow" fxFlex="3 1 auto" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}"
+      [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
       <div fxLayout="column">
         <div class="header" fxLayout="row" fxFlex="1 1 auto">
           <div class="module-logo" fxFlex="0 0 75px">
             <fa-icon [icon]="faNotesMedical" size="3x" [inverse]="true"></fa-icon>
           </div>
           <div class="header-text" fxFlex="1 1 auto">Medical Notes</div>
+          <button type="button" class="create-btn" mat-raised-button color="primary" (click)="addNote()">Create</button>
         </div>
-        <div class="content" fxFlex="1 1 auto">
-          <mat-form-field>
-            <textarea matInput placeholder="Note"></textarea>
-          </mat-form-field>
+        <div class="content" fxFlex="1 1 auto" cdkDropList (cdkDropListDropped)="drop($event)">
+          <div class="note-box-new" *ngIf="showNewNote">
+            <form (ngSubmit)="createNote()" [formGroup]="noteForm" fxLayout="column" fxLayoutGap="5px">
+              <mat-form-field>
+                <input matInput type="text" placeholder="Title" formControlName="title">
+              </mat-form-field>
+              <mat-form-field>
+                <textarea matInput cdkTextareaAutosize placeholder="Note" formControlName="desc"></textarea>
+              </mat-form-field>
+              <div class="radio-group-label">Patient Mood:</div>
+              <mat-radio-group formControlName="mood">
+                <mat-radio-button class="mood-radio" value="very good" aria-label="very good" color="primary">
+                  <fa-icon [icon]="faGrinBeam" size="2x"></fa-icon>
+                </mat-radio-button>
+                <mat-radio-button class="mood-radio" value="good" aria-label="good" color="primary">
+                  <fa-icon [icon]="faSmile" size="2x"></fa-icon>
+                </mat-radio-button>
+                <mat-radio-button class="mood-radio" value="meh" aria-label="meh" color="primary">
+                  <fa-icon [icon]="faMeh" size="2x"></fa-icon>
+                </mat-radio-button>
+                <mat-radio-button class="mood-radio" value="bad" aria-label="bad" color="primary">
+                  <fa-icon [icon]="faFrown" size="2x"></fa-icon>
+                </mat-radio-button>
+                <mat-radio-button class="mood-radio" value="very bad" aria-label="very bad" color="primary">
+                  <fa-icon [icon]="faTired" size="2x"></fa-icon>
+                </mat-radio-button>
+              </mat-radio-group>
+              <div class="footer" fxLayout="row" fxLayoutGap="30px">
+                <button type="button" mat-stroked-button fxFlex="1 1 auto" (click)="cancelAddNote()">Cancel</button>
+                <button type="submit" mat-flat-button fxFlex="1 1 auto" color="primary">Save</button>
+              </div>
+            </form>
+          </div>
+          <div class="note-box" *ngFor="let note of notes" cdkDrag>
+            <fa-icon class="mood-icon" [icon]="faGrinBeam" size="2x" *ngIf="note.mood.toLowerCase() === 'very good'"></fa-icon>
+            <fa-icon class="mood-icon" [icon]="faSmile" size="2x" *ngIf="note.mood.toLowerCase() === 'good'"></fa-icon>
+            <fa-icon class="mood-icon" [icon]="faMeh" size="2x" *ngIf="note.mood.toLowerCase() === 'meh'"></fa-icon>
+            <fa-icon class="mood-icon" [icon]="faFrown" size="2x" *ngIf="note.mood.toLowerCase() === 'bad'"></fa-icon>
+            <fa-icon class="mood-icon" [icon]="faTired" size="2x" *ngIf="note.mood.toLowerCase() === 'very bad'"></fa-icon>
+            <div class="title">{{note.title}}</div>
+            <mat-divider class="divider"></mat-divider>
+            <p class="body">{{note.desc}}</p>
+          </div>
         </div>
       </div>
     </div>
