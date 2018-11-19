@@ -2,7 +2,8 @@
   <div class="user-header" fxLayout="row wrap" [ngStyle.xs]="{'margin-top': '0px'}" [ngStyle.sm]="{'margin-top': '0px'}">
     <div class="user-info-container" fxLayout="row" fxFlex="1 2 auto">
       <div class="photo-container" fxFlex="1 1 150px">
-        <div class="user-img drop-shadow" [ngStyle]="{'background-image': user.img.path}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
+        <div class="user-img drop-shadow" [ngStyle]="{'background-image': user.img.path}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}"
+          [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
       </div>
       <div class="user-info">
         <div class="user-name">{{user.fn}} {{user.ln}}</div>
@@ -10,25 +11,55 @@
       </div>
     </div>
   </div>
-  <div class="section-container" fxLayout="row wrap" fxLayoutAlign="space-around space-around" fxLayoutGap="30px">
-    <div class="user-analytics card-shadow" fxFlex="1 1 350px" fxFlexOffset="30px" fxFlexAlign="center center">
-      <div class="progress-container">
-        <round-progress style="margin:auto" [current]="3" [max]="8" [stroke]="25" [responsive]="true"></round-progress>
+  <div class="section-container" fxLayout="row">
+    <div class="patient-container" fxFlex="1 1 auto">
+      <h3 class="header">Patients</h3>
+      <div class="patient-list">
+        <app-card-list></app-card-list>
       </div>
-      <h2>Patient Progress</h2>
     </div>
-    <div class="user-analytics card-shadow" fxFlex="1 1 350px" fxFlexOffset="30px" fxFlexAlign="center center">
-      <div class="progress-container">
-        <round-progress style="margin:auto" [current]="3" [max]="8" [stroke]="25" [responsive]="true"></round-progress>
+    <div fxFlex="1 1 400px">
+      <div fxLayout="row" fxLayoutAlign="space-around">
+        <mat-button-toggle-group #group="matButtonToggleGroup" value="age">
+          <mat-button-toggle (change)="changeChart($event.value)" value="age">Age</mat-button-toggle>
+          <mat-button-toggle (change)="changeChart($event.value)" value="gender">Gender</mat-button-toggle>
+        </mat-button-toggle-group>
       </div>
-      <h2>Patient Progress</h2>
+      <div class="patients-chart-container">
+        <canvas height="400px" width="400px" id="patientsChart"></canvas>
+      </div>
     </div>
   </div>
-  <div class="section-container">
-    <h3 class="header">Patients</h3>
-    <div class="patient-list">
-      <app-card-list></app-card-list>
+  <div class="section-container" fxLayout="row wrap">
+    <div class="appointment-section card-shadow" fxFlex="1 1 40%" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}"
+      [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
+      <div fxLayout="column">
+        <div class="appointment-header" fxLayout="row" fxFlex="1 1 auto">
+          <div class="module-logo" fxFlex="0 0 75px">
+            <fa-icon [icon]="faCalendarCheck" size="3x" [inverse]="true"></fa-icon>
+          </div>
+          <div class="header-text" fxFlex="1 1 auto">Appointments</div>
+        </div>
+        <mat-divider style="width: 100%"></mat-divider>
+        <div class="content" fxFlex="1 1 auto">
+          <mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+            <ng-container matColumnDef="desc">
+              <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.desc}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="date">
+              <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.date}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="patient">
+              <mat-header-cell *matHeaderCellDef>Patient</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.patient}}</mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
