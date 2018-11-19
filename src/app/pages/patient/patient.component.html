@@ -9,7 +9,7 @@
         <div class="patient-clinic">{{patient.clinic}}</div>
       </div>
     </div>
-    <div class="patient-cal card-shadow" fxFlex="4 0 auto" fxLayout="column">
+    <!-- <div class="patient-cal card-shadow" fxFlex="4 0 auto" fxLayout="column">
       <div class="patient-cal-header" fxFlex="1 1 50px">
         <div class="patient-cal-cell" fxFlex="1 1 12em" fxLayout="column" fxLayoutAlign="center center">Sunday</div>
         <div class="patient-cal-cell" fxFlex="1 1 12em" fxLayout="column" fxLayoutAlign="center center">Monday</div>
@@ -73,7 +73,7 @@
           </mat-list>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="patient-content" fxLayout="row wrap">
     <div class="info-section card-shadow" fxFlex="1 1 auto" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}"
@@ -85,6 +85,7 @@
           </div>
           <div class="header-text" fxFlex="1 1 auto">Patient Information</div>
         </div>
+        <mat-divider style="width: 100%"></mat-divider>
         <div class="content" fxFlex="1 1 auto">
           <div fxLayout="row wrap">
             <div fxFlex="1 1 auto">
@@ -147,6 +148,7 @@
           <div class="header-text" fxFlex="1 1 auto">Medical Notes</div>
           <button type="button" class="create-btn" mat-raised-button color="primary" (click)="addNote()">Create</button>
         </div>
+        <mat-divider style="width: 100%"></mat-divider>
         <div class="content" fxFlex="1 1 auto" cdkDropList (cdkDropListDropped)="drop($event)">
           <div class="note-box-new" *ngIf="showNewNote">
             <form (ngSubmit)="createNote()" [formGroup]="noteForm" fxLayout="column" fxLayoutGap="5px">
