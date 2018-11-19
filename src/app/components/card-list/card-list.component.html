@@ -1,4 +1,4 @@
-<div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px;">
+<div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;">
   <mat-card class="patient-card" *ngFor="let patient of patients" fxFlex="1 1 auto;" (click)="goToPatient(patient)">
     <div class="user-img drop-shadow" [ngStyle]="{'background-image': patient.img}"></div>
     <div class="card-content">

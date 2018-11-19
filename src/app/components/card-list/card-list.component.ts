@@ -9,7 +9,7 @@ const PATIENTS: Patient[] = [
   { id: 4, name: 'Frank', img: 'url(/assets/images/people/patients/frank.jpg)' },
   // { id: 5, name: 'Bethany' },
   { id: 6, name: 'George', img: 'url(/assets/images/people/patients/george.jpg)'},
-  { id: 7, name: 'Patrick', img: 'url/assets/images/people/patients/patrick.jpg)'},
+  // { id: 7, name: 'Patrick', img: 'url/assets/images/people/patients/patrick.jpg)'},
   { id: 8, name: 'Duke', img: 'url(/assets/images/people/patients/duke.jpg)'},
 ];
 
