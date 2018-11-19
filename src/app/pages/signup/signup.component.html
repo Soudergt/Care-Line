@@ -16,6 +16,7 @@
     <mat-form-field fxFlex="1 1 auto">
       <input matInput type="text" placeholder="Patient Name" name="patient name" formControlName="pname" aria-label="patient name" required>
     </mat-form-field>
-    <button type="submit" mat-raised-button color="primary">Sign Up</button>
+    <mat-checkbox color="primary" formControlName="agreeHipaa">I agree to the <a class="hipaa-link" (click)="openDialog($event)">HIPAA Privacy Authorization Form</a></mat-checkbox>
+    <button class="sign-up-btn" type="submit" mat-raised-button color="primary">Sign Up</button>
   </form>
 </div>

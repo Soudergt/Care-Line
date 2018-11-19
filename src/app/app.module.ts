@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatListModule } from '@angular/material/list';
@@ -33,6 +34,7 @@ import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.co
 import { CardListComponent } from './components/card-list/card-list.component';
 import { PatientComponent } from './pages/patient/patient.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { HipaadialogComponent } from './components/hipaadialog/hipaadialog.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { SignupComponent } from './pages/signup/signup.component';
     UserDashboardComponent,
     CardListComponent,
     PatientComponent,
-    SignupComponent
+    SignupComponent,
+    HipaadialogComponent
   ],
   imports: [
     AppRoutingModule,
@@ -62,6 +65,7 @@ import { SignupComponent } from './pages/signup/signup.component';
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatButtonToggleModule,
     MatRadioModule,
     MatDividerModule,
@@ -75,7 +79,8 @@ import { SignupComponent } from './pages/signup/signup.component';
   ],
   providers: [],
   entryComponents: [
-    LogindialogComponent
+    LogindialogComponent,
+    HipaadialogComponent
   ],
   bootstrap: [AppComponent]
 })

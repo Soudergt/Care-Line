@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './../../providers/login/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
+import { HipaadialogComponent } from './../../components/hipaadialog/hipaadialog.component';
 
 @Component({
   selector: 'app-signup',
@@ -20,6 +22,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    public dialog: MatDialog,
     private loginService: LoginService,
     ) {
     this.signupForm = this.formBuilder.group({
@@ -27,10 +30,18 @@ export class SignupComponent implements OnInit {
       ln: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      pname: ['', Validators.required]
+      pname: ['', Validators.required],
+      agreeHipaa: [false, Validators.required]
     });
     this.status = new BehaviorSubject<number>(this.STATUSES.UNTOUCHED);
    }
+
+  openDialog(event): void {
+    event.preventDefault();
+    this.dialog.open(HipaadialogComponent, {
+      width: '800px',
+    });
+  }
 
   ngOnInit() {
   }
