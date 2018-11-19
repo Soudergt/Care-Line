@@ -12,8 +12,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -60,8 +62,10 @@ import { SignupComponent } from './pages/signup/signup.component';
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatRadioModule,
     MatDividerModule,
+    MatTableModule,
     MatListModule,
     TextFieldModule,
     HttpClientModule,
