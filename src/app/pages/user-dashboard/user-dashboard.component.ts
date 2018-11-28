@@ -30,6 +30,7 @@ const APPOINTMENT_DATA: AppointmentElement[] = [
 })
 export class UserDashboardComponent implements OnInit {
   chart = {};
+  data = {};
   ctx;
   displayedColumns: string[] = ['desc', 'date', 'patient'];
   dataSource = APPOINTMENT_DATA;
@@ -108,13 +109,15 @@ export class UserDashboardComponent implements OnInit {
       this.activeData = this.ageData;
       this.drawChart();
 
-      // this.userService.getUser('1').subscribe({
-      //   error: (err) => {
-      //     console.log(err);
-      //   },
-      //   next: user => this.data
-      // });
-      // console.log(this.data);
+      this.userService.getUser('1').subscribe({
+        error: (err) => {
+          console.log(err);
+        },
+        next: user => {
+          this.data = user;
+          console.log(this.data);
+        }
+      });
     } catch (err) {
       console.log(err);
     }

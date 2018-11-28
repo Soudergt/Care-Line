@@ -5,20 +5,28 @@ import { UserService } from '../../libs/UserService';
 export class UserRoute {
   constructor(fastify: FastifyInstance) {
     fastify.route({
-      handler: this.getUser,
+      url: '/user/getUser/:uid',
       method: 'GET',
       schema: {
         querystring: {
           properties: {
             uid: {
               description: 'User ID',
-              type: 'number'
+              type: 'string'
             }
           },
           required: ['uid'],
           type: 'object'
         },
         response: {
+          200: {
+            properties: {
+              data: { type: 'object' },
+              message: { type: 'string' },
+              statusCode: { type: 'integer' }
+            },
+            type: 'object'
+          },
           400: {
             properties: {
               data: { type: 'object' },
@@ -29,21 +37,18 @@ export class UserRoute {
           }
         }
       },
-      url: '/user/getUser'
+      handler: this.getUser,
     });
   }
 
-  private async getUser(
-    request: FastifyRequest<IncomingMessage>,
-    reply: FastifyReply<ServerResponse>
-  ) {
+  private async getUser(request: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
     try {
       const { uid } = request.query;
 
       const user = await new UserService().getUser(uid);
 
       reply.code(200).send({
-        data: { user },
+        data: user,
         message: 'SUCCESS',
         statusCode: 200
       });

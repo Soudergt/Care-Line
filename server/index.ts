@@ -1,47 +1,43 @@
-import * as fastify from 'fastify';
-import * as cors from 'cors';
-import * as http from 'http';
-import routes from './routes/index';
+import * as Fastify from 'fastify';
+import * as fastifyCORS from 'fastify-cors';
+import * as config from 'config';
+import routes from './routes';
 
 const main = async () => {
-  const server = fastify({
+  const server = Fastify({
     logger: true
   });
 
+  const options = {
+    'origin': true,
+    'methods': [
+      'GET',
+      'POST',
+      'PUT',
+      'DELETE',
+      'OPTIONS'
+    ]
+  }
+
+  server.register(fastifyCORS, options);
 
   try {
-    const opts = {
-      schema: {
-        response: {
-          200: {
-            type: 'object',
-            properties: {
-              hello: {
-                type: 'string'
-              }
-            }
-          }
-        }
-      }
-    }
-    
-    function getHelloHandler (req: fastify.FastifyRequest<http.IncomingMessage>,
-        reply: fastify.FastifyReply<http.ServerResponse>) {
-      reply.header('Content-Type', 'application/json').code(200)
-      reply.send({ hello: 'world' })
-    }
+    server.after(() => {
+      routes.forEach(Route => {
+        const options: any = {};
 
-    server.use(cors());
-    server.get('/', opts, getHelloHandler);
+        options.prefix = '/backend';
 
-
-    // server.after(() => {
-    //   routes.forEach(Route => new Route(server));
-    // });
+        server.register((f, opts, next) => {
+          const r = new Route(f);
+          next();
+        }, options);
+      });
+    });
     
     server.listen(3000, err => {
       if (err) throw err
-      console.log(`server listening on ${server.server.address().port}`)
+      server.log.info(`server listening on ${server.server.address().port}`);
     });
   } catch (err) {
     server.log.info('Failed to start server');
