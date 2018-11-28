@@ -38,6 +38,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.4.2",
     "@toverux/ngx-sweetalert2": "^4.0.0",
     "@types/chart.js": "^2.7.40",
+    "@types/config": "0.0.34",
     "@types/fastify-cors": "^0.1.0",
     "angular-svg-round-progressbar": "^2.0.0",
     "chart.js": "^2.7.3",
