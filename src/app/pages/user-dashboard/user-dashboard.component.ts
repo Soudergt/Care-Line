@@ -1,3 +1,4 @@
+import { User } from './../../classes/user';
 import { Observable } from 'rxjs';
 import { UserService } from './../../providers/user/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -35,7 +36,9 @@ export class UserDashboardComponent implements OnInit {
   displayedColumns: string[] = ['desc', 'date', 'patient'];
   dataSource = APPOINTMENT_DATA;
   faCalendarCheck = faCalendarCheck;
-  user = {
+
+  user: User = {
+    id: 1,
     fn: 'Taylor',
     ln: 'Williams',
     clinic: 'Careline Clinic',
@@ -43,6 +46,7 @@ export class UserDashboardComponent implements OnInit {
       path: "url('/assets/images/people/caretakers/taylorwilliams.jpg')"
     }
   };
+
   chartOptions = {
     responsive: false,
     legend: {

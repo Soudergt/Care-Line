@@ -5,9 +5,9 @@
   [ngStyle.xs]="{'height': '75px'}" [ngStyle.sm]="{'height': '75px'}">
   </a>
   <nav class="nav-link-container" fxShow fxHide.xs>
-    <a class="nav-link" [routerLink]="'dashboard'">Dashboard</a>
+    <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
     <a class="nav-link" (click)="openDialog()">Login</a>
-    <a class="nav-link" [routerLink]="'signup'">Sign Up</a>
+    <a class="nav-link" [routerLink]="['/signup']">Sign Up</a>
   </nav>
   <div class="main-nav-menu" [ngStyle.xs]="{'top': '20px'}">
     <button class="nav-menu-btn" mat-icon-button [matMenuTriggerFor]="menu" fxHide fxShow.xs>
@@ -16,17 +16,17 @@
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
         <span>
-          <a class="menu-link" routerLink="/dashboard">Dashboard</a>
+          <a class="menu-link" [routerLink]="['/dashboard']">Dashboard</a>
         </span>
       </button>
       <button mat-menu-item>
         <span>        
-          <a class="menu-link" routerLink="/about">About</a>
+          <a class="menu-link" routerLink="['/about']">About</a>
         </span>
       </button>
       <button mat-menu-item>
         <span>
-          <a class="menu-link" routerLink="/contact">Contact</a>
+          <a class="menu-link" routerLink="['/contact']">Contact</a>
         </span>
       </button>
     </mat-menu>

@@ -2,12 +2,11 @@
   <div class="user-header" fxLayout="row wrap" [ngStyle.xs]="{'margin-top': '0px'}" [ngStyle.sm]="{'margin-top': '0px'}">
     <div class="user-info-container" fxLayout="row" fxFlex="1 2 auto">
       <div class="photo-container" fxFlex="1 1 150px">
-        <div class="user-img drop-shadow" [ngStyle]="{'background-image': user.img.path}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}"
-          [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
+        <div class="user-img drop-shadow" [ngStyle]="{'background-image': user.img.path}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
       </div>
       <div class="user-info">
         <div class="user-name">{{user.fn}} {{user.ln}}</div>
-        <div class="user-clinic">{{user.clinic}}</div>
+        <a class="user-clinic" [routerLink]="['/clinic/1']">{{user.clinic}}</a>
       </div>
     </div>
   </div>
@@ -31,8 +30,7 @@
     </div>
   </div>
   <div class="section-container" fxLayout="row wrap">
-    <div class="appointment-section card-shadow" fxFlex="1 1 40%" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}"
-      [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
+    <div class="appointment-section card-shadow" fxFlex="40" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
       <div fxLayout="column">
         <div class="appointment-header" fxLayout="row" fxFlex="1 1 auto">
           <div class="module-logo" fxFlex="0 0 75px">
