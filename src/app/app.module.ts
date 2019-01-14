@@ -35,6 +35,7 @@ import { CardListComponent } from './components/card-list/card-list.component';
 import { PatientComponent } from './pages/patient/patient.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { HipaadialogComponent } from './components/hipaadialog/hipaadialog.component';
+import { ClinicComponent } from './pages/clinic/clinic.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { HipaadialogComponent } from './components/hipaadialog/hipaadialog.compo
     CardListComponent,
     PatientComponent,
     SignupComponent,
-    HipaadialogComponent
+    HipaadialogComponent,
+    ClinicComponent
   ],
   imports: [
     AppRoutingModule,

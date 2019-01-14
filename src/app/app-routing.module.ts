@@ -6,6 +6,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { PatientComponent } from './pages/patient/patient.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { ClinicComponent } from './pages/clinic/clinic.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'dashboard', component: UserDashboardComponent },
   { path: 'patient/:id', component:  PatientComponent },
-  { path: 'signup', component: SignupComponent }
+  { path: 'signup', component: SignupComponent },
+  { path: 'clinic/:id', component: ClinicComponent }
 ];
 
 @NgModule({
