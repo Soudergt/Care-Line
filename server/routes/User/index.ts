@@ -46,9 +46,9 @@ export class UserRoute {
       const { uid } = request.query;
 
       const user = await new UserService().getUser(uid);
-
+      
       reply.code(200).send({
-        data: user,
+        data: { user },
         message: 'SUCCESS',
         statusCode: 200
       });
