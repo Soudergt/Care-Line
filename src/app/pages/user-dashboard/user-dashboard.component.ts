@@ -32,7 +32,7 @@ const APPOINTMENT_DATA: AppointmentElement[] = [
 export class UserDashboardComponent implements OnInit {
   chart = {};
   data = {};
-  ctx;
+  ctx: any;
   displayedColumns: string[] = ['desc', 'date', 'patient'];
   dataSource = APPOINTMENT_DATA;
   faCalendarCheck = faCalendarCheck;
