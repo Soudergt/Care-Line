@@ -1,8 +1,8 @@
 <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;">
-  <mat-card class="patient-card" *ngFor="let patient of patients" fxFlex="1 1 auto;" (click)="goToPatient(patient)">
-    <div class="user-img drop-shadow" [ngStyle]="{'background-image': patient.img}"></div>
+  <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="1 1 auto;" (click)="goToPatient(item)">
+    <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
     <div class="card-content">
-      <mat-card-title>{{ patient.name }}</mat-card-title>
+      <mat-card-title>{{ item.name }}</mat-card-title>
       <mat-card-content></mat-card-content>
     </div>
   </mat-card>
