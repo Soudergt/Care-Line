@@ -75,71 +75,73 @@
       </div>
     </div> -->
   </div>
-  <div class="patient-content" fxLayout="row wrap">
-    <div class="info-section card-shadow" fxFlex="1 1 auto" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}"
-      [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
-      <div fxLayout="column">
-        <div class="header" fxLayout="row" fxFlex="1 1 auto">
-          <div class="module-logo" fxFlex="0 0 75px">
-            <fa-icon [icon]="faInfo" size="3x" [inverse]="true"></fa-icon>
-          </div>
-          <div class="header-text" fxFlex="1 1 auto">Patient Information</div>
-        </div>
-        <mat-divider style="width: 100%"></mat-divider>
-        <div class="content" fxFlex="1 1 auto">
-          <div fxLayout="row wrap">
-            <div fxFlex="1 1 auto">
-              <h3 class="section-header">General Info</h3>
-              <mat-list>
-                <mat-list-item>
-                  <label class="info-label" for="bday">Birthday:</label>
-                  <span id="bday">{{patient.bday}}</span>
-                </mat-list-item>
-                <mat-list-item>
-                  <label class="info-label" for="gender">Gender:</label>
-                  <span id="gender">{{patient.gender}}</span>
-                </mat-list-item>
-                <mat-list-item>
-                  <label class="info-label" for="height">Height:</label>
-                  <span id="height">{{patient.height}}</span>
-                </mat-list-item>
-                <mat-list-item>
-                  <label class="info-label" for="weight">Weight:</label>
-                  <span id="weight">{{patient.weight}}</span>
-                </mat-list-item>
-                <mat-list-item>
-                  <label class="info-label" for="bloodType">Blood Type:</label>
-                  <span id="bloodType">{{patient.bloodtype}}</span>
-                </mat-list-item>
-              </mat-list>
+  <div class="patient-content" fxLayout="column wrap">
+    <div fxflex>
+      <div layout="row wrap">
+        <div class="info-section card-shadow" fxFlex="50%" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
+          <div fxLayout="column">
+            <div class="header" fxLayout="row" fxFlex="1 1 auto">
+              <div class="module-logo" fxFlex="0 0 75px">
+                <fa-icon [icon]="faInfo" size="3x" [inverse]="true"></fa-icon>
+              </div>
+              <div class="header-text" fxFlex="1 1 auto">Patient Information</div>
             </div>
-            <div fxFlex="1 1 auto">
-              <h3 class="section-header">Emergency Contact</h3>
-              <mat-list>
-                <mat-list-item>
-                  <label class="info-label" for="name">Name:</label>
-                  <span id="name">{{patient.emergency.fn}} {{patient.emergency.ln}}</span>
-                </mat-list-item>
-                <mat-list-item>
-                  <label class="info-label" for="address">Address:</label>
-                  <span id="address">{{patient.emergency.address}}</span>
-                </mat-list-item>
-                <mat-list-item>
-                  <label class="info-label" for="phone">Phone:</label>
-                  <span id="phone">{{patient.emergency.phone}}</span>
-                </mat-list-item>
-                <mat-list-item>
-                  <label class="info-label" for="email">Email:</label>
-                  <span id="email">{{patient.emergency.email}}</span>
-                </mat-list-item>
-              </mat-list>
+            <mat-divider style="width: 100%"></mat-divider>
+            <div class="content" fxFlex="1 1 auto">
+              <div fxLayout="row wrap">
+                <div fxFlex="1 1 auto">
+                  <h3 class="section-header">General Info</h3>
+                  <mat-list>
+                    <mat-list-item>
+                      <label class="info-label" for="bday">Birthday:</label>
+                      <span id="bday">{{patient.bday}}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <label class="info-label" for="gender">Gender:</label>
+                      <span id="gender">{{patient.gender}}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <label class="info-label" for="height">Height:</label>
+                      <span id="height">{{patient.height}}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <label class="info-label" for="weight">Weight:</label>
+                      <span id="weight">{{patient.weight}}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <label class="info-label" for="bloodType">Blood Type:</label>
+                      <span id="bloodType">{{patient.bloodtype}}</span>
+                    </mat-list-item>
+                  </mat-list>
+                </div>
+                <div fxFlex="1 1 auto">
+                  <h3 class="section-header">Emergency Contact</h3>
+                  <mat-list>
+                    <mat-list-item>
+                      <label class="info-label" for="name">Name:</label>
+                      <span id="name">{{patient.emergency.fn}} {{patient.emergency.ln}}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <label class="info-label" for="address">Address:</label>
+                      <span id="address">{{patient.emergency.address}}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <label class="info-label" for="phone">Phone:</label>
+                      <span id="phone">{{patient.emergency.phone}}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <label class="info-label" for="email">Email:</label>
+                      <span id="email">{{patient.emergency.email}}</span>
+                    </mat-list-item>
+                  </mat-list>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="note-section card-shadow" fxFlex="3 1 auto" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}"
-      [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
+    <div class="note-section card-shadow" fxFlex [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
       <div fxLayout="column">
         <div class="header" fxLayout="row" fxFlex="1 1 auto">
           <div class="module-logo" fxFlex="0 0 75px">
@@ -150,47 +152,49 @@
         </div>
         <mat-divider style="width: 100%"></mat-divider>
         <div class="content" fxFlex="1 1 auto" cdkDropList (cdkDropListDropped)="drop($event)">
-          <div class="note-box-new" *ngIf="showNewNote">
-            <form (ngSubmit)="createNote()" [formGroup]="noteForm" fxLayout="column" fxLayoutGap="5px">
-              <mat-form-field>
-                <input matInput type="text" placeholder="Title" formControlName="title">
-              </mat-form-field>
-              <mat-form-field>
-                <textarea matInput cdkTextareaAutosize placeholder="Note" formControlName="desc"></textarea>
-              </mat-form-field>
-              <div class="radio-group-label">Patient Mood:</div>
-              <mat-radio-group formControlName="mood">
-                <mat-radio-button class="mood-radio" value="very good" aria-label="very good" color="primary">
-                  <fa-icon [icon]="faGrinBeam" size="2x"></fa-icon>
-                </mat-radio-button>
-                <mat-radio-button class="mood-radio" value="good" aria-label="good" color="primary">
-                  <fa-icon [icon]="faSmile" size="2x"></fa-icon>
-                </mat-radio-button>
-                <mat-radio-button class="mood-radio" value="meh" aria-label="meh" color="primary">
-                  <fa-icon [icon]="faMeh" size="2x"></fa-icon>
-                </mat-radio-button>
-                <mat-radio-button class="mood-radio" value="bad" aria-label="bad" color="primary">
-                  <fa-icon [icon]="faFrown" size="2x"></fa-icon>
-                </mat-radio-button>
-                <mat-radio-button class="mood-radio" value="very bad" aria-label="very bad" color="primary">
-                  <fa-icon [icon]="faTired" size="2x"></fa-icon>
-                </mat-radio-button>
-              </mat-radio-group>
-              <div class="footer" fxLayout="row" fxLayoutGap="30px">
-                <button type="button" mat-stroked-button fxFlex="1 1 auto" (click)="cancelAddNote()">Cancel</button>
-                <button type="submit" mat-flat-button fxFlex="1 1 auto" color="primary">Save</button>
-              </div>
-            </form>
-          </div>
-          <div class="note-box" *ngFor="let note of notes" cdkDrag>
-            <fa-icon class="mood-icon" [icon]="faGrinBeam" size="2x" *ngIf="note.mood.toLowerCase() === 'very good'"></fa-icon>
-            <fa-icon class="mood-icon" [icon]="faSmile" size="2x" *ngIf="note.mood.toLowerCase() === 'good'"></fa-icon>
-            <fa-icon class="mood-icon" [icon]="faMeh" size="2x" *ngIf="note.mood.toLowerCase() === 'meh'"></fa-icon>
-            <fa-icon class="mood-icon" [icon]="faFrown" size="2x" *ngIf="note.mood.toLowerCase() === 'bad'"></fa-icon>
-            <fa-icon class="mood-icon" [icon]="faTired" size="2x" *ngIf="note.mood.toLowerCase() === 'very bad'"></fa-icon>
-            <div class="title">{{note.title}}</div>
-            <mat-divider class="divider"></mat-divider>
-            <p class="body">{{note.desc}}</p>
+          <div fxLayout="row wrap">
+            <div class="note-box-new" *ngIf="showNewNote" fxFlex="1 1 auto">
+              <form (ngSubmit)="createNote()" [formGroup]="noteForm" fxLayout="column" fxLayoutGap="5px">
+                <mat-form-field>
+                  <input matInput type="text" placeholder="Title" formControlName="title">
+                </mat-form-field>
+                <mat-form-field>
+                  <textarea matInput cdkTextareaAutosize placeholder="Note" formControlName="desc"></textarea>
+                </mat-form-field>
+                <div class="radio-group-label">Patient Mood:</div>
+                <mat-radio-group formControlName="mood">
+                  <mat-radio-button class="mood-radio" value="very good" aria-label="very good" color="primary">
+                    <fa-icon [icon]="faGrinBeam" size="2x"></fa-icon>
+                  </mat-radio-button>
+                  <mat-radio-button class="mood-radio" value="good" aria-label="good" color="primary">
+                    <fa-icon [icon]="faSmile" size="2x"></fa-icon>
+                  </mat-radio-button>
+                  <mat-radio-button class="mood-radio" value="meh" aria-label="meh" color="primary">
+                    <fa-icon [icon]="faMeh" size="2x"></fa-icon>
+                  </mat-radio-button>
+                  <mat-radio-button class="mood-radio" value="bad" aria-label="bad" color="primary">
+                    <fa-icon [icon]="faFrown" size="2x"></fa-icon>
+                  </mat-radio-button>
+                  <mat-radio-button class="mood-radio" value="very bad" aria-label="very bad" color="primary">
+                    <fa-icon [icon]="faTired" size="2x"></fa-icon>
+                  </mat-radio-button>
+                </mat-radio-group>
+                <div class="footer" fxLayout="row" fxLayoutGap="30px">
+                  <button type="button" mat-stroked-button fxFlex="1 1 auto" (click)="cancelAddNote()">Cancel</button>
+                  <button type="submit" mat-flat-button fxFlex="1 1 auto" color="primary">Save</button>
+                </div>
+              </form>
+            </div>
+            <div class="note-box" *ngFor="let note of notes" cdkDrag fxFlex="1 1 auto">
+              <fa-icon class="mood-icon" [icon]="faGrinBeam" size="2x" *ngIf="note.mood.toLowerCase() === 'very good'"></fa-icon>
+              <fa-icon class="mood-icon" [icon]="faSmile" size="2x" *ngIf="note.mood.toLowerCase() === 'good'"></fa-icon>
+              <fa-icon class="mood-icon" [icon]="faMeh" size="2x" *ngIf="note.mood.toLowerCase() === 'meh'"></fa-icon>
+              <fa-icon class="mood-icon" [icon]="faFrown" size="2x" *ngIf="note.mood.toLowerCase() === 'bad'"></fa-icon>
+              <fa-icon class="mood-icon" [icon]="faTired" size="2x" *ngIf="note.mood.toLowerCase() === 'very bad'"></fa-icon>
+              <div class="title">{{note.title}}</div>
+              <mat-divider class="divider"></mat-divider>
+              <p class="body">{{note.desc}}</p>
+            </div>
           </div>
         </div>
       </div>
