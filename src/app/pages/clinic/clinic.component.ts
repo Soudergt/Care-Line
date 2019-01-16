@@ -7,18 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clinic.component.scss']
 })
 export class ClinicComponent implements OnInit {
-  clinic: Clinic = {
-    id: 1,
-    name: 'Careline Clinic',
-    address: '123 Clinic Way, Cincinnati OH 45219',
-    img: {
-      path: "url('/assets/images/people/default.png')"
-    }
-  };
+  clinic: Clinic;
+  lat: number;
+  lng: number;
 
   constructor() { }
 
   ngOnInit() {
+    this.lat = 51.673858;
+    this.lng = 7.815982;
+
+    this.clinic = {
+      id: 1,
+      name: 'Careline Clinic',
+      address: '123 Clinic Way, Cincinnati OH 45219',
+      img: {
+        path: "url('/assets/images/people/default.png')"
+      }
+    };
   }
 
 }
