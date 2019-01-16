@@ -12,7 +12,7 @@ export class ClinicComponent implements OnInit {
     name: 'Careline Clinic',
     address: '123 Clinic Way, Cincinnati OH 45219',
     img: {
-      path: "url('/assets/images/people/caretakers/taylorwilliams.jpg')"
+      path: "url('/assets/images/people/default.png')"
     }
   };
 
