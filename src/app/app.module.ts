@@ -37,6 +37,7 @@ import { PatientComponent } from './pages/patient/patient.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { HipaadialogComponent } from './components/hipaadialog/hipaadialog.component';
 import { ClinicComponent } from './pages/clinic/clinic.component';
+import { AddUserDialogComponent } from './components/add-user-dialog/add-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ClinicComponent } from './pages/clinic/clinic.component';
     PatientComponent,
     SignupComponent,
     HipaadialogComponent,
-    ClinicComponent
+    ClinicComponent,
+    AddUserDialogComponent
   ],
   imports: [
     AppRoutingModule,
