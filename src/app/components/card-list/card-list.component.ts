@@ -4,19 +4,152 @@ import { Patient } from 'src/app/classes/patient';
 import { Caretaker } from './../../classes/caretaker';
 
 const PATIENTS: Patient[] = [
-  { id: 1, name: 'Cathy', img: 'url(/assets/images/people/patients/cathy.jpg)'},
-  { id: 2, name: 'Bobby', img: 'url(/assets/images/people/patients/bobby.jpg)' },
-  { id: 3, name: 'Tammy', img: 'url(/assets/images/people/patients/brenda.jpg)'},
-  { id: 4, name: 'Frank', img: 'url(/assets/images/people/patients/frank.jpg)' },
-  { id: 5, name: 'George', img: 'url(/assets/images/people/patients/george.jpg)'},
-  { id: 7, name: 'Duke', img: 'url(/assets/images/people/patients/duke.jpg)'},
+  {
+    id: 1,
+    fn: 'Cathy',
+    mi: '',
+    ln: '',
+    clinic: '',
+    bday: '',
+    gender: '',
+    bloodtype: '',
+    height: '',
+    weight: '',
+    img: 'url(/assets/images/people/patients/cathy.jpg)',
+    emergency: {
+      fn: '',
+      ln: '',
+      address: '',
+      phone: '',
+      email: ''
+    }
+  },
+  {
+    id: 2,
+    fn: 'Bobby',
+    mi: '',
+    ln: '',
+    clinic: '',
+    bday: '',
+    gender: '',
+    bloodtype: '',
+    height: '',
+    weight: '',
+    img: 'url(/assets/images/people/patients/bobby.jpg)',
+    emergency: {
+      fn: '',
+      ln: '',
+      address: '',
+      phone: '',
+      email: ''
+    }
+  },
+  {
+    id: 3,
+    fn: 'Tammy',
+    mi: '',
+    ln: '',
+    clinic: '',
+    bday: '',
+    gender: '',
+    bloodtype: '',
+    height: '',
+    weight: '',
+    img: 'url(/assets/images/people/patients/brenda.jpg)',
+    emergency: {
+      fn: '',
+      ln: '',
+      address: '',
+      phone: '',
+      email: ''
+    }
+  },
+  {
+    id: 4,
+    fn: 'Frank',
+    mi: '',
+    ln: '',
+    clinic: '',
+    bday: '',
+    gender: '',
+    bloodtype: '',
+    height: '',
+    weight: '',
+    img: 'url(/assets/images/people/patients/frank.jpg)',
+    emergency: {
+      fn: '',
+      ln: '',
+      address: '',
+      phone: '',
+      email: ''
+    }
+  },
+  {
+    id: 5,
+    fn: 'George',
+    mi: '',
+    ln: '',
+    clinic: '',
+    bday: '',
+    gender: '',
+    bloodtype: '',
+    height: '',
+    weight: '',
+    img: 'url(/assets/images/people/patients/george.jpg)',
+    emergency: {
+      fn: '',
+      ln: '',
+      address: '',
+      phone: '',
+      email: ''
+    }
+  },
+  {
+    id: 6,
+    fn: 'Duke',
+    mi: '',
+    ln: '',
+    clinic: '',
+    bday: '',
+    gender: '',
+    bloodtype: '',
+    height: '',
+    weight: '',
+    img: 'url(/assets/images/people/patients/duke.jpg)',
+    emergency: {
+      fn: '',
+      ln: '',
+      address: '',
+      phone: '',
+      email: ''
+    }
+  },
 ];
-const CARETAKERS: Caretaker[] = [
-  { id: 1, name: 'Howard', img: 'url(/assets/images/people/default.png)' },
-  { id: 2, name: 'Franny', img: 'url(/assets/images/people/default.png)' },
-  { id: 3, name: 'Monica', img: 'url(/assets/images/people/default.png)' },
-  { id: 4, name: 'Taylor', img: 'url(/assets/images/people/default.png)' },
-  { id: 5, name: 'Madison', img: 'url(/assets/images/people/default.png)' }
+const CARETAKERS: Caretaker[] = [{
+    id: 1,
+    name: 'Howard',
+    img: 'url(/assets/images/people/default.png)'
+  },
+  {
+    id: 2,
+    name: 'Franny',
+    img: 'url(/assets/images/people/default.png)'
+  },
+  {
+    id: 3,
+    name: 'Monica',
+    img: 'url(/assets/images/people/default.png)'
+  },
+  {
+    id: 4,
+    name: 'Taylor',
+    img: 'url(/assets/images/people/default.png)'
+  },
+  {
+    id: 5,
+    name: 'Madison',
+    img: 'url(/assets/images/people/default.png)'
+  }
 ];
 
 @Component({

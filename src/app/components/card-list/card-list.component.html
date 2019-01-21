@@ -2,7 +2,8 @@
   <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="1 1 auto;" (click)="goToPatient(item)">
     <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
     <div class="card-content">
-      <mat-card-title>{{ item.name }}</mat-card-title>
+      <mat-card-title *ngIf="item.name">{{ item.name }}</mat-card-title>
+      <mat-card-title *ngIf="!item.name">{{ item.fn }} {{ item.ln }}</mat-card-title>
       <mat-divider></mat-divider>
       <mat-card-content></mat-card-content>
     </div>
