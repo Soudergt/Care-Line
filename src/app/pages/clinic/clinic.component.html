@@ -14,7 +14,7 @@
     <div class="patient-container" fxFlex>
       <h3 class="header" fxLayout="row" fxLayoutAlign="space-between center">
         <span fxFlex="95">Caretakers</span>
-        <button fxFlex="5" mat-raised-button color="primary">Add</button>
+        <button fxFlex="5" mat-raised-button color="primary" (click)="addUser('caretaker')">Add</button>
       </h3>
       <div class="patient-list">
         <app-card-list [type]="'caretaker'"></app-card-list>
@@ -25,7 +25,7 @@
     <div class="patient-container" fxFlex>
       <h3 class="header" fxLayout="row" fxLayoutAlign="space-between center">
         <span fxFlex="95">Patients</span>
-        <button fxFlex="5" mat-raised-button color="primary">Add</button>
+        <button fxFlex="5" mat-raised-button color="primary" (click)="addUser('patient')">Add</button>
       </h3>
       <div class="patient-list">
         <app-card-list [type]="'patient'"></app-card-list>

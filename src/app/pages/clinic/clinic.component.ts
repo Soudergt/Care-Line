@@ -28,11 +28,11 @@ export class ClinicComponent implements OnInit {
     this.clinic = CLINIC;
   }
 
-  addPatient(): void {
+  addUser(userType: string): void {
     const dialogRef = this.dialog.open(AddUserDialogComponent, {
-      width: '400px',
+      width: '600px',
       data: {
-        type: 'patient'
+        type: userType
       }
     });
 
