@@ -7,7 +7,6 @@ export interface AddUserData {
   ln: string;
   username: string;
   password: string;
-
 }
 
 @Component({
@@ -26,6 +25,8 @@ export class AddUserDialogComponent implements OnInit {
     console.log(this.data);
     
     this.addUserForm = this.formBuilder.group({
+      fn: ['', Validators.required],
+      ln: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
