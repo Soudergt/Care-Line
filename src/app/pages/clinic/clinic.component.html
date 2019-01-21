@@ -12,9 +12,23 @@
   </div>
   <div class="section-container" fxLayout="row">
     <div class="patient-container" fxFlex>
-      <h3 class="header">Caretakers</h3>
+      <h3 class="header" fxLayout="row" fxLayoutAlign="space-between center">
+        <span fxFlex="95">Caretakers</span>
+        <button fxFlex="5" mat-raised-button color="primary">Add</button>
+      </h3>
       <div class="patient-list">
         <app-card-list [type]="'caretaker'"></app-card-list>
+      </div>
+    </div>
+  </div>
+  <div class="section-container" fxLayout="row">
+    <div class="patient-container" fxFlex>
+      <h3 class="header" fxLayout="row" fxLayoutAlign="space-between center">
+        <span fxFlex="95">Patients</span>
+        <button fxFlex="5" mat-raised-button color="primary">Add</button>
+      </h3>
+      <div class="patient-list">
+        <app-card-list [type]="'patient'"></app-card-list>
       </div>
     </div>
   </div>
