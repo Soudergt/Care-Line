@@ -7,6 +7,26 @@ import { faSmile, faMeh, faGrinBeam, faFrown, faTired } from '@fortawesome/free-
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Patient } from 'src/app/classes/patient';
 
+const PATIENT: Patient = {
+  id: 7,
+  fn: 'Duke',
+  mi: 'M',
+  ln: 'James',
+  clinic: 'Careline Clinic',
+  bday: 'May, 5, 1942',
+  gender: 'male',
+  bloodtype: 'O+',
+  height: "6'0''",
+  weight: '160 lbs',
+  img: '',
+  emergency: {
+    fn: 'Lauren',
+    ln: 'James',
+    address: '127 Oak Lane, Cincinnati, Ohio, 44221',
+    phone: '111-111-1111',
+    email: 'lauren.james@email.com'
+  }
+}
 
 @Component({
   selector: 'app-patient',
@@ -15,7 +35,8 @@ import { Patient } from 'src/app/classes/patient';
 })
 export class PatientComponent implements OnInit {
   public noteForm: FormGroup;
-
+  //Patient Object
+  patient:Patient;
   sub: number;
   id: number;
   //Icons
@@ -26,27 +47,6 @@ export class PatientComponent implements OnInit {
   faGrinBeam = faGrinBeam;
   faFrown = faFrown;
   faTired = faTired;
-
-  //Patient Object
-  patient = {
-    fn: 'Duke',
-    mi: 'M',
-    ln: 'James',
-    clinic: 'Careline Clinic',
-    bday: 'May, 5, 1942',
-    gender: 'male',
-    bloodtype: 'O+',
-    height: "6'0''",
-    weight: '160 lbs',
-    img: '',
-    emergency: {
-      fn: 'Lauren',
-      ln: 'James',
-      address: '127 Oak Lane, Cincinnati, Ohio, 44221',
-      phone: '111-111-1111',
-      email: 'lauren.james@email.com'
-    }
-  };
 
   //Note Values
   showNewNote = false;
@@ -100,6 +100,7 @@ export class PatientComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.patient = PATIENT;
     // this.sub = this.activatedRoute.params.subscribe(params => {
     //   this.id = params['id'];
     //   this.patientService.getPatient(this.id).subscribe(patient => {
