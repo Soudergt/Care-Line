@@ -1,5 +1,6 @@
 export class Caretaker {
   id: number;
-  name: string;
+  fn: string;
+  ln: string;
   img: string;
 }
