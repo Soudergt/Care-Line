@@ -1,3 +1,27 @@
-<p>
-  add-user-dialog works!
-</p>
+<h1 mat-dialog-title>Add {{data.type | titlecase}}</h1>
+<mat-divider></mat-divider>
+<form (ngSubmit)="add()" [formGroup]="addUserForm">
+  <div mat-dialog-content>
+    <div fxLayout="column">
+      <mat-form-field fxFlex>
+        <input matInput type="text" placeholder="First Name" name="firstname" formControlName="fn" aria-label="first name" required>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput type="text" placeholder="Last Name" name="lastname" formControlName="ln" aria-label="last name" required>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput type="text" placeholder="Username" name="username" formControlName="username" aria-label="username" required>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput type="text" placeholder="Password" name="password" formControlName="password" aria-label="password" required>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput type="text" placeholder="Confirm Password" name="confirmpassword" formControlName="passconfirm" aria-label="confirm password" required>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions fxLayoutAlign="end center">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button type="submit" mat-raised-button color="primary" cdkFocusInitial>Add</button>
+  </div>
+</form>

@@ -85,7 +85,8 @@ import { AddUserDialogComponent } from './components/add-user-dialog/add-user-di
   providers: [],
   entryComponents: [
     LogindialogComponent,
-    HipaadialogComponent
+    HipaadialogComponent,
+    AddUserDialogComponent
   ],
   bootstrap: [AppComponent]
 })
