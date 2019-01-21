@@ -18,7 +18,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
-import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { TextFieldModule } from '@angular/cdk/text-field';
@@ -77,7 +76,6 @@ import { ClinicComponent } from './pages/clinic/clinic.component';
     MatListModule,
     TextFieldModule,
     HttpClientModule,
-    SweetAlert2Module.forRoot(),
     FontAwesomeModule,
     RoundProgressModule,
     AgmCoreModule.forRoot()
