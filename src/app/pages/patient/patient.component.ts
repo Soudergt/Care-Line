@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { faNotesMedical, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { faSmile, faMeh, faGrinBeam, faFrown, faTired } from '@fortawesome/free-regular-svg-icons';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Patient } from 'src/app/classes/patient';
+
 
 @Component({
   selector: 'app-patient',
@@ -14,8 +16,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export class PatientComponent implements OnInit {
   public noteForm: FormGroup;
 
-  sub;
-  id;
+  sub: number;
+  id: number;
   //Icons
   faNotesMedical = faNotesMedical;
   faInfo = faInfo;
@@ -36,6 +38,7 @@ export class PatientComponent implements OnInit {
     bloodtype: 'O+',
     height: "6'0''",
     weight: '160 lbs',
+    img: '',
     emergency: {
       fn: 'Lauren',
       ln: 'James',
