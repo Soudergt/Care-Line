@@ -127,27 +127,32 @@ const PATIENTS: Patient[] = [
 ];
 const CARETAKERS: Caretaker[] = [{
     id: 1,
-    name: 'Howard',
+    fn: 'Howard',
+    ln: '',
     img: 'url(/assets/images/people/default.png)'
   },
   {
     id: 2,
-    name: 'Franny',
+    fn: 'Franny',
+    ln: '',
     img: 'url(/assets/images/people/default.png)'
   },
   {
     id: 3,
-    name: 'Monica',
+    fn: 'Monica',
+    ln: '',
     img: 'url(/assets/images/people/default.png)'
   },
   {
     id: 4,
-    name: 'Taylor',
+    fn: 'Taylor',
+    ln: '',
     img: 'url(/assets/images/people/default.png)'
   },
   {
     id: 5,
-    name: 'Madison',
+    fn: 'Madison',
+    ln: '',
     img: 'url(/assets/images/people/default.png)'
   }
 ];
