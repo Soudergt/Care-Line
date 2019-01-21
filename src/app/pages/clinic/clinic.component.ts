@@ -1,5 +1,14 @@
 import { Clinic } from './../../classes/clinic';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddUserDialogComponent } from './../../components/add-user-dialog/add-user-dialog.component';
+
+const CLINIC: Clinic = {
+  id: 1,
+  name: 'Careline Clinic',
+  address: '123 Clinic Way, Cincinnati OH 45219',
+  img: "url('/assets/images/people/default.png')"
+}
 
 @Component({
   selector: 'app-clinic',
@@ -11,20 +20,25 @@ export class ClinicComponent implements OnInit {
   lat: number;
   lng: number;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
     this.lat = 51.673858;
     this.lng = 7.815982;
+    this.clinic = CLINIC;
+  }
 
-    this.clinic = {
-      id: 1,
-      name: 'Careline Clinic',
-      address: '123 Clinic Way, Cincinnati OH 45219',
-      img: {
-        path: "url('/assets/images/people/default.png')"
+  addPatient(): void {
+    const dialogRef = this.dialog.open(AddUserDialogComponent, {
+      width: '400px',
+      data: {
+        type: 'patient'
       }
-    };
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
