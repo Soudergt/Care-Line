@@ -17,42 +17,62 @@
     color: #FFF;
     text-align: left;
     position: relative;
-    top: 100px;
-    left: 100px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 50px;
+    font-size: 40px;
     padding: 12px;
-    margin: 0px;
-    display: inline-block;
+    margin: 80px 0px 0px 50px;
+    display: block;
   }
 
-  h1.header-bottom {
+  h4.header-bottom {
     color: #FFF;
     text-align: left;
     position: relative;
-    top: 155px;
-    left: -235px;
     font-family: 'Montserrat', sans-serif;    
     font-weight: 600;
-    font-size: 50px;
+    font-size: 16px;
     padding: 12px;
-    margin: 0px;
-    display: inline-block;
+    width: 515px;
+    display: block;
+    margin: -15px 0px 0px 55px;
+  }
+
+  .header-actions {
+    position: relative;
+    width: 515px;
+    margin-left: 90px;
+    margin-top: 15px;
+
+    span {
+      color: #FFF;
+      margin: 10px;
+      font-size: 16px;
+      font-family: 'Montserrat', sans-serif;    
+    }
   }
 }
 
-.dash-container {
-  min-height: 800px;
-  padding: 12px;
-  margin-top: 12px;
-  overflow-x: hidden;
+.section-container {
+  margin: 30px 15px; 
+
+  .section-header {
+    font-size: 35px;
+    font-weight: 600;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #000;
+    margin: 25px 15px 25px 40px;
+  }
+
+  .section-subheader {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFF;
+    margin: 8px 15px;
+  }
 }
 
 .card-container {
-  height: 500px;
-  flex-wrap: wrap;
-
   .role-card {
     max-width: 400px;
     margin-bottom: 12px;
@@ -72,4 +92,9 @@
       filter: grayscale(0%);
     }
   }
+}
+
+.tech-logo {
+  width: auto;
+  height: 150px;
 }

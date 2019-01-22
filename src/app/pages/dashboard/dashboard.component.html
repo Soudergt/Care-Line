@@ -1,11 +1,21 @@
 <div fxLayout="row">
   <div class="banner-img" [ngStyle.xs]="{'height': '300px;'}">
-    <h1 class="header-top">Your Line to Care,</h1>
-    <h1 class="header-bottom">Right Away</h1>
+    <h1 class="header-top">Your Line to Care, <b>Right Away</b></h1>
+    <h4 class="header-bottom">CareLine is a web application designed to increase the amount of communication between the family, their relatives in long term care situations, and the facility’s caretakers. CareLine does not provide the care ourselves; instead, we offer a platform to give families a direct line of communication.</h4>
+    <div class="header-actions">
+      <span>
+        <button mat-raised-button color="primary" [routerLink]="['/signup']">Login</button>
+      </span>
+      <span><b>or</b></span>
+      <span>
+        <button mat-raised-button [routerLink]="['/signup']">Sign Up</button>
+      </span>
+    </div>
   </div>
 </div>
-<div class="dash-container">
-  <div class="card-container" fxLayout="row" fxLayoutAlign="space-around">
+<div class="section-container">
+  <h2 class="section-header">CareLine at a Glance</h2>
+  <div class="card-container" fxLayout="row wrap" fxLayoutAlign="space-around">
     <mat-card class="role-card" fxFlex="1 1 auto;">
       <mat-card-title>Caretaker</mat-card-title>
       <img mat-card-image src="../../../assets/images/stock/doctor-stock.jpg" alt="caretaker image">
@@ -27,5 +37,31 @@
         <p>CareLine provides families peace of mind by giving each family tools to keep in contact with their family member being cared for as well as a place to view notes and records taken by the caretaker.</p>
       </mat-card-content>
     </mat-card>
+  </div>
+</div>
+<div class="section-container">
+  <h2 class="section-header">Design and Built With</h2>
+  <div fxLayout="row wrap" fxLayoutPadding fxLayoutAlign="space-around center">
+    <div fxFlex="25">
+      <img src="../../../assets/images/logos/angular.png" class="tech-logo" alt="Angular logo">
+    </div>
+    <div fxFlex="25">
+      <img src="../../../assets/images/logos/typescript.png" class="tech-logo" alt="TypeScript logo">
+    </div>
+    <div fxFlex="25">
+      <img src="../../../assets/images/logos/materialdesign.png" class="tech-logo" alt="Material Design logo">
+    </div>
+    <div fxFlex="25">
+      <img src="../../../assets/images/logos/nodejs.png" class="tech-logo" alt="NodeJS logo">
+    </div>
+    <div fxFlex="25">
+      <img src="../../../assets/images/logos/fastify.png" class="tech-logo" alt="fastify logo">
+    </div>
+    <div fxFlex="25">
+      <img src="../../../assets/images/logos/digitalocean.png" class="tech-logo" alt="fastify logo">
+    </div>
+    <div fxFlex="25">
+      <img src="../../../assets/images/logos/mssql.png" class="tech-logo" alt="fastify logo">
+    </div>
   </div>
 </div>
