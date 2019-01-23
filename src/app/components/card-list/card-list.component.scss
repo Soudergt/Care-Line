@@ -1,7 +1,7 @@
 .item-card {
   max-width: 350px;
   min-width: 350px;
-  height: 145px;
+  height: 200px;
   margin: 12px;
   margin-left: 55px;
   padding: 12px 24px 12px 24px;
@@ -9,7 +9,11 @@
   border-radius: 5px;
 
   .card-content {
-    margin-left: 50px;
+    margin-left: 45px;
+
+    .card-info-container {
+      padding: 8px;
+    }
   }
 
   .item-img {
@@ -18,7 +22,7 @@
     height: 100px;
     position: absolute;
     left: -45px;
-    top: 18px;
+    top: -6px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -35,4 +39,14 @@
 .card-list-container {
   padding: 12px;
   flex-wrap: wrap;
+}
+
+.beat-vector {
+  margin-top: -38px;
+}
+
+path {
+  stroke: #000;
+  stroke-width: 1px;
+  fill: none;
 }
