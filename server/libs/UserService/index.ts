@@ -4,13 +4,15 @@ export class UserService {
       return {
         fn: 'Taylor',
         ln: 'Williams',
-        clinic: 'CareLine Clinic'
+        username: 'tay',
+        password: '1234'
       }
     } else {
       return {
         fn: 'Garrett',
         ln: 'Souders',
-        clinic: 'CareLine Clinic'
+        username: 'tay',
+        password: '1234'
       };
     }
   }

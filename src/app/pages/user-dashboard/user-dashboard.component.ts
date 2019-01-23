@@ -1,9 +1,9 @@
 import { User } from './../../classes/user';
-import { Observable } from 'rxjs';
 import { UserService } from './../../providers/user/user.service';
 import { Component, OnInit } from '@angular/core';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
 import { Chart } from 'chart.js';
+import { Caretaker } from 'src/app/classes/caretaker';
 
 export interface AppointmentElement {
   desc: string;
@@ -36,15 +36,13 @@ export class UserDashboardComponent implements OnInit {
   displayedColumns: string[] = ['desc', 'date', 'patient'];
   dataSource = APPOINTMENT_DATA;
   faCalendarCheck = faCalendarCheck;
+  user: User;
 
-  user: User = {
-    id: 1,
+  caretaker: Caretaker = {
     fn: 'Taylor',
     ln: 'Williams',
     clinic: 'Careline Clinic',
-    img: {
-      path: "url('/assets/images/people/caretakers/taylorwilliams.jpg')"
-    }
+    img: "url('/assets/images/people/caretakers/taylorwilliams.jpg')"
   };
 
   chartOptions = {
@@ -89,6 +87,20 @@ export class UserDashboardComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
+  ngOnInit() {
+    try {
+      this.activeData = this.ageData;
+      this.drawChart();
+
+      this.userService.getUser('1').subscribe((data) => {
+        this.user = data;
+        console.log(this.user);        
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   changeChart(type) {
     if (type === 'age') {
       this.activeData = this.ageData;
@@ -106,25 +118,6 @@ export class UserDashboardComponent implements OnInit {
       data: this.activeData,
       options: this.chartOptions
     });
-  }
-
-  ngOnInit() {
-    try {
-      this.activeData = this.ageData;
-      this.drawChart();
-
-      this.userService.getUser('1').subscribe({
-        error: (err) => {
-          console.log(err);
-        },
-        next: user => {
-          this.data = user;
-          console.log(this.data);
-        }
-      });
-    } catch (err) {
-      console.log(err);
-    }
   }
 
 }

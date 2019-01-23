@@ -36,11 +36,10 @@ export class AddUserDialogComponent implements OnInit {
   }
 
   add() {
-    
+    this.dialogRef.close(this.addUserForm.value);    
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
   }
 
 }
