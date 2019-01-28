@@ -1,19 +1,24 @@
+import { getManager } from "typeorm";
+import { User } from "server/entities/user";
+
 export class UserService {
-  public getUser(uid: string) {
+  public async getUsers() {
+    const userRepository = getManager().getRepository(User);
+
+    const users = await userRepository.find();
+
+    return users;
+  }
+
+  public async getUser(uid: string) {
     if (uid === '1') {
       return {
-        fn: 'Taylor',
-        ln: 'Williams',
-        username: 'tay',
-        password: '1234'
+        name: 'Test'
       }
-    } else {
-      return {
-        fn: 'Garrett',
-        ln: 'Souders',
-        username: 'tay',
-        password: '1234'
-      };
     }
+  }
+
+  public addUser(data: any) {
+
   }
 }

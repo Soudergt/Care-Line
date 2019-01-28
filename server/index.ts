@@ -1,6 +1,7 @@
 import * as Fastify from 'fastify';
 import * as fastifyCORS from 'fastify-cors';
 import * as config from 'config';
+import "reflect-metadata";
 import routes from './routes';
 
 const main = async () => {
