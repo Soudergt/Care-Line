@@ -47,7 +47,6 @@
   padding: 15px;
 
   .note-section {
-    background-color: #FFF;
     padding: 15px;
     margin: 15px 30px 25px 30px;
 
@@ -56,9 +55,16 @@
       height: 50px;
 
       .header-text {
-        font-size: 28px;
+        font-size: 30px;
         margin-left: -40px;
         color: #000;
+      }
+
+      .header-text-inverse {
+        font-size: 30px;
+        margin-left: -40px;
+        color: #FFF;
+        text-shadow: 1px 1px 1px #000;
       }
 
       .create-btn {
@@ -129,6 +135,10 @@
     margin: auto;
     padding-bottom: 3px;
   }
+}
+
+.module-logo.medical {
+  top: -20px;
 }
 
 .module-logo:after {
@@ -288,4 +298,8 @@
 
 .content.cdk-drop-list-dragging .note-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.schedule-container {
+  padding: 15px;
 }
