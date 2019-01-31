@@ -90,7 +90,7 @@
         </div>
         <mat-divider style="width: 100%"></mat-divider>
         <div class="content" fxFlex="1 1 auto" cdkDropList (cdkDropListDropped)="drop($event)">
-          <div fxLayout="row wrap">
+          <div class="column-width" fxLayout="column wrap">
             <div class="note-box-new" *ngIf="showNewNote" fxFlex="1 1 auto">
               <form (ngSubmit)="createNote()" [formGroup]="noteForm" fxLayout="column" fxLayoutGap="5px">
                 <mat-form-field>
