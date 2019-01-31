@@ -38,6 +38,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { HipaadialogComponent } from './components/hipaadialog/hipaadialog.component';
 import { ClinicComponent } from './pages/clinic/clinic.component';
 import { AddUserDialogComponent } from './components/add-user-dialog/add-user-dialog.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AddUserDialogComponent } from './components/add-user-dialog/add-user-di
     SignupComponent,
     HipaadialogComponent,
     ClinicComponent,
-    AddUserDialogComponent
+    AddUserDialogComponent,
+    ScheduleComponent
   ],
   imports: [
     AppRoutingModule,
