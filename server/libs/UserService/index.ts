@@ -10,11 +10,9 @@ export class UserService {
     return users;
   }
 
-  public async getUser(uid: string) {
-    if (uid === '1') {
-      return {
-        name: 'Test'
-      }
+  public async getUser(uid: string) {    
+    return {
+      name: 'Test'
     }
   }
 

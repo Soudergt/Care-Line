@@ -48,7 +48,10 @@ export class UserRoute {
         response: {
           200: {
             properties: {
-              data: { type: 'object' },
+              data: { 
+                additionalProperties: true,
+                type: 'object' 
+              },
               message: { type: 'string' },
               statusCode: { type: 'integer' }
             },
@@ -114,8 +117,11 @@ export class UserRoute {
   private async getUser(request: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
     try {
       const { uid } = request.query;
+      request.log.info('user: ' + request);
 
       const user = await new UserService().getUser(uid);
+      
+      request.log.info('user: ' + user);
       
       reply.code(200).send({
         data: { user },
