@@ -26,7 +26,7 @@ export class ClinicComponent implements OnInit {
   lat: number;
   lng: number;
   newUser: any;
-  users: User[];
+  users: [];
 
   constructor(
     public dialog: MatDialog,
@@ -37,6 +37,11 @@ export class ClinicComponent implements OnInit {
     this.lat = 51.673858;
     this.lng = 7.815982;
     this.clinic = CLINIC;
+    
+    this.userService.getUsers().subscribe((data) => {
+      this.users = data;
+      console.log(this.users);        
+    });
   }
 
   addUser(userType: string): void {
@@ -53,7 +58,6 @@ export class ClinicComponent implements OnInit {
         .subscribe(user => {
           console.log(user);
           
-          this.users.push(user)
         });
     });
   }

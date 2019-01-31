@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
 import { Chart } from 'chart.js';
 import { Caretaker } from 'src/app/classes/caretaker';
+import { MessageService } from 'src/app/providers/message/message.service';
 
 export interface AppointmentElement {
   desc: string;
@@ -37,6 +38,7 @@ export class UserDashboardComponent implements OnInit {
   dataSource = APPOINTMENT_DATA;
   faCalendarCheck = faCalendarCheck;
   user: User;
+  testUserData;
 
   caretaker: Caretaker = {
     fn: 'Taylor',
@@ -81,24 +83,35 @@ export class UserDashboardComponent implements OnInit {
     ]
   };
   activeData = {};
-
+  messages;
   current: 3;
   max: 8;
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private messageService: MessageService) { }
 
   ngOnInit() {
     try {
       this.activeData = this.ageData;
       this.drawChart();
 
-      this.userService.getUser('1').subscribe((data) => {
-        this.user = data;
-        console.log(this.user);        
-      });
+      this.messages = this.messageService.messages;
+      console.log(this.messages);
+      this.getUser();
+      
     } catch (err) {
       console.log(err);
     }
+  }
+
+  getUser(): void {
+    this.userService.getUser('1').subscribe(data => {
+      this.testUserData = data
+      console.log(this.testUserData);
+      
+    });    
+    
   }
 
   changeChart(type) {
