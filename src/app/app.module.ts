@@ -39,6 +39,7 @@ import { HipaadialogComponent } from './components/hipaadialog/hipaadialog.compo
 import { ClinicComponent } from './pages/clinic/clinic.component';
 import { AddUserDialogComponent } from './components/add-user-dialog/add-user-dialog.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
     HipaadialogComponent,
     ClinicComponent,
     AddUserDialogComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    ChatComponent
   ],
   imports: [
     AppRoutingModule,
