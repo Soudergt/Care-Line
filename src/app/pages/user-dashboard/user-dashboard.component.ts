@@ -83,7 +83,6 @@ export class UserDashboardComponent implements OnInit {
     ]
   };
   activeData = {};
-  messages;
   current: 3;
   max: 8;
 
@@ -96,8 +95,6 @@ export class UserDashboardComponent implements OnInit {
       this.activeData = this.ageData;
       this.drawChart();
 
-      this.messages = this.messageService.messages;
-      console.log(this.messages);
       this.getUser();
       
     } catch (err) {
@@ -105,16 +102,11 @@ export class UserDashboardComponent implements OnInit {
     }
   }
 
-  getUser(): void {
-    this.userService.getUser('1').subscribe(data => {
-      this.testUserData = data
-      console.log(this.testUserData);
-      
-    });    
+  getUser() {
     
   }
 
-  changeChart(type) {
+  changeChart(type: string) {
     if (type === 'age') {
       this.activeData = this.ageData;
       this.drawChart();
