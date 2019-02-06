@@ -124,7 +124,7 @@
   width: 75px;
   height: 75px;
   position: relative;
-  top: -50px;
+  top: -27px;
   left: -50px;
   border: 2px solid #61da97;
   border-radius: 50%;
@@ -304,6 +304,6 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.schedule-container {
-  padding: 15px;
+.content-pad {
+  padding: 0 15px 15px 15px;
 }

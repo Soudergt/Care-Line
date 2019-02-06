@@ -1,5 +1,5 @@
 .schedule-container {
-  padding: 0 15px 15px 15px;
+  margin: 0 15px 15px 15px;
 }
 
 .schedule-header {
@@ -20,16 +20,20 @@
 
 .schedule-body {
   background-color: #FFF;
-  border-left: 1px solid #CCC;
-  border-right: 1px solid #CCC;
 
   .body-cell {
     height: 175px;
-    box-shadow: inset 0px 3px 4px -1px rgba(0, 0, 0, 0.8);
+    box-shadow: inset 0px 3px 4px -1px rgba(0, 0, 0, 0.2);
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
     overflow-y: auto;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+
+    .active {
+      border: 2px solid #61da97;
+    }
   }
 }
 
