@@ -37,6 +37,7 @@ export class PatientComponent implements OnInit {
   public noteForm: FormGroup;
   //Patient Object
   patient:Patient;
+  today: Date = new Date();
   sub: number;
   id: number;
   //Icons
