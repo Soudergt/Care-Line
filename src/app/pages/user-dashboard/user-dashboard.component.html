@@ -8,7 +8,6 @@
         <div class="user-name">{{caretaker.fn}} {{caretaker.ln}}</div>
         <a class="user-clinic" [routerLink]="['/clinic/1']">{{caretaker.clinic}}</a>
       </div>
-      <div></div>
     </div>
   </div>
   <div class="section-container">
@@ -19,23 +18,8 @@
       </div>
     </div>
   </div>
-  <div class="section-container">
-    <div fxLayout="column">
-      <div fxFlex>
-        <mat-button-toggle-group #group="matButtonToggleGroup" value="age">
-          <mat-button-toggle (change)="changeChart($event.value)" value="age">Age</mat-button-toggle>
-          <mat-button-toggle (change)="changeChart($event.value)" value="gender">Gender</mat-button-toggle>
-        </mat-button-toggle-group>
-      </div>
-      <div fxFlex>
-        <div class="patients-chart-container">
-          <canvas height="400px" width="400px" id="patientsChart"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="section-container" fxLayout="row wrap">
-    <div class="appointment-section card-shadow" fxFlex="40" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
+  <div class="section-container" fxLayout="row wrap" fxLayoutAlign="space-between">
+    <div class="appointment-section card-shadow" fxFlex="50" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
       <div fxLayout="column">
         <div class="appointment-header" fxLayout="row" fxFlex="1 1 auto">
           <div class="module-logo" fxFlex="0 0 75px">
@@ -64,5 +48,23 @@
         </div>
       </div>
     </div>
+    <div fxFlex="30">
+      <div fxLayout="column">
+        <div fxFlex>
+          <mat-button-toggle-group #group="matButtonToggleGroup" value="age">
+            <mat-button-toggle (change)="changeChart($event.value)" value="age">Age</mat-button-toggle>
+            <mat-button-toggle (change)="changeChart($event.value)" value="gender">Gender</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div fxFlex>
+          <div class="patients-chart-container">
+            <canvas height="400px" width="400px" id="patientsChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-container">
+
   </div>
 </div>
