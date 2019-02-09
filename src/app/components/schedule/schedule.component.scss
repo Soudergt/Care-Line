@@ -1,13 +1,13 @@
 .schedule-container {
-  margin: 0 15px 15px 15px;
+  margin: 15px;
 }
 
 .schedule-header {
   background-color: #FFF;
-  border: 1px solid #CCC;
 
   .header-cell {
-    height: 50px;
+    height: 60px;
+    padding: 6px 0px;
     color: #333;
     font-weight: 600;
     border-right: 1px solid #CCC;
@@ -15,6 +15,21 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    .main {
+      font-size: 16px;
+    }
+
+    .sub {
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  .header-cell.active {
+    background-color: #04376a;
+    border-color: #04376a;
+    color: #FFF;
   }
 }
 
@@ -49,4 +64,13 @@
 .body-cell::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
+}
+
+.button-container {
+  text-align: center;
+
+  button {
+    width: 70px;
+    height: 70px;
+  }
 }

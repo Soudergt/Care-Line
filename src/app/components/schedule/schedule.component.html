@@ -1,63 +1,71 @@
-<div class="schedule-container card-shadow">
-  <div class="schedule-header" fxLayout="row" >
-    <div class="header-cell" fxFlex fxLayoutAlign="center center">Monday</div>
-    <div class="header-cell" fxFlex fxLayoutAlign="center center">Tuesday</div>
-    <div class="header-cell" fxFlex fxLayoutAlign="center center">Wednesday</div>
-    <div class="header-cell" fxFlex fxLayoutAlign="center center">Thursday</div>
-    <div class="header-cell" fxFlex fxLayoutAlign="center center">Friday</div>
-    <div class="header-cell" fxFlex fxLayoutAlign="center center">Saturday</div>
-    <div class="header-cell" fxFlex fxLayoutAlign="center center">Sunday</div>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxFlex="70px" class="button-container">
+    <button mat-icon-button (click)="prevWeek()">
+      <fa-icon [icon]="faAngleLeft" size="5x"></fa-icon>
+    </button>
   </div>
-  <div class="schedule-body" fxLayout="row">
-    <div class="body-cell" fxFlex>
-      <mat-list role="list">
-        <mat-list-item role="listitem">Appointment 1</mat-list-item>
-        <mat-list-item role="listitem">Appointment 2</mat-list-item>
-        <mat-list-item role="listitem">Appointment 3</mat-list-item>
-      </mat-list>
+  <div fxFlex class="schedule-container card-shadow">
+    <div class="schedule-header" fxLayout="row">
+      <div class="header-cell" [ngClass]="{'active': activeDay === i}" fxFlex fxLayout="column" fxLayoutAlign="center center" *ngFor="let day of week; let i = index">
+        <div fxFlex class="main">{{day | date: 'EEEE'}}</div>
+        <div fxFlex class="sub" style="font-size: 14px;">{{day | date: 'mediumDate'}}</div>
+      </div>
     </div>
-    <div class="body-cell active" fxFlex>
-      <mat-list role="list">
-        <mat-list-item role="listitem">Appointment 1</mat-list-item>
-        <mat-list-item role="listitem">Appointment 2</mat-list-item>
-        <mat-list-item role="listitem">Appointment 3</mat-list-item>
-      </mat-list>
+    <div class="schedule-body" fxLayout="row">
+      <div class="body-cell" fxFlex>
+        <mat-list role="list">
+          <mat-list-item role="listitem">Appointment 1</mat-list-item>
+          <mat-list-item role="listitem">Appointment 2</mat-list-item>
+          <mat-list-item role="listitem">Appointment 3</mat-list-item>
+        </mat-list>
+      </div>
+      <div class="body-cell" fxFlex>
+        <mat-list role="list">
+          <mat-list-item role="listitem">Appointment 1</mat-list-item>
+          <mat-list-item role="listitem">Appointment 2</mat-list-item>
+          <mat-list-item role="listitem">Appointment 3</mat-list-item>
+        </mat-list>
+      </div>
+      <div class="body-cell" fxFlex>
+        <mat-list role="list">
+          <mat-list-item role="listitem">Appointment 1</mat-list-item>
+          <mat-list-item role="listitem">Appointment 2</mat-list-item>
+          <mat-list-item role="listitem">Appointment 3</mat-list-item>
+        </mat-list>
+      </div>
+      <div class="body-cell" fxFlex>
+        <mat-list role="list">
+          <mat-list-item role="listitem">Appointment 1</mat-list-item>
+          <mat-list-item role="listitem">Appointment 2</mat-list-item>
+          <mat-list-item role="listitem">Appointment 3</mat-list-item>
+        </mat-list>
+      </div>
+      <div class="body-cell" fxFlex>
+        <mat-list role="list">
+          <mat-list-item role="listitem">Appointment 1</mat-list-item>
+          <mat-list-item role="listitem">Appointment 2</mat-list-item>
+          <mat-list-item role="listitem">Appointment 3</mat-list-item>
+        </mat-list>
+      </div>
+      <div class="body-cell" fxFlex>
+        <mat-list role="list">
+          <mat-list-item role="listitem">Appointment 1</mat-list-item>
+          <mat-list-item role="listitem">Appointment 2</mat-list-item>
+          <mat-list-item role="listitem">Appointment 3</mat-list-item>
+        </mat-list>
+      </div>
+      <div class="body-cell" fxFlex>
+        <mat-list role="list">
+          <mat-list-item role="listitem">Appointment 1</mat-list-item>
+          <mat-list-item role="listitem">Appointment 2</mat-list-item>
+          <mat-list-item role="listitem">Appointment 3</mat-list-item>
+        </mat-list>
+      </div>
     </div>
-    <div class="body-cell" fxFlex>
-      <mat-list role="list">
-        <mat-list-item role="listitem">Appointment 1</mat-list-item>
-        <mat-list-item role="listitem">Appointment 2</mat-list-item>
-        <mat-list-item role="listitem">Appointment 3</mat-list-item>
-      </mat-list>
-    </div>
-    <div class="body-cell" fxFlex>
-      <mat-list role="list">
-        <mat-list-item role="listitem">Appointment 1</mat-list-item>
-        <mat-list-item role="listitem">Appointment 2</mat-list-item>
-        <mat-list-item role="listitem">Appointment 3</mat-list-item>
-      </mat-list>
-    </div>
-    <div class="body-cell" fxFlex>
-      <mat-list role="list">
-        <mat-list-item role="listitem">Appointment 1</mat-list-item>
-        <mat-list-item role="listitem">Appointment 2</mat-list-item>
-        <mat-list-item role="listitem">Appointment 3</mat-list-item>
-      </mat-list>
-    </div>
-    <div class="body-cell" fxFlex>
-      <mat-list role="list">
-        <mat-list-item role="listitem">Appointment 1</mat-list-item>
-        <mat-list-item role="listitem">Appointment 2</mat-list-item>
-        <mat-list-item role="listitem">Appointment 3</mat-list-item>
-      </mat-list>
-    </div>
-    <div class="body-cell" fxFlex>
-      <mat-list role="list">
-        <mat-list-item role="listitem">Appointment 1</mat-list-item>
-        <mat-list-item role="listitem">Appointment 2</mat-list-item>
-        <mat-list-item role="listitem">Appointment 3</mat-list-item>
-      </mat-list>
-    </div>
+  </div>
+  <div fxFlex="70px" class="button-container">
+    <button mat-icon-button (click)="nextWeek()">
+      <fa-icon [icon]="faAngleRight" size="5x"></fa-icon>
+    </button>
   </div>
 </div>
-
