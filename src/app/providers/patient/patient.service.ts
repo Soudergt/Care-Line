@@ -18,4 +18,24 @@ export class PatientService {
       return body.data.patient;
     }));
   }
+
+  addPatient() {
+
+  }
+
+  editPatient() {
+
+  }
+
+  removePatient() {
+
+  }
+  
+  getPatients() {
+
+  }
+
+  getNotes() {
+
+  }
 }

@@ -42,6 +42,14 @@ export class UserService {
     .pipe(); 
   }
 
+  editUser() {
+
+  }
+
+  removeUser() {
+    
+  }
+
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
