@@ -6,7 +6,7 @@
       </div>
       <div class="patient-info" fxFlex="1 1 auto">
         <div class="patient-name">{{patient.fn}} {{patient.mi}}. {{patient.ln}}</div>
-        <div class="patient-clinic">{{patient.clinic}}</div>
+        <a class="patient-clinic" [routerLink]="['/clinic/1']">{{patient.clinic}}</a>
       </div>
     </div>
   </div>

@@ -39,6 +39,11 @@
       font-size: 22px;
       color: #FFF;
       text-shadow: 1px 1px 1px #000;
+      text-decoration: none;
+    }
+    
+    .patient-clinic:hover {
+      text-decoration: underline;
     }
   }
 }
