@@ -2,6 +2,7 @@ import { User } from './../../classes/user';
 import { UserService } from './../../providers/user/user.service';
 import { Component, OnInit } from '@angular/core';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
+import { faBell, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { Chart } from 'chart.js';
 import { Caretaker } from 'src/app/classes/caretaker';
 import { MessageService } from 'src/app/providers/message/message.service';
@@ -37,6 +38,9 @@ export class UserDashboardComponent implements OnInit {
   displayedColumns: string[] = ['desc', 'date', 'patient'];
   dataSource = APPOINTMENT_DATA;
   faCalendarCheck = faCalendarCheck;
+  faUsers = faUsers;
+  faBell = faBell;
+  activeNoti: string;
   user: User;
   testUserData;
 
@@ -93,6 +97,7 @@ export class UserDashboardComponent implements OnInit {
   ngOnInit() {
     try {
       this.activeData = this.ageData;
+      this.activeNoti = 'notifications';
       this.drawChart();
 
       this.getUser();
