@@ -28,7 +28,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AboutComponent } from './pages/about/about.component';
-import { ContactComponent } from './pages/contact/contact.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { LogindialogComponent } from './components/logindialog/logindialog.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
@@ -46,7 +45,6 @@ import { ChatComponent } from './components/chat/chat.component';
     AppComponent,
     DashboardComponent,
     AboutComponent,
-    ContactComponent,
     TopbarComponent,
     LogindialogComponent,
     UserDashboardComponent,
