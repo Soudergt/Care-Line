@@ -1,3 +1,16 @@
-<p>
-  caretaker works!
-</p>
+<div class="content">
+  <div class="user-header" fxLayout="row wrap" [ngStyle.xs]="{'margin-top': '0px'}" [ngStyle.sm]="{'margin-top': '0px'}">
+    <div class="user-info-container" fxLayout="row" fxFlex>
+      <div class="photo-container" fxFlex="1 1 150px">
+        <div class="user-img drop-shadow" [ngStyle]="{'background-image': caretaker.img}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
+      </div>
+      <div class="user-info">
+        <div class="user-name">{{caretaker.fn}} {{caretaker.ln}}</div>
+        <a class="user-clinic" [routerLink]="['/clinic/1']">{{caretaker.clinic}}</a>
+      </div>
+      <div class="user-rating">
+        <!-- <star-rating [starType]="'svg'" [rating]="2.63"></star-rating> -->
+      </div>
+    </div>
+  </div>
+</div>
