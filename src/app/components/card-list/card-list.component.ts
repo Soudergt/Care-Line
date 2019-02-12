@@ -183,4 +183,8 @@ export class CardListComponent implements OnInit {
     this.router.navigateByUrl(`/patient/${patient.id}`);
   }
 
+  goToCaretaker(caretaker) {
+    this.router.navigateByUrl(`/caretaker/${caretaker.id}`);
+  }
+
 }
