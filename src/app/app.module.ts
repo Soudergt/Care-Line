@@ -23,7 +23,6 @@ import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { AgmCoreModule } from '@agm/core';
 import { MapsAPILoader } from '@agm/core';
-import { StarRatingModule } from 'angular-star-rating';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -85,8 +84,7 @@ import { CaretakerComponent } from './pages/caretaker/caretaker.component';
     HttpClientModule,
     FontAwesomeModule,
     RoundProgressModule,
-    AgmCoreModule.forRoot(),
-    StarRatingModule.forRoot()
+    AgmCoreModule.forRoot()
   ],
   providers: [],
   entryComponents: [

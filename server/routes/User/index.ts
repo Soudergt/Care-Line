@@ -4,6 +4,10 @@ import { UserService } from '../../libs/UserService';
 
 export class UserRoute {
   constructor(fastify: FastifyInstance) {
+    fastify.get('/user/getUser/:uid', (request, reply) => {
+      reply.send({ hello: 'world' })
+    });
+
     fastify.route({
       handler: this.getUsers,
       url: '/user/getUsers',
@@ -30,44 +34,39 @@ export class UserRoute {
       }
     });
 
-    fastify.route({
-      handler: this.getUser,
-      url: '/user/getUser/:uid',
-      method: 'GET',
-      schema: {
-        querystring: {
-          properties: {
-            uid: {
-              description: 'User ID',
-              type: 'string'
-            }
-          },
-          required: ['uid'],
-          type: 'object'
-        },
-        response: {
-          200: {
-            properties: {
-              data: { 
-                additionalProperties: true,
-                type: 'object' 
-              },
-              message: { type: 'string' },
-              statusCode: { type: 'integer' }
-            },
-            type: 'object'
-          },
-          400: {
-            properties: {
-              data: { type: 'object' },
-              message: { type: 'string' },
-              statusCode: { type: 'integer' }
-            },
-            type: 'object'
-          }
-        }
-      }
-    });
+    // fastify.route({
+    //   handler: this.getUser,
+    //   url: '/user/getUser/:uid',
+    //   method: 'GET',
+    //   schema: {
+    //     querystring: {
+    //       uid: {
+    //         description: 'User ID',
+    //         type: 'string'
+    //       }
+    //     },
+    //     response: {
+    //       200: {
+    //         properties: {
+    //           user: { 
+    //             type: 'object' 
+    //           },
+    //           message: { type: 'string' },
+    //           statusCode: { type: 'integer' }
+    //         },
+    //         type: 'object'
+    //       },
+    //       400: {
+    //         properties: {
+    //           data: { type: 'object' },
+    //           message: { type: 'string' },
+    //           statusCode: { type: 'integer' }
+    //         },
+    //         type: 'object'
+    //       }
+    //     }
+    //   }
+    // });
 
     fastify.route({
       handler: this.addUser,
@@ -101,7 +100,7 @@ export class UserRoute {
       const users = await new UserService().getUsers();
       
       reply.code(200).send({
-        data: { users },
+        data: { users: users },
         message: 'SUCCESS',
         statusCode: 200
       });
@@ -124,7 +123,7 @@ export class UserRoute {
       request.log.info('user: ' + user);
       
       reply.code(200).send({
-        data: { user },
+        data: { user: user },
         message: 'SUCCESS',
         statusCode: 200
       });

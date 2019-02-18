@@ -42,6 +42,7 @@ export class UserDashboardComponent implements OnInit {
   faBell = faBell;
   activeNoti: string;
   user: User;
+  testUser;
   testUserData;
 
   caretaker: Caretaker = {
@@ -108,7 +109,10 @@ export class UserDashboardComponent implements OnInit {
   }
 
   getUser() {
-    
+    this.userService.getUser('1').subscribe(user => {
+      this.testUser = user;
+      console.log(this.testUser);  
+    })
   }
 
   changeChart(type: string) {
