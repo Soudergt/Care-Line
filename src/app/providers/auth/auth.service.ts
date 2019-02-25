@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from './../../../environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +12,16 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: String, password: String): Observable<any> {
-    return this.user;
+  public login(username: String, password: String): Observable<any> {
+    return this.http.post(`${environment.api}/backend/auth/login`, {username, password})
+      .pipe(map((body) => {
+        this.user.next(body);
+
+        return body;
+      }));
   }
 
-  logout(): void {
-    localStorage.setItem('isLoggedIn', "false");
-    localStorage.removeItem('token');
+  public logout() {
+    return this.http.post(`${environment.api}/backend/auth/logout`, {});
   } 
 }
