@@ -44,8 +44,10 @@ export class UserDashboardComponent implements OnInit {
   user: User;
   testUser;
   testUserData;
+  mainCaretaker: Caretaker;
 
   caretaker: Caretaker = {
+    id: 10,
     fn: 'Taylor',
     ln: 'Williams',
     clinic: 'Careline Clinic',
@@ -108,10 +110,17 @@ export class UserDashboardComponent implements OnInit {
     }
   }
 
-  getUser() {
-    this.userService.getUser('1').subscribe(user => {
+  public getUser() {
+    this.userService.getUser(1).subscribe(user => {
       this.testUser = user;
       console.log(this.testUser);  
+    })
+  }
+
+  public getCareTaker() {
+    this.userService.getCaretaker(10).subscribe(caretaker => {
+      this.mainCaretaker = caretaker;
+      console.log(this.mainCaretaker);
     })
   }
 
