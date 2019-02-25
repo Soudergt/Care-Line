@@ -1,18 +1,25 @@
 <h1 mat-dialog-title>Add Event</h1>
-<mat-divider></mat-divider>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.00267 57.57043" style="margin-top: -55px;">
+  <title>heartbeat</title>
+  <path d="M282.5,245.5" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#000;stroke-miterlimit:10" />
+  <path d="M249.5,264.5c187-1,187,0,187,0h138l6-13,6,36,5-50,6,36,9-11h20" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#3d6783;stroke-width:1px;stroke-miterlimit:10" />
+</svg>
 <form (ngSubmit)="add()" [formGroup]="addEventForm">
   <div mat-dialog-content>
     <div fxLayout="column">
       <mat-form-field fxFlex>
         <input matInput type="text" placeholder="Name" name="name" formControlName="name" aria-label="name" required>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field fxFlex>
         <textarea matInput cdkTextareaAutosize placeholder="Description" formControlName="desc" aria-label="description"></textarea>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field fxFlex>
         <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date" aria-label="choose date" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput type="time" placeholder="time" name="time" formControlName="time" aria-label="first name" required>
       </mat-form-field>
     </div>
   </div>
