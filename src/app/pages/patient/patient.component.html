@@ -121,7 +121,7 @@
                     </div>
                   </form>
                 </div>
-                <div class="note-box" *ngFor="let note of notes" cdkDrag fxFlex="1 1 auto">
+                <div class="note-box" *ngFor="let note of notes" fxFlex="1 1 auto">
                   <fa-icon class="mood-icon" [icon]="faGrinBeam" size="2x" *ngIf="note.mood.toLowerCase() === 'very good'"></fa-icon>
                   <fa-icon class="mood-icon" [icon]="faSmile" size="2x" *ngIf="note.mood.toLowerCase() === 'good'"></fa-icon>
                   <fa-icon class="mood-icon" [icon]="faMeh" size="2x" *ngIf="note.mood.toLowerCase() === 'meh'"></fa-icon>
