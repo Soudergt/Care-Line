@@ -8,6 +8,7 @@ import { Caretaker } from 'src/app/classes/caretaker';
 })
 export class CaretakerComponent implements OnInit {
   caretaker: Caretaker = {
+    id: 10,
     fn: 'Taylor',
     ln: 'Williams',
     clinic: 'Careline Clinic',

@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from './../../providers/login/login.service';
 import { BehaviorSubject } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/providers/auth/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   public status: BehaviorSubject<number>;
 
   constructor(
-    private loginService: LoginService,
+    private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
   ) {
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
 
     this.status.next(this.STATUSES.LOGGING_IN);
 
-    this.loginService.login(
+    this.authService.login(
       this.loginForm.controls.username.value,
       this.loginForm.controls.password.value
     ).subscribe({

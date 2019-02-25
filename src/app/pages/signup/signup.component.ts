@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from './../../providers/login/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 import { HipaadialogComponent } from './../../components/hipaadialog/hipaadialog.component';
+import { AuthService } from 'src/app/providers/auth/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +23,7 @@ export class SignupComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
-    private loginService: LoginService,
+    private authService: AuthService,
     ) {
     this.signupForm = this.formBuilder.group({
       fn: ['', Validators.required],

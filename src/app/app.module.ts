@@ -34,7 +34,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AboutComponent } from './pages/about/about.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
-import { LogindialogComponent } from './components/logindialog/logindialog.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { PatientComponent } from './pages/patient/patient.component';
@@ -54,7 +53,6 @@ import { LoginComponent } from './pages/login/login.component';
     DashboardComponent,
     AboutComponent,
     TopbarComponent,
-    LogindialogComponent,
     UserDashboardComponent,
     CardListComponent,
     PatientComponent,
@@ -99,7 +97,6 @@ import { LoginComponent } from './pages/login/login.component';
   ],
   providers: [],
   entryComponents: [
-    LogindialogComponent,
     HipaadialogComponent,
     AddUserDialogComponent,
     AddEventDialogComponent
