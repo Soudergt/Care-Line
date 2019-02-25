@@ -32,20 +32,66 @@ export class UserRouter {
 
     fastify.route({
       handler: this.getUser,
-      url: '/user/getUser/:uid',
+      url: '/user/getUser',
       method: 'GET',
       schema: {
         querystring: {
           uid: {
             description: 'User ID',
-            type: 'string'
-          }
+            type: 'integer'
+          },
+          required: ['uid'],
+          type: 'object'
         },
         response: {
           200: {
             properties: {
-              user: { 
-                type: 'object' 
+              data: {
+                user: { 
+                  additionalProperties: true,
+                  type: 'object' 
+                }
+              },
+              message: { type: 'string' },
+              statusCode: { type: 'integer' }
+            },
+            type: 'object'
+          },
+          400: {
+            properties: {
+              data: { type: 'object' },
+              message: { type: 'string' },
+              statusCode: { type: 'integer' }
+            },
+            type: 'object'
+          }
+        }
+      }
+    });
+
+    fastify.route({
+      handler: this.getCaretaker,
+      url: '/user/getCaretaker/:id',
+      method: 'GET',
+      schema: {
+        querystring: {
+          properties: {
+            id: {
+              description: 'Caretaker ID',
+              type: 'number'
+            }
+          },
+          required: ['id'],
+          type: 'object'
+        },
+        response: {
+          200: {
+            properties: {
+              data: {
+                caretaker: {
+                  additionalProperties: true, 
+                  type: 'object' 
+                },
               },
               message: { type: 'string' },
               statusCode: { type: 'integer' }
@@ -164,20 +210,36 @@ export class UserRouter {
   private async getUser(request: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
     try {
       const { uid } = request.query;
-      request.log.info('user: ' + request);
 
       const user = await new UserService().getUser(uid);
-      
-      request.log.info('user: ' + user);
-      
+            
       reply.code(200).send({
-        data: { user: user },
+        data: { user },
         message: 'SUCCESS',
         statusCode: 200
       });
     } catch (error) {
       reply.code(400).send({
-        data: {},
+        message: 'ERROR',
+        statusCode: 400
+      });
+    }
+  }
+
+  private async getCaretaker(request: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
+    try {
+      const { id } = request.query;
+
+      const caretaker = await new UserService().getCaretaker(id);
+      request.log.info('user: ' + caretaker);
+            
+      reply.code(200).send({
+        data: { caretaker },
+        message: 'SUCCESS',
+        statusCode: 200
+      });
+    } catch (error) {
+      reply.code(400).send({
         message: 'ERROR',
         statusCode: 400
       });
@@ -197,7 +259,6 @@ export class UserRouter {
       });
     } catch (error) {
       reply.code(400).send({
-        data: {},
         message: 'ERROR',
         statusCode: 400
       });
@@ -217,7 +278,6 @@ export class UserRouter {
       });
     } catch (error) {
       reply.code(400).send({
-        data: {},
         message: 'ERROR',
         statusCode: 400
       });
@@ -237,7 +297,6 @@ export class UserRouter {
       });
     } catch (error) {
       reply.code(400).send({
-        data: {},
         message: 'ERROR',
         statusCode: 400
       });

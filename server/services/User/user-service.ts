@@ -10,9 +10,23 @@ export class UserService {
     return users;
   }
 
-  public async getUser(params: {uid: string}) {
+  public async getUser(params: {uid: number}) {
     return {
-      name: 'Test'
+      id: 10,
+      fn: 'Taylor',
+      ln: 'Williams',
+      clinic: 'Careline Clinic',
+      img: "url('/assets/images/people/caretakers/taylorwilliams.jpg')"
+    }
+  }
+
+  public getCaretaker(params: {id: number}) {
+    return {
+      id: 10,
+      fn: 'Taylor',
+      ln: 'Williams',
+      clinic: 'Careline Clinic',
+      img: "url('/assets/images/people/caretakers/taylorwilliams.jpg')"
     }
   }
 
