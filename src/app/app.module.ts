@@ -46,6 +46,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { CaretakerComponent } from './pages/caretaker/caretaker.component';
 import { AddEventDialogComponent } from './components/add-event-dialog/add-event-dialog.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { AddEventDialogComponent } from './components/add-event-dialog/add-event
     ScheduleComponent,
     ChatComponent,
     CaretakerComponent,
-    AddEventDialogComponent
+    AddEventDialogComponent,
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,
