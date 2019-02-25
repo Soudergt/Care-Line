@@ -2,7 +2,7 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { IncomingMessage, ServerResponse } from 'http';
 import { PatientService } from '../../libs/PatientService';
 
-export class PatientRoute {
+export class PatientRouter {
   constructor(fastify: FastifyInstance) {
     fastify.route({
       handler: this.getPatients,

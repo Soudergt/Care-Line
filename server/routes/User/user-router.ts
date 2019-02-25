@@ -2,12 +2,8 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { IncomingMessage, ServerResponse } from 'http';
 import { UserService } from '../../libs/UserService';
 
-export class UserRoute {
+export class UserRouter {
   constructor(fastify: FastifyInstance) {
-    fastify.get('/user/getUser/:uid', (request, reply) => {
-      reply.send({ hello: 'world' })
-    });
-
     fastify.route({
       handler: this.getUsers,
       url: '/user/getUsers',
@@ -34,39 +30,39 @@ export class UserRoute {
       }
     });
 
-    // fastify.route({
-    //   handler: this.getUser,
-    //   url: '/user/getUser/:uid',
-    //   method: 'GET',
-    //   schema: {
-    //     querystring: {
-    //       uid: {
-    //         description: 'User ID',
-    //         type: 'string'
-    //       }
-    //     },
-    //     response: {
-    //       200: {
-    //         properties: {
-    //           user: { 
-    //             type: 'object' 
-    //           },
-    //           message: { type: 'string' },
-    //           statusCode: { type: 'integer' }
-    //         },
-    //         type: 'object'
-    //       },
-    //       400: {
-    //         properties: {
-    //           data: { type: 'object' },
-    //           message: { type: 'string' },
-    //           statusCode: { type: 'integer' }
-    //         },
-    //         type: 'object'
-    //       }
-    //     }
-    //   }
-    // });
+    fastify.route({
+      handler: this.getUser,
+      url: '/user/getUser/:uid',
+      method: 'GET',
+      schema: {
+        querystring: {
+          uid: {
+            description: 'User ID',
+            type: 'string'
+          }
+        },
+        response: {
+          200: {
+            properties: {
+              user: { 
+                type: 'object' 
+              },
+              message: { type: 'string' },
+              statusCode: { type: 'integer' }
+            },
+            type: 'object'
+          },
+          400: {
+            properties: {
+              data: { type: 'object' },
+              message: { type: 'string' },
+              statusCode: { type: 'integer' }
+            },
+            type: 'object'
+          }
+        }
+      }
+    });
 
     fastify.route({
       handler: this.addUser,
