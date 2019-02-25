@@ -2,6 +2,16 @@
   margin: 15px;
 }
 
+.header-row {
+  margin: 0px 85px;
+
+  .header-text {
+    font-size: 30px;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px #000;
+  }
+}
+
 .schedule-header {
   background-color: #FFF;
 

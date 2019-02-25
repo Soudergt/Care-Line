@@ -1,3 +1,23 @@
-<p>
-  add-event-dialog works!
-</p>
+<h1 mat-dialog-title>Add Event</h1>
+<mat-divider></mat-divider>
+<form (ngSubmit)="add()" [formGroup]="addEventForm">
+  <div mat-dialog-content>
+    <div fxLayout="column">
+      <mat-form-field fxFlex>
+        <input matInput type="text" placeholder="Name" name="name" formControlName="name" aria-label="name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput cdkTextareaAutosize placeholder="Description" formControlName="desc" aria-label="description"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date" aria-label="choose date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions fxLayoutAlign="end center">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button type="submit" mat-raised-button color="primary" cdkFocusInitial>Add</button>
+  </div>
+</form>

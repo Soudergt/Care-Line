@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
- 
+import { AddEventDialogComponent } from '../add-event-dialog/add-event-dialog.component';
+
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
@@ -18,7 +20,9 @@ export class ScheduleComponent implements OnInit {
   week: Date[];
   newWeek: Date[];
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog,
+  ) { }
 
   ngOnInit() {
     this.today = new Date();
@@ -43,6 +47,17 @@ export class ScheduleComponent implements OnInit {
       return moment(day).subtract(1, 'w').toDate()      
     });
     this.week = this.newWeek;
+  }
+
+  addEvent() {
+    const dialogRef = this.dialog.open(AddEventDialogComponent, {
+      width: '600px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      
+    });
   }
 
 }
