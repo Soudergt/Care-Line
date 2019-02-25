@@ -1,5 +1,5 @@
 export class ScheduleService {
-  public getEvents(data: any) {
+  public getEvents(params: {selectedDate: Date}) {
     
   }
 
