@@ -21,9 +21,7 @@ export class AddUserDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<AddUserDialogComponent>, 
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder
-  ) {
-    console.log(this.data);
-    
+  ) {    
     this.addUserForm = this.formBuilder.group({
       fn: ['', Validators.required],
       ln: ['', Validators.required],
