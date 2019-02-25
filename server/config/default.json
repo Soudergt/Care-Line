@@ -2,7 +2,7 @@
   "isProduction": false,
   "server": {
     "port": 3000,
-    "logger": false,
+    "logger": true,
     "prefix": "backend"
   },
   "cors": {
