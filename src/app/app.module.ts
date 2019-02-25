@@ -40,6 +40,7 @@ import { AddUserDialogComponent } from './components/add-user-dialog/add-user-di
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { CaretakerComponent } from './pages/caretaker/caretaker.component';
+import { AddEventDialogComponent } from './components/add-event-dialog/add-event-dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { CaretakerComponent } from './pages/caretaker/caretaker.component';
     AddUserDialogComponent,
     ScheduleComponent,
     ChatComponent,
-    CaretakerComponent
+    CaretakerComponent,
+    AddEventDialogComponent
   ],
   imports: [
     AppRoutingModule,
