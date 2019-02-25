@@ -1,17 +1,17 @@
 export class ScheduleService {
-  public getEvents(params: {selectedDate: Date}) {
+  public async getEvents(params: {selectedDate: Date}) {
     
   }
 
-  public addEvent(data: any) {
+  public async addEvent(data: any) {
 
   }
 
-  public editEvent(data: any) {
+  public async editEvent(data: any) {
 
   }
 
-  public deleteEvent(data: any) {
+  public async deleteEvent(data: any) {
 
   }
 }

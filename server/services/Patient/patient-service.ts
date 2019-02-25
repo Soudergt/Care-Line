@@ -1,5 +1,5 @@
 export class PatientService {
-  public getPatients(params: {uid: number}) {
+  public async getPatients(params: {uid: string}) {
     return {
       name: 'Betty'
     };
@@ -23,15 +23,15 @@ export class PatientService {
     }
   }
 
-  public addPatient(data: any) {
+  public async addPatient(data: any) {
     
   }
 
-  public editPatient(data: any) {
+  public async editPatient(data: any) {
     
   }
 
-  public deletePatient(data: any) {
+  public async deletePatient(data: any) {
     
   }
 

@@ -20,6 +20,14 @@ export class PatientRouter {
           type: 'object'
         },
         response: {
+          200: {
+            properties: {
+              data: { type: 'object' },
+              message: { type: 'string' },
+              statusCode: { type: 'integer' }
+            },
+            type: 'object'
+          },
           400: {
             properties: {
               data: { type: 'object' },
@@ -48,6 +56,14 @@ export class PatientRouter {
           type: 'object'
         },
         response: {
+          200: {
+            properties: {
+              data: { type: 'object' },
+              message: { type: 'string' },
+              statusCode: { type: 'integer' }
+            },
+            type: 'object'
+          },
           400: {
             properties: {
               data: { type: 'object' },
@@ -146,7 +162,7 @@ export class PatientRouter {
       const patients = await new PatientService().getPatients(uid);
 
       reply.code(200).send({
-        data: { patients },
+        data: { patients: patients },
         message: 'SUCCESS',
         statusCode: 200
       });
@@ -166,7 +182,7 @@ export class PatientRouter {
       const patient = await new PatientService().getPatient(id);
 
       reply.code(200).send({
-        data: { patient },
+        data: { patient: patient },
         message: 'SUCCESS',
         statusCode: 200
       });

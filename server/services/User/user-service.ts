@@ -10,21 +10,21 @@ export class UserService {
     return users;
   }
 
-  public async getUser(uid: string) {    
+  public async getUser(params: {uid: string}) {
     return {
       name: 'Test'
     }
   }
 
-  public addUser(data: any) {
+  public async addUser(data: any) {
     
   }
 
-  public editUser(data: any) {
+  public async editUser(data: any) {
     
   }
 
-  public deleteUser(data: any) {
+  public async deleteUser(data: any) {
     
   }
 }
