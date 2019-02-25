@@ -89,7 +89,6 @@ export class PatientComponent implements OnInit {
   }
 
   public async createNote() {
-    console.log(this.noteForm);
     this.showNewNote = false;
     this.notes.push({
       title: this.noteForm.value.title,
