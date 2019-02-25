@@ -39,7 +39,6 @@ export class UserService {
     console.log(user);
     
     return this.http.post<User>(`${environment.api}/backend/user/addUser/`, user)
-    .pipe(); 
   }
 
   editUser() {
