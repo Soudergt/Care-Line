@@ -6,6 +6,8 @@ import { faNotesMedical, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { faSmile, faMeh, faGrinBeam, faFrown, faTired } from '@fortawesome/free-regular-svg-icons';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Patient } from 'src/app/classes/patient';
+import { NoteService } from 'src/app/providers/note/note.service';
+import { Note } from 'src/app/classes/note';
 
 const PATIENT: Patient = {
   id: 7,
@@ -35,10 +37,11 @@ const PATIENT: Patient = {
 })
 export class PatientComponent implements OnInit {
   public noteForm: FormGroup;
+  newNote: Note;
   //Patient Object
-  patient:Patient;
-  sub: number;
-  id: number;
+  patient: Patient;
+  sub;
+  id: string;
   //Icons
   faNotesMedical = faNotesMedical;
   faInfo = faInfo;
@@ -66,6 +69,7 @@ export class PatientComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute, 
     private patientService:PatientService,
+    private noteService: NoteService,
     private formBuilder: FormBuilder
     ) {
       this.noteForm = this.formBuilder.group({
@@ -88,29 +92,44 @@ export class PatientComponent implements OnInit {
     this.noteForm.reset();
   }
 
-  public async createNote() {
+  createNote() {
     this.showNewNote = false;
-    this.notes.push({
+    this.newNote = {
       title: this.noteForm.value.title,
       desc: this.noteForm.value.desc,
       mood: this.noteForm.value.mood
-    });
+    };
+
+    this.noteService.addNote(this.newNote)
+      .subscribe(note => this.notes.push(note));
+    
     this.noteForm.reset();
   };
 
+  editNote(selectedNote: Note, index: number) {
+    this.noteService.editNote(selectedNote)
+      .subscribe(note => this.notes[index] = {
+        title: note['title'],
+        desc: note['desc'],
+        mood: note['mood']
+      });
+  };
+
+  deleteNote(noteID: number, index: number) {
+    this.notes.splice(index, 1);
+    this.noteService.deleteNote(noteID).subscribe();
+  }
+
   ngOnInit() {
     this.patient = PATIENT;
-    // this.sub = this.activatedRoute.params.subscribe(params => {
-    //   this.id = params['id'];
-    //   this.patientService.getPatient(this.id).subscribe(patient => {
-    //     this.patient = patient;
-    //     console.log(this.patient);
-    //   });
-    // });
+    this.sub = this.activatedRoute.params.subscribe(params => {
+      this.id = params['id'];
+      this.patientService.getPatient(this.id).subscribe(patient => this.patient = patient);
+    });
   };
 
   ngOnDestroy() {
-    // this.sub.unsubscribe();
+    this.sub.unsubscribe();
   };
 }
  
