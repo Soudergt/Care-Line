@@ -3,6 +3,8 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { AddEventDialogComponent } from '../add-event-dialog/add-event-dialog.component';
+import { ScheduleService } from 'src/app/providers/schedule/schedule.service';
+import { ScheduleEvent } from 'src/app/classes/scheduleEvent';
 
 @Component({
   selector: 'app-schedule',
@@ -19,9 +21,11 @@ export class ScheduleComponent implements OnInit {
   activeDay: number;
   week: Date[];
   newWeek: Date[];
+  events: ScheduleEvent[];
 
   constructor(
     public dialog: MatDialog,
+    private scheduleService: ScheduleService
   ) { }
 
   ngOnInit() {
@@ -55,9 +59,22 @@ export class ScheduleComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      
+      this.scheduleService.addEvent(result).subscribe(newEvent => this.events.push(newEvent));
     });
-  }
+  };
+
+  editEvent(selectedEvent: ScheduleEvent, index: number) {
+    this.scheduleService.editEvent(selectedEvent)
+      .subscribe(updatedEvent => this.events[index] = {
+        name: updatedEvent['name'],
+        desc: updatedEvent['desc'],
+        date: updatedEvent['date'],
+        time: updatedEvent['time']
+      });
+  };
+
+  deleteEvent(eventID: number, index: number) {
+    this.scheduleService.deleteEvent(eventID).subscribe();
+  };
 
 }
