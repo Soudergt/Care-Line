@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddUserDialogComponent } from './../../components/add-user-dialog/add-user-dialog.component';
 import { UserService } from 'src/app/providers/user/user.service';
 import { User } from 'src/app/classes/user';
+import { PatientService } from 'src/app/providers/patient/patient.service';
+import { Patient } from 'src/app/classes/patient';
 
 const CLINIC: Clinic = {
   id: 1,
@@ -26,11 +28,13 @@ export class ClinicComponent implements OnInit {
   lat: number;
   lng: number;
   newUser: any;
-  users: [];
+  users: User[];
+  patients: Patient[];
 
   constructor(
     public dialog: MatDialog,
-    private userService: UserService
+    private userService: UserService,
+    private patientService: PatientService
   ) { }
 
   ngOnInit() {
@@ -38,7 +42,7 @@ export class ClinicComponent implements OnInit {
     this.lng = 7.815982;
     this.clinic = CLINIC;
     
-    this.userService.getUsers().subscribe((data) => {
+    this.userService.getUsers().subscribe(data => {
       this.users = data;
       console.log(this.users);        
     });
@@ -53,13 +57,13 @@ export class ClinicComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.userService.addUser(result)
-        .subscribe(user => {
-          console.log(user);
-          
-        });
+      if (userType === 'patient') {
+        this.patientService.addPatient(result)
+          .subscribe(newPatient => this.patients.push(newPatient));
+      } else {
+        this.userService.addUser(result)
+          .subscribe(newUser => this.users.push(newUser));
+      }       
     });
   }
-
 }

@@ -2,6 +2,9 @@ import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { Patient } from 'src/app/classes/patient';
 import { Caretaker } from './../../classes/caretaker';
+import { User } from 'src/app/classes/user';
+import { UserService } from 'src/app/providers/user/user.service';
+import { PatientService } from 'src/app/providers/patient/patient.service';
 
 const PATIENTS: Patient[] = [
   {
@@ -126,30 +129,35 @@ const PATIENTS: Patient[] = [
   }
 ];
 const CARETAKERS: Caretaker[] = [{
+    id: 1,
     fn: 'Howard',
     ln: '',
     clinic: 'Careline Clinic',
     img: 'url(/assets/images/people/default.png)'
   },
   {
+    id: 2,
     fn: 'Franny',
     ln: '',
     clinic: 'Careline Clinic',
     img: 'url(/assets/images/people/default.png)'
   },
   {
+    id: 3,
     fn: 'Monica',
     ln: '',
     clinic: 'Careline Clinic',
     img: 'url(/assets/images/people/default.png)'
   },
   {
+    id: 4,
     fn: 'Taylor',
     ln: '',
     clinic: 'Careline Clinic',
     img: 'url(/assets/images/people/default.png)'
   },
   {
+    id: 5,
     fn: 'Madison',
     ln: '',
     clinic: 'Careline Clinic',
@@ -168,8 +176,11 @@ export class CardListComponent implements OnInit {
   patients = PATIENTS;
   caretakers = CARETAKERS;
 
-  constructor(private router: Router) { 
-  }
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private patientService: PatientService
+  ) { }
 
   ngOnInit() {
     if (this.type === 'patient') {
@@ -179,12 +190,28 @@ export class CardListComponent implements OnInit {
     }
   }
 
-  goToPatient(patient) {
+  goToPatient(patient: Patient) {
     this.router.navigateByUrl(`/patient/${patient.id}`);
   }
 
-  goToCaretaker(caretaker) {
+  goToCaretaker(caretaker: Caretaker) {
     this.router.navigateByUrl(`/caretaker/${caretaker.id}`);
+  }
+
+  editPatient(selectedPatient: Patient, index: number) {
+    
+  }
+
+  deletePatient(patientID: number, index: number) {
+    this.patientService.deletePatient(patientID).subscribe();
+  }
+
+  editCaretaker(selectedCaretaker: Caretaker, index: number) {
+    
+  }
+
+  deleteCaretaker(caretakerID: number, index: number) {
+    
   }
 
 }
