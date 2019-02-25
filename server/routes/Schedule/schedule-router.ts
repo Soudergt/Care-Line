@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { IncomingMessage, ServerResponse } from 'http';
-import { ScheduleService } from '../../libs/ScheduleService';
+import { ScheduleService } from '../../services/Schedule/schedule-service';
 
 export class ScheduleRouter {
   constructor(fastify: FastifyInstance) {

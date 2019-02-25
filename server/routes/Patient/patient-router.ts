@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { IncomingMessage, ServerResponse } from 'http';
-import { PatientService } from '../../libs/PatientService';
+import { PatientService } from '../../services/Patient/patient-service';
 
 export class PatientRouter {
   constructor(fastify: FastifyInstance) {

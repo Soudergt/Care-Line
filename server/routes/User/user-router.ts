@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { IncomingMessage, ServerResponse } from 'http';
-import { UserService } from '../../libs/UserService';
+import { UserService } from '../../services/User/user-service';
 
 export class UserRouter {
   constructor(fastify: FastifyInstance) {
