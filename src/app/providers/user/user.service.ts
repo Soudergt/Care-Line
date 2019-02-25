@@ -14,27 +14,27 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  getUsers(): Observable<any> {
-    return this.http.get(
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(
       `${environment.api}/backend/user/getUsers`
     ); 
   }
 
-  getUser(uid: string): Observable<any> {
-    return this.http.get(
+  getUser(uid: string): Observable<User> {
+    return this.http.get<User>(
       `${environment.api}/backend/user/getUser/?uid=${uid}`
     ); 
   }
 
-  addUser(user: User) {    
+  addUser(user: User): Observable<User> {    
     return this.http.post<User>(`${environment.api}/backend/user/addUser/`, user);
   }
 
   editUser(user: User) {
-    return this.http.post<User>(`${environment.api}/backend/user/editUser/`, user);
+    return this.http.put(`${environment.api}/backend/user/editUser/`, user);
   }
 
   deleteUser(uid: number) {
-    return this.http.post<User>(`${environment.api}/backend/user/deleteUser/`, uid);    
+    return this.http.delete(`${environment.api}/backend/user/deleteUser/${uid}`);
   }
 }

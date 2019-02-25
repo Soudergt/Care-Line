@@ -3,6 +3,7 @@ import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Patient } from 'src/app/classes/patient';
 
 @Injectable({
   providedIn: 'root'
@@ -11,31 +12,27 @@ export class PatientService {
 
   constructor(private http: HttpClient) { }
 
-  getPatient(id: string): Observable<any> {
-    return this.http.get(
+  getPatients(uid: string): Observable<Patient[]> {
+    return this.http.get<Patient[]>(
+      `/backend/patient/getPatient/${uid}`
+    );
+  }
+
+  getPatient(id: string): Observable<Patient> {
+    return this.http.get<Patient>(
       `/backend/patient/getPatient/${id}`
-    ).pipe(map((body: { data: { patient: any } }) => {
-      return body.data.patient;
-    }));
+    );
   }
 
-  addPatient() {
-
+  addPatient(newPatient: Patient): Observable<Patient> {
+    return this.http.post<Patient>(`${environment.api}/backend/patient/addPatient/`, newPatient);  
   }
 
-  editPatient() {
-
+  editPatient(selectedPatient: Patient) {
+    return this.http.put(`${environment.api}/backend/patient/editPatient/`, selectedPatient);  
   }
 
-  removePatient() {
-
-  }
-  
-  getPatients() {
-
-  }
-
-  getNotes() {
-
+  deletePatient(patientID: number) {
+    return this.http.delete(`${environment.api}/backend/patient/deletePatient/${patientID}`);  
   }
 }

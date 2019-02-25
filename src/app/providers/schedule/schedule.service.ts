@@ -15,8 +15,8 @@ export class ScheduleService {
 
   }
 
-  getEvents(selectedDate: Date): Observable<any> {
-    return this.http.get(
+  getEvents(selectedDate: Date): Observable<ScheduleEvent> {
+    return this.http.get<ScheduleEvent>(
       `${environment.api}/backend/schedule/getEvents/?selectedDate=${selectedDate}`
     ); 
   }
@@ -26,10 +26,10 @@ export class ScheduleService {
   }
 
   editEvent(scheduleEvent: ScheduleEvent) {
-    return this.http.post<ScheduleEvent>(`${environment.api}/backend/schedule/editEvent/`, scheduleEvent);
+    return this.http.put(`${environment.api}/backend/schedule/editEvent/`, scheduleEvent);
   }
 
   deleteEvent(eventID: number) {
-    return this.http.post(`${environment.api}/backend/schedule/deleteEvent/`, eventID);
+    return this.http.delete(`${environment.api}/backend/schedule/deleteEvent/${eventID}`);
   }
 }

@@ -13,8 +13,8 @@ export class NoteService {
     private http: HttpClient
   ) { }
 
-  getNotes(selectedDate: Date): Observable<any> {
-    return this.http.get(
+  getNotes(selectedDate: Date): Observable<Note> {
+    return this.http.get<Note>(
       `${environment.api}/backend/note/getNotes?selectedDate=${selectedDate}`
     ); 
   }
@@ -24,10 +24,10 @@ export class NoteService {
   }
 
   editNote(selectedNote: Note) {
-    return this.http.post<Note>(`${environment.api}/backend/note/editNote/`, selectedNote);
+    return this.http.put(`${environment.api}/backend/note/editNote/`, selectedNote);
   }
 
-  deleteNote(uid: string) {
-    return this.http.post(`${environment.api}/backend/note/deleteNote/`, uid);    
+  deleteNote(uid: number) {
+    return this.http.delete(`${environment.api}/backend/note/deleteNote/${uid}`);    
   }
 }
