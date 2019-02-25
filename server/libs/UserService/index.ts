@@ -19,4 +19,12 @@ export class UserService {
   public addUser(data: any) {
     
   }
+
+  public editUser(data: any) {
+    
+  }
+
+  public deleteUser(data: any) {
+    
+  }
 }

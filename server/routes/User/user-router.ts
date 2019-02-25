@@ -89,6 +89,58 @@ export class UserRouter {
         }
       }
     });
+
+    fastify.route({
+      handler: this.editUser,
+      url: '/user/editUser',
+      method: 'POST',
+      schema: {
+        response: {
+          200: {
+            properties: {
+              data: { type: 'object' },
+              message: { type: 'string' },
+              statusCode: { type: 'integer' }
+            },
+            type: 'object'
+          },
+          400: {
+            properties: {
+              data: { type: 'object' },
+              message: { type: 'string' },
+              statusCode: { type: 'integer' }
+            },
+            type: 'object'
+          }
+        }
+      }
+    });
+
+    fastify.route({
+      handler: this.deleteUser,
+      url: '/user/deleteUser',
+      method: 'POST',
+      schema: {
+        response: {
+          200: {
+            properties: {
+              data: { type: 'object' },
+              message: { type: 'string' },
+              statusCode: { type: 'integer' }
+            },
+            type: 'object'
+          },
+          400: {
+            properties: {
+              data: { type: 'object' },
+              message: { type: 'string' },
+              statusCode: { type: 'integer' }
+            },
+            type: 'object'
+          }
+        }
+      }
+    });
   }
 
   private async getUsers(request: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
@@ -135,9 +187,51 @@ export class UserRouter {
   private async addUser(request: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
     try {
       const { newUser } = request.query;
+
+      const user = await new UserService().addUser(newUser);
       
       reply.code(200).send({
-        data: { newUser },
+        data: { user: user },
+        message: 'SUCCESS',
+        statusCode: 200
+      });
+    } catch (error) {
+      reply.code(400).send({
+        data: {},
+        message: 'ERROR',
+        statusCode: 400
+      });
+    }
+  }
+
+  private async editUser(request: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
+    try {
+      const { selectedUser } = request.query;
+
+      const user = await new UserService().editUser(selectedUser);
+      
+      reply.code(200).send({
+        data: { user: user },
+        message: 'SUCCESS',
+        statusCode: 200
+      });
+    } catch (error) {
+      reply.code(400).send({
+        data: {},
+        message: 'ERROR',
+        statusCode: 400
+      });
+    }
+  }
+
+  private async deleteUser(request: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
+    try {
+      const { userID } = request.query;
+
+      const user = await new UserService().deleteUser(userID);
+      
+      reply.code(200).send({
+        data: { user: user },
         message: 'SUCCESS',
         statusCode: 200
       });
