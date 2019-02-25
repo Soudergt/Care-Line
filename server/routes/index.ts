@@ -1,7 +1,9 @@
-import { UserRoute } from './User/index';
-import { PatientRoute } from './Patient/index';
+import { UserRouter } from './User/user-router';
+import { PatientRouter } from './Patient/patient-router';
+import { ScheduleRouter } from './Schedule/schedule-router';
 
 export default [
-  PatientRoute,
-  UserRoute
+  PatientRouter,
+  UserRouter,
+  ScheduleRouter
 ];
