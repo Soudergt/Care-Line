@@ -11,25 +11,25 @@ export class ScheduleService {
 
   constructor(private http: HttpClient) { }
 
-  getWeekSchedule() {
+  public getWeekSchedule() {
 
   }
 
-  getEvents(selectedDate: Date): Observable<ScheduleEvent> {
+  public getEvents(selectedDate: Date): Observable<ScheduleEvent> {
     return this.http.get<ScheduleEvent>(
       `${environment.api}/backend/schedule/getEvents/?selectedDate=${selectedDate}`
     ); 
   }
 
-  addEvent(scheduleEvent: ScheduleEvent) {
-    return this.http.post<ScheduleEvent>(`${environment.api}/backend/schedule/addEvent/`, scheduleEvent);
+  public addEvent(scheduleEvent: ScheduleEvent) {
+    return this.http.post<ScheduleEvent>(`${environment.api}/backend/schedule/addEvent`, scheduleEvent);
   }
 
-  editEvent(scheduleEvent: ScheduleEvent) {
-    return this.http.put(`${environment.api}/backend/schedule/editEvent/`, scheduleEvent);
+  public editEvent(scheduleEvent: ScheduleEvent) {
+    return this.http.put(`${environment.api}/backend/schedule/editEvent`, scheduleEvent);
   }
 
-  deleteEvent(eventID: number) {
+  public deleteEvent(eventID: number) {
     return this.http.delete(`${environment.api}/backend/schedule/deleteEvent/${eventID}`);
   }
 }
