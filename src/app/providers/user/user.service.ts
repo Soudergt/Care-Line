@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/classes/user';
-import { MessageService } from '../message/message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +11,7 @@ import { MessageService } from '../message/message.service';
 export class UserService {
 
   constructor(
-    private http: HttpClient,
-    private messageService: MessageService
+    private http: HttpClient
   ) { }
 
   getUsers(): Observable<any> {
@@ -23,33 +21,20 @@ export class UserService {
   }
 
   getUser(uid: string): Observable<any> {
-    // console.log(this.http.get(
-    //   `${environment.api}/backend/user/getUser/?uid=${uid}`
-    // ).pipe(
-    //   tap(_ => this.log(`fetched user id=${uid}`))
-    // ));
-
-    
     return this.http.get(
       `${environment.api}/backend/user/getUser/?uid=${uid}`
     ); 
   }
 
-  addUser(user: User) {
-    console.log(user);
-    
-    return this.http.post<User>(`${environment.api}/backend/user/addUser/`, user)
+  addUser(user: User) {    
+    return this.http.post<User>(`${environment.api}/backend/user/addUser/`, user);
   }
 
-  editUser() {
-
+  editUser(user: User) {
+    return this.http.post<User>(`${environment.api}/backend/user/editUser/`, user);
   }
 
-  removeUser() {
-    
-  }
-
-  private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+  deleteUser(uid: number) {
+    return this.http.post<User>(`${environment.api}/backend/user/deleteUser/`, uid);    
   }
 }
