@@ -6,7 +6,7 @@ import * as config from 'config';
 import routes from './routes';
 
 const main = async () => {
-  createConnection().then(async connection => {
+  createConnection().then(async (connection) => {
     const server = Fastify({
       logger: true
     });
