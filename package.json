@@ -8,8 +8,6 @@
       "e2e": "ng e2e",
       "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
       "precommit": "lint-staged",
-      "compile": "./node_modules/.bin/tsc -p ./tsconfig-server.json",
-      "compile:dev": "./node_modules/.bin/tsc -p ./tsconfig-server.json --watch",
       "start": "ts-node server/index.ts",
       "start:dev": "./node_modules/.bin/nodemon --watch build build/index.js",
       "start:client": "ng serve --proxy-config proxy.conf.json",
