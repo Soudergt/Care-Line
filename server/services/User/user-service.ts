@@ -11,13 +11,16 @@ export class UserService {
   }
 
   public async getUser(params: {uid: number}) {
-    return {
-      id: 10,
-      fn: 'Taylor',
-      ln: 'Williams',
-      clinic: 'Careline Clinic',
-      img: "url('/assets/images/people/caretakers/taylorwilliams.jpg')"
-    }
+    return new Promise((resolve, reject) => {
+      let user = {
+        id: 10,
+        fn: 'Taylor',
+        ln: 'Williams',
+        clinic: 'Careline Clinic',
+        img: "url('/assets/images/people/caretakers/taylorwilliams.jpg')"
+      };
+      resolve(user);
+    });
   }
 
   public getCaretaker(params: {id: number}) {

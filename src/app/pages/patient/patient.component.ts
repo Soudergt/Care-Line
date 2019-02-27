@@ -2,7 +2,7 @@ import { PatientService } from './../../providers/patient/patient.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { faNotesMedical, faInfo } from '@fortawesome/free-solid-svg-icons';
+import { faNotesMedical, faInfo, faUtensils } from '@fortawesome/free-solid-svg-icons';
 import { faSmile, faMeh, faGrinBeam, faFrown, faTired } from '@fortawesome/free-regular-svg-icons';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Patient } from 'src/app/classes/patient';
@@ -50,7 +50,8 @@ export class PatientComponent implements OnInit {
   faGrinBeam = faGrinBeam;
   faFrown = faFrown;
   faTired = faTired;
-
+  faUtensils = faUtensils;
+  
   //Note Values
   showNewNote = false;
   notes = [
