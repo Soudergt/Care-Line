@@ -47,10 +47,13 @@ export class UserRouter {
           200: {
             properties: {
               data: {
-                user: { 
-                  additionalProperties: true,
-                  type: 'object' 
-                }
+                properties: {
+                  user: { 
+                    additionalProperties: true,
+                    type: 'object' 
+                  }
+                },
+                type: "object"
               },
               message: { type: 'string' },
               statusCode: { type: 'integer' }
