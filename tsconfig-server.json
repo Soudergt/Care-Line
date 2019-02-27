@@ -8,13 +8,8 @@
     "outDir": "build",
     "target": "es2017",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
   },
-  "include": [
-    "server/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ]
+  "include": ["server/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

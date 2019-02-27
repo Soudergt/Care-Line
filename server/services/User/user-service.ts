@@ -1,13 +1,13 @@
-import { getManager } from "typeorm";
-import { User } from "server/entities/user";
+// import { getManager } from "typeorm";
+// import { User } from "../../entities/user";
 
 export class UserService {
   public async getUsers() {
-    const userRepository = getManager().getRepository(User);
+    // const userRepository = getManager().getRepository(User);
 
-    const users = await userRepository.find();
+    // const users = await userRepository.find();
 
-    return users;
+    // return users;
   }
 
   public getUser(uid: number): Promise<any> {

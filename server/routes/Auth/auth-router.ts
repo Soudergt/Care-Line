@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { IncomingMessage, ServerResponse } from 'http';
-import { AuthService } from 'server/services/Auth/auth-service';
+import { AuthService } from '../../services/Auth/auth-service';
 
 export class AuthRouter {
   constructor(fastify: FastifyInstance) {

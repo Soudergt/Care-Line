@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { IncomingMessage, ServerResponse } from 'http';
-import { NoteService } from 'server/services/Note/note-service';
+import { NoteService } from '../../services/Note/note-service';
 
 export class NoteRouter {
   constructor(fastify: FastifyInstance) {
