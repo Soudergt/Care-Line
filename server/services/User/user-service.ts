@@ -10,9 +10,9 @@ export class UserService {
     return users;
   }
 
-  public async getUser(params: {uid: number}) {
+  public getUser(uid: number): Promise<any> {
     return new Promise((resolve, reject) => {
-      let user = {
+      const user = {
         id: 10,
         fn: 'Taylor',
         ln: 'Williams',

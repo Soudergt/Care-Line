@@ -23,7 +23,7 @@ export class UserService {
 
   public getUser(uid: number): Observable<any> {
     return this.http.get(
-      `${environment.api}/backend/user/getUser/?uid=${uid}`
+      `${environment.api}/backend/user/?uid=${uid}`
     ).pipe(map((body: {data: {user: any}}) => {
       return body;
     })); 

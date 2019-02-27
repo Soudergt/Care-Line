@@ -32,16 +32,13 @@ export class UserRouter {
 
     fastify.route({
       handler: this.getUser,
-      url: '/user/getUser',
+      url: '/user/:uid',
       method: 'GET',
       schema: {
-        querystring: {
+        params: {
           uid: {
-            description: 'User ID',
-            type: 'integer'
-          },
-          required: ['uid'],
-          type: 'object'
+            type: "integer"
+          }
         },
         response: {
           200: {
@@ -50,8 +47,9 @@ export class UserRouter {
                 properties: {
                   user: { 
                     additionalProperties: true,
-                    type: 'object' 
-                  }
+                    type: "object"
+                  },
+                  type: "object"
                 },
                 type: "object"
               },
@@ -115,7 +113,7 @@ export class UserRouter {
 
     fastify.route({
       handler: this.addUser,
-      url: '/user/addUser',
+      url: '/user/add',
       method: 'POST',
       schema: {
         response: {
@@ -141,7 +139,7 @@ export class UserRouter {
 
     fastify.route({
       handler: this.editUser,
-      url: '/user/editUser',
+      url: '/user/edit',
       method: 'POST',
       schema: {
         response: {
@@ -167,7 +165,7 @@ export class UserRouter {
 
     fastify.route({
       handler: this.deleteUser,
-      url: '/user/deleteUser',
+      url: '/user/delete',
       method: 'POST',
       schema: {
         response: {
@@ -195,7 +193,7 @@ export class UserRouter {
   private async getUsers(request: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
     try {
       const users = await new UserService().getUsers();
-      
+
       reply.code(200).send({
         data: { users: users },
         message: 'SUCCESS',
@@ -212,9 +210,9 @@ export class UserRouter {
 
   private async getUser(request: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
     try {
-      const { uid } = request.query;
+      const { uid } = request.params;
 
-      const user = await new UserService().getUser(uid);
+      const { user } = await new UserService().getUser(uid);
             
       reply.code(200).send({
         data: { user },
