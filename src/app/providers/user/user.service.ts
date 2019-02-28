@@ -21,31 +21,31 @@ export class UserService {
     ); 
   }
 
-  public getUser(uid: number): Observable<any> {
+  public getUser(uid: string): Observable<any> {
     return this.http.get(
-      `${environment.api}/backend/user/?uid=${uid}`
+      `${environment.api}/user/?uid=${uid}`
     ).pipe(map((body: {data: {user: any}}) => {
-      return body;
+      return body.data.user;
     })); 
   }
 
   public getCaretaker(id: number): Observable<any> {
     return this.http.get(
-      `${environment.api}/backend/user/getCaretaker/?id=${id}`
+      `${environment.api}/user/getCaretaker/?id=${id}`
     ).pipe(map((body: {data: {caretaker: any}}) => {
       return body.data.caretaker;
     }));
   }
 
   public addUser(user: User): Observable<User> {    
-    return this.http.post<User>(`${environment.api}/backend/user/addUser/`, user);
+    return this.http.post<User>(`${environment.api}/user/addUser/`, user);
   }
 
   public editUser(user: User) {
-    return this.http.put(`${environment.api}/backend/user/editUser/`, user);
+    return this.http.put(`${environment.api}/user/editUser/`, user);
   }
 
   public deleteUser(uid: number) {
-    return this.http.delete(`${environment.api}/backend/user/deleteUser/${uid}`);
+    return this.http.delete(`${environment.api}/user/deleteUser/${uid}`);
   }
 }
