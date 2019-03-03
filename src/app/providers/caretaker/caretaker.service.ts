@@ -11,11 +11,15 @@ export class CaretakerService {
 
   constructor(private http: HttpClient) { }
 
-  getCaretakers(id: string): Observable<any> {
+  public getCaretakers(id: string): Observable<any> {
     return this.http.get(
       `${environment.api}/caretaker/getCaretakers/${id}`
     ).pipe(map((body: {data: {caretakers: any}}) => {
       return body.data.caretakers;
     })); 
+  }
+
+  public addCaretaker(caretaker: any): Observable<any> {
+    return this.http.post(`${environment.api}/caretaker/addCaretaker/`, caretaker);
   }
 }
