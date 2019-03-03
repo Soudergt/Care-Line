@@ -44,15 +44,7 @@ export class UserDashboardComponent implements OnInit {
   user: User;
   testUser;
   testUserData;
-  mainCaretaker: Caretaker;
-
-  caretaker: Caretaker = {
-    id: 10,
-    fn: 'Taylor',
-    ln: 'Williams',
-    clinic: 'Careline Clinic',
-    img: "url('/assets/images/people/caretakers/taylorwilliams.jpg')"
-  };
+  caretaker: Caretaker;
 
   chartOptions = {
     responsive: false,
@@ -95,7 +87,8 @@ export class UserDashboardComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private messageService: MessageService) { }
+    private messageService: MessageService
+  ) { }
 
   ngOnInit() {
     try {
@@ -110,21 +103,13 @@ export class UserDashboardComponent implements OnInit {
     }
   }
 
-  public getUser() {
+  getUser(): void {
     this.userService.getUser('1').subscribe(user => {
-      this.user = user;
-      console.log(this.user);
-    })
+      this.caretaker = user
+    });
   }
 
-  public getCareTaker() {
-    this.userService.getCaretaker(10).subscribe(caretaker => {
-      this.mainCaretaker = caretaker;
-      console.log(this.mainCaretaker);
-    })
-  }
-
-  changeChart(type: string) {
+  changeChart(type: string): void {
     if (type === 'age') {
       this.activeData = this.ageData;
       this.drawChart();
@@ -134,7 +119,7 @@ export class UserDashboardComponent implements OnInit {
     }
   }
 
-  drawChart() {
+  drawChart(): void {
     this.ctx = document.getElementById('patientsChart');
     this.chart = new Chart(this.ctx, {
       type: 'pie',
