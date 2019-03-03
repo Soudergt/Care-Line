@@ -1,7 +1,7 @@
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, tap, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/classes/user';
 import { Caretaker } from 'src/app/classes/caretaker';
@@ -11,9 +11,7 @@ import { Caretaker } from 'src/app/classes/caretaker';
 })
 export class UserService {
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
   public getUsers(): Observable<User[]> {
     return this.http.get<User[]>(
