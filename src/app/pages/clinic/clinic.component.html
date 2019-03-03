@@ -2,34 +2,18 @@
   <div class="clinic-header" fxLayout="row wrap" [ngStyle.xs]="{'margin-top': '0px'}" [ngStyle.sm]="{'margin-top': '0px'}">
     <div class="clinic-info-container" fxLayout="row" fxFlex="1 2 auto">
       <div class="photo-container" fxFlex="1 1 150px">
-        <div class="clinic-img drop-shadow" [ngStyle]="{'background-image': clinic.img}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
+        <div class="clinic-img drop-shadow" [ngStyle]="{'background-image': clinic?.img}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
       </div>
       <div class="clinic-info">
-        <div class="clinic-name">{{clinic.name}}</div>
-        <div class="clinic-address">{{clinic.address}}</div>
+        <div class="clinic-name">{{clinic?.name}}</div>
+        <div class="clinic-address">{{clinic?.address}}</div>
       </div>
     </div>
   </div>
-  <div class="section-container" fxLayout="row">
-    <div class="patient-container" fxFlex>
-      <h3 class="header" fxLayout="row" fxLayoutAlign="space-between center">
-        <span fxFlex="95">Caretakers</span>
-        <button fxFlex="5" mat-raised-button color="primary" (click)="addUser('caretaker')">Add</button>
-      </h3>
-      <div class="patient-list">
-        <app-card-list [type]="'caretaker'"></app-card-list>
-      </div>
-    </div>
+  <div class="section-container">
+    <app-card-list [type]="'caretaker'" [admin]="true"></app-card-list>
   </div>
-  <div class="section-container" fxLayout="row">
-    <div class="patient-container" fxFlex>
-      <h3 class="header" fxLayout="row" fxLayoutAlign="space-between center">
-        <span fxFlex="95">Patients</span>
-        <button fxFlex="5" mat-raised-button color="primary" (click)="addUser('patient')">Add</button>
-      </h3>
-      <div class="patient-list">
-        <app-card-list [type]="'patient'"></app-card-list>
-      </div>
-    </div>
+  <div class="section-container">
+    <app-card-list [type]="'patient'" [admin]="true"></app-card-list>    
   </div>
 </div>

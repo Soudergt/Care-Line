@@ -37,12 +37,7 @@
     </div>
   </div>
   <div class="section-container">
-    <div class="patient-container">
-      <h3 class="header">Patients</h3>
-      <div class="patient-list">
-        <app-card-list [type]="'patient'"></app-card-list>
-      </div>
-    </div>
+    <app-card-list [type]="'patient'" [admin]="false"></app-card-list>    
   </div>
   <div class="section-container" fxLayout="row wrap" fxLayoutAlign="space-between">
     <div class="appointment-section card-shadow" fxFlex="50" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
