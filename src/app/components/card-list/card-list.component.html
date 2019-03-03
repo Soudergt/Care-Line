@@ -1,52 +1,63 @@
-<div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;" *ngIf="type === 'patient'">
-  <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="28" (click)="goToPatient(item)">
-    <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
-    <div class="card-content">
-      <mat-card-title>{{ item.fn }} {{ item.ln }}</mat-card-title>
-      <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.00267 57.57043" style="margin-top: -35px;">
-        <title>heartbeat</title>
-        <path d="M282.5,245.5" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#000;stroke-miterlimit:10" />
-        <path d="M249.5,264.5c187-1,187,0,187,0h138l6-13,6,36,5-50,6,36,9-11h20" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#3d6783;stroke-width:2px;stroke-miterlimit:10" />
-      </svg>
-      <mat-card-content style="margin-top: -20px;">
-        <div class="card-info-container" fxLayout="column" fxLayoutGap="8px">
-          <div fxFlex ng-if="item.clinic">
-            <b>Clinic:</b> {{item.clinic}}
-          </div>
-          <div fxFlex ng-if="item.height">
-            <b>Height:</b> {{item.height}}
-          </div>
-          <div fxFlex ng-if="item.weight">
-            <b>Weight:</b> {{item.weight}}
-          </div>
+<div class="patient-container" *ngIf="type === 'patient'">
+  <h3 class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <span fxFlex="95">Patients</span>
+    <button fxFlex="5" mat-raised-button color="primary" (click)="addUser('patient')" *ngIf="admin === true">Add</button>
+  </h3>
+  <div class="patient-list">
+    <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;">
+      <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="28" (click)="goToPatient(item)">
+        <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
+        <div class="card-content">
+          <mat-card-title>{{ item.fn }} {{ item.ln }}</mat-card-title>
+          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.00267 57.57043" style="margin-top: -35px;">
+            <title>heartbeat</title>
+            <path d="M282.5,245.5" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#000;stroke-miterlimit:10" />
+            <path d="M249.5,264.5c187-1,187,0,187,0h138l6-13,6,36,5-50,6,36,9-11h20" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#3d6783;stroke-width:2px;stroke-miterlimit:10" />
+          </svg>
+          <mat-card-content style="margin-top: -20px;">
+            <div class="card-info-container" fxLayout="column" fxLayoutGap="8px">
+              <div fxFlex ng-if="item.clinic">
+                <b>Clinic:</b> {{item.clinic}}
+              </div>
+              <div fxFlex ng-if="item.height">
+                <b>Height:</b> {{item.height}}
+              </div>
+              <div fxFlex ng-if="item.weight">
+                <b>Weight:</b> {{item.weight}}
+              </div>
+            </div>
+          </mat-card-content>
         </div>
-      </mat-card-content>
+      </mat-card>
     </div>
-  </mat-card>
+  </div>
 </div>
-<div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;" *ngIf="type === 'caretaker'">
-  <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="28" (click)="goToCaretaker(item)">
-    <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
-    <div class="card-content">
-      <mat-card-title>{{ item.fn }} {{ item.ln }}</mat-card-title>
-      <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.00267 57.57043" style="margin-top: -35px;">
-        <title>heartbeat</title>
-        <path d="M282.5,245.5" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#000;stroke-miterlimit:10" />
-        <path d="M249.5,264.5c187-1,187,0,187,0h138l6-13,6,36,5-50,6,36,9-11h20" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#3d6783;stroke-width:2px;stroke-miterlimit:10" />
-      </svg>
-      <mat-card-content style="margin-top: -20px;">
-        <div class="card-info-container" fxLayout="column" fxLayoutGap="8px">
-          <div fxFlex ng-if="item.clinic">
-            <b>Clinic:</b> {{item.clinic}}
-          </div>
-          <div fxFlex ng-if="item.height">
-            <b>Height:</b> {{item.height}}
-          </div>
-          <div fxFlex ng-if="item.weight">
-            <b>Weight:</b> {{item.weight}}
-          </div>
+<div class="patient-container" *ngIf="type === 'caretaker'">
+  <h3 class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <span fxFlex="95">Caretakers</span>
+    <button fxFlex="5" mat-raised-button color="primary" (click)="addUser('caretaker')" *ngIf="admin === true">Add</button>
+  </h3>
+  <div class="patient-list">
+    <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;" >
+      <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="28" (click)="goToCaretaker(item)">
+        <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
+        <div class="card-content">
+          <mat-card-title>{{ item.fn }} {{ item.ln }}</mat-card-title>
+          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.00267 57.57043" style="margin-top: -35px;">
+            <title>heartbeat</title>
+            <path d="M282.5,245.5" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#000;stroke-miterlimit:10" />
+            <path d="M249.5,264.5c187-1,187,0,187,0h138l6-13,6,36,5-50,6,36,9-11h20" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#3d6783;stroke-width:2px;stroke-miterlimit:10" />
+          </svg>
+          <mat-card-content style="margin-top: -20px;">
+            <div class="card-info-container" fxLayout="column" fxLayoutGap="8px">
+              <div fxFlex ng-if="item.clinic">
+                <b>Clinic:</b> {{item.clinic}}
+              </div>
+            </div>
+          </mat-card-content>
         </div>
-      </mat-card-content>
+      </mat-card>
     </div>
-  </mat-card>
+  </div>
 </div>
+
