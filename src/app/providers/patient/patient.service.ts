@@ -12,10 +12,12 @@ export class PatientService {
 
   constructor(private http: HttpClient) { }
 
-  getPatients(uid: string): Observable<Patient[]> {
-    return this.http.get<Patient[]>(
-      `/backend/patient/getPatient/${uid}`
-    );
+  getPatients(uid: string): Observable<any> {
+    return this.http.get(
+      `${environment.api}/patient/getPatients/${uid}`
+    ).pipe(map((body: {data: {patients: any}}) => {
+      return body.data.patients;
+    })); 
   }
 
   getPatient(id: string): Observable<Patient> {
