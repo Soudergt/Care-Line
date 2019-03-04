@@ -4,31 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { faNotesMedical, faInfo, faUtensils } from '@fortawesome/free-solid-svg-icons';
 import { faSmile, faMeh, faGrinBeam, faFrown, faTired } from '@fortawesome/free-regular-svg-icons';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Patient } from 'src/app/classes/patient';
 import { NoteService } from 'src/app/providers/note/note.service';
 import { Note } from 'src/app/classes/note';
-
-const PATIENT: Patient = {
-  id: 7,
-  fn: 'Duke',
-  mi: 'M',
-  ln: 'James',
-  clinic: 'Careline Clinic',
-  bday: 'May, 5, 1942',
-  gender: 'male',
-  bloodtype: 'O+',
-  height: "6'0''",
-  weight: '160 lbs',
-  img: '',
-  emergency: {
-    fn: 'Lauren',
-    ln: 'James',
-    address: '127 Oak Lane, Cincinnati, Ohio, 44221',
-    phone: '111-111-1111',
-    email: 'lauren.james@email.com'
-  }
-}
 
 @Component({
   selector: 'app-patient',
@@ -40,7 +18,7 @@ export class PatientComponent implements OnInit {
   newNote: Note;
   //Patient Object
   patient: Patient;
-  sub;
+  sub: any;
   id: string;
   //Icons
   faNotesMedical = faNotesMedical;
@@ -53,7 +31,7 @@ export class PatientComponent implements OnInit {
   faUtensils = faUtensils;
   
   //Note Values
-  showNewNote = false;
+  showNewNote: boolean;
   notes = [
     {
       title: 'Note 1',
@@ -81,7 +59,8 @@ export class PatientComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.patient = PATIENT;
+    this.showNewNote = false;
+
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
       this.getPatient(this.id);
@@ -91,7 +70,6 @@ export class PatientComponent implements OnInit {
   getPatient(id: string): void {
     this.patientService.getPatient(id).subscribe(patient => {
       this.patient = patient
-      console.log(this.patient);
     });
   }
 
