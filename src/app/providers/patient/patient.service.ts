@@ -20,10 +20,12 @@ export class PatientService {
     })); 
   }
 
-  getPatient(id: string): Observable<Patient> {
-    return this.http.get<Patient>(
-      `/backend/patient/getPatient/${id}`
-    );
+  getPatient(id: string): Observable<any> {
+    return this.http.get(
+      `${environment.api}/patient/${id}`
+    ).pipe(map((body: {data: {patient: any}}) => {
+      return body.data.patient;
+    })); 
   }
 
   addPatient(newPatient: Patient): Observable<Patient> {

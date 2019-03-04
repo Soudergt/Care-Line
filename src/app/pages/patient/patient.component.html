@@ -2,11 +2,11 @@
   <div class="patient-header" fxLayout="row wrap" [ngStyle.xs]="{'margin-top': '0px'}" [ngStyle.sm]="{'margin-top': '0px'}">
     <div class="patient-info-container" fxLayout="row" fxFlex="1 2 auto">
       <div class="photo-container" fxFlex="1 1 150px">
-        <div class="user-img drop-shadow" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
+        <div class="user-img drop-shadow" [ngStyle]="{'background-image': patient?.img}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
       </div>
       <div class="patient-info" fxFlex="1 1 auto">
-        <div class="patient-name">{{patient.fn}} {{patient.mi}}. {{patient.ln}}</div>
-        <a class="patient-clinic" [routerLink]="['/clinic/1']">{{patient.clinic}}</a>
+        <div class="patient-name">{{patient?.fn}} {{patient?.ln}}</div>
+        <a class="patient-clinic" [routerLink]="['/clinic/1']">{{patient?.clinic}}</a>
       </div>
     </div>
   </div>
@@ -32,23 +32,23 @@
                   <mat-list>
                     <mat-list-item>
                       <label class="info-label" for="bday">Birthday:</label>
-                      <span id="bday">{{patient.bday}}</span>
+                      <span id="bday">{{patient?.bday}}</span>
                     </mat-list-item>
                     <mat-list-item>
                       <label class="info-label" for="gender">Gender:</label>
-                      <span id="gender">{{patient.gender}}</span>
+                      <span id="gender">{{patient?.gender}}</span>
                     </mat-list-item>
                     <mat-list-item>
                       <label class="info-label" for="height">Height:</label>
-                      <span id="height">{{patient.height}}</span>
+                      <span id="height">{{patient?.height}}</span>
                     </mat-list-item>
                     <mat-list-item>
                       <label class="info-label" for="weight">Weight:</label>
-                      <span id="weight">{{patient.weight}}</span>
+                      <span id="weight">{{patient?.weight}}</span>
                     </mat-list-item>
                     <mat-list-item>
                       <label class="info-label" for="bloodType">Blood Type:</label>
-                      <span id="bloodType">{{patient.bloodtype}}</span>
+                      <span id="bloodType">{{patient?.bloodtype}}</span>
                     </mat-list-item>
                   </mat-list>
                 </div>
@@ -57,19 +57,19 @@
                   <mat-list>
                     <mat-list-item>
                       <label class="info-label" for="name">Name:</label>
-                      <span id="name">{{patient.emergency.fn}} {{patient.emergency.ln}}</span>
+                      <span id="name">{{patient?.emergency.fn}} {{patient?.emergency.ln}}</span>
                     </mat-list-item>
                     <mat-list-item>
                       <label class="info-label" for="address">Address:</label>
-                      <span id="address">{{patient.emergency.address}}</span>
+                      <span id="address">{{patient?.emergency.address}}</span>
                     </mat-list-item>
                     <mat-list-item>
                       <label class="info-label" for="phone">Phone:</label>
-                      <span id="phone">{{patient.emergency.phone}}</span>
+                      <span id="phone">{{patient?.emergency.phone}}</span>
                     </mat-list-item>
                     <mat-list-item>
                       <label class="info-label" for="email">Email:</label>
-                      <span id="email">{{patient.emergency.email}}</span>
+                      <span id="email">{{patient?.emergency.email}}</span>
                     </mat-list-item>
                   </mat-list>
                 </div>

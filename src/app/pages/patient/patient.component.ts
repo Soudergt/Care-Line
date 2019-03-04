@@ -72,17 +72,28 @@ export class PatientComponent implements OnInit {
     private patientService:PatientService,
     private noteService: NoteService,
     private formBuilder: FormBuilder
-    ) {
-      this.noteForm = this.formBuilder.group({
-        title: [''],
-        desc: [''],
-        mood: ['']
-      });
-    }
+  ) {
+    this.noteForm = this.formBuilder.group({
+      title: [''],
+      desc: [''],
+      mood: ['']
+    });
+  }
 
-  drop(event: CdkDragDrop<object[]>) {
-    moveItemInArray(this.notes, event.previousIndex, event.currentIndex);
+  ngOnInit() {
+    this.patient = PATIENT;
+    this.sub = this.activatedRoute.params.subscribe(params => {
+      this.id = params['id'];
+      this.getPatient(this.id);
+    });
   };
+
+  getPatient(id: string): void {
+    this.patientService.getPatient(id).subscribe(patient => {
+      this.patient = patient
+      console.log(this.patient);
+    });
+  }
 
   addNote() {
     this.showNewNote = true;
@@ -120,14 +131,6 @@ export class PatientComponent implements OnInit {
     this.notes.splice(index, 1);
     this.noteService.deleteNote(noteID).subscribe();
   }
-
-  ngOnInit() {
-    this.patient = PATIENT;
-    this.sub = this.activatedRoute.params.subscribe(params => {
-      this.id = params['id'];
-      this.patientService.getPatient(this.id).subscribe(patient => this.patient = patient);
-    });
-  };
 
   ngOnDestroy() {
     this.sub.unsubscribe();
