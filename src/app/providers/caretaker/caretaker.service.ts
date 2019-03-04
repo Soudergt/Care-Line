@@ -19,6 +19,14 @@ export class CaretakerService {
     })); 
   }
 
+  public getCaretaker(id: string): Observable<any> {
+    return this.http.get(
+      `${environment.api}/caretaker/${id}`
+    ).pipe(map((body: {data: {caretaker: any}}) => {
+      return body.data.caretaker;
+    })); 
+  }
+
   public addCaretaker(caretaker: any): Observable<any> {
     return this.http.post(`${environment.api}/caretaker/addCaretaker/`, caretaker);
   }
