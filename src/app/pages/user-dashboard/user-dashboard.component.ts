@@ -105,7 +105,9 @@ export class UserDashboardComponent implements OnInit {
 
   getUser(uid: string): void {
     this.userService.getUser(uid).subscribe(user => {
-      this.caretaker = user
+      this.caretaker = user;
+      console.log(user);
+      
     });
   }
 
