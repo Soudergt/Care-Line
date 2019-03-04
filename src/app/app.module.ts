@@ -46,6 +46,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { CaretakerComponent } from './pages/caretaker/caretaker.component';
 import { AddEventDialogComponent } from './components/add-event-dialog/add-event-dialog.component';
 import { LoginComponent } from './pages/login/login.component';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { LoginComponent } from './pages/login/login.component';
     ChatComponent,
     CaretakerComponent,
     AddEventDialogComponent,
-    LoginComponent
+    LoginComponent,
+    StarRatingComponent
   ],
   imports: [
     AppRoutingModule,
