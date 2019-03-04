@@ -69,7 +69,9 @@ export class PatientComponent implements OnInit {
 
   getPatient(id: string): void {
     this.patientService.getPatient(id).subscribe(patient => {
-      this.patient = patient
+      this.patient = patient;
+      console.log(this.patient);
+      
     });
   }
 
