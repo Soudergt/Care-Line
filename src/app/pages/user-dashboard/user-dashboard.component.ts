@@ -96,14 +96,14 @@ export class UserDashboardComponent implements OnInit {
       this.activeNoti = 'notifications';
       this.drawChart();
 
-      this.getUser('1');
+      this.getUser(1002);
       
     } catch (err) {
       console.log(err);
     }
   }
 
-  getUser(uid: string): void {
+  getUser(uid: number): void {
     this.userService.getUser(uid).subscribe(user => {
       this.caretaker = user;
       console.log(user);
