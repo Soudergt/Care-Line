@@ -86,8 +86,7 @@ export class UserDashboardComponent implements OnInit {
   max: 8;
 
   constructor(
-    private userService: UserService,
-    private messageService: MessageService
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -96,18 +95,17 @@ export class UserDashboardComponent implements OnInit {
       this.activeNoti = 'notifications';
       this.drawChart();
 
-      this.getUser(1002);
+      this.getUser('1002');
       
     } catch (err) {
       console.log(err);
     }
   }
 
-  getUser(uid: number): void {
+  getUser(uid: string): void {
     this.userService.getUser(uid).subscribe(user => {
       this.caretaker = user;
       console.log(user);
-      
     });
   }
 
