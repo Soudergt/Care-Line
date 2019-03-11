@@ -4,8 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
 import { faBell, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { Chart } from 'chart.js';
-import { Caretaker } from 'src/app/classes/caretaker';
-import { MessageService } from 'src/app/providers/message/message.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 export interface AppointmentElement {
   desc: string;
@@ -42,9 +41,10 @@ export class UserDashboardComponent implements OnInit {
   faBell = faBell;
   activeNoti: string;
   user: User;
+  newURL: string;
+  userPhoto;
   testUser;
   testUserData;
-  caretaker: Caretaker;
 
   chartOptions = {
     responsive: false,
@@ -86,7 +86,8 @@ export class UserDashboardComponent implements OnInit {
   max: 8;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -95,17 +96,18 @@ export class UserDashboardComponent implements OnInit {
       this.activeNoti = 'notifications';
       this.drawChart();
 
-      this.getUser('1002');
+      this.getUser(2);
       
     } catch (err) {
       console.log(err);
     }
   }
 
-  getUser(uid: string): void {
+  getUser(uid: number): void {
     this.userService.getUser(uid).subscribe(user => {
-      this.caretaker = user;
-      console.log(user);
+      this.user = user;
+      this.userPhoto = `url(/assets/images/people/${this.user.UserType}/${this.user.NameFirst.toLowerCase()}${this.user.NameLast.toLowerCase()}.jpg)`;
+      console.log(this.user);
     });
   }
 

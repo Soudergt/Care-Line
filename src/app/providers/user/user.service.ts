@@ -19,20 +19,12 @@ export class UserService {
     ); 
   }
 
-  public getUser(uid: string): Observable<any> {
+  public getUser(uid: number): Observable<User> {
     return this.http.get(
-      `${environment.api}/user/?uid=${uid}`
+      `${environment.api}/user/getUser/?uid=${uid}`
     ).pipe(map((body: {data: {user: any}}) => {
       return body.data.user;
     })); 
-  }
-
-  public getCaretaker(id: number): Observable<any> {
-    return this.http.get(
-      `${environment.api}/user/getCaretaker/?id=${id}`
-    ).pipe(map((body: {data: {caretaker: any}}) => {
-      return body.data.caretaker;
-    }));
   }
 
   public addUser(user: User): Observable<User> {    
