@@ -1,12 +1,12 @@
-import { PatientService } from './../../providers/patient/patient.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { faNotesMedical, faInfo, faUtensils } from '@fortawesome/free-solid-svg-icons';
 import { faSmile, faMeh, faGrinBeam, faFrown, faTired } from '@fortawesome/free-regular-svg-icons';
-import { Patient } from 'src/app/classes/patient';
 import { NoteService } from 'src/app/providers/note/note.service';
 import { Note } from 'src/app/classes/note';
+import { UserService } from 'src/app/providers/user/user.service';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-patient',
@@ -17,7 +17,7 @@ export class PatientComponent implements OnInit {
   public noteForm: FormGroup;
   newNote: Note;
   //Patient Object
-  patient: Patient;
+  patient: User;
   sub: any;
   id: string;
   //Icons
@@ -47,7 +47,7 @@ export class PatientComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute, 
-    private patientService:PatientService,
+    private userService: UserService,
     private noteService: NoteService,
     private formBuilder: FormBuilder
   ) {
@@ -63,15 +63,14 @@ export class PatientComponent implements OnInit {
 
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
-      this.getPatient(this.id);
+      this.getPatient(JSON.parse(this.id));
     });
   };
 
-  getPatient(id: string): void {
-    this.patientService.getPatient(id).subscribe(patient => {
+  getPatient(id: number): void {
+    this.userService.getUser(id).subscribe(patient => {
       this.patient = patient;
       console.log(this.patient);
-      
     });
   }
 

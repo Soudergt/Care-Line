@@ -5,8 +5,8 @@
         <div class="user-img drop-shadow" [ngStyle]="{'background-image': patient?.img}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
       </div>
       <div class="patient-info" fxFlex="1 1 auto">
-        <div class="patient-name">{{patient?.fn}} {{patient?.ln}}</div>
-        <a class="patient-clinic" [routerLink]="['/clinic/1']">{{patient?.clinic}}</a>
+        <div class="patient-name">{{patient?.NameFirst}} {{patient?.NameLast}}</div>
+        <!-- <a class="patient-clinic" [routerLink]="['/clinic/1']">{{patient?.clinic}}</a> -->
       </div>
     </div>
   </div>
@@ -32,9 +32,9 @@
                   <mat-list>
                     <mat-list-item>
                       <label class="info-label" for="bday">Birthday:</label>
-                      <span id="bday">{{patient?.bday}}</span>
+                      <span id="bday">{{patient?.DateOfBirth}}</span>
                     </mat-list-item>
-                    <mat-list-item>
+                    <!-- <mat-list-item>
                       <label class="info-label" for="gender">Gender:</label>
                       <span id="gender">{{patient?.gender}}</span>
                     </mat-list-item>
@@ -49,12 +49,12 @@
                     <mat-list-item>
                       <label class="info-label" for="bloodType">Blood Type:</label>
                       <span id="bloodType">{{patient?.bloodtype}}</span>
-                    </mat-list-item>
+                    </mat-list-item> -->
                   </mat-list>
                 </div>
                 <div fxFlex="1 1 auto">
                   <h3 class="section-header">Emergency Contact</h3>
-                  <mat-list>
+                  <!-- <mat-list>
                     <mat-list-item>
                       <label class="info-label" for="name">Name:</label>
                       <span id="name">{{patient?.emergency.fn}} {{patient?.emergency.ln}}</span>
@@ -71,7 +71,7 @@
                       <label class="info-label" for="email">Email:</label>
                       <span id="email">{{patient?.emergency.email}}</span>
                     </mat-list-item>
-                  </mat-list>
+                  </mat-list> -->
                 </div>
               </div>
             </div>
@@ -153,7 +153,7 @@
                 <mat-list>
                   <mat-list-item>
                     <label class="info-label" for="bday">Birthday:</label>
-                    <span id="bday">{{patient?.bday}}</span>
+                    <span id="bday">{{patient?.DateOfBirth}}</span>
                   </mat-list-item>
                 </mat-list>
               </div>
