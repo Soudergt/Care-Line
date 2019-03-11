@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Caretaker } from 'src/app/classes/caretaker';
-import { CaretakerService } from 'src/app/providers/caretaker/caretaker.service';
 import { FeedbackService } from 'src/app/providers/feedback/feedback.service';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
+import { UserService } from 'src/app/providers/user/user.service';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-caretaker',
@@ -13,7 +13,7 @@ import { faComment } from '@fortawesome/free-solid-svg-icons';
 })
 export class CaretakerComponent implements OnInit {
   public feedbackForm: FormGroup;
-  caretaker: Caretaker;
+  caretaker: User;
   newFeedback: any;
   faComment = faComment;
   showNewFeedback: boolean;
@@ -23,7 +23,7 @@ export class CaretakerComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private caretakerService: CaretakerService,
+    private userService: UserService,
     private feedbackService: FeedbackService,
     private formBuilder: FormBuilder
   ) {
@@ -40,12 +40,12 @@ export class CaretakerComponent implements OnInit {
 
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
-      this.getCaretaker(this.id);
+      this.getCaretaker(JSON.parse(this.id));
     });
   }
 
-  getCaretaker(id: string): void {
-    this.caretakerService.getCaretaker(id).subscribe(caretaker => {
+  getCaretaker(id: number): void {
+    this.userService.getUser(id).subscribe(caretaker => {
       this.caretaker = caretaker
     });
   }
