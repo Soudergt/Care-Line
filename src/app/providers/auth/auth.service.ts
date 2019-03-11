@@ -13,12 +13,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   public login(username: String, password: String): Observable<any> {
-    return this.http.post(`${environment.api}/backend/auth/login`, {username, password})
-      .pipe(map((body) => {
-        this.user.next(body);
-
-        return body;
-      }));
+    return this.http.post(
+      `${environment.api}/auth/login`, {username, password}
+    ).pipe(map((body) => {
+      return body;
+    })); 
   }
 
   public logout() {
