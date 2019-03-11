@@ -2,11 +2,10 @@ import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { Patient } from 'src/app/classes/patient';
 import { Caretaker } from './../../classes/caretaker';
-import { PatientService } from 'src/app/providers/patient/patient.service';
-import { CaretakerService } from 'src/app/providers/caretaker/caretaker.service';
 import { UserService } from 'src/app/providers/user/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserDialogComponent } from './../../components/add-user-dialog/add-user-dialog.component';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-card-list',
@@ -17,42 +16,42 @@ export class CardListComponent implements OnInit {
   @Input('type') type: string;
   @Input('admin') admin: boolean;
   activeList: any[];
-  patients: Patient[];
-  caretakers: Caretaker[];
+  patients: User[];
+  caretakers: User[];
 
   constructor(
     private router: Router,
     public dialog: MatDialog,
-    private patientService: PatientService,
-    private caretakerService: CaretakerService
+    private userService: UserService
   ) { }
 
   ngOnInit() {
     if (this.type === 'patient') {
-      this.getPatients('1');
+      this.getPatients();
     } else if (this.type === 'caretaker') {
-      this.getCaretakers('1');
+      this.getCaretakers();
     }
   }
 
-  getPatients(uid: string): void {
-    this.patientService.getPatients(uid).subscribe(patients => {
+  getPatients(): void {
+    this.userService.getPatients().subscribe(patients => {
       this.activeList = patients;
+      console.log(this.activeList);
     });
   }
 
-  getCaretakers(uid: string): void {
-    this.caretakerService.getCaretakers(uid).subscribe(caretakers => {
+  getCaretakers(): void {
+    this.userService.getCaretakers().subscribe(caretakers => {
       this.activeList = caretakers;
     });
   }
 
-  goToPatient(patient: Patient) {
-    this.router.navigateByUrl(`/patient/${patient.id}`);
+  goToPatient(patient: User) {
+    this.router.navigateByUrl(`/patient/${patient.UserID}`);
   }
 
-  goToCaretaker(caretaker: Caretaker) {
-    this.router.navigateByUrl(`/caretaker/${caretaker.id}`);
+  goToCaretaker(caretaker: User) {
+    this.router.navigateByUrl(`/caretaker/${caretaker.UserID}`);
   }
 
   addUser(userType: string): void {
@@ -65,11 +64,11 @@ export class CardListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (userType === 'patient') {
-        this.patientService.addPatient(result).subscribe(newPatient => {
+        this.userService.addUser(result).subscribe(newPatient => {
           this.patients.push(newPatient);
         });
       } else {
-        this.caretakerService.addCaretaker(result).subscribe(newCaretaker => {
+        this.userService.addUser(result).subscribe(newCaretaker => {
           this.caretakers.push(newCaretaker);
         });
       }       
@@ -78,10 +77,6 @@ export class CardListComponent implements OnInit {
 
   editPatient(selectedPatient: Patient, index: number) {
     
-  }
-
-  deletePatient(patientID: number, index: number) {
-    this.patientService.deletePatient(patientID).subscribe();
   }
 
   editCaretaker(selectedCaretaker: Caretaker, index: number) {

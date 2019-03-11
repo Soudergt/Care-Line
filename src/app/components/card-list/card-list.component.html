@@ -8,7 +8,7 @@
       <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="28" (click)="goToPatient(item)">
         <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
         <div class="card-content">
-          <mat-card-title>{{ item.fn }} {{ item.ln }}</mat-card-title>
+          <mat-card-title>{{ item?.NameFirst }} {{ item?.NameLast }}</mat-card-title>
           <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.00267 57.57043" style="margin-top: -35px;">
             <title>heartbeat</title>
             <path d="M282.5,245.5" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#000;stroke-miterlimit:10" />
@@ -16,15 +16,15 @@
           </svg>
           <mat-card-content style="margin-top: -20px;">
             <div class="card-info-container" fxLayout="column" fxLayoutGap="8px">
-              <div fxFlex ng-if="item.clinic">
+              <!-- <div fxFlex ng-if="item.clinic">
                 <b>Clinic:</b> {{item.clinic}}
-              </div>
-              <div fxFlex ng-if="item.height">
+              </div> -->
+              <!-- <div fxFlex ng-if="item.height">
                 <b>Height:</b> {{item.height}}
               </div>
               <div fxFlex ng-if="item.weight">
                 <b>Weight:</b> {{item.weight}}
-              </div>
+              </div> -->
             </div>
           </mat-card-content>
         </div>
@@ -42,7 +42,7 @@
       <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="28" (click)="goToCaretaker(item)">
         <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
         <div class="card-content">
-          <mat-card-title>{{ item.fn }} {{ item.ln }}</mat-card-title>
+          <mat-card-title>{{ item?.NameFirst }} {{ item?.NameLast }}</mat-card-title>
           <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.00267 57.57043" style="margin-top: -35px;">
             <title>heartbeat</title>
             <path d="M282.5,245.5" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#000;stroke-miterlimit:10" />
@@ -50,9 +50,9 @@
           </svg>
           <mat-card-content style="margin-top: -20px;">
             <div class="card-info-container" fxLayout="column" fxLayoutGap="8px">
-              <div fxFlex ng-if="item.clinic">
+              <!-- <div fxFlex ng-if="item.clinic">
                 <b>Clinic:</b> {{item.clinic}}
-              </div>
+              </div> -->
             </div>
           </mat-card-content>
         </div>
