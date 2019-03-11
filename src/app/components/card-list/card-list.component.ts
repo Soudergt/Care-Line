@@ -36,7 +36,6 @@ export class CardListComponent implements OnInit {
   getPatients(): void {
     this.userService.getPatients().subscribe(patients => {
       this.activeList = patients;
-      console.log(this.activeList);
     });
   }
 
