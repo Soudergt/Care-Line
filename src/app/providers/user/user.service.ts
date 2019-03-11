@@ -27,15 +27,31 @@ export class UserService {
     })); 
   }
 
+  public getPatients(): Observable<any> {
+    return this.http.get(
+      `${environment.api}/user/getPatients`
+    ).pipe(map((body: {data: {patients: any}}) => {
+      return body.data.patients;
+    })); 
+  }
+
+  public getCaretakers(): Observable<any> {
+    return this.http.get(
+      `${environment.api}/user/getCaretakers`
+    ).pipe(map((body: {data: {caretakers: any}}) => {
+      return body.data.caretakers;
+    })); 
+  }
+
   public addUser(user: User): Observable<User> {    
-    return this.http.post<User>(`${environment.api}/user/addUser/`, user);
+    return this.http.post<User>(`${environment.api}/user/add`, user);
   }
 
   public editUser(user: User) {
-    return this.http.put(`${environment.api}/user/editUser/`, user);
+    return this.http.put(`${environment.api}/user/edit`, user);
   }
 
   public deleteUser(uid: number) {
-    return this.http.delete(`${environment.api}/user/deleteUser/${uid}`);
+    return this.http.delete(`${environment.api}/user/delete/${uid}`);
   }
 }
