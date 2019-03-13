@@ -13,9 +13,9 @@
   <div class="content-pad">
     <app-schedule></app-schedule>
   </div>
-  <div class="patient-content" fxLayout="column wrap">
+  <div class="patient-content" fxLayout="row wrap" fxLayoutAlign="space-between">
     <div fxflex>
-      <div layout="row wrap">
+      <div fxLayout="column">
         <div class="info-section card-shadow" fxFlex [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
           <div fxLayout="column">
             <div class="header" fxLayout="row" fxFlex="1 1 auto">
@@ -77,6 +77,69 @@
             </div>
           </div>
         </div>
+        <div class="info-section card-shadow" fxFlex="50" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
+          <div fxLayout="column">
+            <div class="header" fxLayout="row" fxFlex="1 1 auto">
+              <div class="module-logo" fxFlex="0 0 75px">
+                <fa-icon [icon]="faUtensils" size="3x" [inverse]="true"></fa-icon>
+              </div>
+              <div class="header-text" fxFlex="1 1 auto">Diet Information</div>
+            </div>
+            <mat-divider style="width: 100%"></mat-divider>
+            <div class="content" fxFlex="1 1 auto">
+              <div fxLayout="column wrap">
+                <mat-list>
+                  <mat-list-item>
+                    <label class="info-label" for="bday">Birthday:</label>
+                    <span id="bday">{{patient?.DateOfBirth}}</span>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info-section card-shadow" fxFlex="50" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
+          <div fxLayout="column">
+            <div class="header" fxLayout="row" fxFlex="1 1 auto">
+              <div class="module-logo" fxFlex="0 0 75px">
+                <fa-icon [icon]="faComments" size="3x" [inverse]="true"></fa-icon>
+              </div>
+              <div class="header-text" fxFlex="1 1 auto">Messages</div>
+            </div>
+            <mat-divider style="width: 100%"></mat-divider>
+            <div class="content" fxFlex="1 1 300px">
+              <mat-action-list *ngIf="selectedContact == null">
+                <button mat-list-item>
+                  <img matListAvatar src="/assets/images/people/patients/frank.jpg" alt="contact image">
+                  <h4 class="contact-name" mat-line>Frank</h4>
+                  <p mat-line></p>
+                </button>
+                <button mat-list-item>
+                  <img matListAvatar src="/assets/images/people/patients/duke.jpg" alt="contact image">
+                  <h4 class="contact-name" mat-line>Duke</h4>
+                  <p mat-line></p>
+                </button>
+                <button mat-list-item>
+                  <img matListAvatar src="/assets/images/people/patients/cathy.jpg" alt="contact image">
+                  <h4 class="contact-name" mat-line>Cathy</h4>
+                  <p mat-line></p>
+                </button>
+              </mat-action-list>
+              <div class="chat-window">
+                <div class="message-container">
+                  <img class="user-img" src="" alt="">
+                  <div class="message">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex>
+      <div fxLayout="column">
         <div class="note-section" fxFlex [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
           <div fxLayout="column">
             <div class="header" fxLayout="row" fxFlex="1 1 auto">
@@ -131,31 +194,6 @@
                   <mat-divider class="divider"></mat-divider>
                   <p class="body">{{note.desc}}</p>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div fxFlex>
-      <div fxLayout="row wrap">
-        <div class="info-section card-shadow" fxFlex="50" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
-          <div fxLayout="column">
-            <div class="header" fxLayout="row" fxFlex="1 1 auto">
-              <div class="module-logo" fxFlex="0 0 75px">
-                <fa-icon [icon]="faUtensils" size="3x" [inverse]="true"></fa-icon>
-              </div>
-              <div class="header-text" fxFlex="1 1 auto">Diet Information</div>
-            </div>
-            <mat-divider style="width: 100%"></mat-divider>
-            <div class="content" fxFlex="1 1 auto">
-              <div fxLayout="column wrap">
-                <mat-list>
-                  <mat-list-item>
-                    <label class="info-label" for="bday">Birthday:</label>
-                    <span id="bday">{{patient?.DateOfBirth}}</span>
-                  </mat-list-item>
-                </mat-list>
               </div>
             </div>
           </div>
