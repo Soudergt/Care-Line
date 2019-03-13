@@ -5,8 +5,9 @@
         <div class="clinic-img drop-shadow" [ngStyle]="{'background-image': clinic?.img}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
       </div>
       <div class="clinic-info">
-        <div class="clinic-name">{{clinic?.name}}</div>
-        <div class="clinic-address">{{clinic?.address}}</div>
+        <div class="clinic-name">{{clinic?.ClinicLongName}}</div>
+        <div class="clinic-sub-info">{{clinic?.ClinicAddress}}</div>
+        <div class="clinic-sub-info">{{clinic?.ClinicPhone}}</div>
       </div>
     </div>
   </div>
