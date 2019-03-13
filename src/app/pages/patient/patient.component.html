@@ -105,32 +105,39 @@
                 <fa-icon [icon]="faComments" size="3x" [inverse]="true"></fa-icon>
               </div>
               <div class="header-text" fxFlex="1 1 auto">Messages</div>
+              <div class="contact-header-text">{{selectedContact?.name}}</div>
             </div>
             <mat-divider style="width: 100%"></mat-divider>
             <div class="content" fxFlex="1 1 300px">
               <mat-action-list *ngIf="selectedContact == null">
-                <button mat-list-item>
+                <button mat-list-item (click)="selectContact()">
                   <img matListAvatar src="/assets/images/people/patients/frank.jpg" alt="contact image">
                   <h4 class="contact-name" mat-line>Frank</h4>
                   <p mat-line></p>
                 </button>
-                <button mat-list-item>
+                <button mat-list-item (click)="selectContact()">
                   <img matListAvatar src="/assets/images/people/patients/duke.jpg" alt="contact image">
                   <h4 class="contact-name" mat-line>Duke</h4>
                   <p mat-line></p>
                 </button>
-                <button mat-list-item>
+                <button mat-list-item (click)="selectContact()">
                   <img matListAvatar src="/assets/images/people/patients/cathy.jpg" alt="contact image">
                   <h4 class="contact-name" mat-line>Cathy</h4>
                   <p mat-line></p>
                 </button>
               </mat-action-list>
-              <div class="chat-window">
-                <div class="message-container">
-                  <img class="user-img" src="" alt="">
-                  <div class="message">
-
+              <div class="chat-window" *ngIf="selectedContact != null">
+                <div class="message-container contact">
+                  <img class="message-img" src="/assets/images/people/patients/frank.jpg" alt="contact image">
+                  <div class="message contact">
+                    test
                   </div>
+                </div>
+                <div class="message-container user">
+                  <div class="message user">
+                    test
+                  </div>
+                  <img class="message-img" src="/assets/images/people/patients/frank.jpg" alt="contact image">
                 </div>
               </div>
             </div>

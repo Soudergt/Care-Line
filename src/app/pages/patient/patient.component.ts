@@ -62,7 +62,10 @@ export class PatientComponent implements OnInit {
 
   ngOnInit() {
     this.showNewNote = false;
-    this.selectedContact = null;
+    // this.selectedContact = null;
+    this.selectedContact = {
+      name: 'Frank'
+    };
 
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
@@ -75,16 +78,22 @@ export class PatientComponent implements OnInit {
       this.patient = patient;
       console.log(this.patient);
     });
-  }
+  };
+
+  selectContact(contact: any) {
+    this.selectedContact = {
+      name: 'Frank'
+    };
+  };
 
   addNote() {
     this.showNewNote = true;
-  }
+  };
 
   cancelAddNote() {
     this.showNewNote = false;
     this.noteForm.reset();
-  }
+  };
 
   createNote() {
     this.showNewNote = false;
@@ -112,7 +121,7 @@ export class PatientComponent implements OnInit {
   deleteNote(noteID: number, index: number) {
     this.notes.splice(index, 1);
     this.noteService.deleteNote(noteID).subscribe();
-  }
+  };
 
   ngOnDestroy() {
     this.sub.unsubscribe();
