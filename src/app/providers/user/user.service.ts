@@ -22,7 +22,7 @@ export class UserService {
   public getUser(uid: number): Observable<User> {
     return this.http.get(
       `${environment.api}/user/getUser/?uid=${uid}`
-    ).pipe(map((body: {data: {user: any}}) => {
+    ).pipe(map((body: {data: {user: User}}) => {
       return body.data.user;
     })); 
   }
@@ -30,7 +30,7 @@ export class UserService {
   public getPatients(): Observable<any> {
     return this.http.get(
       `${environment.api}/user/getPatients`
-    ).pipe(map((body: {data: {patients: any}}) => {
+    ).pipe(map((body: {data: {patients: User[]}}) => {
       return body.data.patients;
     })); 
   }
@@ -38,7 +38,7 @@ export class UserService {
   public getCaretakers(): Observable<any> {
     return this.http.get(
       `${environment.api}/user/getCaretakers`
-    ).pipe(map((body: {data: {caretakers: any}}) => {
+    ).pipe(map((body: {data: {caretakers: User[]}}) => {
       return body.data.caretakers;
     })); 
   }
