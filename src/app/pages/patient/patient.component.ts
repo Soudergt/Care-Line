@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { faNotesMedical, faInfo, faUtensils, faComments } from '@fortawesome/free-solid-svg-icons';
+import { faNotesMedical, faInfo, faUtensils, faComments, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { faSmile, faMeh, faGrinBeam, faFrown, faTired } from '@fortawesome/free-regular-svg-icons';
 import { NoteService } from 'src/app/providers/note/note.service';
 import { Note } from 'src/app/classes/note';
@@ -30,6 +30,7 @@ export class PatientComponent implements OnInit {
   faTired = faTired;
   faUtensils = faUtensils;
   faComments = faComments;
+  faArrowCircleRight = faArrowCircleRight;
   selectedContact;
   
   //Note Values

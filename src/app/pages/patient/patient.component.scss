@@ -305,50 +305,85 @@
   font-size: 25px;
   font-weight: 500;
   color: #000;
-  margin: 6px 0px; 
+  margin: 6px 0px;
+}
+
+.message-section {
+  background-color: #FFF;
+  border: 2px solid #61da97;
+  border-radius: 3px;
+  padding: 15px;
+  margin: 15px 30px 25px 30px;
+  height: auto;
+
+  .header {
+    padding: 6px 12px 6px 12px;
+    height: 50px;
+
+    .header-text {
+      font-size: 28px;
+      margin-left: -40px;
+      color: #000;
+    }
+  }
+
+  .content {
+    margin: 15px;
+  }
 }
 
 .chat-window {
+  .messages {
+    min-height: 300px;
 
-  .message-container {
-    margin-top: 12px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    .message-img {
-      height: 40px;
-      width: 40px;
-      object-fit: cover;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .message {
-      margin: 0px 12px;
-      padding: 6px 12px;
-      border-radius: 24px;
-      min-height: 24px;
-      color: #FFF;
+    .message-container {
+      margin-top: 12px;
       display: flex;
+      flex-direction: row;
       align-items: center;
-      min-width: 50px;
+
+      .message-img {
+        height: 40px;
+        width: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .message {
+        margin: 0px 12px;
+        padding: 6px 12px;
+        border-radius: 24px;
+        min-height: 24px;
+        color: #FFF;
+        display: flex;
+        align-items: center;
+        min-width: 50px;
+      }
+
+      .message.user {
+        border: 1px solid #61da97;
+        background-color: #61da97;
+      }
+
+      .message.contact {
+        background-color: #04376a;
+        border: 1px solid #04376a;
+      }
     }
 
-    .message.user {
-      border: 1px solid #61da97;
-      background-color: #61da97;
+    .message-container.contact {
+      justify-content: flex-start;
     }
 
-    .message.contact {
-      background-color: #04376a;
-      border: 1px solid #04376a;
+    .message-container.user {
+      justify-content: flex-end;
     }
   }
-  .message-container.contact {
-    justify-content: flex-start;
-  }
-  .message-container.user {
-    justify-content: flex-end;
+
+  .message-input {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
   }
 }
