@@ -24,10 +24,10 @@ export class ClinicComponent implements OnInit {
   ngOnInit() {
     this.lat = 51.673858;
     this.lng = 7.815982;
-    this.getClinic('1');
+    this.getClinic(1);
   }
 
-  getClinic(id: string): void {
+  getClinic(id: number): void {
     this.clinicService.getClinic(id).subscribe(clinic => {
       this.clinic = clinic;
     });

@@ -1,6 +1,11 @@
 export class Clinic {
-  id: number;
-  name: string;
-  address: string;
-  img: string;
+  ClinicID: number;
+  ClinicLongName: string;
+  ClinicShortName: string;
+  ClinicAddress: string;
+  ClinicPhone: number;
+  ClinicEmail: string;
+  ClinicDescription: string;
+  ClinicType: string;
+  ClinicPhoto: string;
 }
