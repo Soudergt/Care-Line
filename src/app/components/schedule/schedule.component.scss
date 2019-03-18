@@ -36,6 +36,11 @@
     }
   }
 
+  .header-cell:hover {
+    cursor: pointer; 
+    border: 1px solid #04376a;
+  }
+
   .header-cell.active {
     background-color: #04376a;
     border-color: #04376a;

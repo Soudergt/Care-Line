@@ -15,6 +15,7 @@ import { User } from 'src/app/classes/user';
 })
 export class PatientComponent implements OnInit {
   public noteForm: FormGroup;
+  activeDay: Date;
   newNote: Note;
   //Patient Object
   patient: User;
@@ -67,6 +68,8 @@ export class PatientComponent implements OnInit {
     this.selectedContact = {
       name: 'Frank'
     };
+    
+    this.activeDay = new Date();
 
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];

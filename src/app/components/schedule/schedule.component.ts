@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
@@ -12,13 +12,14 @@ import { ScheduleEvent } from 'src/app/classes/scheduleEvent';
   styleUrls: ['./schedule.component.scss']
 })
 export class ScheduleComponent implements OnInit {
+  @Input('activeDay') activeDay: Date;
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
   moment = moment;
   today: Date;
   firstDay: Date;
   lastDay: Date;
-  activeDay: number;
+  activeDayNum: number;
   week: Date[];
   newWeek: Date[];
   events: ScheduleEvent[];
@@ -29,8 +30,7 @@ export class ScheduleComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.today = new Date();
-    this.activeDay = this.today.getDay();
+    this.activeDayNum = this.activeDay.getDay();
     this.firstDay = moment().startOf('week').toDate();
     this.week = [];
     this.week.push(this.firstDay);
@@ -52,6 +52,11 @@ export class ScheduleComponent implements OnInit {
     });
     this.week = this.newWeek;
   }
+  
+  getDay(day: any) {
+    this.activeDay = day;
+    this.activeDayNum = this.activeDay.getDay();
+  }
 
   addEvent() {
     const dialogRef = this.dialog.open(AddEventDialogComponent, {
@@ -59,7 +64,9 @@ export class ScheduleComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.scheduleService.addEvent(result).subscribe(newEvent => this.events.push(newEvent));
+      if (result) {
+        this.scheduleService.addEvent(result).subscribe(newEvent => this.events.push(newEvent));
+      }
     });
   };
 

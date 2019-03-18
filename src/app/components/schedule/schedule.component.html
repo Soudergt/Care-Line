@@ -11,7 +11,7 @@
     </div>
     <div fxFlex class="schedule-container card-shadow">
       <div class="schedule-header" fxLayout="row">
-        <div class="header-cell" [ngClass]="{'active': activeDay === i}" fxFlex fxLayout="column" fxLayoutAlign="center center" *ngFor="let day of week; let i = index">
+        <div class="header-cell" role="button" [ngClass]="{'active': activeDayNum === i}" fxFlex fxLayout="column" fxLayoutAlign="center center" *ngFor="let day of week; let i = index" (click)="getDay(day)">
           <div fxFlex class="main">{{day | date: 'EEEE'}}</div>
           <div fxFlex class="sub" style="font-size: 14px;">{{day | date: 'mediumDate'}}</div>
         </div>
