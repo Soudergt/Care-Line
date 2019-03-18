@@ -5,7 +5,8 @@
   [ngStyle.xs]="{'height': '75px'}" [ngStyle.sm]="{'height': '75px'}">
   </a>
   <nav class="nav-link-container" fxShow fxHide.xs>
-    <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+    <a class="nav-link" [routerLink]="['/dashboard']" *ngIf="isLoggedIn">Dashboard</a>
+    <button mat-raised-button color="primary" (click)="logout()" *ngIf="isLoggedIn">Logout</button>    
   </nav>
   <div class="main-nav-menu" [ngStyle.xs]="{'top': '20px'}">
     <button class="nav-menu-btn" mat-icon-button [matMenuTriggerFor]="menu" fxHide fxShow.xs>
