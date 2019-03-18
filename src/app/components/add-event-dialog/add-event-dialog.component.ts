@@ -38,6 +38,7 @@ export class AddEventDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
