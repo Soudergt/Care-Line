@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { AddEventDialogComponent } from '../add-event-dialog/add-event-dialog.component';
-import { ScheduleEvent } from 'src/app/classes/scheduleEvent';
 import { EventService } from 'src/app/providers/event/event.service';
+import { Event } from 'src/app/classes/event';
 
 @Component({
   selector: 'app-schedule',
@@ -13,8 +13,12 @@ import { EventService } from 'src/app/providers/event/event.service';
 })
 export class ScheduleComponent implements OnInit {
   @Input('activeDay') activeDay: Date;
+  @Input('patientID') patientID: number;
+  @Output() newDay = new EventEmitter<Date>();
+  //Icons
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
+
   moment = moment;
   today: Date;
   firstDay: Date;
@@ -22,7 +26,7 @@ export class ScheduleComponent implements OnInit {
   activeDayNum: number;
   week: Date[];
   newWeek: Date[];
-  events: ScheduleEvent[];
+  events: Event[];
 
   constructor(
     public dialog: MatDialog,
@@ -56,10 +60,15 @@ export class ScheduleComponent implements OnInit {
   getDay(day: any): void {
     this.activeDay = day;
     this.activeDayNum = this.activeDay.getDay();
+    this.newDay.emit(this.activeDay);
   }
 
-  getEventsForWeek(firstDay: Date):void {
-
+  getEventsForWeek(firstDay: string):void {
+    let pid = JSON.stringify(this.patientID);
+    this.eventService.getEventsByWeek(pid, firstDay).subscribe(events => {
+      this.events = events;
+      console.log(this.events);
+    });
   }
 
   addEvent() {
@@ -74,14 +83,8 @@ export class ScheduleComponent implements OnInit {
     });
   };
 
-  editEvent(selectedEvent: ScheduleEvent, index: number) {
-    this.eventService.editEvent(selectedEvent)
-      .subscribe(updatedEvent => this.events[index] = {
-        name: updatedEvent['name'],
-        desc: updatedEvent['desc'],
-        date: updatedEvent['date'],
-        time: updatedEvent['time']
-      });
+  editEvent(selectedEvent: Event, index: number) {
+    
   };
 
   deleteEvent(eventID: number, index: number) {
