@@ -3,8 +3,8 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { AddEventDialogComponent } from '../add-event-dialog/add-event-dialog.component';
-import { ScheduleService } from 'src/app/providers/schedule/schedule.service';
 import { ScheduleEvent } from 'src/app/classes/scheduleEvent';
+import { EventService } from 'src/app/providers/event/event.service';
 
 @Component({
   selector: 'app-schedule',
@@ -26,7 +26,7 @@ export class ScheduleComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private scheduleService: ScheduleService
+    private eventService: EventService
   ) { }
 
   ngOnInit() {
@@ -53,9 +53,13 @@ export class ScheduleComponent implements OnInit {
     this.week = this.newWeek;
   }
   
-  getDay(day: any) {
+  getDay(day: any): void {
     this.activeDay = day;
     this.activeDayNum = this.activeDay.getDay();
+  }
+
+  getEventsForWeek(firstDay: Date):void {
+
   }
 
   addEvent() {
@@ -65,13 +69,13 @@ export class ScheduleComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.scheduleService.addEvent(result).subscribe(newEvent => this.events.push(newEvent));
+        this.eventService.addEvent(result).subscribe(newEvent => this.events.push(newEvent));
       }
     });
   };
 
   editEvent(selectedEvent: ScheduleEvent, index: number) {
-    this.scheduleService.editEvent(selectedEvent)
+    this.eventService.editEvent(selectedEvent)
       .subscribe(updatedEvent => this.events[index] = {
         name: updatedEvent['name'],
         desc: updatedEvent['desc'],
@@ -81,7 +85,7 @@ export class ScheduleComponent implements OnInit {
   };
 
   deleteEvent(eventID: number, index: number) {
-    this.scheduleService.deleteEvent(eventID).subscribe();
+    this.eventService.deleteEvent(eventID).subscribe();
   };
 
 }

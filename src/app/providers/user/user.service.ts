@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/classes/user';
-import { Caretaker } from 'src/app/classes/caretaker';
 
 @Injectable({
   providedIn: 'root'
