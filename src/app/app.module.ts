@@ -42,7 +42,6 @@ import { HipaadialogComponent } from './components/hipaadialog/hipaadialog.compo
 import { ClinicComponent } from './pages/clinic/clinic.component';
 import { AddUserDialogComponent } from './components/add-user-dialog/add-user-dialog.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
-import { ChatComponent } from './components/chat/chat.component';
 import { CaretakerComponent } from './pages/caretaker/caretaker.component';
 import { AddEventDialogComponent } from './components/add-event-dialog/add-event-dialog.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -62,7 +61,6 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
     ClinicComponent,
     AddUserDialogComponent,
     ScheduleComponent,
-    ChatComponent,
     CaretakerComponent,
     AddEventDialogComponent,
     LoginComponent,
