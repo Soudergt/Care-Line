@@ -15,12 +15,17 @@ export class AuthService {
   public login(username: String, password: String): Observable<any> {
     return this.http.post(
       `${environment.api}/auth/login`, {username, password}
-    ).pipe(map((body) => {
-      return body;
+    ).pipe(map((body: {data: {user: any}}) => {
+      if (body.data.user) {
+        body.data.user.authdata = window.btoa(username + ':' + password);
+        localStorage.setItem('currentUser', JSON.stringify(body.data.user));
+      }
+      return body.data.user;
     })); 
   }
 
   public logout() {
+    localStorage.removeItem('currentUser');
     return this.http.post(`${environment.api}/backend/auth/logout`, {});
   } 
 }

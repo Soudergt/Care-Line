@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     BAD_REQUEST: 3
   };
   public status: BehaviorSubject<number>;
+  error: string;
 
   constructor(
     private authService: AuthService,
@@ -42,14 +43,11 @@ export class LoginComponent implements OnInit {
 
     this.status.next(this.STATUSES.LOGGING_IN);
 
-    this.authService.login(
-      this.loginForm.controls.username.value,
-      this.loginForm.controls.password.value
-    ).subscribe({
-      error: () => {
-        console.log('error');
+    this.authService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value).subscribe({
+      error: (err) => {
+        this.error = err.error.message;
       },
-      next: () => {
+      next: (user) => { 
         this.router.navigate(['dashboard']);
       }
     });
