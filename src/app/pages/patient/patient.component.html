@@ -108,7 +108,7 @@
             </div>
             <mat-divider style="width: 100%"></mat-divider>
             <div class="content" fxFlex>
-              <mat-action-list *ngIf="selectedContact == null">
+              <mat-action-list style="padding-top: 0px;" *ngIf="selectedContact == null">
                 <button mat-list-item (click)="selectContact()">
                   <img matListAvatar src="/assets/images/people/patients/frank.jpg" alt="contact image">
                   <h4 class="contact-name" mat-line>Frank</h4>
