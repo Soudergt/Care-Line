@@ -9,7 +9,7 @@ import { UserService } from 'src/app/providers/user/user.service';
 import { User } from 'src/app/classes/user';
 import { Status } from 'src/app/classes/status';
 
-import { faNotesMedical, faInfo, faUtensils, faComments, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { faNotesMedical, faInfo, faUtensils, faComments, faArrowCircleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faSmile, faMeh, faGrinBeam, faFrown, faTired } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
@@ -38,6 +38,7 @@ export class PatientComponent implements OnInit {
   faUtensils = faUtensils;
   faComments = faComments;
   faArrowCircleRight = faArrowCircleRight;
+  faAngleLeft = faAngleLeft;
   
   //Note Values
   showNewNote: boolean;
@@ -69,10 +70,8 @@ export class PatientComponent implements OnInit {
 
   ngOnInit() {
     this.showNewNote = false;
-    // this.selectedContact = null;
-    this.selectedContact = {
-      name: 'Frank'
-    };
+    this.selectedContact = null;
+    // this.selectedContact = { name: 'Frank'};
     
     this.activeDay = new Date();
 

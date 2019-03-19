@@ -292,6 +292,10 @@
   }
 }
 
+button.mat-icon-button.back-btn {
+  color: #04376a;
+}
+
 .content-pad {
   padding: 15px;
   margin: 30px 0px;
@@ -303,9 +307,10 @@
 
 .contact-header-text {
   font-size: 25px;
+  align-self: flex-end;
   font-weight: 500;
   color: #000;
-  margin: 6px 0px;
+  margin-bottom: 6px;
 }
 
 .message-section {
@@ -314,6 +319,7 @@
   border-radius: 3px;
   padding: 15px;
   margin: 15px 30px 25px 30px;
+  max-width: 650px;
   height: auto;
 
   .header {
@@ -332,7 +338,13 @@
   }
 }
 
+.chat-header {
+  margin-top: 6px;
+}
+
 .chat-window {
+  margin-top: -15px;
+
   .messages {
     min-height: 300px;
 
