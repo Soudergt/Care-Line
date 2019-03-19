@@ -25,6 +25,7 @@ export class TopbarComponent implements OnInit {
   }
 
   logout() {
+    this.isLoggedIn = false;
     this.authService.logout().subscribe();
     this.router.navigate(['/']);
   }
