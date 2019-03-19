@@ -8,7 +8,23 @@
       <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="28" (click)="goToPatient(item)">
         <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
         <div class="card-content">
-          <mat-card-title>{{ item?.NameFirst }} {{ item?.NameLast }}</mat-card-title>
+          <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+            <span fxFlex (click)="goToCaretaker(item)">{{ item?.NameFirst }} {{ item?.NameLast }}</span>
+            <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: -20px;">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item (click)="editUser(item)">
+                <span>Edit Patient</span>
+              </button>
+              <button mat-menu-item (click)="deleteUser(item.UserID)">
+                <span>Delete Patient</span>
+              </button>
+              <button mat-menu-item (click)="goToPatient(item)">
+                <span>View Patient</span>
+              </button>
+            </mat-menu>
+          </mat-card-title>
           <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.00267 57.57043" style="margin-top: -35px;">
             <title>heartbeat</title>
             <path d="M282.5,245.5" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#000;stroke-miterlimit:10" />
@@ -17,14 +33,8 @@
           <mat-card-content style="margin-top: -20px;">
             <div class="card-info-container" fxLayout="column" fxLayoutGap="8px">
               <!-- <div fxFlex ng-if="item.clinic">
-                <b>Clinic:</b> {{item.clinic}}
-              </div> -->
-              <!-- <div fxFlex ng-if="item.height">
-                <b>Height:</b> {{item.height}}
-              </div>
-              <div fxFlex ng-if="item.weight">
-                <b>Weight:</b> {{item.weight}}
-              </div> -->
+                  <b>Clinic:</b> {{item.clinic}}
+                </div> -->
             </div>
           </mat-card-content>
         </div>
@@ -38,11 +48,27 @@
     <button fxFlex="5" mat-raised-button color="primary" (click)="addUser('caretaker')" *ngIf="admin === true">Add</button>
   </h3>
   <div class="patient-list">
-    <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;" >
-      <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="28" (click)="goToCaretaker(item)">
+    <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;">
+      <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="28">
         <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
         <div class="card-content">
-          <mat-card-title>{{ item?.NameFirst }} {{ item?.NameLast }}</mat-card-title>
+          <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+            <span fxFlex (click)="goToCaretaker(item)">{{ item?.NameFirst }} {{ item?.NameLast }}</span>
+            <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: -20px;">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item (click)="editUser(item)">
+                <span>Edit Caretaker</span>
+              </button>
+              <button mat-menu-item (click)="deleteUser(item.UserID)">
+                <span>Delete Caretaker</span>
+              </button>
+              <button mat-menu-item (click)="goToCaretaker(item)">
+                <span>View Caretaker</span>
+              </button>
+            </mat-menu>
+          </mat-card-title>
           <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.00267 57.57043" style="margin-top: -35px;">
             <title>heartbeat</title>
             <path d="M282.5,245.5" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#000;stroke-miterlimit:10" />
@@ -60,4 +86,3 @@
     </div>
   </div>
 </div>
-
