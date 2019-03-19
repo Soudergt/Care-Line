@@ -20,6 +20,7 @@
     padding: 10px 0px 6px 0px;
     color: #333;
     font-weight: 600;
+    line-height: 1.2em;
     border-right: 1px solid #CCC;
     border-left: 1px solid #CCC;
     white-space: nowrap;
@@ -28,6 +29,7 @@
 
     .main {
       font-size: 16px;
+      padding-bottom: 6px;
     }
 
     .sub {
@@ -36,10 +38,10 @@
     }
   }
 
-  .header-cell:hover {
-    cursor: pointer; 
-    border: 1px solid #04376a;
-  }
+  // .header-cell:hover {
+  //   cursor: pointer; 
+  //   border: 1px solid #04376a;
+  // }
 
   .header-cell.active {
     background-color: #04376a;
