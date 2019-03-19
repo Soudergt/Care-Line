@@ -6,6 +6,9 @@
   </a>
   <nav class="nav-link-container" fxShow fxHide.xs>
     <a class="nav-link" [routerLink]="['/dashboard']" *ngIf="isLoggedIn">Dashboard</a>
+    <div class="photo-container">
+      <div class="user-img drop-shadow" [ngStyle]="{'background-image': userPhoto}"></div>
+    </div>
     <button mat-raised-button color="primary" (click)="logout()" *ngIf="isLoggedIn">Logout</button>    
   </nav>
   <div class="main-nav-menu" [ngStyle.xs]="{'top': '20px'}">

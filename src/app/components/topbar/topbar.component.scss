@@ -83,6 +83,8 @@ $secondary-color: #61da97;
       color: #FFF;
       text-decoration: none;
       cursor: pointer;
+      align-self: flex-end;
+      line-height: 1.5em;
     }
 
     a.nav-link:after {
@@ -107,4 +109,19 @@ $secondary-color: #61da97;
 .drop-shadow {
   -webkit-filter: drop-shadow(0px 3px 10px rgba(0, 0, 0, .8));
   filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, .6));
+}
+
+.photo-container {
+  margin-right: 15px;
+
+  .user-img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-image: url('/assets/images/people/caretaker/taylorwilliams.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid #61da97;
+  }
 }
