@@ -1,15 +1,14 @@
 <mat-toolbar class="main-nav" [ngStyle.xs]="{'height': '80px'}" [ngStyle.sm]="{'height': '80px'}">
   <img class="logo drop-shadow" fxShow fxHide.sm fxHide.xs src="../assets/images/logos/ClineLogo.png" alt="CareLine Logo" aria-label="careline title text">
   <a class="logo-text-link" [routerLink]="'/'">
-    <img class="logo-text" src="../assets/images/logos/CLineText.png" alt="CareLine Title Text" aria-label="careline title text" [routerLink]=""
-  [ngStyle.xs]="{'height': '75px'}" [ngStyle.sm]="{'height': '75px'}">
+    <img class="logo-text" src="../assets/images/logos/CLineText.png" alt="CareLine Title Text" aria-label="careline title text" [routerLink]="" [ngStyle.xs]="{'height': '75px'}" [ngStyle.sm]="{'height': '75px'}">
   </a>
   <nav class="nav-link-container" fxShow fxHide.xs>
     <a class="nav-link" [routerLink]="['/dashboard']" *ngIf="isLoggedIn">Dashboard</a>
-    <div class="photo-container">
+    <div class="photo-container" *ngIf="isLoggedIn">
       <div class="user-img drop-shadow" [ngStyle]="{'background-image': userPhoto}"></div>
     </div>
-    <button mat-raised-button color="primary" (click)="logout()" *ngIf="isLoggedIn">Logout</button>    
+    <button mat-raised-button color="primary" (click)="logout()" *ngIf="isLoggedIn">Logout</button>
   </nav>
   <div class="main-nav-menu" [ngStyle.xs]="{'top': '20px'}">
     <button class="nav-menu-btn" mat-icon-button [matMenuTriggerFor]="menu" fxHide fxShow.xs>
@@ -22,7 +21,7 @@
         </span>
       </button>
       <button mat-menu-item>
-        <span>        
+        <span>
           <a class="menu-link" routerLink="['/about']">About</a>
         </span>
       </button>
