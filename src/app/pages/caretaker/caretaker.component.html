@@ -5,8 +5,8 @@
         <div class="user-img drop-shadow" [ngStyle]="{'background-image': caretaker?.img}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
       </div>
       <div class="user-info">
-        <div class="user-name">{{caretaker?.fn}} {{caretaker?.ln}}</div>
-        <a class="user-clinic" [routerLink]="['/clinic/1']">{{caretaker?.clinic}}</a>
+        <div class="user-name">{{caretaker?.NameFirst}} {{caretaker?.NameLast}}</div>
+        <a class="user-clinic" [routerLink]="['/clinic/1']">CareLine Clinic</a>
       </div>
       <div class="user-rating">
         

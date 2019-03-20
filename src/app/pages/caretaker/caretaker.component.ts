@@ -47,6 +47,7 @@ export class CaretakerComponent implements OnInit {
   getCaretaker(id: number): void {
     this.userService.getUser(id).subscribe(caretaker => {
       this.caretaker = caretaker
+      console.log(this.caretaker);
     });
   }
 
