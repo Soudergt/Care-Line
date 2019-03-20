@@ -13,33 +13,36 @@ export class StatusService {
 
   public getStatus(uid: string, date: string): Observable<any> {
     return this.http.get(
-      `/api/status/getStatus`, {params: new HttpParams().set('uid', uid).set('date', date)}
+      `/api/status/getStatus`, {params: new HttpParams().set('uid', uid).set('date', date), withCredentials: true}
     ).pipe(map((body: {data: {events: any}}) => {
       return body.data.events;
     })); 
   }
 
-  public addStatus(status: any, uid: number): Observable<any> {    
+  public addStatus(uid: number, status: any): Observable<any> {    
     return this.http.post(
-      `/api/status/add`, { status, uid }
-    ).pipe(map((body: {data: {status: any}}) => {
-      return body.data.status;
+      `/api/status/add`, { uid, status },
+      { withCredentials: true }
+    ).pipe(map((body: {data: {newStatus: any}}) => {
+      return body.data.newStatus;
     })); 
   }
 
   public editStatus(status: any): Observable<any> {    
     return this.http.put(
-      `/api/status/edit`, { status }
-    ).pipe(map((body: {data: {status: any}}) => {
-      return body.data.status;
+      `/api/status/edit`, { status },
+      { withCredentials: true }
+    ).pipe(map((body: {data: {updatedStatus: any}}) => {
+      return body.data.updatedStatus;
     })); 
   }
 
-  public deleteStatus(id: number): Observable<any> {    
+  public deleteStatus(status: any): Observable<any> {    
     return this.http.post(
-      `/api/status/delete`, { status }
-    ).pipe(map((body: {data: {status: any}}) => {
-      return body.data.status;
+      `/api/status/delete`, { status },
+      { withCredentials: true }
+    ).pipe(map((body: {data: {removedStatus: any}}) => {
+      return body.data.removedStatus;
     })); 
   }
 }
