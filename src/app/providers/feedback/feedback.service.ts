@@ -13,7 +13,8 @@ export class FeedbackService {
 
   public getFeedback(uid: string): Observable<any> {
     return this.http.get(
-      `/api/feedback/?uid=${uid}`
+      `/api/feedback/?uid=${uid}`,
+      { withCredentials: true }
     ).pipe(map((body: {data: {feedback: any}}) => {
       return body.data.feedback;
     })); 
@@ -21,25 +22,28 @@ export class FeedbackService {
 
   public addFeedback(feedback: any): Observable<any> {
     return this.http.post(
-      `/api/feedback/add`, { feedback }
-    ).pipe(map((body: {data: {feedback: any}}) => {
-      return body.data.feedback;
+      `/api/feedback/add`, { feedback },
+      { withCredentials: true }
+    ).pipe(map((body: {data: {newFeedback: any}}) => {
+      return body.data.newFeedback;
     })); 
   }
 
   public editFeedback(feedback: any): Observable<any> {
     return this.http.put(
-      `/api/feedback/edit`, { feedback }
-    ).pipe(map((body: {data: {feedback: any}}) => {
-      return body.data.feedback;
+      `/api/feedback/edit`, { feedback },
+      { withCredentials: true }
+    ).pipe(map((body: {data: {updatedFeedback: any}}) => {
+      return body.data.updatedFeedback;
     })); 
   }
 
   public deleteFeedback(feedback: any): Observable<any> {
     return this.http.post(
-      `/api/feedback/delete`, { feedback }
-    ).pipe(map((body: {data: {feedback: any}}) => {
-      return body.data.feedback;
+      `/api/feedback/delete`, { feedback },
+      { withCredentials: true }
+    ).pipe(map((body: {data: {removedFeedback: any}}) => {
+      return body.data.removedFeedback;
     })); 
   }
 }
