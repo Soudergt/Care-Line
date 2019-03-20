@@ -74,16 +74,17 @@ export class CardListComponent implements OnInit {
     });
   }
 
-  editUser(patient: User, index: number) {
-    this.userService.editUser(patient).subscribe(updatedUser => {
+  editUser(user: User, list: User[], index: number) {
+    this.userService.editUser(user).subscribe(updatedUser => {
       console.log(updatedUser);
+      list[index] = updatedUser;
     });
   }
 
-  deleteUser(id: number, index: number) {
-    this.userService.deleteUser(id).subscribe(data => {
+  deleteUser(user: User, list: User[], index: number) {
+    this.userService.deleteUser(user).subscribe(data => {
       console.log(data);
-      
+      list.splice(index, 1);
     });
   }
 }

@@ -5,7 +5,7 @@
   </h3>
   <div class="patient-list">
     <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;">
-      <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="28" (click)="goToPatient(item)">
+      <mat-card class="item-card" *ngFor="let item of activeList; let i = index" fxFlex="28" (click)="goToPatient(item)">
         <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
         <div class="card-content">
           <mat-card-title fxLayout="row" fxLayoutAlign="start center">
@@ -14,10 +14,10 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item (click)="editUser(item)">
+              <button mat-menu-item (click)="editUser(item, activeList, i)">
                 <span>Edit Patient</span>
               </button>
-              <button mat-menu-item (click)="deleteUser(item.UserID)">
+              <button mat-menu-item (click)="deleteUser(item, activeList, i)">
                 <span>Delete Patient</span>
               </button>
               <button mat-menu-item (click)="goToPatient(item)">
@@ -49,7 +49,7 @@
   </h3>
   <div class="patient-list">
     <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;">
-      <mat-card class="item-card" *ngFor="let item of activeList" fxFlex="28">
+      <mat-card class="item-card" *ngFor="let item of activeList; let i = index" fxFlex="28">
         <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
         <div class="card-content">
           <mat-card-title fxLayout="row" fxLayoutAlign="start center">
@@ -58,10 +58,10 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item (click)="editUser(item)">
+              <button mat-menu-item (click)="editUser(item, activeList, i)">
                 <span>Edit Caretaker</span>
               </button>
-              <button mat-menu-item (click)="deleteUser(item.UserID)">
+              <button mat-menu-item (click)="deleteUser(item, activeList, i)">
                 <span>Delete Caretaker</span>
               </button>
               <button mat-menu-item (click)="goToCaretaker(item)">
