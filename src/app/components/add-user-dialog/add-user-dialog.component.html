@@ -14,7 +14,15 @@
         <input matInput type="text" placeholder="Last Name" name="lastname" formControlName="ln" aria-label="last name" required>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input matInput type="text" placeholder="Username" name="username" formControlName="username" aria-label="username" required>
+        <input matInput type="text" placeholder="Phone Number" name="phone number" formControlName="phone" aria-label="email" required>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dob" aria-label="choose date of birth" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput type="email" placeholder="Email" name="email" formControlName="email" aria-label="email" required>
       </mat-form-field>
       <mat-form-field fxFlex>
         <input matInput type="text" placeholder="Password" name="password" formControlName="password" aria-label="password" required>

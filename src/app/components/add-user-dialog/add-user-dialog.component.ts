@@ -5,7 +5,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export interface AddUserData {
   fn: string;
   ln: string;
-  username: string;
+  phone: string;
+  dob: Date;
+  email: string;
   password: string;
 }
 
@@ -25,7 +27,9 @@ export class AddUserDialogComponent implements OnInit {
     this.addUserForm = this.formBuilder.group({
       fn: ['', Validators.required],
       ln: ['', Validators.required],
-      username: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
+      dob: ['', Validators.required],
       password: ['', Validators.required]
     });
    }
