@@ -14,13 +14,13 @@ export class UserService {
 
   public getUsers(): Observable<User[]> {
     return this.http.get<User[]>(
-      `${environment.api}/backend/user/getUsers`
+      `${environment.api}/api/user/getUsers`
     ); 
   }
 
   public getUser(uid: number): Observable<User> {
     return this.http.get(
-      `${environment.api}/user/getUser/?uid=${uid}`
+      `${environment.api}/api/user/getUser/?uid=${uid}`
     ).pipe(map((body: {data: {user: User}}) => {
       return body.data.user;
     })); 
@@ -28,7 +28,7 @@ export class UserService {
 
   public getPatients(): Observable<any> {
     return this.http.get(
-      `${environment.api}/user/getPatients`
+      `${environment.api}/api/user/getPatients`
     ).pipe(map((body: {data: {patients: User[]}}) => {
       return body.data.patients;
     })); 
@@ -36,7 +36,7 @@ export class UserService {
 
   public getCaretakers(): Observable<any> {
     return this.http.get(
-      `${environment.api}/user/getCaretakers`
+      `${environment.api}/api/user/getCaretakers`
     ).pipe(map((body: {data: {caretakers: User[]}}) => {
       return body.data.caretakers;
     })); 
@@ -44,7 +44,7 @@ export class UserService {
 
   public addUser(user: User): Observable<any> {    
     return this.http.post(
-      `${environment.api}/user/add`, { user }
+      `${environment.api}/api/user/add`, { user }
     ).pipe(map((body: {data: {user: User}}) => {
       return body.data.user;
     })); 
@@ -52,7 +52,7 @@ export class UserService {
 
   public editUser(user: User): Observable<any> {
     return this.http.put(
-      `${environment.api}/user/edit`, { user }
+      `${environment.api}/api/user/edit`, { user }
     ).pipe(map((body: {data: {user: User}}) => {
       return body.data.user;
     })); 
@@ -60,7 +60,7 @@ export class UserService {
 
   public deleteUser(user: User): Observable<any> {
     return this.http.post(
-      `${environment.api}/user/delete`, { user }
+      `${environment.api}/api/user/delete`, { user }
     ).pipe(map((body: {data: {user: User}}) => {
       return body.data.user;
     }));
