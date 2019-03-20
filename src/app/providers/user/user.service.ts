@@ -20,7 +20,8 @@ export class UserService {
 
   public getUser(uid: number): Observable<User> {
     return this.http.get(
-      `/api/user/getUser/?uid=${uid}`
+      `/api/user/getUser/?uid=${uid}`,
+      { withCredentials: true }
     ).pipe(map((body: {data: {user: User}}) => {
       return body.data.user;
     })); 
@@ -28,7 +29,8 @@ export class UserService {
 
   public getPatients(): Observable<any> {
     return this.http.get(
-      `/api/user/getPatients`
+      `/api/user/getPatients`,
+      { withCredentials: true }
     ).pipe(map((body: {data: {patients: User[]}}) => {
       return body.data.patients;
     })); 
@@ -36,7 +38,8 @@ export class UserService {
 
   public getCaretakers(): Observable<any> {
     return this.http.get(
-      `/api/user/getCaretakers`
+      `/api/user/getCaretakers`,
+      { withCredentials: true }
     ).pipe(map((body: {data: {caretakers: User[]}}) => {
       return body.data.caretakers;
     })); 
@@ -44,25 +47,28 @@ export class UserService {
 
   public addUser(user: User): Observable<any> {    
     return this.http.post(
-      `/api/user/add`, { user }
-    ).pipe(map((body: {data: {user: User}}) => {
-      return body.data.user;
+      `/api/user/add`, { user },
+      { withCredentials: true }
+    ).pipe(map((body: {data: {newUser: User}}) => {
+      return body.data.newUser;
     })); 
   }
 
   public editUser(user: User): Observable<any> {
     return this.http.put(
-      `/api/user/edit`, { user }
-    ).pipe(map((body: {data: {user: User}}) => {
-      return body.data.user;
+      `/api/user/edit`, { user },
+      { withCredentials: true }
+    ).pipe(map((body: {data: {updatedUser: User}}) => {
+      return body.data.updatedUser;
     })); 
   }
 
   public deleteUser(user: User): Observable<any> {
     return this.http.post(
-      `/api/user/delete`, { user }
-    ).pipe(map((body: {data: {user: User}}) => {
-      return body.data.user;
+      `/api/user/delete`, { user },
+      { withCredentials: true }
+    ).pipe(map((body: {data: {removedUser: User}}) => {
+      return body.data.removedUser;
     }));
   }
 }
