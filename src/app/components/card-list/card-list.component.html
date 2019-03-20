@@ -5,11 +5,11 @@
   </h3>
   <div class="patient-list">
     <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;">
-      <mat-card class="item-card" *ngFor="let item of activeList; let i = index" fxFlex="28" (click)="goToPatient(item)">
+      <mat-card class="item-card" *ngFor="let item of activeList; let i = index" fxFlex="28">
         <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
         <div class="card-content">
           <mat-card-title fxLayout="row" fxLayoutAlign="start center">
-            <span fxFlex (click)="goToCaretaker(item)">{{ item?.NameFirst }} {{ item?.NameLast }}</span>
+            <span fxFlex (click)="goToPatient(item)">{{ item?.NameFirst }} {{ item?.NameLast }}</span>
             <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: -20px;">
               <mat-icon>more_vert</mat-icon>
             </button>
