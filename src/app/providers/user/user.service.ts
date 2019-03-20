@@ -42,15 +42,27 @@ export class UserService {
     })); 
   }
 
-  public addUser(user: User): Observable<User> {    
-    return this.http.post<User>(`${environment.api}/user/add`, user);
+  public addUser(user: User): Observable<any> {    
+    return this.http.post(
+      `${environment.api}/user/add`, { user }
+    ).pipe(map((body: {data: {user: User}}) => {
+      return body.data.user;
+    })); 
   }
 
-  public editUser(user: User) {
-    return this.http.put(`${environment.api}/user/edit`, user);
+  public editUser(user: User): Observable<any> {
+    return this.http.put(
+      `${environment.api}/user/edit`, { user }
+    ).pipe(map((body: {data: {user: User}}) => {
+      return body.data.user;
+    })); 
   }
 
-  public deleteUser(uid: number) {
-    return this.http.delete(`${environment.api}/user/delete/${uid}`);
+  public deleteUser(user: User): Observable<any> {
+    return this.http.post(
+      `${environment.api}/user/delete`, { user }
+    ).pipe(map((body: {data: {user: User}}) => {
+      return body.data.user;
+    }));
   }
 }
