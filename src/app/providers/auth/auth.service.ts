@@ -16,7 +16,8 @@ export class AuthService {
 
   public login(username: String, password: String): Observable<any> {
     return this.http.post(
-      `/api/auth/login`, {username, password}
+      `/api/auth/login`, {username, password},
+      { withCredentials: true }
     ).pipe(map((body: {data: {user: any}}) => {
       if (body.data.user) {
         this.user.next(body.data.user);
@@ -25,6 +26,15 @@ export class AuthService {
       }
       return body.data.user;
     })); 
+  }
+
+  public hasValidSession(): Observable<boolean> {
+    return this.http.get(
+      `/api/auth/valid`,
+      { withCredentials: true }
+    ).pipe(map((body: { valid: boolean }) => {
+      return body.valid || false;
+    }));
   }
 
   public verifyLogin(): boolean {
