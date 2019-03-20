@@ -13,7 +13,7 @@ export class EventService {
 
   public getEvents(uid: string, date: string): Observable<any> {
     return this.http.get(
-      `${environment.api}/event/getEvents`, {params: new HttpParams().set('uid', uid).set('date', date)}
+      `/api/event/getEvents`, {params: new HttpParams().set('uid', uid).set('date', date)}
     ).pipe(map((body: {data: {events: any}}) => {
       return body.data.events;
     })); 
@@ -21,7 +21,7 @@ export class EventService {
 
   public getEventsByWeek(uid: string, startDate: string): Observable<any> {
     return this.http.get(
-      `${environment.api}/event/getEventsByWeek`, {params: new HttpParams().set('uid', uid).set('startDate', startDate)}
+      `/api/event/getEventsByWeek`, {params: new HttpParams().set('uid', uid).set('startDate', startDate)}
     ).pipe(map((body: {data: {events: any}}) => {
       return body.data.events;
     })); 
@@ -29,21 +29,33 @@ export class EventService {
 
   public getEvent(id: number): Observable<any> {
     return this.http.get(
-      `${environment.api}/event/getEvent/?id=${id}`
+      `/api/event/getEvent/?id=${id}`
     ).pipe(map((body: {data: {events: any}}) => {
       return body.data.events;
     })); 
   }
 
   public addEvent(event: any): Observable<any> {    
-    return this.http.post(`${environment.api}/event/add`, event);
+    return this.http.post(
+      `/api/event/add`, { event }
+    ).pipe(map((body: {data: {event: any}}) => {
+      return body.data.event;
+    })); 
   }
 
   public editEvent(event: any): Observable<any> {    
-    return this.http.put(`${environment.api}/event/edit`, event);
+    return this.http.put(
+      `/api/event/edit`, { event }
+    ).pipe(map((body: {data: {event: any}}) => {
+      return body.data.event;
+    })); 
   }
 
-  public deleteEvent(id: number): Observable<any> {    
-    return this.http.delete(`${environment.api}/event/delete/${id}`);
+  public deleteUser(event: any): Observable<any> {
+    return this.http.post(
+      `/api/event/delete`, { event }
+    ).pipe(map((body: {data: {event: any}}) => {
+      return body.data.event;
+    }));
   }
 }

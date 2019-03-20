@@ -13,21 +13,33 @@ export class StatusService {
 
   public getStatus(uid: string, date: string): Observable<any> {
     return this.http.get(
-      `${environment.api}/status/getStatus`, {params: new HttpParams().set('uid', uid).set('date', date)}
+      `/api/status/getStatus`, {params: new HttpParams().set('uid', uid).set('date', date)}
     ).pipe(map((body: {data: {events: any}}) => {
       return body.data.events;
     })); 
   }
 
-  public addStatus(status: any): Observable<any> {    
-    return this.http.post(`${environment.api}/status/add`, status);
+  public addStatus(status: any, uid: number): Observable<any> {    
+    return this.http.post(
+      `/api/status/add`, { status, uid }
+    ).pipe(map((body: {data: {status: any}}) => {
+      return body.data.status;
+    })); 
   }
 
   public editStatus(status: any): Observable<any> {    
-    return this.http.put(`${environment.api}/stauts/edit`, status);
+    return this.http.put(
+      `/api/status/edit`, { status }
+    ).pipe(map((body: {data: {status: any}}) => {
+      return body.data.status;
+    })); 
   }
 
   public deleteStatus(id: number): Observable<any> {    
-    return this.http.delete(`${environment.api}/event/delete/${id}`);
+    return this.http.post(
+      `/api/status/delete`, { status }
+    ).pipe(map((body: {data: {status: any}}) => {
+      return body.data.status;
+    })); 
   }
 }

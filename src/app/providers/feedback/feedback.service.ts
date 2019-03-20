@@ -13,13 +13,33 @@ export class FeedbackService {
 
   public getFeedback(uid: string): Observable<any> {
     return this.http.get(
-      `${environment.api}/feedback/?uid=${uid}`
+      `/api/feedback/?uid=${uid}`
     ).pipe(map((body: {data: {feedback: any}}) => {
       return body.data.feedback;
     })); 
   }
 
-  public addFeedback(feedback: any): Observable<any> {    
-    return this.http.post(`${environment.api}/feedback/addFeedback/`, feedback);
+  public addFeedback(feedback: any): Observable<any> {
+    return this.http.post(
+      `/api/feedback/add`, { feedback }
+    ).pipe(map((body: {data: {feedback: any}}) => {
+      return body.data.feedback;
+    })); 
+  }
+
+  public editFeedback(feedback: any): Observable<any> {
+    return this.http.put(
+      `/api/feedback/edit`, { feedback }
+    ).pipe(map((body: {data: {feedback: any}}) => {
+      return body.data.feedback;
+    })); 
+  }
+
+  public deleteFeedback(feedback: any): Observable<any> {
+    return this.http.post(
+      `/api/feedback/delete`, { feedback }
+    ).pipe(map((body: {data: {feedback: any}}) => {
+      return body.data.feedback;
+    })); 
   }
 }

@@ -14,7 +14,7 @@ export class ClinicService {
 
   public getClinic(id: number): Observable<Clinic> {
     return this.http.get(
-      `${environment.api}/clinic/getClinic/?id=${id}`
+      `/api/clinic/getClinic/?id=${id}`
     ).pipe(map((body: {data: {clinic: Clinic}}) => {
       return body.data.clinic;
     })); 
