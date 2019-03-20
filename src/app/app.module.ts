@@ -24,10 +24,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { AgmCoreModule } from '@agm/core';
-import { MapsAPILoader } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -90,10 +87,8 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
     TextFieldModule,
     HttpClientModule,
     FontAwesomeModule,
-    RoundProgressModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    AgmCoreModule.forRoot()
   ],
   providers: [],
   entryComponents: [
