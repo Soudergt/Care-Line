@@ -63,15 +63,17 @@ export class CardListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (userType === 'patient') {
-        this.userService.addUser(result).subscribe(newPatient => {
-          this.patients.push(newPatient);
-        });
-      } else {
-        this.userService.addUser(result).subscribe(newCaretaker => {
-          this.caretakers.push(newCaretaker);
-        });
-      }       
+      if (result) {
+        if (userType === 'patient') {
+          this.userService.addUser(result).subscribe(newPatient => {
+            this.patients.push(newPatient);
+          });
+        } else {
+          this.userService.addUser(result).subscribe(newCaretaker => {
+            this.caretakers.push(newCaretaker);
+          });
+        }    
+      }
     });
   }
 
