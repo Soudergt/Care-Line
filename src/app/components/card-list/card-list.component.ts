@@ -6,6 +6,7 @@ import { UserService } from 'src/app/providers/user/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserDialogComponent } from './../../components/add-user-dialog/add-user-dialog.component';
 import { User } from 'src/app/classes/user';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-card-list',
@@ -82,9 +83,25 @@ export class CardListComponent implements OnInit {
   }
 
   deleteUser(user: User, list: User[], index: number) {
-    this.userService.deleteUser(user).subscribe(data => {
-      console.log(data);
-      list.splice(index, 1);
-    });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: user.NameFirst + ' ' + user.NameLast + ' will be deleted!',
+      type: 'warning',
+      showCancelButton: true,
+      reverseButtons: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        this.userService.deleteUser(user).subscribe(data => {
+          console.log(data);
+          list.splice(index, 1);
+          Swal.fire('Deleted!', user.NameFirst + ' ' + user.NameLast + ' has been deleted!', 'success');
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', user.NameFirst + ' ' + user.NameLast + ' was not deleted!', 'error')
+      }
+    })
+    
   }
 }
