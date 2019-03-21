@@ -30,7 +30,7 @@ export class AuthService {
 
   public hasValidSession(): Observable<boolean> {
     return this.http.get(
-      `/api/auth/valid`,
+      `/api/session/valid`,
       { withCredentials: true }
     ).pipe(map((body: { valid: boolean }) => {
       return body.valid || false;

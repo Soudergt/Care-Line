@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { AuthService } from 'src/app/providers/auth/auth.service';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,32 +15,20 @@ export class AuthGuard implements CanActivate {
     private authService: AuthService
   ){}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    let url: string = state.url;  
-    return this.verifyLogin(url);
-  };
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    return this.authService.hasValidSession().pipe(
+      map((authd: boolean) => {
+        if (authd) { return true; }
 
-  verifyLogin(url: string) : boolean {
-    if (!this.isLoggedIn()) {
-      this.router.navigate(['/login']);
-      return false;
-    }
-    else if (this.isLoggedIn()) {
-      return true; 
-    }
-  };
+        this.router.navigate(['login']);
 
-  public isLoggedIn(): boolean {
-    let status = false;
-    if (localStorage.getItem('currentUser')) {
-      status = true;
-    }
-    else {
-      status = false;
-    }
-    return status;
-  };
+        return false;
+      }),
+      catchError((err: Error) => {
+        this.router.navigate(['login']);
+
+        return of(false);
+      })
+    );
+  }
 }
