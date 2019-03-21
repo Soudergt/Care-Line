@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
@@ -10,20 +10,14 @@ import { map } from 'rxjs/operators';
 export class AuthService {
   constructor(private http: HttpClient) { }
 
-  public user: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-
-  public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  @Output() isLoggedIn: EventEmitter<any> = new EventEmitter();
 
   public login(username: String, password: String): Observable<any> {
     return this.http.post(
       `/api/auth/login`, {username, password},
       { withCredentials: true }
     ).pipe(map((body: {data: {user: any}}) => {
-      if (body.data.user) {
-        this.user.next(body.data.user);
-        this.isLoggedIn.next(true);
-        localStorage.setItem('currentUser', JSON.stringify(body.data.user));
-      }
+      this.isLoggedIn.emit(true);
       return body.data.user;
     })); 
   }
@@ -33,20 +27,14 @@ export class AuthService {
       `/api/session/valid`,
       { withCredentials: true }
     ).pipe(map((body: { valid: boolean }) => {
+      this.isLoggedIn.emit(true);
       return body.valid || false;
     }));
   }
 
-  public verifyLogin(): boolean {
-    if (localStorage.getItem('currentUser')) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   public logout() {
     localStorage.removeItem('currentUser');
+    this.isLoggedIn.emit(false);
     return this.http.post(`/api/auth/logout`, {});
   }
 }
