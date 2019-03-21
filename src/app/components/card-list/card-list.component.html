@@ -6,7 +6,7 @@
   <div class="patient-list">
     <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;">
       <mat-card class="item-card" *ngFor="let item of activeList; let i = index" fxFlex="28">
-        <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
+        <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}" (click)="goToPatient(item)"></div>
         <div class="card-content">
           <mat-card-title fxLayout="row" fxLayoutAlign="start center">
             <span fxFlex (click)="goToPatient(item)">{{ item?.NameFirst }} {{ item?.NameLast }}</span>
@@ -50,7 +50,7 @@
   <div class="patient-list">
     <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;">
       <mat-card class="item-card" *ngFor="let item of activeList; let i = index" fxFlex="28">
-        <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}"></div>
+        <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}" (click)="goToPatient(item)"></div>
         <div class="card-content">
           <mat-card-title fxLayout="row" fxLayoutAlign="start center">
             <span fxFlex (click)="goToCaretaker(item)">{{ item?.NameFirst }} {{ item?.NameLast }}</span>
