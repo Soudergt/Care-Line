@@ -1,8 +1,10 @@
 export class Status {
   StatusID: number;
   Title: string;
-  Description: string;
+  Concerns: string;
+  Activities: string;
+  Comments: string;
   BehaviorMood: string;
-  HealthRating: string;
-  Date: Date; 
+  Date: Date;
+  user?: any;
 }
