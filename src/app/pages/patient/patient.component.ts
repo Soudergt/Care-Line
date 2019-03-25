@@ -119,7 +119,7 @@ export class PatientComponent implements OnInit {
       Date: new Date()
     };
 
-    this.statusService.addStatus(this.newNote)
+    this.statusService.addStatus(JSON.parse(this.id), this.newNote)
       .subscribe(note => this.notes.push(note));
     
     this.noteForm.reset();
