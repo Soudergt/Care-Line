@@ -106,6 +106,7 @@ export class UserDashboardComponent implements OnInit {
   getUser(uid: number): void {
     this.userService.getUser(uid).subscribe(user => {
       this.user = user;
+      console.log(this.user);
       this.userPhoto = `url(/assets/images/people/${this.user.UserType}/${this.user.NameFirst.toLowerCase()}${this.user.NameLast.toLowerCase()}.jpg)`;
     });
   }

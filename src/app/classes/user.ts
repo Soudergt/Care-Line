@@ -21,4 +21,5 @@ export class User {
     BloodType: string;
     AllergyInfo: string;
     DietInfo: string;
+    clinic?: any;
 }
