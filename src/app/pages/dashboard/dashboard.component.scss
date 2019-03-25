@@ -30,7 +30,7 @@
     color: #FFF;
     text-align: left;
     position: relative;
-    font-family: 'Montserrat', sans-serif;    
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 16px;
     padding: 12px;
@@ -49,20 +49,20 @@
       color: #FFF;
       margin: 10px;
       font-size: 16px;
-      font-family: 'Montserrat', sans-serif;    
+      font-family: 'Montserrat', sans-serif;
     }
   }
 }
 
 .section-container {
-  margin: 30px 15px 50px 15px; 
+  margin: 30px 15px 50px 15px;
 
   .section-header {
     font-size: 35px;
     font-weight: 600;
     color: #FFF;
     text-shadow: 1px 1px 1px #000;
-    margin: 25px 15px 25px 40px;
+    margin: 25px 15px 40px 40px;
   }
 
   .section-subheader {
@@ -76,7 +76,7 @@
 .card-container {
   .role-card {
     max-width: 400px;
-    margin-bottom: 12px;
+    margin-bottom: 40px;
 
     p {
       font-size: 18px;
@@ -84,22 +84,50 @@
 
     img {
       height: 250px;
+    }
+
+    img.logo {
+      height: 215px;
+      width: 100%;
+      padding-left: 15px;
+    }
+
+    img.typescript {
+      width: 275px;
+      height: 215px;
+    }
+
+    img.nodejs {
+      height: 145px;
+      width: auto;
+      padding-top: 30px;
+      padding-bottom: 40px;
+      padding-left: 20px;
+    }
+
+    img.fastify {
+      height: 180px;
+      padding-top: 18px;
+      padding-bottom: 20px;
+    }
+
+    img.monochrome {
       -webkit-filter: grayscale(100%);
       filter: grayscale(100%);
       transition: all 0.5s ease;
     }
-    img:hover {
+
+    img.monochrome:hover {
       -webkit-filter: grayscale(0%);
       filter: grayscale(0%);
     }
   }
+  .role-card.logo-card {
+    margin: 0px 20px 40px 20px;
+  }
 }
 
-.section-footer {
-  
-}
-
-
+.section-footer {}
 
 .icon-img-container {
   text-align: center;
