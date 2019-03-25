@@ -140,3 +140,14 @@
   width: 75px;
   height: 75px;
 }
+
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 85px 0px;
+
+  img {
+    width: 85%;
+  }
+}
