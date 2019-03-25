@@ -64,6 +64,8 @@ export class PatientComponent implements OnInit {
     this.noteForm = this.formBuilder.group({
       title: [''],
       desc: [''],
+      activites: [''],
+      concerns: [''],
       mood: ['']
     });
   }

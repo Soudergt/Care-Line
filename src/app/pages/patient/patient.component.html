@@ -183,9 +183,15 @@
                       <input matInput type="text" placeholder="Title" formControlName="title">
                     </mat-form-field>
                     <mat-form-field>
-                      <textarea matInput cdkTextareaAutosize placeholder="Note" formControlName="desc"></textarea>
+                      <textarea matInput cdkTextareaAutosize placeholder="Activities" formControlName="activites"></textarea>
                     </mat-form-field>
-                    <div class="radio-group-label">Patient Mood:</div>
+                    <mat-form-field>
+                      <textarea matInput cdkTextareaAutosize placeholder="Health Concerns" formControlName="concerns"></textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <textarea matInput cdkTextareaAutosize placeholder="Comments" formControlName="desc"></textarea>
+                    </mat-form-field>
+                    <div class="radio-group-label">Patient Mood / Feeling:</div>
                     <mat-radio-group formControlName="mood">
                       <mat-radio-button class="mood-radio" value="very good" aria-label="very good" color="primary">
                         <fa-icon [icon]="faGrinBeam" size="2x"></fa-icon>
