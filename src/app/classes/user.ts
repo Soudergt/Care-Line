@@ -22,4 +22,8 @@ export class User {
     AllergyInfo: string;
     DietInfo: string;
     clinic?: any;
+    statusList?: [];
+    feedbackList?: [];
+    events?: [];
+    ratings?: [];
 }
