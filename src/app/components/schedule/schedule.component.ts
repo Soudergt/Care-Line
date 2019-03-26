@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { AddEventDialogComponent } from '../add-event-dialog/add-event-dialog.component';
 import { EventService } from 'src/app/providers/event/event.service';
 import { Event } from 'src/app/classes/event';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-schedule',
@@ -13,7 +14,7 @@ import { Event } from 'src/app/classes/event';
 })
 export class ScheduleComponent implements OnInit {
   @Input('activeDay') activeDay: Date;
-  @Input('patientID') patientID: number;
+  @Input('patient') patient: User;
   @Output() newDay = new EventEmitter<Date>();
   //Icons
   faAngleLeft = faAngleLeft;
@@ -64,8 +65,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   getEventsForWeek(firstDay: string):void {
-    let pid = JSON.stringify(this.patientID);
-    this.eventService.getEventsByWeek(pid, firstDay).subscribe(events => {
+    this.eventService.getEventsByWeek(this.patient, firstDay).subscribe(events => {
       this.events = events;
       console.log(this.events);
     });
@@ -77,18 +77,21 @@ export class ScheduleComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.eventService.addEvent(result).subscribe(newEvent => this.events.push(newEvent));
-      }
+      console.log(result);
+      // if (result) {
+      //   this.eventService.addEvent(this.patient, result).subscribe(newEvent => {
+      //     console.log(newEvent);
+      //   });
+      // }
     });
   };
 
-  editEvent(selectedEvent: Event, index: number) {
+  editEvent(event: Event, index: number) {
     
   };
 
-  deleteEvent(eventID: number, index: number) {
-    this.eventService.deleteEvent(eventID).subscribe();
+  deleteEvent(event: Event, index: number) {
+    this.eventService.deleteEvent(event).subscribe();
   };
 
 }

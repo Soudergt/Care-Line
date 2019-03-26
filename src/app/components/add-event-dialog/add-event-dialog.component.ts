@@ -1,12 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 export interface AddEventData {
-  name: string;
-  desc: string;
-  date: Date;
-  time: Date;
+  EventName: string;
+  EventDesc: string;
+  EventDate: Date;
+  EventTime: Date;
 }
 
 @Component({
@@ -23,10 +24,10 @@ export class AddEventDialogComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {    
     this.addEventForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      desc: [''],
-      date: [new Date(), Validators.required],
-      time: [new Date(), Validators.required]
+      EventName: ['', Validators.required],
+      EventDesc: ['', Validators.required],
+      EventDate: [moment().toDate(), Validators.required],
+      EventTime: [, Validators.required]
     });
    }
 
@@ -34,6 +35,9 @@ export class AddEventDialogComponent implements OnInit {
   }
 
   add() {
+    if (this.addEventForm.invalid) {
+      return;
+    }
     this.dialogRef.close(this.addEventForm.value);    
   }
 

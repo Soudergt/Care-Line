@@ -8,18 +8,18 @@
   <div mat-dialog-content>
     <div fxLayout="column">
       <mat-form-field fxFlex>
-        <input matInput type="text" placeholder="Name" name="name" formControlName="name" aria-label="name" required>
+        <input matInput type="text" placeholder="Name" name="name" formControlName="EventName" aria-label="name" required>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <textarea matInput cdkTextareaAutosize placeholder="Description" formControlName="desc" aria-label="description"></textarea>
+        <textarea matInput cdkTextareaAutosize placeholder="Description" formControlName="EventDesc" aria-label="description"></textarea>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date" aria-label="choose date" required>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="EventDate" aria-label="choose date" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input matInput type="time" placeholder="time" name="time" formControlName="time" aria-label="first name" required>
+        <input matInput type="time" placeholder="time" name="time" formControlName="EventTime" aria-label="first name" required>
       </mat-form-field>
     </div>
   </div>
