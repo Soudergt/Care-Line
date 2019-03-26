@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="content-pad">
-    <app-schedule [activeDay]="activeDay" (newDay)="getNotes($event)" [patientID]="id"></app-schedule>
+    <app-schedule [activeDay]="activeDay" (newDay)="getNotesForDay($event)" [patientID]="id"></app-schedule>
   </div>
   <div class="patient-content" fxLayout="row wrap" fxLayoutAlign="space-between">
     <div fxFlex="1 1 auto">
@@ -54,7 +54,7 @@
                 </div>
                 <!-- <div fxFlex="1 1 auto">
                   <h3 class="section-header">Emergency Contact</h3> -->
-                  <!-- <mat-list>
+                <!-- <mat-list>
                     <mat-list-item>
                       <label class="info-label" for="name">Name:</label>
                       <span id="name">{{patient?.emergency.fn}} {{patient?.emergency.ln}}</span>
@@ -127,7 +127,7 @@
               </mat-action-list>
               <div class="chat-header" fxLayout="row" *ngIf="selectedContact != null">
                 <button mat-icon-button class="back-btn" style="color: #04376a;" (click)="selectedContact = null">
-                  <fa-icon [icon]="faAngleLeft" size="3x"></fa-icon>                  
+                  <fa-icon [icon]="faAngleLeft" size="3x"></fa-icon>
                 </button>
                 <div fxFlex class="contact-header-text">{{selectedContact?.name}}</div>
               </div>
@@ -180,19 +180,19 @@
                 <div class="note-box-new" *ngIf="showNewNote" fxFlex="1 1 auto">
                   <form (ngSubmit)="createNote()" [formGroup]="noteForm" fxLayout="column" fxLayoutGap="5px">
                     <mat-form-field>
-                      <input matInput type="text" placeholder="Title" formControlName="title">
+                      <input matInput type="text" placeholder="Title" formControlName="Title" required>
                     </mat-form-field>
                     <mat-form-field>
-                      <textarea matInput cdkTextareaAutosize placeholder="Activities" formControlName="activites"></textarea>
+                      <textarea matInput cdkTextareaAutosize placeholder="Activities" formControlName="Activities" required></textarea>
                     </mat-form-field>
                     <mat-form-field>
-                      <textarea matInput cdkTextareaAutosize placeholder="Health Concerns" formControlName="concerns"></textarea>
+                      <textarea matInput cdkTextareaAutosize placeholder="Health Concerns" formControlName="Concerns" required></textarea>
                     </mat-form-field>
                     <mat-form-field>
-                      <textarea matInput cdkTextareaAutosize placeholder="Comments" formControlName="desc"></textarea>
+                      <textarea matInput cdkTextareaAutosize placeholder="Comments" formControlName="Comments" required></textarea>
                     </mat-form-field>
                     <div class="radio-group-label">Patient Mood / Feeling:</div>
-                    <mat-radio-group formControlName="mood">
+                    <mat-radio-group formControlName="BehaviorMood" required>
                       <mat-radio-button class="mood-radio" value="very good" aria-label="very good" color="primary">
                         <fa-icon [icon]="faGrinBeam" size="2x"></fa-icon>
                       </mat-radio-button>
@@ -216,14 +216,40 @@
                   </form>
                 </div>
                 <div class="note-box" *ngFor="let note of notes" fxFlex="1 1 auto">
-                  <fa-icon class="mood-icon" [icon]="faGrinBeam" size="2x" *ngIf="note.mood.toLowerCase() === 'very good'"></fa-icon>
-                  <fa-icon class="mood-icon" [icon]="faSmile" size="2x" *ngIf="note.mood.toLowerCase() === 'good'"></fa-icon>
-                  <fa-icon class="mood-icon" [icon]="faMeh" size="2x" *ngIf="note.mood.toLowerCase() === 'meh'"></fa-icon>
-                  <fa-icon class="mood-icon" [icon]="faFrown" size="2x" *ngIf="note.mood.toLowerCase() === 'bad'"></fa-icon>
-                  <fa-icon class="mood-icon" [icon]="faTired" size="2x" *ngIf="note.mood.toLowerCase() === 'very bad'"></fa-icon>
-                  <div class="title">{{note.title}}</div>
+                  <div class="note-header" fxLayout="row" fxLayoutAlign="center center">
+                    <fa-icon class="mood-icon" fxFlex="0 1 auto;" [icon]="faGrinBeam" size="2x" *ngIf="note?.BehaviorMood.toLowerCase() === 'very good'"></fa-icon>
+                    <fa-icon class="mood-icon" fxFlex="0 1 auto;" [icon]="faSmile" size="2x" *ngIf="note?.BehaviorMood.toLowerCase() === 'good'"></fa-icon>
+                    <fa-icon class="mood-icon" fxFlex="0 1 auto;" [icon]="faMeh" size="2x" *ngIf="note?.BehaviorMood.toLowerCase() === 'meh'"></fa-icon>
+                    <fa-icon class="mood-icon" fxFlex="0 1 auto;" [icon]="faFrown" size="2x" *ngIf="note?.BehaviorMood.toLowerCase() === 'bad'"></fa-icon>
+                    <fa-icon class="mood-icon" fxFlex="0 1 auto;" [icon]="faTired" size="2x" *ngIf="note?.BehaviorMood.toLowerCase() === 'very bad'"></fa-icon>
+                    <div class="title" fxFlex="1 1 auto;">{{note.Title}}</div>
+                    <button fxFlex="0 1 auto;" mat-icon-button [matMenuTriggerFor]="menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu" xPosition="before">
+                      <button mat-menu-item (click)="editNote(note)">
+                        <span>Edit Note</span>
+                      </button>
+                      <button mat-menu-item (click)="deleteNote(note)">
+                        <span>Delete Note</span>
+                      </button>
+                    </mat-menu>
+                  </div>
                   <mat-divider class="divider"></mat-divider>
-                  <p class="body">{{note.desc}}</p>
+                  <div class="note-content">
+                    <div class="info">
+                      <div class="info-label"><b>Activities:</b></div>
+                      <div>{{note?.Activities}}</div>
+                    </div>
+                    <div class="info">
+                      <div class="info-label"><b>Health Concerns:</b> </div>
+                      <div>{{note?.Concerns}}</div>
+                    </div>
+                    <div class="info">
+                      <div class="info-label"><b>Comments:</b></div>
+                      <div>{{note?.Comments}}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

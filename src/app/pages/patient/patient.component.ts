@@ -42,18 +42,7 @@ export class PatientComponent implements OnInit {
   
   //Note Values
   showNewNote: boolean;
-  notes = [
-    {
-      title: 'Note 1',
-      desc: 'Patient is feeling better today',
-      mood: 'very good'
-    },
-    {
-      title: 'Note 2',
-      desc: 'Patient has a good appetite',
-      mood: 'good'
-    }
-  ];
+  notes: any;
 
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -62,11 +51,11 @@ export class PatientComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.noteForm = this.formBuilder.group({
-      title: [''],
-      desc: [''],
-      activites: [''],
-      concerns: [''],
-      mood: ['']
+      Title: [''],
+      Concerns: [''],
+      Activities: [''],
+      Comments: [''],
+      BehaviorMood: ['']
     });
   }
 
@@ -80,6 +69,7 @@ export class PatientComponent implements OnInit {
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
       this.getPatient(JSON.parse(this.id));
+      this.getNotes();
     });
   };
 
@@ -95,11 +85,18 @@ export class PatientComponent implements OnInit {
     };
   };
 
-  getNotes(day: Date) {
-    this.activeDay = day;
-    let updatedDay = moment(day).toISOString();
+  getNotes() {
+    let updatedDay = moment(this.activeDay).hour(0).minutes(0).seconds(0).milliseconds(0);
 
-    this.statusService.getStatus(this.id, updatedDay).subscribe(notes => {
+    this.statusService.getStatus(JSON.parse(this.id), updatedDay.toISOString()).subscribe(notes => {
+      this.notes = notes;
+    });
+  }
+
+  getNotesForDay(day: any) {
+    let updatedDay = moment(day).hour(0).minutes(0).seconds(0).milliseconds(0);
+
+    this.statusService.getStatus(JSON.parse(this.id), updatedDay.toISOString()).subscribe(notes => {
       this.notes = notes;
     });
   }
@@ -114,32 +111,41 @@ export class PatientComponent implements OnInit {
   };
 
   createNote() {
-    this.showNewNote = false;
-    this.newNote = {
-      HealthRating: this.noteForm.value.desc,
-      BehaviorMood: this.noteForm.value.mood,
-      Date: new Date()
-    };
+    if (this.noteForm.invalid) {
+      return;
+    }
 
-    this.statusService.addStatus(JSON.parse(this.id), this.newNote)
-      .subscribe(note => this.notes.push(note));
+    this.showNewNote = false;
+    let newDate = moment().hour(0).minutes(0).seconds(0).milliseconds(0);
+
+    this.newNote = {
+      Title: this.noteForm.value.Title,
+      Concerns: this.noteForm.value.Concerns,
+      Activities: this.noteForm.value.Activities,
+      Comments: this.noteForm.value.Comments,
+      BehaviorMood: this.noteForm.value.BehaviorMood,
+      Date: newDate.toISOString()
+    };    
+
+    this.statusService.addStatus(this.patient, this.newNote).subscribe(note => {
+      this.notes.push(note);
+      console.log(note);
+    });
     
     this.noteForm.reset();
   };
 
-  // editNote(selectedNote: Note, index: number) {
-  //   this.statusService.editNote(selectedNote)
-  //     .subscribe(note => this.notes[index] = {
-  //       title: note['title'],
-  //       desc: note['desc'],
-  //       mood: note['mood']
-  //     });
-  // };
+  editNote(note: Status) {
+    this.statusService.editStatus(note).subscribe(updatedNote => {
+      console.log(updatedNote)
+    });
+  };
 
-  // deleteNote(noteID: number, index: number) {
-  //   this.notes.splice(index, 1);
-  //   this.statusService.deleteNote(noteID).subscribe();
-  // };
+  deleteNote(note: Status) {
+    this.statusService.deleteStatus(note).subscribe(removedNote => {
+      console.log(removedNote);
+    });
+  };
 
   ngOnDestroy() {
     this.sub.unsubscribe();
