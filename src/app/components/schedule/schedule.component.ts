@@ -48,7 +48,7 @@ export class ScheduleComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.patient.currentValue) {
       let basicDay = moment(this.activeDay).hour(0).minute(0).second(0).millisecond(0);
-      this.getEvents(JSON.stringify(changes.patient.currentValue.UserID), basicDay.toISOString());
+      // this.getEvents(JSON.stringify(changes.patient.currentValue.UserID), basicDay.toISOString());
       this.getEventsForWeek(JSON.stringify(changes.patient.currentValue.UserID), this.firstDay.toISOString());
     }
   }
