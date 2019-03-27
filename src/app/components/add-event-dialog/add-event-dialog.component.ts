@@ -38,6 +38,10 @@ export class AddEventDialogComponent implements OnInit {
     if (this.addEventForm.invalid) {
       return;
     }
+    let date = moment(this.addEventForm.value.EventDate);
+    date.hour(0).minute(0).second(0).millisecond(0);
+    this.addEventForm.value.EventDate = date.toISOString();
+    
     this.dialogRef.close(this.addEventForm.value);    
   }
 

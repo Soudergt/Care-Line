@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
@@ -12,7 +12,7 @@ import { User } from 'src/app/classes/user';
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.scss']
 })
-export class ScheduleComponent implements OnInit {
+export class ScheduleComponent implements OnInit, OnChanges {
   @Input('activeDay') activeDay: Date;
   @Input('patient') patient: User;
   @Output() newDay = new EventEmitter<Date>();
@@ -41,7 +41,14 @@ export class ScheduleComponent implements OnInit {
     this.week.push(this.firstDay);
     for (let index = 1; index < 7; index++) {
       this.week.push(moment(this.firstDay).add(index, 'd').toDate());
-    }    
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.patient.currentValue) {
+      let basicDay = moment(this.activeDay).hour(0).minute(0).second(0).millisecond(0);
+      this.getEvents(JSON.stringify(changes.patient.currentValue.UserID), basicDay.toISOString());
+    }
   }
 
   nextWeek() {
@@ -64,6 +71,14 @@ export class ScheduleComponent implements OnInit {
     this.newDay.emit(this.activeDay);
   }
 
+  getEvents(uid: string, day: string): void {
+    this.eventService.getEvents(uid, day).subscribe(events => {
+      this.events = events;
+      console.log(this.events);
+      
+    });
+  }
+
   getEventsForWeek(firstDay: string):void {
     this.eventService.getEventsByWeek(this.patient, firstDay).subscribe(events => {
       this.events = events;
@@ -77,6 +92,20 @@ export class ScheduleComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.eventService.addEvent(this.patient, result).subscribe(newEvent => {
+          console.log(newEvent);
+        });
+      }
+    });
+  };
+
+  editEvent(event: Event, index: number) {
+    const dialogRef = this.dialog.open(AddEventDialogComponent, {
+      width: '600px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       // if (result) {
       //   this.eventService.addEvent(this.patient, result).subscribe(newEvent => {
@@ -84,10 +113,6 @@ export class ScheduleComponent implements OnInit {
       //   });
       // }
     });
-  };
-
-  editEvent(event: Event, index: number) {
-    
   };
 
   deleteEvent(event: Event, index: number) {

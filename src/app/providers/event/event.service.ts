@@ -11,9 +11,9 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  public getEvents(user: any, date: string): Observable<any> {
+  public getEvents(uid: string, date: string): Observable<any> {
     return this.http.get(
-      `/api/event/getEvents`, {params: new HttpParams().set('user', user).set('date', date), withCredentials: true},
+      `/api/event/getEvents`, {params: new HttpParams().set('uid', uid).set('date', date), withCredentials: true},
     ).pipe(map((body: {data: {events: any}}) => {
       return body.data.events;
     })); 
