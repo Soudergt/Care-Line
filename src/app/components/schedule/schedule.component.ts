@@ -28,6 +28,7 @@ export class ScheduleComponent implements OnInit, OnChanges {
   week: Date[];
   newWeek: Date[];
   events: Event[];
+  weekEvents: Event[];
 
   constructor(
     public dialog: MatDialog,
@@ -36,7 +37,7 @@ export class ScheduleComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.activeDayNum = this.activeDay.getDay();
-    this.firstDay = moment().startOf('week').toDate();
+    this.firstDay = moment().startOf('week').hour(0).minute(0).second(0).millisecond(0).toDate();
     this.week = [];
     this.week.push(this.firstDay);
     for (let index = 1; index < 7; index++) {
@@ -48,6 +49,7 @@ export class ScheduleComponent implements OnInit, OnChanges {
     if (changes.patient.currentValue) {
       let basicDay = moment(this.activeDay).hour(0).minute(0).second(0).millisecond(0);
       this.getEvents(JSON.stringify(changes.patient.currentValue.UserID), basicDay.toISOString());
+      this.getEventsForWeek(JSON.stringify(changes.patient.currentValue.UserID), this.firstDay.toISOString());
     }
   }
 
@@ -73,14 +75,13 @@ export class ScheduleComponent implements OnInit, OnChanges {
 
   getEvents(uid: string, day: string): void {
     this.eventService.getEvents(uid, day).subscribe(events => {
-      this.events = events;
-      console.log(this.events);
-      
+      this.weekEvents = events;
+      console.log(this.weekEvents);
     });
   }
 
-  getEventsForWeek(firstDay: string):void {
-    this.eventService.getEventsByWeek(this.patient, firstDay).subscribe(events => {
+  getEventsForWeek(uid: string, firstDay: string):void {
+    this.eventService.getEventsByWeek(uid, firstDay).subscribe(events => {
       this.events = events;
       console.log(this.events);
     });
