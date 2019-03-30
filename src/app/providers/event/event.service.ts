@@ -11,22 +11,24 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  public getEvents(uid: string, date: string): Observable<any> {
-    return this.http.get(
-      `/api/event/getEvents`, {params: new HttpParams().set('uid', uid).set('date', date), withCredentials: true},
-    ).pipe(map((body: {data: {events: any}}) => {
-      return body.data.events;
-    })); 
-  }
-
   public getEventsByWeek(user: any, startDate: string): Observable<any> {
     return this.http.get(
-      `/api/event/getEventsByWeek`, {params: new HttpParams().set('user', user).set('startDate', startDate), withCredentials: true}
+      `/api/event/getEventsByWeek`, 
+      { params: new HttpParams().set('user', user).set('startDate', startDate), withCredentials: true }
     ).pipe(map((body: {data: {events: any}}) => {
       return body.data.events;
     })); 
   }
 
+  public getEvents(uid: string, date: string): Observable<any> {
+    return this.http.get(
+      `/api/event/getEvents`, 
+      { params: new HttpParams().set('uid', uid).set('date', date), withCredentials: true },
+    ).pipe(map((body: {data: {events: any}}) => {
+      return body.data.events;
+    })); 
+  }
+  
   public getEvent(id: number): Observable<any> {
     return this.http.get(
       `/api/event/getEvent/?id=${id}`,

@@ -1,12 +1,14 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Patient } from 'src/app/classes/patient';
 import { Caretaker } from './../../classes/caretaker';
 import { UserService } from 'src/app/providers/user/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserDialogComponent } from './../../components/add-user-dialog/add-user-dialog.component';
 import { User } from 'src/app/classes/user';
+import { Event } from 'src/app/classes/event';
 import Swal from 'sweetalert2'
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-card-list',
@@ -16,9 +18,11 @@ import Swal from 'sweetalert2'
 export class CardListComponent implements OnInit {
   @Input('type') type: string;
   @Input('admin') admin: boolean;
+  @Output() patientList = new EventEmitter<Event[]>();
   activeList: any[];
   patients: User[];
   caretakers: User[];
+  events: any[];
 
   constructor(
     private router: Router,
@@ -32,11 +36,28 @@ export class CardListComponent implements OnInit {
     } else if (this.type === 'caretaker') {
       this.getCaretakers();
     }
+    this.events = [];
   }
 
   getPatients(): void {
     this.userService.getPatients().subscribe(patients => {
       this.activeList = patients;
+      if (patients.length > 0) {
+        patients.forEach((patient: User) => {
+          if (patient.events.length > 0) {
+            patient.events.forEach((event: Event) => {
+              let newEvent:any = event;
+              newEvent.EventTime = moment(newEvent.EventTime, 'HH:mm').format('h:mm a');
+              newEvent.patient = {
+                firstname: patient.NameFirst,
+                lastname: patient.NameLast
+              }
+              this.events.push(newEvent);
+            });
+          }
+        });
+      }
+      this.patientList.emit(this.events);
     });
   }
 

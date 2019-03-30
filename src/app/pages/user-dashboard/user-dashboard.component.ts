@@ -1,10 +1,11 @@
-import { User } from './../../classes/user';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from './../../providers/user/user.service';
-import { Component, OnInit } from '@angular/core';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
 import { faBell, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { Chart } from 'chart.js';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Event } from 'src/app/classes/event';
+import { User } from './../../classes/user';
 
 export interface AppointmentElement {
   desc: string;
@@ -34,8 +35,7 @@ export class UserDashboardComponent implements OnInit {
   chart = {};
   data = {};
   ctx: any;
-  displayedColumns: string[] = ['desc', 'date', 'patient'];
-  dataSource = APPOINTMENT_DATA;
+  displayedColumns: string[] = ['desc', 'date', 'time', 'patient'];
   faCalendarCheck = faCalendarCheck;
   faUsers = faUsers;
   faBell = faBell;
@@ -43,8 +43,7 @@ export class UserDashboardComponent implements OnInit {
   user: User;
   newURL: string;
   userPhoto;
-  testUser;
-  testUserData;
+  dataSource: any[];
 
   chartOptions = {
     responsive: false,
@@ -95,9 +94,7 @@ export class UserDashboardComponent implements OnInit {
       this.activeData = this.ageData;
       this.activeNoti = 'notifications';
       this.drawChart();
-
-      this.getUser(2);
-      
+      this.getUser(2);      
     } catch (err) {
       console.log(err);
     }
@@ -106,9 +103,12 @@ export class UserDashboardComponent implements OnInit {
   getUser(uid: number): void {
     this.userService.getUser(uid).subscribe(user => {
       this.user = user;
-      console.log(this.user);
       this.userPhoto = `url(/assets/images/people/${this.user.UserType}/${this.user.NameFirst.toLowerCase()}${this.user.NameLast.toLowerCase()}.jpg)`;
     });
+  }
+
+  getPatients(patientList: any[]): void {
+    this.dataSource = [...patientList];
   }
 
   changeChart(type: string): void {
