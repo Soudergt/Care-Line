@@ -1,30 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from './../../providers/user/user.service';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
-import { faBell, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faUsers, faChartBar } from '@fortawesome/free-solid-svg-icons';
 import { Chart } from 'chart.js';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Event } from 'src/app/classes/event';
 import { User } from './../../classes/user';
-
-export interface AppointmentElement {
-  desc: string;
-  date: string;
-  patient: string;
-}
-
-const APPOINTMENT_DATA: AppointmentElement[] = [
-  {desc: 'Appointment 1', date: '11/22/18', patient: 'Cathy'},
-  {desc: 'Appointment 2', date: '12/1/18', patient: 'Duke'},
-  {desc: 'Appointment 3', date: '12/3/18', patient: 'Frank'},
-  {desc: 'Appointment 4', date: '11/25/18', patient: 'Cathy'},
-  {desc: 'Appointment 5', date: '11/26/18', patient: 'Bobby'},
-  {desc: 'Appointment 6', date: '12/8/18', patient: 'Tammy'},
-  {desc: 'Appointment 7', date: '12/6/18', patient: 'George'},
-  {desc: 'Appointment 8', date: '1/2/19', patient: 'Duke'},
-  {desc: 'Appointment 9', date: '11/28/18', patient: 'Frank'},
-  {desc: 'Appointment 10', date: '11/23/18', patient: 'Bobby'},
-];
 
 @Component({
   selector: 'app-user-dashboard',
@@ -39,6 +19,7 @@ export class UserDashboardComponent implements OnInit {
   faCalendarCheck = faCalendarCheck;
   faUsers = faUsers;
   faBell = faBell;
+  faChartBar = faChartBar;
   activeNoti: string;
   user: User;
   newURL: string;
@@ -50,7 +31,7 @@ export class UserDashboardComponent implements OnInit {
     legend: {
       display: true,
       labels: {
-        fontColor: '#FFF',
+        fontColor: '#000',
         fontSize: 16
       },
       title: {
@@ -62,7 +43,7 @@ export class UserDashboardComponent implements OnInit {
   ageData = {
     datasets: [{
       data: [2, 3, 1],
-      backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B", "#7FDBFF", "#B10DC9", "#FFDC00", "#001f3f", "#39CCCC", "#01FF70", "#85144b", "#F012BE", "#3D9970", "#111111", "#AAAAAA"]
+      backgroundColor: ['#E53935', '#D81B60', '#8E24AA', '#5E35B1', '#3949AB', '#1E88E5', '#039BE5', '#00ACC1', '#00ACC1', '#00897B', '#43A047', '#7CB342', '#FDD835', '#FFB300', '#757575', '#546E7A']
     }],
     labels: [
       '60-65',
@@ -73,7 +54,7 @@ export class UserDashboardComponent implements OnInit {
   genderData = {
     datasets: [{
       data: [2, 4],
-      backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B", "#7FDBFF", "#B10DC9", "#FFDC00", "#001f3f", "#39CCCC", "#01FF70", "#85144b", "#F012BE", "#3D9970", "#111111", "#AAAAAA"]
+      backgroundColor: ['#E53935', '#D81B60', '#8E24AA', '#5E35B1', '#3949AB', '#1E88E5', '#039BE5', '#00ACC1', '#00ACC1', '#00897B', '#43A047', '#7CB342', '#FDD835', '#FFB300', '#757575', '#546E7A']
     }],
     labels: [
       'Female',
@@ -124,7 +105,7 @@ export class UserDashboardComponent implements OnInit {
   drawChart(): void {
     this.ctx = document.getElementById('patientsChart');
     this.chart = new Chart(this.ctx, {
-      type: 'pie',
+      type: 'doughnut',
       data: this.activeData,
       options: this.chartOptions
     });
