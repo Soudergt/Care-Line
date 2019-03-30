@@ -44,6 +44,8 @@ import { AddEventDialogComponent } from './components/add-event-dialog/add-event
 import { LoginComponent } from './pages/login/login.component';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +91,7 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
     FontAwesomeModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    ChartsModule
   ],
   providers: [],
   entryComponents: [

@@ -41,6 +41,7 @@
       "fastify-cors": "^0.1.0",
       "moment": "^2.24.0",
       "mssql": "^4.3.2",
+      "ng2-charts": "^2.0.3",
       "reflect-metadata": "^0.1.10",
       "rxjs": "~6.3.3",
       "sweetalert2": "^8.5.0",
