@@ -129,7 +129,6 @@ export class PatientComponent implements OnInit {
 
     this.statusService.addStatus(this.patient, this.newNote).subscribe(note => {
       this.notes.push(note);
-      console.log(note);
     });
     
     this.noteForm.reset();

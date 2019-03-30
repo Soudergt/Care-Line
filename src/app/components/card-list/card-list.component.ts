@@ -120,7 +120,6 @@ export class CardListComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.userService.deleteUser(user).subscribe(data => {
-          console.log(data);
           list.splice(index, 1);
           Swal.fire('Deleted!', user.NameFirst + ' ' + user.NameLast + ' has been deleted!', 'success');
         });

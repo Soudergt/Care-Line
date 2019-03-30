@@ -91,7 +91,6 @@ export class ScheduleComponent implements OnInit, OnChanges {
     this.eventService.getEventsByWeek(uid, firstDay).subscribe(events => {
       this.events = events;
       this.events.forEach(event => {
-        console.log(event);
         if (moment(event.EventDate).day() === 0) {
           this.weekEvents.sunday.push(event);
         } else if (moment(event.EventDate).day() === 1) {
@@ -108,9 +107,6 @@ export class ScheduleComponent implements OnInit, OnChanges {
           this.weekEvents.saturday.push(event);
         }
       });
-
-      console.log(this.weekEvents);
-
     });
   }
 
