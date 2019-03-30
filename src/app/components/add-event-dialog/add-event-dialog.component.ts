@@ -22,7 +22,9 @@ export class AddEventDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<AddEventDialogComponent>, 
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder
-  ) {    
+  ) {
+    console.log(this.data.event);
+
     this.addEventForm = this.formBuilder.group({
       EventName: ['', Validators.required],
       EventDesc: ['', Validators.required],

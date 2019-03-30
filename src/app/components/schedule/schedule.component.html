@@ -20,52 +20,59 @@
       </div>
       <div class="schedule-body" fxLayout="row">
         <div class="body-cell" fxFlex>
-          <mat-list role="list">
-            <mat-list-item role="listitem">Appointment 1</mat-list-item>
-            <mat-list-item role="listitem">Appointment 2</mat-list-item>
-            <mat-list-item role="listitem">Appointment 3</mat-list-item>
+          <mat-list role="list" *ngIf="weekEvents.sunday.length === 0">
+            <mat-list-item role="listitem">No Events</mat-list-item>
+          </mat-list>
+          <mat-list role="list" *ngIf="weekEvents.sunday.length !== 0">
+            <mat-list-item role="listitem" *ngFor="let event of weekEvents.sunday">{{event?.EventName}}</mat-list-item>          
           </mat-list>
         </div>
         <div class="body-cell" fxFlex>
-          <mat-list role="list">
-            <mat-list-item role="listitem">Appointment 1</mat-list-item>
-            <mat-list-item role="listitem">Appointment 2</mat-list-item>
-            <mat-list-item role="listitem">Appointment 3</mat-list-item>
+          <mat-list role="list" *ngIf="weekEvents.monday.length === 0">
+            <mat-list-item role="listitem">No Events</mat-list-item>
+          </mat-list>
+          <mat-list role="list" *ngIf="weekEvents.monday.length !== 0">
+            <mat-list-item role="listitem" *ngFor="let event of weekEvents.monday">{{event?.EventName}}</mat-list-item>          
           </mat-list>
         </div>
         <div class="body-cell" fxFlex>
-          <mat-list role="list">
-            <mat-list-item role="listitem">Appointment 1</mat-list-item>
-            <mat-list-item role="listitem">Appointment 2</mat-list-item>
-            <mat-list-item role="listitem">Appointment 3</mat-list-item>
+          <mat-list role="list" *ngIf="weekEvents.tuesday.length === 0">
+            <mat-list-item role="listitem">No Events</mat-list-item>
+          </mat-list>
+          <mat-list role="list" *ngIf="weekEvents.tuesday.length !== 0">
+            <mat-list-item role="listitem" *ngFor="let event of weekEvents.tuesday">{{event?.EventName}}</mat-list-item>          
           </mat-list>
         </div>
         <div class="body-cell" fxFlex>
-          <mat-list role="list">
-            <mat-list-item role="listitem">Appointment 1</mat-list-item>
-            <mat-list-item role="listitem">Appointment 2</mat-list-item>
-            <mat-list-item role="listitem">Appointment 3</mat-list-item>
+          <mat-list role="list" *ngIf="weekEvents.wednesday.length === 0">
+            <mat-list-item role="listitem">No Events</mat-list-item>
+          </mat-list>
+          <mat-list role="list" *ngIf="weekEvents.wednesday.length !== 0">
+            <mat-list-item role="listitem" *ngFor="let event of weekEvents.wednesday">{{event?.EventName}}</mat-list-item>          
           </mat-list>
         </div>
         <div class="body-cell" fxFlex>
-          <mat-list role="list">
-            <mat-list-item role="listitem">Appointment 1</mat-list-item>
-            <mat-list-item role="listitem">Appointment 2</mat-list-item>
-            <mat-list-item role="listitem">Appointment 3</mat-list-item>
+          <mat-list role="list" *ngIf="weekEvents.thursday.length === 0">
+            <mat-list-item role="listitem">No Events</mat-list-item>
+          </mat-list>
+          <mat-list role="list" *ngIf="weekEvents.thursday.length !== 0">
+            <mat-list-item role="listitem" *ngFor="let event of weekEvents.thursday">{{event?.EventName}}</mat-list-item>          
           </mat-list>
         </div>
         <div class="body-cell" fxFlex>
-          <mat-list role="list">
-            <mat-list-item role="listitem">Appointment 1</mat-list-item>
-            <mat-list-item role="listitem">Appointment 2</mat-list-item>
-            <mat-list-item role="listitem">Appointment 3</mat-list-item>
+          <mat-list role="list" *ngIf="weekEvents.friday.length === 0">
+            <mat-list-item role="listitem">No Events</mat-list-item>
+          </mat-list>
+          <mat-list role="list" *ngIf="weekEvents.friday.length !== 0">
+            <mat-list-item role="listitem" *ngFor="let event of weekEvents.friday">{{event?.EventName}}</mat-list-item>          
           </mat-list>
         </div>
         <div class="body-cell" fxFlex>
-          <mat-list role="list">
-            <mat-list-item role="listitem">Appointment 1</mat-list-item>
-            <mat-list-item role="listitem">Appointment 2</mat-list-item>
-            <mat-list-item role="listitem">Appointment 3</mat-list-item>
+          <mat-list role="list" *ngIf="weekEvents.saturday.length === 0">
+            <mat-list-item role="listitem">No Events</mat-list-item>
+          </mat-list>
+          <mat-list role="list" *ngIf="weekEvents.saturday.length !== 0">
+            <mat-list-item role="listitem" *ngFor="let event of weekEvents.saturday">{{event?.EventName}}</mat-list-item>          
           </mat-list>
         </div>
       </div>

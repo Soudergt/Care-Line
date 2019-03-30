@@ -28,7 +28,7 @@ export class ScheduleComponent implements OnInit, OnChanges {
   week: Date[];
   newWeek: Date[];
   events: Event[];
-  weekEvents: Event[];
+  weekEvents: any;
 
   constructor(
     public dialog: MatDialog,
@@ -43,12 +43,20 @@ export class ScheduleComponent implements OnInit, OnChanges {
     for (let index = 1; index < 7; index++) {
       this.week.push(moment(this.firstDay).add(index, 'd').toDate());
     }
+
+    this.weekEvents = {
+      sunday: [],
+      monday: [],
+      tuesday: [],
+      wednesday: [],
+      thursday: [],
+      friday: [],
+      saturday: []
+    };
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.patient.currentValue) {
-      let basicDay = moment(this.activeDay).hour(0).minute(0).second(0).millisecond(0);
-      // this.getEvents(JSON.stringify(changes.patient.currentValue.UserID), basicDay.toISOString());
       this.getEventsForWeek(JSON.stringify(changes.patient.currentValue.UserID), this.firstDay.toISOString());
     }
   }
@@ -75,21 +83,41 @@ export class ScheduleComponent implements OnInit, OnChanges {
 
   getEvents(uid: string, day: string): void {
     this.eventService.getEvents(uid, day).subscribe(events => {
-      this.weekEvents = events;
-      console.log(this.weekEvents);
+      this.events = events;
     });
   }
 
   getEventsForWeek(uid: string, firstDay: string):void {
     this.eventService.getEventsByWeek(uid, firstDay).subscribe(events => {
       this.events = events;
-      console.log(this.events);
+      this.events.forEach(event => {
+        console.log(event);
+        if (moment(event.EventDate).day() === 0) {
+          this.weekEvents.sunday.push(event);
+        } else if (moment(event.EventDate).day() === 1) {
+          this.weekEvents.monday.push(event);
+        } else if (moment(event.EventDate).day() === 2) {
+          this.weekEvents.tuesday.push(event);
+        } else if (moment(event.EventDate).day() === 3) {
+          this.weekEvents.wednesday.push(event);
+        } else if (moment(event.EventDate).day() === 4) {
+          this.weekEvents.thursday.push(event);
+        } else if (moment(event.EventDate).day() === 5) {
+          this.weekEvents.friday.push(event);
+        } else if (moment(event.EventDate).day() === 6) {
+          this.weekEvents.saturday.push(event);
+        }
+      });
+
+      console.log(this.weekEvents);
+
     });
   }
 
   addEvent() {
     const dialogRef = this.dialog.open(AddEventDialogComponent, {
-      width: '600px'
+      width: '600px',
+      data: { event: null }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -103,7 +131,8 @@ export class ScheduleComponent implements OnInit, OnChanges {
 
   editEvent(event: Event, index: number) {
     const dialogRef = this.dialog.open(AddEventDialogComponent, {
-      width: '600px'
+      width: '600px',
+      data: { event }
     });
 
     dialogRef.afterClosed().subscribe(result => {
