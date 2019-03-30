@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from './../../providers/user/user.service';
+import { StatusService } from 'src/app/providers/status/status.service';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
 import { faBell, faUsers, faChartBar } from '@fortawesome/free-solid-svg-icons';
-import { Chart } from 'chart.js';
 import { DomSanitizer } from '@angular/platform-browser';
 import { User } from './../../classes/user';
 
@@ -25,9 +25,10 @@ export class UserDashboardComponent implements OnInit {
   newURL: string;
   userPhoto;
   dataSource: any[];
+  uidsArray: any[];
 
   chartOptions = {
-    responsive: false,
+    responsive: true,
     legend: {
       display: true,
       labels: {
@@ -40,6 +41,17 @@ export class UserDashboardComponent implements OnInit {
       }
     }
   }
+  chartData = [2, 3, 1];
+  chartLabels = [
+    '60-65',
+    '65-70',
+    '70-75'
+  ];
+  chartType = 'doughnut';
+  chartColors = [{
+    backgroundColor: ['rgba(239,83,80 ,1)', 'rgba(236,64,122 ,1)', 'rgba(171,71,188 ,1)', 'rgba(126,87,194 ,1)', 'rgba(92,107,192 ,1)', 'rgba(66,165,245 ,1)', 'rgba(41,182,246 ,1)', 'rgba(38,198,218 ,1)', 'rgba(38,166,154 ,1)', 'rgba(102,187,106 ,1)']
+  }];
+
   ageData = {
     datasets: [{
       data: [2, 3, 1],
@@ -67,15 +79,16 @@ export class UserDashboardComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private statusService: StatusService,
     private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
     try {
+      this.uidsArray = [];
       this.activeData = this.ageData;
       this.activeNoti = 'notifications';
-      this.drawChart();
-      this.getUser(2);      
+      this.getUser(2);
     } catch (err) {
       console.log(err);
     }
@@ -88,27 +101,37 @@ export class UserDashboardComponent implements OnInit {
     });
   }
 
+  getStatusCounts(uids: string): void {
+    let newData = [];
+    let newLabels = [];
+    this.userService.getStatusCounts(uids).subscribe(counts => {      
+      counts.forEach((count:any) => {
+        newData.push(count.user.statusList.length);
+        newLabels.push(count.user.NameFirst + ' ' + count.user.NameLast);
+      });
+      this.chartLabels = newLabels;
+      this.chartData = newData;
+    });
+  }
+
   getPatients(patientList: any[]): void {
-    this.dataSource = [...patientList];
+    patientList.forEach(patient => {
+      this.uidsArray.push(patient.UserID);
+    });
+    let uids = this.uidsArray.join();
+    this.getStatusCounts(uids);
+  }
+
+  getEvents(eventList: any[]): void {
+    this.dataSource = [...eventList];
   }
 
   changeChart(type: string): void {
     if (type === 'age') {
       this.activeData = this.ageData;
-      this.drawChart();
     } else if (type === 'gender') {
       this.activeData = this.genderData;
-      this.drawChart();
     }
-  }
-
-  drawChart(): void {
-    this.ctx = document.getElementById('patientsChart');
-    this.chart = new Chart(this.ctx, {
-      type: 'doughnut',
-      data: this.activeData,
-      options: this.chartOptions
-    });
   }
 
 }

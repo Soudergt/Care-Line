@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="section-container">
-    <app-card-list [type]="'patient'" (patientList)="getPatients($event)" [admin]="false"></app-card-list>    
+    <app-card-list [type]="'patient'" (eventList)="getEvents($event)" (patientList)="getPatients($event)" [admin]="false"></app-card-list>    
   </div>
   <div class="section-container" fxLayout="row wrap" fxLayoutAlign="space-between">
     <div class="appointment-section card-shadow" fxFlex [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
@@ -83,15 +83,15 @@
         </div>
         <mat-divider style="width: 100%"></mat-divider>
         <div class="content center-align" fxFlex="1 1 auto">
-          <div>
+          <!-- <div>
             <mat-button-toggle-group #group="matButtonToggleGroup" value="age">
               <mat-button-toggle (change)="changeChart($event.value)" value="age">Age</mat-button-toggle>
               <mat-button-toggle (change)="changeChart($event.value)" value="gender">Gender</mat-button-toggle>
             </mat-button-toggle-group>
-          </div>
+          </div> -->
           <div>
             <div class="patients-chart-container">
-              <canvas height="400px" width="400px" id="patientsChart"></canvas>
+              <canvas baseChart [data]="chartData" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions" [chartType]="chartType"></canvas>
             </div>
           </div>
         </div>

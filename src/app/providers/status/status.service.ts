@@ -14,13 +14,23 @@ export class StatusService {
 
   public getStatus(uid: string, date: string): Observable<any> {
     return this.http.get(
-      `/api/status/getStatus`, {params: new HttpParams().set('uid', uid).set('date', date), withCredentials: true}
+      `/api/status/getStatus`, 
+      {params: new HttpParams().set('uid', uid).set('date', date), withCredentials: true}
     ).pipe(map((body: {data: {status: any}}) => {
       return body.data.status;
     })); 
   }
 
-  public addStatus(user: User, status: any): Observable<any> {    
+  public getStatusCounts(uids: string): Observable<any> {
+    return this.http.get(
+      `/api/status/getStatusCounts`, 
+      {params: new HttpParams().set('uids', uids), withCredentials: true}
+    ).pipe(map((body: {data: {counts: any}}) => {
+      return body.data.counts;
+    })); 
+  }
+
+  public addStatus(user: User, status: any): Observable<any> {
     return this.http.post(
       `/api/status/add`, { user, status },
       { withCredentials: true }

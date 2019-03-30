@@ -18,7 +18,8 @@ import * as moment from 'moment';
 export class CardListComponent implements OnInit {
   @Input('type') type: string;
   @Input('admin') admin: boolean;
-  @Output() patientList = new EventEmitter<Event[]>();
+  @Output() eventList = new EventEmitter<Event[]>();
+  @Output() patientList = new EventEmitter<User[]>();
   activeList: any[];
   patients: User[];
   caretakers: User[];
@@ -50,14 +51,16 @@ export class CardListComponent implements OnInit {
               newEvent.EventTime = moment(newEvent.EventTime, 'HH:mm').format('h:mm a');
               newEvent.patient = {
                 firstname: patient.NameFirst,
-                lastname: patient.NameLast
+                lastname: patient.NameLast,
+                id: patient.UserID
               }
               this.events.push(newEvent);
             });
           }
         });
       }
-      this.patientList.emit(this.events);
+      this.eventList.emit(this.events);
+      this.patientList.emit(patients);
     });
   }
 

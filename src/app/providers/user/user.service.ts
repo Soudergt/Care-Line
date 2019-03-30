@@ -2,7 +2,7 @@ import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { User } from 'src/app/classes/user';
 
 @Injectable({
@@ -70,5 +70,14 @@ export class UserService {
     ).pipe(map((body: {data: {removedUser: User}}) => {
       return body.data.removedUser;
     }));
+  }
+
+  public getStatusCounts(uids: string): Observable<any> {
+    return this.http.get(
+      `/api/user/getStatusCounts`, 
+      {params: new HttpParams().set('uids', uids), withCredentials: true}
+    ).pipe(map((body: {data: {counts: any}}) => {
+      return body.data.counts;
+    })); 
   }
 }
