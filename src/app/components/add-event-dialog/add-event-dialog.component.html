@@ -25,6 +25,9 @@
   </div>
   <div mat-dialog-actions fxLayoutAlign="end center">
     <button type="button" mat-button (click)="onNoClick()">Cancel</button>
-    <button type="submit" mat-raised-button color="primary" cdkFocusInitial>Add</button>
+    <button type="submit" mat-raised-button color="primary" cdkFocusInitial>
+      <span *ngIf="edit === false">Add</span>
+      <span *ngIf="edit === true">Update</span>
+    </button>
   </div>
 </form>

@@ -1,11 +1,12 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
-import * as moment from 'moment';
 import { AddEventDialogComponent } from '../add-event-dialog/add-event-dialog.component';
 import { EventService } from 'src/app/providers/event/event.service';
 import { Event } from 'src/app/classes/event';
 import { User } from 'src/app/classes/user';
+import Swal from 'sweetalert2';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-schedule',
@@ -125,24 +126,40 @@ export class ScheduleComponent implements OnInit, OnChanges {
     });
   };
 
-  editEvent(event: Event, index: number) {
+  editEvent(event: Event, list: Event[], index: number) {
     const dialogRef = this.dialog.open(AddEventDialogComponent, {
       width: '600px',
       data: { event }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      // if (result) {
-      //   this.eventService.addEvent(this.patient, result).subscribe(newEvent => {
-      //     console.log(newEvent);
-      //   });
-      // }
+      if (result) {
+        this.eventService.editEvent(result).subscribe(updatedEvent => {
+          list[index] = updatedEvent;
+        });
+      }
     });
   };
 
-  deleteEvent(event: Event, index: number) {
-    this.eventService.deleteEvent(event).subscribe();
+  deleteEvent(event: Event, list: Event[], index: number) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This event will be deleted!',
+      type: 'warning',
+      showCancelButton: true,
+      reverseButtons: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        this.eventService.deleteEvent(event).subscribe(removedEvent => {
+          list.splice(index, 1);
+          Swal.fire('Deleted!', 'The event has been deleted!', 'success');
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'The event was not deleted!', 'error')
+      }
+    })
   };
 
 }

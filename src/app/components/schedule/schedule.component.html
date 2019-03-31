@@ -21,58 +21,149 @@
       <div class="schedule-body" fxLayout="row">
         <div class="body-cell" fxFlex>
           <mat-list role="list" *ngIf="weekEvents.sunday.length === 0">
-            <mat-list-item role="listitem">No Events</mat-list-item>
+            <mat-list-item role="listitem" style="color: #999;">No Events</mat-list-item>
           </mat-list>
           <mat-list role="list" *ngIf="weekEvents.sunday.length !== 0">
-            <mat-list-item role="listitem" *ngFor="let event of weekEvents.sunday">{{event?.EventName}}</mat-list-item>          
+            <mat-list-item role="listitem" class="event" *ngFor="let event of weekEvents.sunday; let i = index">
+              <span fxFlex="1 1 auto;">{{event?.EventName | truncate:[15, '...']}}</span>
+              <button fxFlex="0 1 auto;" mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: -15px;">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="editEvent(event, weekEvents.sunday, i)">
+                  <span>Edit Event</span>
+                </button>
+                <button mat-menu-item (click)="deleteEvent(event, weekEvents.sunday, i)">
+                  <span>Delete Event</span>
+                </button>
+              </mat-menu>
+            </mat-list-item>
           </mat-list>
         </div>
         <div class="body-cell" fxFlex>
           <mat-list role="list" *ngIf="weekEvents.monday.length === 0">
-            <mat-list-item role="listitem">No Events</mat-list-item>
+            <mat-list-item role="listitem" style="color: #999;">No Events</mat-list-item>
           </mat-list>
           <mat-list role="list" *ngIf="weekEvents.monday.length !== 0">
-            <mat-list-item role="listitem" *ngFor="let event of weekEvents.monday">{{event?.EventName}}</mat-list-item>          
+            <mat-list-item role="listitem" class="event" *ngFor="let event of weekEvents.monday; let i = index">
+              <span fxFlex="1 1 auto;">{{event?.EventName | truncate:[15, '...']}}</span>
+              <button fxFlex="0 1 auto;" mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: -15px;">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="editEvent(event, weekEvents.monday, i)">
+                  <span>Edit Event</span>
+                </button>
+                <button mat-menu-item (click)="deleteEvent(event, weekEvents.monday, i)">
+                  <span>Delete Event</span>
+                </button>
+              </mat-menu>
+            </mat-list-item>
           </mat-list>
         </div>
         <div class="body-cell" fxFlex>
           <mat-list role="list" *ngIf="weekEvents.tuesday.length === 0">
-            <mat-list-item role="listitem">No Events</mat-list-item>
+            <mat-list-item role="listitem" style="color: #999;">No Events</mat-list-item>
           </mat-list>
           <mat-list role="list" *ngIf="weekEvents.tuesday.length !== 0">
-            <mat-list-item role="listitem" *ngFor="let event of weekEvents.tuesday">{{event?.EventName}}</mat-list-item>          
+            <mat-list-item role="listitem" class="event" *ngFor="let event of weekEvents.tuesday; let i = index">
+              <span fxFlex="1 1 auto;">{{event?.EventName | truncate:[15, '...']}}</span>
+              <button fxFlex="0 1 auto;" mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: -15px;">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="editEvent(event, weekEvents.tuesday, i)">
+                  <span>Edit Event</span>
+                </button>
+                <button mat-menu-item (click)="deleteEvent(event, weekEvents.tuesday, i)">
+                  <span>Delete Event</span>
+                </button>
+              </mat-menu>
+            </mat-list-item>
           </mat-list>
         </div>
         <div class="body-cell" fxFlex>
           <mat-list role="list" *ngIf="weekEvents.wednesday.length === 0">
-            <mat-list-item role="listitem">No Events</mat-list-item>
+            <mat-list-item role="listitem" style="color: #999;">No Events</mat-list-item>
           </mat-list>
           <mat-list role="list" *ngIf="weekEvents.wednesday.length !== 0">
-            <mat-list-item role="listitem" *ngFor="let event of weekEvents.wednesday">{{event?.EventName}}</mat-list-item>          
+            <mat-list-item role="listitem" class="event" *ngFor="let event of weekEvents.wednesday; let i = index">
+              <span fxFlex="1 1 auto;">{{event?.EventName | truncate:[15, '...']}}</span>
+              <button fxFlex="0 1 auto;" mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: -15px;">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="editEvent(event, weekEvents.wednesday, i)">
+                  <span>Edit Event</span>
+                </button>
+                <button mat-menu-item (click)="deleteEvent(event, weekEvents.wednesday, i)">
+                  <span>Delete Event</span>
+                </button>
+              </mat-menu>
+            </mat-list-item>
           </mat-list>
         </div>
         <div class="body-cell" fxFlex>
           <mat-list role="list" *ngIf="weekEvents.thursday.length === 0">
-            <mat-list-item role="listitem">No Events</mat-list-item>
+            <mat-list-item role="listitem" style="color: #999;">No Events</mat-list-item>
           </mat-list>
           <mat-list role="list" *ngIf="weekEvents.thursday.length !== 0">
-            <mat-list-item role="listitem" *ngFor="let event of weekEvents.thursday">{{event?.EventName}}</mat-list-item>          
+            <mat-list-item role="listitem" class="event" *ngFor="let event of weekEvents.thursday; let i = index">
+              <span fxFlex="1 1 auto;">{{event?.EventName | truncate:[15, '...']}}</span>
+              <button fxFlex="0 1 auto;" mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: -15px;">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="editEvent(event, weekEvents.thursday, i)">
+                  <span>Edit Event</span>
+                </button>
+                <button mat-menu-item (click)="deleteEvent(event, weekEvents.thursday, i)">
+                  <span>Delete Event</span>
+                </button>
+              </mat-menu>
+            </mat-list-item>
           </mat-list>
         </div>
         <div class="body-cell" fxFlex>
           <mat-list role="list" *ngIf="weekEvents.friday.length === 0">
-            <mat-list-item role="listitem">No Events</mat-list-item>
+            <mat-list-item role="listitem" style="color: #999;">No Events</mat-list-item>
           </mat-list>
           <mat-list role="list" *ngIf="weekEvents.friday.length !== 0">
-            <mat-list-item role="listitem" *ngFor="let event of weekEvents.friday">{{event?.EventName}}</mat-list-item>          
+            <mat-list-item role="listitem" class="event" *ngFor="let event of weekEvents.friday; let i = index">
+              <span fxFlex="1 1 auto;">{{event?.EventName | truncate:[15, '...']}}</span>
+              <button fxFlex="0 1 auto;" mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: -15px;">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="editEvent(event, weekEvents.friday, i)">
+                  <span>Edit Event</span>
+                </button>
+                <button mat-menu-item (click)="deleteEvent(event, weekEvents.friday, i)">
+                  <span>Delete Event</span>
+                </button>
+              </mat-menu>
+            </mat-list-item>
           </mat-list>
         </div>
         <div class="body-cell" fxFlex>
           <mat-list role="list" *ngIf="weekEvents.saturday.length === 0">
-            <mat-list-item role="listitem">No Events</mat-list-item>
+            <mat-list-item role="listitem" style="color: #999;">No Events</mat-list-item>
           </mat-list>
           <mat-list role="list" *ngIf="weekEvents.saturday.length !== 0">
-            <mat-list-item role="listitem" *ngFor="let event of weekEvents.saturday">{{event?.EventName}}</mat-list-item>          
+            <mat-list-item role="listitem" class="event" *ngFor="let event of weekEvents.saturday; let i = index">
+              <span fxFlex="1 1 auto;">{{event?.EventName | truncate:[15, '...']}}</span>
+              <button fxFlex="0 1 auto;" mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: -15px;">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="editEvent(event, weekEvents.saturday, i)">
+                  <span>Edit Event</span>
+                </button>
+                <button mat-menu-item (click)="deleteEvent(event, weekEvents.saturday, i)">
+                  <span>Delete Event</span>
+                </button>
+              </mat-menu>
+            </mat-list-item>
           </mat-list>
         </div>
       </div>

@@ -8,6 +8,7 @@ export interface AddEventData {
   EventDesc: string;
   EventDate: Date;
   EventTime: Date;
+  EventID?: number;
 }
 
 @Component({
@@ -17,20 +18,31 @@ export interface AddEventData {
 })
 export class AddEventDialogComponent implements OnInit {
   public addEventForm: FormGroup;
+  edit: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<AddEventDialogComponent>, 
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder
   ) {
-    console.log(this.data.event);
-
-    this.addEventForm = this.formBuilder.group({
-      EventName: ['', Validators.required],
-      EventDesc: ['', Validators.required],
-      EventDate: [moment().toDate(), Validators.required],
-      EventTime: [, Validators.required]
-    });
+    if (this.data.event) {
+      this.edit = true;
+      this.addEventForm = this.formBuilder.group({
+        EventName: [this.data.event.EventName, Validators.required],
+        EventDesc: [this.data.event.EventDesc, Validators.required],
+        EventDate: [this.data.event.EventDate, Validators.required],
+        EventTime: [this.data.event.EventTime, Validators.required],
+        EventID: [this.data.event.EventID]
+      });
+    } else {
+      this.edit = false;
+      this.addEventForm = this.formBuilder.group({
+        EventName: ['', Validators.required],
+        EventDesc: ['', Validators.required],
+        EventDate: [moment().toDate(), Validators.required],
+        EventTime: [, Validators.required]
+      });
+    }    
    }
 
   ngOnInit() {
