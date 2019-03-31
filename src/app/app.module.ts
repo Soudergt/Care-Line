@@ -26,6 +26,8 @@ import { MatTableModule } from '@angular/material/table';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TextFieldModule } from '@angular/cdk/text-field';
 
+import { TruncatePipe } from './pipes/truncate';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -63,7 +65,8 @@ import { ChartsModule } from 'ng2-charts';
     CaretakerComponent,
     AddEventDialogComponent,
     LoginComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    TruncatePipe
   ],
   imports: [
     AppRoutingModule,
