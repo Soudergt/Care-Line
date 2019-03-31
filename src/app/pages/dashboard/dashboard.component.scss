@@ -34,8 +34,9 @@ $secondary-color: #61da97;
     color: #FFF;
     text-align: left;
     position: relative;
+    text-shadow: 1px 1px 1px #000;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 40px;
     padding: 12px;
     padding-top: 45px;
@@ -107,9 +108,10 @@ $secondary-color: #61da97;
     }
 
     img.logo {
-      height: 215px;
-      width: 100%;
-      padding-left: 15px;
+      height: 200px;
+      width: 200px;
+      padding-left: 37px;
+      padding-top: 6px;
     }
 
     img.typescript {
@@ -127,8 +129,9 @@ $secondary-color: #61da97;
 
     img.fastify {
       height: 180px;
+      width: 200px;
       padding-top: 18px;
-      padding-bottom: 20px;
+      padding-left: 37px;
     }
 
     img.monochrome {
@@ -144,6 +147,7 @@ $secondary-color: #61da97;
   }
   .role-card.logo-card {
     margin: 0px 20px 40px 20px;
+    width: 275px;
   }
 }
 
@@ -180,5 +184,11 @@ $secondary-color: #61da97;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+.tech-col-header {
+  h1 {
+    text-shadow: 1px 1px 1px #000;
   }
 }
