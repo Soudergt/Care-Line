@@ -21,6 +21,14 @@ export class User {
     BloodType: string;
     AllergyInfo: string;
     DietInfo: string;
+    DietName?: string;
+    Likes?: string;
+    Dislikes?: string;
+    Medications?: string;
+    Exercise?: string;
+    PhysicalRestrictions?: string;
+    DietComments?: string;
+    TreatmentComments?: string;
     clinic?: any;
     statusList?: [];
     feedbackList?: [];
