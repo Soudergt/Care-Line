@@ -5,6 +5,7 @@ import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
 import { faBell, faUsers, faChartBar } from '@fortawesome/free-solid-svg-icons';
 import { DomSanitizer } from '@angular/platform-browser';
 import { User } from './../../classes/user';
+import * as moment from "moment";
 
 @Component({
   selector: 'app-user-dashboard',
@@ -26,11 +27,12 @@ export class UserDashboardComponent implements OnInit {
   userPhoto;
   dataSource: any[];
   uidsArray: any[];
+  upcommingPatients: any[];
 
   chartOptions = {
     responsive: true,
     legend: {
-      display: true,
+      display: false,
       labels: {
         fontColor: '#000',
         fontSize: 16
@@ -87,7 +89,8 @@ export class UserDashboardComponent implements OnInit {
     try {
       this.uidsArray = [];
       this.activeData = this.ageData;
-      this.activeNoti = 'notifications';
+      this.activeNoti = 'users';
+      this.upcommingPatients = [];
       this.getUser(2);
     } catch (err) {
       console.log(err);
@@ -104,10 +107,21 @@ export class UserDashboardComponent implements OnInit {
   getStatusCounts(uids: string): void {
     let newData = [];
     let newLabels = [];
-    this.userService.getStatusCounts(uids).subscribe(counts => {      
+    this.userService.getStatusCounts(uids).subscribe(counts => {
       counts.forEach((count:any) => {
         newData.push(count.user.statusList.length);
         newLabels.push(count.user.NameFirst + ' ' + count.user.NameLast);
+
+        if (count.user.statusList.length === 0) {
+          this.upcommingPatients.push(count.user);
+        } else if (count.user.statusList.length > 0) {
+          this.upcommingPatients.push(count.user);
+          count.user.statusList.forEach((status: any) => {
+            if (moment(status.Date).isSame(moment(), 'day')) {
+              this.upcommingPatients.splice(this.upcommingPatients.length - 1, 1);
+            }
+          });
+        }
       });
       this.chartLabels = newLabels;
       this.chartData = newData;
