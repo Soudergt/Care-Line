@@ -37,6 +37,7 @@ export class ScheduleComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
+    this.activeDay = moment().hour(0).minute(0).second(0).millisecond(0).toDate();
     this.activeDayNum = this.activeDay.getDay();
     this.firstDay = moment().startOf('week').hour(0).minute(0).second(0).millisecond(0).toDate();
     this.week = [];
@@ -64,16 +65,32 @@ export class ScheduleComponent implements OnInit, OnChanges {
 
   nextWeek() {
     this.newWeek = this.week.map(day => {
-      return moment(day).add(1, 'w').toDate()      
+      return moment(day).hour(0).minute(0).second(0).millisecond(0).add(1, 'w').toDate()      
     });
     this.week = this.newWeek;
+    if (moment(this.activeDay).isBetween(this.week[0], this.week[6])) {
+      console.log('Active week');
+      this.activeDayNum = this.activeDay.getDay();
+    } else {
+      console.log('Not Active week');
+      this.activeDayNum = 9;
+    }
+    this.getEventsForWeek(JSON.stringify(this.patient.UserID), moment(this.week[0]).toISOString());
   }
 
   prevWeek() {
     this.newWeek = this.week.map(day => {
-      return moment(day).subtract(1, 'w').toDate()      
+      return moment(day).hour(0).minute(0).second(0).millisecond(0).subtract(1, 'w').toDate()      
     });
     this.week = this.newWeek;
+    if (moment(this.activeDay).isBetween(moment(this.week[0]), moment(this.week[6]))) {
+      this.activeDayNum = this.activeDay.getDay();
+      console.log('Active week');
+    } else {
+      this.activeDayNum = 9;
+      console.log('Not Active week');
+    }
+    this.getEventsForWeek(JSON.stringify(this.patient.UserID), moment(this.week[0]).toISOString());
   }
   
   getDay(day: any): void {
