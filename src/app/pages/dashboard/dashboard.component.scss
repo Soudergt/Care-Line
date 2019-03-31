@@ -1,3 +1,7 @@
+$accent-color: #E0E0E4;
+$primary-color: #04376a;
+$secondary-color: #61da97;
+
 @mixin transition($property, $duration) {
   -webkit-transition-property: $property;
   -webkit-transition-duration: $duration
@@ -163,5 +167,18 @@
 
   img {
     width: 85%;
+  }
+}
+
+.section-footer {
+  color: #FFF;
+  height: 100px;
+  z-index: 100;
+  padding: 40px 15px 0px 15px;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
