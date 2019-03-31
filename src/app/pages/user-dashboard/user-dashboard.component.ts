@@ -24,7 +24,7 @@ export class UserDashboardComponent implements OnInit {
   activeNoti: string;
   user: User;
   newURL: string;
-  userPhoto;
+  userPhoto: string;
   dataSource: any[];
   uidsArray: any[];
   upcommingPatients: any[];
@@ -91,7 +91,7 @@ export class UserDashboardComponent implements OnInit {
       this.activeData = this.ageData;
       this.activeNoti = 'users';
       this.upcommingPatients = [];
-      this.getUser(2);
+      this.getUser(1);
     } catch (err) {
       console.log(err);
     }
@@ -99,8 +99,8 @@ export class UserDashboardComponent implements OnInit {
 
   getUser(uid: number): void {
     this.userService.getUser(uid).subscribe(user => {
-      this.user = user;
-      this.userPhoto = `url(/assets/images/people/${this.user.UserType}/${this.user.NameFirst.toLowerCase()}${this.user.NameLast.toLowerCase()}.jpg)`;
+      this.user = user;      
+      this.userPhoto = `url(/assets/images/people/${this.user.UserType.toLowerCase()}/${this.user.NameFirst.toLowerCase()}${this.user.NameLast.toLowerCase()}.png)`;
     });
   }
 

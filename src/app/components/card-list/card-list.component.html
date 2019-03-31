@@ -6,7 +6,7 @@
   <div class="patient-list">
     <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;">
       <mat-card class="item-card" *ngFor="let item of activeList; let i = index" fxFlex="28">
-        <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}" (click)="goToPatient(item)"></div>
+        <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.photo}" (click)="goToPatient(item)"></div>
         <div class="card-content">
           <mat-card-title fxLayout="row" fxLayoutAlign="start center">
             <span fxFlex (click)="goToPatient(item)">{{ item?.NameFirst }} {{ item?.NameLast }}</span>
@@ -32,9 +32,12 @@
           </svg>
           <mat-card-content style="margin-top: -20px;">
             <div class="card-info-container" fxLayout="column" fxLayoutGap="8px">
-              <!-- <div fxFlex ng-if="item.clinic">
-                  <b>Clinic:</b> {{item.clinic}}
-                </div> -->
+              <div fxFlex ng-if="item.clinic">
+                <b>Clinic:</b> {{item?.clinic?.ClinicShortName}}
+              </div>
+              <div fxFlex ng-if="item.HomeAddress">
+                <b>Location:</b> {{item?.HomeAddress}}
+              </div>
             </div>
           </mat-card-content>
         </div>
@@ -50,7 +53,7 @@
   <div class="patient-list">
     <div class="card-list-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px;">
       <mat-card class="item-card" *ngFor="let item of activeList; let i = index" fxFlex="28">
-        <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.img}" (click)="goToCaretaker(item)"></div>
+        <div class="item-img drop-shadow" [ngStyle]="{'background-image': item.photo}" (click)="goToCaretaker(item)"></div>
         <div class="card-content">
           <mat-card-title fxLayout="row" fxLayoutAlign="start center">
             <span fxFlex (click)="goToCaretaker(item)">{{ item?.NameFirst }} {{ item?.NameLast }}</span>
@@ -76,9 +79,15 @@
           </svg>
           <mat-card-content style="margin-top: -20px;">
             <div class="card-info-container" fxLayout="column" fxLayoutGap="8px">
-              <!-- <div fxFlex ng-if="item.clinic">
-                <b>Clinic:</b> {{item.clinic}}
-              </div> -->
+              <div fxFlex ng-if="item.clinic">
+                <b>Clinic:</b> {{item?.clinic?.ClinicShortName}}
+              </div>
+              <div fxFlex ng-if="item.JobTitle">
+                <b>Job Title:</b> {{item?.JobTitle}}
+              </div>
+              <div fxFlex ng-if="item.WorkPhone">
+                <b>Work Phone:</b> {{item?.WorkPhone}}
+              </div>
             </div>
           </mat-card-content>
         </div>

@@ -43,6 +43,9 @@ export class CardListComponent implements OnInit {
   getPatients(): void {
     this.userService.getPatients().subscribe(patients => {
       this.activeList = patients;
+      this.activeList.forEach(patient => {
+        patient.photo = `url(/assets/images/people/${patient.UserType.toLowerCase()}/${patient.NameFirst.toLowerCase()}${patient.NameLast.toLowerCase()}.png)`;
+      });
       if (patients.length > 0) {
         patients.forEach((patient: User) => {
           if (patient.events.length > 0) {
@@ -67,6 +70,10 @@ export class CardListComponent implements OnInit {
   getCaretakers(): void {
     this.userService.getCaretakers().subscribe(caretakers => {
       this.activeList = caretakers;
+      console.log(this.activeList);
+      this.activeList.forEach(caretaker => {
+        caretaker.photo = `url(/assets/images/people/${caretaker.UserType.toLowerCase()}/${caretaker.NameFirst.toLowerCase()}${caretaker.NameLast.toLowerCase()}.png)`;
+      });
     });
   }
 

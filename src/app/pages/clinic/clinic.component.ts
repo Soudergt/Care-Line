@@ -13,6 +13,7 @@ export interface data {
 })
 export class ClinicComponent implements OnInit {
   clinic: Clinic;
+  clinicPhoto: string;
   lat: number;
   lng: number;
   newUser: any;
@@ -30,6 +31,7 @@ export class ClinicComponent implements OnInit {
   getClinic(id: number): void {
     this.clinicService.getClinic(id).subscribe(clinic => {
       this.clinic = clinic;
+      this.clinicPhoto = `url(/assets/images/clinic/${this.clinic.ClinicShortName.toLowerCase()}.png)`;
     });
   }
 }
