@@ -9,7 +9,7 @@ import { UserService } from 'src/app/providers/user/user.service';
 import { User } from 'src/app/classes/user';
 import { Status } from 'src/app/classes/status';
 
-import { faNotesMedical, faInfo, faUtensils, faComments, faArrowCircleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faNotesMedical, faInfo, faUtensils, faComments, faArrowCircleRight, faAngleLeft, faCommentMedical, faPrescriptionBottleAlt } from '@fortawesome/free-solid-svg-icons';
 import { faSmile, faMeh, faGrinBeam, faFrown, faTired } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
@@ -29,6 +29,8 @@ export class PatientComponent implements OnInit {
   id: string;
   //Icons
   faNotesMedical = faNotesMedical;
+  faCommentMedical = faCommentMedical;
+  faPrescriptionBottleAlt = faPrescriptionBottleAlt;
   faInfo = faInfo;
   faSmile = faSmile;
   faMeh = faMeh;
