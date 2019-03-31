@@ -70,7 +70,6 @@ export class CardListComponent implements OnInit {
   getCaretakers(): void {
     this.userService.getCaretakers().subscribe(caretakers => {
       this.activeList = caretakers;
-      console.log(this.activeList);
       this.activeList.forEach(caretaker => {
         caretaker.photo = `url(/assets/images/people/${caretaker.UserType.toLowerCase()}/${caretaker.NameFirst.toLowerCase()}${caretaker.NameLast.toLowerCase()}.png)`;
       });
