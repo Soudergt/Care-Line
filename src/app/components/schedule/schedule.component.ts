@@ -102,6 +102,15 @@ export class ScheduleComponent implements OnInit, OnChanges {
   }
 
   getEventsForWeek(uid: string, firstDay: string):void {
+    this.weekEvents = {
+      sunday: [],
+      monday: [],
+      tuesday: [],
+      wednesday: [],
+      thursday: [],
+      friday: [],
+      saturday: []
+    };
     this.eventService.getEventsByWeek(uid, firstDay).subscribe(events => {
       this.events = events;
       this.events.forEach(event => {
@@ -133,7 +142,23 @@ export class ScheduleComponent implements OnInit, OnChanges {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.eventService.addEvent(this.patient, result).subscribe(newEvent => {
-          console.log(newEvent);
+          if (moment(newEvent.EventDate).isBetween(moment(this.week[0]), moment(this.week[6]))) {
+            if (moment(newEvent.EventDate).day() === 0) {
+              this.weekEvents.sunday.push(newEvent);
+            } else if (moment(newEvent.EventDate).day() === 1) {
+              this.weekEvents.monday.push(newEvent);
+            } else if (moment(newEvent.EventDate).day() === 2) {
+              this.weekEvents.tuesday.push(newEvent);
+            } else if (moment(newEvent.EventDate).day() === 3) {
+              this.weekEvents.wednesday.push(newEvent);
+            } else if (moment(newEvent.EventDate).day() === 4) {
+              this.weekEvents.thursday.push(newEvent);
+            } else if (moment(newEvent.EventDate).day() === 5) {
+              this.weekEvents.friday.push(newEvent);
+            } else if (moment(newEvent.EventDate).day() === 6) {
+              this.weekEvents.saturday.push(newEvent);
+            }
+          }
         });
       }
     });
