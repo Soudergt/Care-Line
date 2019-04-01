@@ -113,6 +113,8 @@ export class PatientComponent implements OnInit {
 
   cancelAddNote() {
     this.showNewNote = false;
+    this.selectedNote = null;
+    this.noteEdit = null;
     this.noteForm.reset();
   };
 
