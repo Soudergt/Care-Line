@@ -79,7 +79,6 @@ export class PatientComponent implements OnInit {
   getPatient(id: number): void {
     this.userService.getUser(id).subscribe(patient => {
       this.patient = patient;
-      console.log(this.patient);
       this.patientPhoto = `url(/assets/images/people/patient/${this.patient.NameFirst.toLowerCase()}${this.patient.NameLast.toLowerCase()}.png)`;
     });
   };
