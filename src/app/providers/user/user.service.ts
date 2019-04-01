@@ -27,6 +27,15 @@ export class UserService {
     })); 
   }
 
+  public getActiveUser(): Observable<User> {
+    return this.http.get(
+      `/api/user/getActiveUser`,
+      { withCredentials: true }
+    ).pipe(map((body: {data: {user: User}}) => {
+      return body.data.user;
+    })); 
+  }
+
   public getPatients(): Observable<any> {
     return this.http.get(
       `/api/user/getPatients`,

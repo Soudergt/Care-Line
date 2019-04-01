@@ -91,7 +91,7 @@ export class UserDashboardComponent implements OnInit {
       this.activeData = this.ageData;
       this.activeNoti = 'users';
       this.upcommingPatients = [];
-      this.getUser(1);
+      this.getActiveUser();
     } catch (err) {
       console.log(err);
     }
@@ -100,6 +100,13 @@ export class UserDashboardComponent implements OnInit {
   getUser(uid: number): void {
     this.userService.getUser(uid).subscribe(user => {
       this.user = user;      
+      this.userPhoto = `url(/assets/images/people/${this.user.UserType.toLowerCase()}/${this.user.NameFirst.toLowerCase()}${this.user.NameLast.toLowerCase()}.png)`;
+    });
+  }
+
+  getActiveUser(): void {
+    this.userService.getActiveUser().subscribe(user => {
+      this.user = user;
       this.userPhoto = `url(/assets/images/people/${this.user.UserType.toLowerCase()}/${this.user.NameFirst.toLowerCase()}${this.user.NameLast.toLowerCase()}.png)`;
     });
   }
