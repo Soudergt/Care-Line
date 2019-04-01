@@ -121,8 +121,10 @@ export class UserDashboardComponent implements OnInit {
 
         if (count.user.statusList.length === 0) {
           this.upcommingPatients.push(count.user);
+          count.user.photo = `/assets/images/people/${count.user.UserType.toLowerCase()}/${count.user.NameFirst.toLowerCase()}${count.user.NameLast.toLowerCase()}.png`;
         } else if (count.user.statusList.length > 0) {
           this.upcommingPatients.push(count.user);
+          count.user.photo = `/assets/images/people/${count.user.UserType.toLowerCase()}/${count.user.NameFirst.toLowerCase()}${count.user.NameLast.toLowerCase()}.png`;
           count.user.statusList.forEach((status: any) => {
             if (moment(status.Date).isSame(moment(), 'day')) {
               this.upcommingPatients.splice(this.upcommingPatients.length - 1, 1);
@@ -132,6 +134,8 @@ export class UserDashboardComponent implements OnInit {
       });
       this.chartLabels = newLabels;
       this.chartData = newData;
+
+      console.log(this.upcommingPatients);
     });
   }
 

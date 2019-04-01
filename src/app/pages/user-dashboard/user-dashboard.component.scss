@@ -3,6 +3,7 @@
   padding: 0px 15px 15px 15px;
   display: flex;
   text-decoration: none;
+  height: 225px;
 
   .user-info-container {
     margin-top: 30px; 
@@ -201,3 +202,21 @@
   }
 }
 
+.noti-content {
+  height: 175px;
+  overflow-y: auto;
+}
+
+.noti-content::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.noti-content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.noti-content::-webkit-scrollbar-thumb {
+  background-color: #f7f7f7;
+  outline: 1px solid slategrey;
+}

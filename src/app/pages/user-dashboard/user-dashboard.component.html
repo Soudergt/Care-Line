@@ -28,15 +28,18 @@
           </div>
         </div>
         <mat-divider style="border-top-width: 2px;"></mat-divider>
-        <div class="noti-content">
+        <div class="noti-content" *ngIf="activeNoti === 'users'">
           <mat-list>
-            <mat-list-item></mat-list-item>
+            <mat-list-item *ngFor="let patient of upcommingPatients">
+              <img matListAvatar src="{{patient.photo}}" alt="patient photo">
+              <h3 matLine style="color: #FFF;">{{patient.NameFirst}} {{patient.NameLast}}</h3>
+            </mat-list-item>
           </mat-list>
         </div>
       </div>
     </div>
   </div>
-  <div class="section-container">
+  <div class="section-container" style="margin-top:0px;">
     <app-card-list [type]="'patient'" (eventList)="getEvents($event)" (patientList)="getPatients($event)" [admin]="false"></app-card-list>    
   </div>
   <div class="section-container" fxLayout="row wrap" fxLayoutAlign="space-between">
