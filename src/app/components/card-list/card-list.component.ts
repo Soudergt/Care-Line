@@ -109,7 +109,6 @@ export class CardListComponent implements OnInit {
 
   editUser(user: User, list: User[], index: number) {
     this.userService.editUser(user).subscribe(updatedUser => {
-      console.log(updatedUser);
       list[index] = updatedUser;
     });
   }
