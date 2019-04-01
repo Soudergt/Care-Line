@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
+import Swal from 'sweetalert2';
 
 import { StatusService } from 'src/app/providers/status/status.service';
 import { UserService } from 'src/app/providers/user/user.service';
@@ -45,6 +46,8 @@ export class PatientComponent implements OnInit {
   
   //Note Values
   showNewNote: boolean;
+  noteEdit: number;
+  selectedNote: any;
   notes: any;
 
   constructor(
@@ -98,6 +101,7 @@ export class PatientComponent implements OnInit {
   }
 
   getNotesForDay(day: any) {
+    this.activeDay = day;
     let updatedDay = moment(day).hour(0).minutes(0).seconds(0).milliseconds(0);
 
     this.statusService.getStatus(JSON.parse(this.id), updatedDay.toISOString()).subscribe(notes => {
@@ -119,8 +123,8 @@ export class PatientComponent implements OnInit {
       return;
     }
 
-    this.showNewNote = false;
-    let newDate = moment().hour(0).minutes(0).seconds(0).milliseconds(0);
+    this.showNewNote = false;    
+    let newDate = moment(this.activeDay).hour(0).minutes(0).seconds(0).milliseconds(0);
 
     this.newNote = {
       Title: this.noteForm.value.Title,
@@ -138,15 +142,60 @@ export class PatientComponent implements OnInit {
     this.noteForm.reset();
   };
 
-  editNote(note: Status) {
-    this.statusService.editStatus(note).subscribe(updatedNote => {
-      console.log(updatedNote)
+  updateNote() {
+    if (this.noteForm.invalid) {
+      return;
+    }
+    let newDate = moment(this.activeDay).hour(0).minutes(0).seconds(0).milliseconds(0);
+
+    let selectedNote = {
+      StatusID: this.selectedNote.StatusID,
+      Title: this.noteForm.value.Title,
+      Concerns: this.noteForm.value.Concerns,
+      Activities: this.noteForm.value.Activities,
+      Comments: this.noteForm.value.Comments,
+      BehaviorMood: this.noteForm.value.BehaviorMood,
+      Date: newDate.toISOString()
+    };    
+
+    this.statusService.editStatus(selectedNote).subscribe(updatedNote => {
+      this.notes[this.noteEdit] = updatedNote;
+      this.noteEdit = null;
     });
+    
+    this.noteForm.reset();
+  }
+
+  editNote(note: Status, index: number) {
+    this.noteForm = this.formBuilder.group({
+      Title: [note.Title],
+      Concerns: [note.Concerns],
+      Activities: [note.Activities],
+      Comments: [note.Comments],
+      BehaviorMood: [note.BehaviorMood]
+    });
+    this.selectedNote = note;
+    this.noteEdit = index;
   };
 
-  deleteNote(note: Status) {
-    this.statusService.deleteStatus(note).subscribe(removedNote => {
-      console.log(removedNote);
+  deleteNote(note: Status, index: number) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This note will be deleted!',
+      type: 'warning',
+      showCancelButton: true,
+      reverseButtons: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        this.statusService.deleteStatus(note).subscribe(removedNote => {
+          this.notes.splice(index, 1);
+          Swal.fire('Deleted!', 'The note has been deleted!', 'success');
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'The note was not deleted!', 'error')
+      }
     });
   };
 
