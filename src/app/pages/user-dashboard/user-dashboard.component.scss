@@ -73,8 +73,15 @@
   }
 }
 
+.chart-title {
+  font-size: 28px;
+  color: #000;
+}
+
 .patients-chart-container {
   padding: 12px 0px;
+  height: auto;
+  width: 600px;
 }
 
 .progress-container {

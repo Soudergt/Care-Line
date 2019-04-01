@@ -92,10 +92,9 @@
               <mat-button-toggle (change)="changeChart($event.value)" value="gender">Gender</mat-button-toggle>
             </mat-button-toggle-group>
           </div> -->
-          <div>
-            <div class="patients-chart-container">
-              <canvas baseChart [data]="chartData" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions" [chartType]="chartType"></canvas>
-            </div>
+          <!-- <h3 class="chart-title">Notes Taken</h3> -->
+          <div class="patients-chart-container">
+            <canvas baseChart [data]="chartData" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions" [chartType]="chartType"></canvas>
           </div>
         </div>
       </div>

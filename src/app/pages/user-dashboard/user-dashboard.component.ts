@@ -36,11 +36,13 @@ export class UserDashboardComponent implements OnInit {
       labels: {
         fontColor: '#000',
         fontSize: 16
-      },
-      title: {
-        display: true,
-        text: "Patient Age"
       }
+    },
+    title: {
+      display: true,
+      text: "Notes Taken",
+      fontColor: '#000',
+      fontSize: 20
     }
   }
   chartData = [2, 3, 1];
@@ -134,8 +136,6 @@ export class UserDashboardComponent implements OnInit {
       });
       this.chartLabels = newLabels;
       this.chartData = newData;
-
-      console.log(this.upcommingPatients);
     });
   }
 
