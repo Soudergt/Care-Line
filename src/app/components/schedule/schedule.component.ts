@@ -58,7 +58,7 @@ export class ScheduleComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.patient.currentValue) {
+    if (changes.patient && changes.patient.currentValue) {
       this.getEventsForWeek(JSON.stringify(changes.patient.currentValue.UserID), this.firstDay.toISOString());
     }
   }
@@ -69,10 +69,8 @@ export class ScheduleComponent implements OnInit, OnChanges {
     });
     this.week = this.newWeek;
     if (moment(this.activeDay).isBetween(this.week[0], this.week[6])) {
-      console.log('Active week');
       this.activeDayNum = this.activeDay.getDay();
     } else {
-      console.log('Not Active week');
       this.activeDayNum = 9;
     }
     this.getEventsForWeek(JSON.stringify(this.patient.UserID), moment(this.week[0]).toISOString());
@@ -85,10 +83,8 @@ export class ScheduleComponent implements OnInit, OnChanges {
     this.week = this.newWeek;
     if (moment(this.activeDay).isBetween(moment(this.week[0]), moment(this.week[6]))) {
       this.activeDayNum = this.activeDay.getDay();
-      console.log('Active week');
     } else {
       this.activeDayNum = 9;
-      console.log('Not Active week');
     }
     this.getEventsForWeek(JSON.stringify(this.patient.UserID), moment(this.week[0]).toISOString());
   }
