@@ -33,6 +33,7 @@ export class UserDashboardComponent implements OnInit {
 
   chartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     legend: {
       display: false,
       labels: {
@@ -42,7 +43,7 @@ export class UserDashboardComponent implements OnInit {
     },
     title: {
       display: true,
-      text: "Notes Taken",
+      text: "Aggregate Patient Notes",
       fontColor: '#000',
       fontSize: 20
     }
