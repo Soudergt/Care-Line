@@ -21,11 +21,11 @@
               <fa-icon [icon]="faUsers" size="3x"></fa-icon>
             </button>
           </div>
-          <div class="noti-type" fxFlex="75px">
+          <!-- <div class="noti-type" fxFlex="75px">
             <button class="noti-button" mat-icon-button [ngClass]="{'active': activeNoti === 'notifications'}" (click)="activeNoti = 'notifications'">
               <fa-icon [icon]="faBell" size="3x"></fa-icon>
             </button>
-          </div>
+          </div> -->
         </div>
         <mat-divider style="border-top-width: 2px;"></mat-divider>
         <div class="noti-content" *ngIf="activeNoti === 'users'">

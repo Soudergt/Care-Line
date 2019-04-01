@@ -24,7 +24,7 @@ export class TopbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authService.isLoggedIn.subscribe(valid => {
+    this.authService.isLoggedIn.subscribe((valid: boolean) => {
       this.isLoggedIn = valid;
     });
 
