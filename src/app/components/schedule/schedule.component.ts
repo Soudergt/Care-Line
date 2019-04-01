@@ -114,21 +114,23 @@ export class ScheduleComponent implements OnInit, OnChanges {
     this.eventService.getEventsByWeek(uid, firstDay).subscribe(events => {
       this.events = events;
       this.events.forEach(event => {
-        if (moment(event.EventDate).day() === 0) {
-          this.weekEvents.sunday.push(event);
-        } else if (moment(event.EventDate).day() === 1) {
-          this.weekEvents.monday.push(event);
-        } else if (moment(event.EventDate).day() === 2) {
-          this.weekEvents.tuesday.push(event);
-        } else if (moment(event.EventDate).day() === 3) {
-          this.weekEvents.wednesday.push(event);
-        } else if (moment(event.EventDate).day() === 4) {
-          this.weekEvents.thursday.push(event);
-        } else if (moment(event.EventDate).day() === 5) {
-          this.weekEvents.friday.push(event);
-        } else if (moment(event.EventDate).day() === 6) {
-          this.weekEvents.saturday.push(event);
-        }
+        if (event.user.UserID === this.patient.UserID) {
+          if (moment(event.EventDate).day() === 0) {
+            this.weekEvents.sunday.push(event);
+          } else if (moment(event.EventDate).day() === 1) {
+            this.weekEvents.monday.push(event);
+          } else if (moment(event.EventDate).day() === 2) {
+            this.weekEvents.tuesday.push(event);
+          } else if (moment(event.EventDate).day() === 3) {
+            this.weekEvents.wednesday.push(event);
+          } else if (moment(event.EventDate).day() === 4) {
+            this.weekEvents.thursday.push(event);
+          } else if (moment(event.EventDate).day() === 5) {
+            this.weekEvents.friday.push(event);
+          } else if (moment(event.EventDate).day() === 6) {
+            this.weekEvents.saturday.push(event);
+          }
+        }        
       });
     });
   }

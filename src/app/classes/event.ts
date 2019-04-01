@@ -3,4 +3,5 @@ export class Event {
   EventName: string;
   EventDesc: string;
   EventDate: Date;
+  user?: any;
 }
