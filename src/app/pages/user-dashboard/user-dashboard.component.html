@@ -17,7 +17,7 @@
         <div class="noti-header" fxLayout="row" fxLayoutAlign="end end">
           <div class="noti-type-title" fxFlex>
             <span *ngIf="activeNoti === 'notifications'">Notifications</span>
-            <span *ngIf="activeNoti === 'users'">Upcomming Patients</span>  
+            <span *ngIf="activeNoti === 'users'">Upcoming Patients</span>  
           </div>
           <div class="noti-type" fxFlex="75px">
             <button class="noti-button" mat-icon-button [ngClass]="{'active': activeNoti === 'users'}" (click)="activeNoti = 'users'">
