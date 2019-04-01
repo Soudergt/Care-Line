@@ -7,6 +7,9 @@
       <div class="user-info">
         <div class="user-name">{{user?.NameFirst}} {{user?.NameLast}}</div>
         <a class="user-clinic" routerLink="/clinic/{{user?.clinic?.ClinicID}}">{{user?.clinic?.ClinicLongName}}</a>
+        <div>
+          <app-star-rating [rating]="4"></app-star-rating>
+        </div>
       </div>
     </div>
     <div fxFlex="40">
