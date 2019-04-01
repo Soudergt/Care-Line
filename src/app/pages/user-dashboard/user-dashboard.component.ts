@@ -22,6 +22,7 @@ export class UserDashboardComponent implements OnInit {
   faBell = faBell;
   faChartBar = faChartBar;
   activeNoti: string;
+  activeUserID: number;
   user: User;
   newURL: string;
   userPhoto: string;
@@ -109,13 +110,8 @@ export class UserDashboardComponent implements OnInit {
 
   getActiveUser(): void {
     this.userService.getActiveUser().subscribe(user => {
-      this.user = user;
-      this.userPhoto = `url(/assets/images/people/${this.user.UserType.toLowerCase()}/${this.user.NameFirst.toLowerCase()}${this.user.NameLast.toLowerCase()}.png)`;
-      if (this.user.UserType.toLowerCase() === 'admin') {
-        this.admin = true;
-      } else {
-        this.admin = false;
-      }
+      this.activeUserID = user.UserID;
+      this.getUser(this.activeUserID);
     });
   }
 
