@@ -67,9 +67,7 @@ export class PatientComponent implements OnInit {
 
   ngOnInit() {
     this.showNewNote = false;
-    this.selectedContact = null;
-    // this.selectedContact = { name: 'Frank'};
-    
+    this.selectedContact = null;    
     this.activeDay = new Date();
 
     this.sub = this.activatedRoute.params.subscribe(params => {
