@@ -5,6 +5,8 @@ import { FeedbackService } from 'src/app/providers/feedback/feedback.service';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from 'src/app/providers/user/user.service';
 import { User } from 'src/app/classes/user';
+import { RatingService } from 'src/app/providers/rating/rating.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-caretaker',
@@ -18,6 +20,7 @@ export class CaretakerComponent implements OnInit {
   faComment = faComment;
   showNewFeedback: boolean;
   comments: any[];
+  userPhoto: string;
   sub: any;
   id: string;
 
@@ -25,6 +28,7 @@ export class CaretakerComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private feedbackService: FeedbackService,
+    private ratingService: RatingService,
     private formBuilder: FormBuilder
   ) {
     this.feedbackForm = this.formBuilder.group({
@@ -47,30 +51,35 @@ export class CaretakerComponent implements OnInit {
   getCaretaker(id: number): void {
     this.userService.getUser(id).subscribe(caretaker => {
       this.caretaker = caretaker
+      this.userPhoto = `url(/assets/images/people/caretaker/${this.caretaker.NameFirst.toLowerCase()}${this.caretaker.NameLast.toLowerCase()}.png)`;
       console.log(this.caretaker);
     });
   }
 
-  createFeedback() {
+  createRating() {
     this.showNewFeedback = false;
     this.newFeedback = {
-      title: this.feedbackForm.value.title,
-      desc: this.feedbackForm.value.desc,
-      rating: this.feedbackForm.value.rating
+      Title: this.feedbackForm.value.title,
+      Desc: this.feedbackForm.value.desc,
+      Rating: this.feedbackForm.value.rating,
+      Date: moment().toISOString(),
+      user: this.caretaker
     };
 
-    this.feedbackService.addFeedback(this.newFeedback).subscribe((comment:any) => {
-      this.comments.push(comment)
-    });
-    
-    this.feedbackForm.reset();
+    console.log(this.newFeedback);
+
+    // this.ratingService.addCaretakerRating(this.newFeedback).subscribe((comment:any) => {
+    //   console.log(comment);
+    //   this.comments.push(comment);
+    // });
+    // this.feedbackForm.reset();  
   }
 
-  addFeedback() {
+  addRating() {
     this.showNewFeedback = true;
   }
 
-  cancelAddFeedback() {
+  cancelAddRating() {
     this.showNewFeedback = false;
     this.feedbackForm.reset();
   }

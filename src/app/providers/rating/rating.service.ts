@@ -29,9 +29,9 @@ export class RatingService {
     })); 
   }
 
-  public addCaretakerRating(id: number, rating: any): Observable<any> {
+  public addCaretakerRating(rating: any): Observable<any> {
     return this.http.post(
-      `/api/rating/caretaker/add`, { id, rating },
+      `/api/rating/caretaker/add`, { rating },
       { withCredentials: true }
     ).pipe(map((body: {data: {newRating: any}}) => {
       return body.data.newRating;

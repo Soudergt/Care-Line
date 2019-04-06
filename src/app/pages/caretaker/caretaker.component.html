@@ -2,7 +2,7 @@
   <div class="user-header" fxLayout="row wrap" [ngStyle.xs]="{'margin-top': '0px'}" [ngStyle.sm]="{'margin-top': '0px'}">
     <div class="user-info-container" fxLayout="row" fxFlex>
       <div class="photo-container" fxFlex="1 1 150px">
-        <div class="user-img drop-shadow" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
+        <div class="user-img drop-shadow" [ngStyle]="{'background-image': userPhoto}" [ngStyle.xs]="{'width': '75px', 'height': '75px'}" [ngStyle.sm]="{'width': '100px', 'height': '100px'}"></div>
       </div>
       <div class="user-info">
         <div class="user-name">{{caretaker?.NameFirst}} {{caretaker?.NameLast}}</div>
@@ -23,13 +23,13 @@
                 <fa-icon [icon]="faComment" size="3x" [inverse]="true"></fa-icon>
               </div>
               <div class="header-text-inverse" fxFlex="1 1 auto">Feedback</div>
-              <button type="button" class="create-btn" mat-raised-button color="primary" (click)="addFeedback()">Add</button>
+              <button type="button" class="create-btn" mat-raised-button color="primary" (click)="addRating()">Add</button>
             </div>
             <mat-divider style="width: 100%"></mat-divider>
             <div class="content" fxFlex="1 1 auto">
               <div fxLayout="column wrap">
                 <div class="note-box-new" *ngIf="showNewFeedback" fxFlex="1 1 auto">
-                  <form (ngSubmit)="createFeedback()" [formGroup]="feedbackForm" fxLayout="column" fxLayoutGap="5px">
+                  <form (ngSubmit)="createRating()" [formGroup]="feedbackForm" fxLayout="column" fxLayoutGap="5px">
                     <mat-form-field>
                       <input matInput type="text" placeholder="Title" formControlName="title">
                     </mat-form-field>
@@ -38,7 +38,7 @@
                     </mat-form-field>
                     <app-star-rating [rating]="newFeedback.rating"></app-star-rating>
                     <div class="footer" fxLayout="row" fxLayoutGap="30px">
-                      <button type="button" mat-stroked-button fxFlex="1 1 auto" (click)="cancelAddFeedback()">Cancel</button>
+                      <button type="button" mat-stroked-button fxFlex="1 1 auto" (click)="cancelAddRating()">Cancel</button>
                       <button type="submit" mat-flat-button fxFlex="1 1 auto" color="primary">Save</button>
                     </div>
                   </form>
