@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 
 import { StatusService } from 'src/app/providers/status/status.service';
 import { UserService } from 'src/app/providers/user/user.service';
+import { NeedsService } from 'src/app/providers/needs/needs.service';
 
 import { User } from 'src/app/classes/user';
 import { Status } from 'src/app/classes/status';
@@ -20,6 +21,7 @@ import { faSmile, faMeh, faGrinBeam, faFrown, faTired } from '@fortawesome/free-
 })
 export class PatientComponent implements OnInit {
   public noteForm: FormGroup;
+  public needForm: FormGroup;
   moment = moment;
   activeDay: Date;
   newNote: any;
@@ -50,10 +52,15 @@ export class PatientComponent implements OnInit {
   selectedNote: any;
   notes: any;
 
+  needs: any[];
+  showNewNeed: boolean;
+  newNeed: any;
+
   constructor(
     private activatedRoute: ActivatedRoute, 
     private userService: UserService,
     private statusService: StatusService,
+    private needsService: NeedsService,
     private formBuilder: FormBuilder
   ) {
     this.noteForm = this.formBuilder.group({
@@ -62,6 +69,10 @@ export class PatientComponent implements OnInit {
       Activities: [''],
       Comments: [''],
       BehaviorMood: ['']
+    });
+
+    this.needForm = this.formBuilder.group({
+      Desc: ['']
     });
   }
 
@@ -97,6 +108,42 @@ export class PatientComponent implements OnInit {
       this.notes = notes;
     });
   }
+
+  getsNeeds() {
+    this.needsService.getNeeds(JSON.parse(this.id)).subscribe(needs => {
+      this.needs = needs;
+    });
+  };
+
+  addNeed() {
+    this.showNewNeed = true;
+  }
+
+  cancelAddNeed() {
+    this.showNewNeed = false;
+    this.needForm.reset();
+  };
+
+  createNeed() {
+    if (this.needForm.invalid) {
+      return;
+    }
+
+    this.showNewNeed = false;    
+    let newDate = moment().hour(0).minutes(0).seconds(0).milliseconds(0);
+
+    this.newNeed = {
+      Desc: this.needForm.value.Desc,
+      Date: newDate.toISOString(),
+      user: this.patient
+    };    
+
+    this.needsService.addNeed(this.newNeed).subscribe(note => {
+      this.notes.push(note);
+    });
+    
+    this.noteForm.reset();
+  };
 
   getNotesForDay(day: any) {
     this.activeDay = day;

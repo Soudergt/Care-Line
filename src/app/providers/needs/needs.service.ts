@@ -20,27 +20,27 @@ export class NeedsService {
     })); 
   }
 
-  public addNeeds(user: User, needs: any): Observable<any> {
+  public addNeed(need: any): Observable<any> {
     return this.http.post(
-      `/api/needs/add`, { user, needs },
+      `/api/needs/add`, { need },
       { withCredentials: true }
     ).pipe(map((body: {data: {newNeed: any}}) => {
       return body.data.newNeed;
     })); 
   }
 
-  public editNeeds(needs: any): Observable<any> {    
+  public editNeed(need: any): Observable<any> {    
     return this.http.put(
-      `/api/needs/edit`, { needs },
+      `/api/needs/edit`, { need },
       { withCredentials: true }
     ).pipe(map((body: {data: {updatedNeed: any}}) => {
       return body.data.updatedNeed;
     })); 
   }
 
-  public deleteNeeds(needs: any): Observable<any> {    
+  public deleteNeed(need: any): Observable<any> {    
     return this.http.post(
-      `/api/needs/delete`, { needs },
+      `/api/needs/delete`, { need },
       { withCredentials: true }
     ).pipe(map((body: {data: {removedNeed: any}}) => {
       return body.data.removedNeed;
