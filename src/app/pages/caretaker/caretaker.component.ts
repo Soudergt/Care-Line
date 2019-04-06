@@ -58,11 +58,13 @@ export class CaretakerComponent implements OnInit {
 
   createRating() {
     this.showNewFeedback = false;
+    let newDate = moment().hour(0).minutes(0).seconds(0).milliseconds(0);
+
     this.newFeedback = {
       Title: this.feedbackForm.value.title,
       Desc: this.feedbackForm.value.desc,
       Rating: this.feedbackForm.value.rating,
-      Date: moment().toISOString(),
+      Date: newDate.toISOString(),
       user: this.caretaker
     };
 
