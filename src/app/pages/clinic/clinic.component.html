@@ -7,7 +7,9 @@
       <div class="clinic-info">
         <div class="clinic-name">{{clinic?.ClinicLongName}}</div>
         <div class="clinic-sub-info">{{clinic?.ClinicAddress}}</div>
-        <div class="clinic-sub-info">{{clinic?.ClinicPhone}}</div>
+        <div style="margin-top: 5px;">
+          <app-star-rating [rating]="4"></app-star-rating>
+        </div>
       </div>
     </div>
   </div>
