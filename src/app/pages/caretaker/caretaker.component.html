@@ -36,7 +36,7 @@
                     <mat-form-field>
                       <textarea matInput cdkTextareaAutosize placeholder="Feedback" formControlName="desc"></textarea>
                     </mat-form-field>
-                    <app-star-rating [rating]="newFeedback.rating"></app-star-rating>
+                    <app-star-rating [rating]="newFeedback.rating" (ratingClick)="getRating($event)"></app-star-rating>
                     <div class="footer" fxLayout="row" fxLayoutGap="30px">
                       <button type="button" mat-stroked-button fxFlex="1 1 auto" (click)="cancelAddRating()">Cancel</button>
                       <button type="submit" mat-flat-button fxFlex="1 1 auto" color="primary">Save</button>

@@ -34,17 +34,19 @@ export class CaretakerComponent implements OnInit {
     this.feedbackForm = this.formBuilder.group({
       title: [''],
       desc: [''],
-      rating: ['']
+      rating: []
     });
   }
 
   ngOnInit() {
+    this.comments = [];
     this.showNewFeedback = false;
     this.newFeedback = {};
 
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
       this.getCaretaker(JSON.parse(this.id));
+      this.getCaretakerRatings(this.id);
     });
   }
 
@@ -52,8 +54,18 @@ export class CaretakerComponent implements OnInit {
     this.userService.getUser(id).subscribe(caretaker => {
       this.caretaker = caretaker
       this.userPhoto = `url(/assets/images/people/caretaker/${this.caretaker.NameFirst.toLowerCase()}${this.caretaker.NameLast.toLowerCase()}.png)`;
-      console.log(this.caretaker);
     });
+  }
+
+  getCaretakerRatings(id: string): void {
+    this.ratingService.getCaretakerRatings(id).subscribe(ratings => {
+      this.comments = ratings;
+      console.log(ratings);
+    });
+  }
+
+  getRating(rating: number) {
+    this.feedbackForm.value.rating = rating;
   }
 
   createRating() {
@@ -68,13 +80,11 @@ export class CaretakerComponent implements OnInit {
       user: this.caretaker
     };
 
-    console.log(this.newFeedback);
-
-    // this.ratingService.addCaretakerRating(this.newFeedback).subscribe((comment:any) => {
-    //   console.log(comment);
-    //   this.comments.push(comment);
-    // });
-    // this.feedbackForm.reset();  
+    this.ratingService.addCaretakerRating(this.newFeedback).subscribe((comment:any) => {
+      console.log(comment);
+      this.comments.push(comment);
+    });
+    this.feedbackForm.reset();  
   }
 
   addRating() {

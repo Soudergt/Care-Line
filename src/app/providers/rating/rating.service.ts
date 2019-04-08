@@ -11,9 +11,9 @@ export class RatingService {
 
   constructor(private http: HttpClient) { }
 
-  public getCaretakerRatings(uid: string): Observable<any> {
+  public getCaretakerRatings(id: string): Observable<any> {
     return this.http.get(
-      `/api/rating/caretaker/getRatings/?uid=${uid}`,
+      `/api/rating/caretaker/getRatings/?id=${id}`,
       { withCredentials: true }
     ).pipe(map((body: {data: {ratings: any}}) => {
       return body.data.ratings;

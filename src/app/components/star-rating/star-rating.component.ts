@@ -20,9 +20,7 @@ export class StarRatingComponent implements OnInit {
   
   onClick(rating: number): void {
     this.rating = rating;
-    this.ratingClick.emit({
-      rating: rating
-    });
+    this.ratingClick.emit(rating);
   }
 
 }
