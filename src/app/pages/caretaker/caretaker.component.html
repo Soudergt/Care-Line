@@ -27,8 +27,8 @@
             </div>
             <mat-divider style="width: 100%"></mat-divider>
             <div class="content" fxFlex="1 1 auto">
-              <div fxLayout="column wrap">
-                <div class="note-box-new" *ngIf="showNewFeedback" fxFlex="1 1 auto">
+              <div fxLayout="row wrap">
+                <div class="note-box-new" *ngIf="showNewFeedback" fxFlex="50">
                   <form (ngSubmit)="createRating()" [formGroup]="feedbackForm" fxLayout="column" fxLayoutGap="5px">
                     <mat-form-field>
                       <input matInput type="text" placeholder="Title" formControlName="title">
@@ -43,7 +43,7 @@
                     </div>
                   </form>
                 </div>
-                <div class="note-box" *ngFor="let comment of comments" fxFlex="1 1 auto">
+                <div class="note-box" *ngFor="let comment of comments" fxFlex="50">
                   <div class="title">{{comment.title}}</div>
                   <mat-divider class="divider"></mat-divider>
                   <p class="body">{{comment.desc}}</p>
