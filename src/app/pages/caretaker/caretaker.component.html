@@ -36,7 +36,7 @@
                     <mat-form-field>
                       <textarea matInput cdkTextareaAutosize placeholder="Feedback" formControlName="desc"></textarea>
                     </mat-form-field>
-                    <app-star-rating [rating]="newFeedback.rating" (ratingClick)="getRating($event)"></app-star-rating>
+                    <app-star-rating [rating]="newFeedback.rating" (ratingClick)="getRating($event)" [viewOnly]="false"></app-star-rating>
                     <div class="footer" fxLayout="row" fxLayoutGap="30px">
                       <button type="button" mat-stroked-button fxFlex="1 1 auto" (click)="cancelAddRating()">Cancel</button>
                       <button type="submit" mat-flat-button fxFlex="1 1 auto" color="primary">Save</button>
@@ -44,9 +44,12 @@
                   </form>
                 </div>
                 <div class="note-box" *ngFor="let comment of comments" fxFlex="50">
-                  <div class="title">{{comment.title}}</div>
+                  <div class="title">
+                    {{comment.Title}}
+                  </div>
                   <mat-divider class="divider"></mat-divider>
-                  <p class="body">{{comment.desc}}</p>
+                  <app-star-rating [rating]="comment.Rating" [viewOnly]="true"></app-star-rating>
+                  <p class="body">{{comment.Desc}}</p>
                 </div>
               </div>
             </div>

@@ -60,7 +60,6 @@ export class CaretakerComponent implements OnInit {
   getCaretakerRatings(id: string): void {
     this.ratingService.getCaretakerRatings(id).subscribe(ratings => {
       this.comments = ratings;
-      console.log(ratings);
     });
   }
 
