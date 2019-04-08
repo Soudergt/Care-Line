@@ -13,16 +13,16 @@ export class NeedsService {
 
   public getNeeds(uid: string): Observable<any> {
     return this.http.get(
-      `/api/needs/getNeeds`, 
+      `/api/need/getNeeds`, 
       {params: new HttpParams().set('uid', uid), withCredentials: true}
-    ).pipe(map((body: {data: {status: any}}) => {
-      return body.data.status;
+    ).pipe(map((body: {data: {needs: any}}) => {
+      return body.data.needs;
     })); 
   }
 
   public addNeed(need: any): Observable<any> {
     return this.http.post(
-      `/api/needs/add`, { need },
+      `/api/need/add`, { need },
       { withCredentials: true }
     ).pipe(map((body: {data: {newNeed: any}}) => {
       return body.data.newNeed;
@@ -31,7 +31,7 @@ export class NeedsService {
 
   public editNeed(need: any): Observable<any> {    
     return this.http.put(
-      `/api/needs/edit`, { need },
+      `/api/need/edit`, { need },
       { withCredentials: true }
     ).pipe(map((body: {data: {updatedNeed: any}}) => {
       return body.data.updatedNeed;
@@ -40,7 +40,7 @@ export class NeedsService {
 
   public deleteNeed(need: any): Observable<any> {    
     return this.http.post(
-      `/api/needs/delete`, { need },
+      `/api/need/delete`, { need },
       { withCredentials: true }
     ).pipe(map((body: {data: {removedNeed: any}}) => {
       return body.data.removedNeed;

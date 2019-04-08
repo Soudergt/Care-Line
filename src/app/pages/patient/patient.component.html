@@ -357,8 +357,8 @@
             <mat-divider style="width: 100%"></mat-divider>
             <div class="content" fxFlex="1 1 auto">
               <div fxLayout="column wrap">
-                <div class="note-box-new" *ngIf="showNewNote" fxFlex="1 1 auto">
-                  <form (ngSubmit)="createNeed()" [formGroup]="noteForm" fxLayout="column" fxLayoutGap="5px">
+                <div class="note-box-new" *ngIf="showNewNeed" fxFlex="1 1 auto">
+                  <form (ngSubmit)="createNeed()" [formGroup]="needForm" fxLayout="column" fxLayoutGap="5px">
                     <mat-form-field>
                       <input matInput type="text" placeholder="Description" formControlName="Desc" required>
                     </mat-form-field>
@@ -367,6 +367,15 @@
                       <button type="submit" mat-flat-button fxFlex="1 1 auto" color="primary">Save</button>
                     </div>
                   </form>
+                </div>
+                <div *ngFor="let need of needs; let i = index" fxFlex="1 1 auto">
+                  <div class="need-box">
+                    <div class="note-content">
+                      <div class="info">
+                        <div>{{need?.Desc}}</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

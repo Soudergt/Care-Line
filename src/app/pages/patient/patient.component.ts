@@ -85,6 +85,7 @@ export class PatientComponent implements OnInit {
       this.id = params['id'];
       this.getPatient(JSON.parse(this.id));
       this.getNotes();
+      this.getsNeeds();
     });
   };
 
@@ -110,8 +111,9 @@ export class PatientComponent implements OnInit {
   }
 
   getsNeeds() {
-    this.needsService.getNeeds(JSON.parse(this.id)).subscribe(needs => {
+    this.needsService.getNeeds(this.id).subscribe(needs => {
       this.needs = needs;
+      console.log(this.needs);
     });
   };
 
@@ -138,8 +140,9 @@ export class PatientComponent implements OnInit {
       user: this.patient
     };    
 
-    this.needsService.addNeed(this.newNeed).subscribe(note => {
-      this.notes.push(note);
+    this.needsService.addNeed(this.newNeed).subscribe(need => {
+      console.log(need);
+      this.needs.push(need);
     });
     
     this.noteForm.reset();
