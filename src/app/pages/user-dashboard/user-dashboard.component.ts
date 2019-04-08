@@ -30,6 +30,7 @@ export class UserDashboardComponent implements OnInit {
   uidsArray: any[];
   upcommingPatients: any[];
   admin: boolean;
+  showStars: boolean;
 
   chartOptions = {
     responsive: true,
@@ -106,6 +107,9 @@ export class UserDashboardComponent implements OnInit {
     this.userService.getUser(uid).subscribe(user => {
       this.user = user;      
       this.userPhoto = `url(/assets/images/people/${this.user.UserType.toLowerCase()}/${this.user.NameFirst.toLowerCase()}${this.user.NameLast.toLowerCase()}.png)`;
+      if (this.user.UserType.toLowerCase() === 'caretaker') {
+        this.showStars = true;
+      }
     });
   }
 
