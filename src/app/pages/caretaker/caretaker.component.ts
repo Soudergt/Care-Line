@@ -16,9 +16,11 @@ import * as moment from 'moment';
 export class CaretakerComponent implements OnInit {
   public feedbackForm: FormGroup;
   caretaker: User;
+  activeUser: any;
   newFeedback: any;
   faComment = faComment;
   showNewFeedback: boolean;
+  showCreateRating: boolean;
   comments: any[];
   userPhoto: string;
   sub: any;
@@ -47,6 +49,15 @@ export class CaretakerComponent implements OnInit {
       this.id = params['id'];
       this.getCaretaker(JSON.parse(this.id));
       this.getCaretakerRatings(this.id);
+    });
+  }
+
+  getActiveUser(): void {
+    this.userService.getActiveUser().subscribe(user => {
+      this.activeUser = user;
+      if (this.activeUser.UserType.toLowerCase() !== 'caretaker') {
+        this.showCreateRating = true;
+      }
     });
   }
 
