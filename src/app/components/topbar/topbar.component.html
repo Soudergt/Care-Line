@@ -4,7 +4,8 @@
     <img class="logo-text" src="../assets/images/logos/CLineText.png" alt="CareLine Title Text" aria-label="careline title text" [routerLink]="" [ngStyle.xs]="{'height': '75px'}" [ngStyle.sm]="{'height': '75px'}">
   </a>
   <nav class="nav-link-container" fxShow fxHide.xs>
-    <a class="nav-link" [routerLink]="['/dashboard']" *ngIf="isLoggedIn">Dashboard</a>
+    <a class="nav-link" [routerLink]="['/dashboard']" *ngIf="isLoggedIn && caretaker === true">Dashboard</a>
+    <a class="nav-link" (click)="goToPatient()" *ngIf="isLoggedIn && patient == true">Dashboard</a>
     <div class="photo-container" *ngIf="isLoggedIn">
       <div class="user-img drop-shadow" [ngStyle]="{'background-image': userPhoto}"></div>
     </div>

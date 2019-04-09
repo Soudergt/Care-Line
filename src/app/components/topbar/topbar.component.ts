@@ -15,6 +15,8 @@ export class TopbarComponent implements OnInit {
   name: String;
   user: User;
   userPhoto: string;
+  caretaker: boolean;
+  patient: boolean;
 
   constructor(
     public dialog: MatDialog,
@@ -35,7 +37,18 @@ export class TopbarComponent implements OnInit {
     this.userService.getActiveUser().subscribe(user => {
       this.user = user;
       this.userPhoto = `url(/assets/images/people/${this.user.UserType.toLowerCase()}/${this.user.NameFirst.toLowerCase()}${this.user.NameLast.toLowerCase()}.png)`;
+
+      if (this.user.UserType.toLowerCase() === 'caretaker') {
+        this.caretaker = true;
+      }
+      if (this.user.UserType.toLowerCase() !== 'caretaker') {
+        this.patient = true;
+      }
     });
+  }
+
+  goToPatient() {
+    this.router.navigateByUrl(`/patient/${this.user.UserID}`);
   }
 
   logout() {
