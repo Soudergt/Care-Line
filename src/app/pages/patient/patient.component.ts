@@ -13,6 +13,7 @@ import { Status } from 'src/app/classes/status';
 
 import { faNotesMedical, faInfo, faUtensils, faComments, faArrowCircleRight, faAngleLeft, faCommentMedical, faPrescriptionBottleAlt } from '@fortawesome/free-solid-svg-icons';
 import { faSmile, faMeh, faGrinBeam, faFrown, faTired } from '@fortawesome/free-regular-svg-icons';
+import { MessageService } from 'src/app/providers/message/message.service';
 
 @Component({
   selector: 'app-patient',
@@ -22,6 +23,7 @@ import { faSmile, faMeh, faGrinBeam, faFrown, faTired } from '@fortawesome/free-
 export class PatientComponent implements OnInit {
   public noteForm: FormGroup;
   public needForm: FormGroup;
+  public messageForm: FormGroup;
   moment = moment;
   activeDay: Date;
   newNote: any;
@@ -56,6 +58,8 @@ export class PatientComponent implements OnInit {
   selectedNote: any;
   notes: any;
 
+  messages: any[];
+
   needs: any[];
   showNewNeed: boolean;
   newNeed: any;
@@ -65,6 +69,7 @@ export class PatientComponent implements OnInit {
     private userService: UserService,
     private statusService: StatusService,
     private needsService: NeedsService,
+    private messageService: MessageService,
     private formBuilder: FormBuilder
   ) {
     this.noteForm = this.formBuilder.group({
@@ -78,9 +83,16 @@ export class PatientComponent implements OnInit {
     this.needForm = this.formBuilder.group({
       Desc: ['']
     });
+
+    this.messageForm = this.formBuilder.group({
+      Message: ['']
+    });
   }
 
   ngOnInit() {
+    this.messages = [];
+    this.notes = [];
+    this.needs = [];
     this.showNewNote = false;
     this.selectedContact = null;    
     this.activeDay = new Date();
@@ -91,6 +103,7 @@ export class PatientComponent implements OnInit {
       this.getPatient(JSON.parse(this.id));
       this.getNotes();
       this.getsNeeds();
+      this.getMessages();
     });
   };
 
@@ -116,9 +129,43 @@ export class PatientComponent implements OnInit {
 
   selectContact(contact: any) {
     this.selectedContact = {
-      name: 'Frank'
+      name: 'Stephanie James'
     };
   };
+
+  getMessages(): void {
+    this.messageService.getMessages(1).subscribe(messages => {
+      messages.forEach(message => {
+        message.userPhoto = `/assets/images/people/patient/${message.user.NameFirst.toLowerCase()}${message.user.NameLast.toLowerCase()}.png`;
+      });
+      this.messages = messages;
+    });
+  };
+
+  sendMessage() {
+    if (this.messageForm.invalid) {
+      return;
+    }
+
+    let newDate = moment().hour(0).minutes(0).seconds(0).milliseconds(0);
+
+    let message = {
+      Message: this.messageForm.value.Message,
+      Date: newDate.toISOString(),
+      user: this.patient
+    };
+
+    this.messageService.sendMessage(message).subscribe(newMessage => {
+      console.log(newMessage);
+      if (newMessage.user.UserType.toLowerCase() === 'patient') {
+        newMessage.userPhoto = `/assets/images/people/patient/${newMessage.user.NameFirst.toLowerCase()}${newMessage.user.NameLast.toLowerCase()}.png`;
+      } else {
+        newMessage.userPhoto = `/assets/images/people/patient/${newMessage.user.NameFirst.toLowerCase()}${newMessage.user.NameLast.toLowerCase()}.png`;
+      }
+      this.messages.push(newMessage);
+      this.messageForm.reset();
+    });
+  }
 
   getNotes() {
     let updatedDay = moment(this.activeDay).hour(0).minutes(0).seconds(0).milliseconds(0);

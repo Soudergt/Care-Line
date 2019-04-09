@@ -11,17 +11,19 @@ export class MessageService {
 
   constructor(private http: HttpClient) { }
 
-  public sendMessage(id: number, message: any): Observable<any> {    
+  public sendMessage(message: any): Observable<any> {
     return this.http.post(
-      `/api/message/send`, { id, message }
-    ).pipe(map((body: {data: {message: any}}) => {
-      return body.data.message;
+      `/api/message/send`, { message },
+      { withCredentials: true }
+    ).pipe(map((body: {data: {newMessage: any}}) => {
+      return body.data.newMessage;
     })); 
   }
 
-  getMessages(id: number): Observable <any> {
+  public getMessages(id: number): Observable <any> {
     return this.http.get(
-      `/api/message/getMessages/?id=${id}`
+      `/api/message/getMessages?id=${id}`,
+      { withCredentials: true }
     ).pipe(map((body: {data: {messages: any}}) => {
       return body.data.messages;
     })); 

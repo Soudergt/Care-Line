@@ -148,69 +148,6 @@
             </div>
           </div>
         </div>
-        <div class="message-section card-shadow" fxFlex *ngIf="showChat === true" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
-          <div fxLayout="column">
-            <div class="header" fxLayout="row" fxFlex="1 1 auto">
-              <div class="module-logo" fxFlex="0 0 75px">
-                <fa-icon [icon]="faComments" size="3x" [inverse]="true"></fa-icon>
-              </div>
-              <div class="header-text" fxFlex="1 1 auto">Messages</div>
-            </div>
-            <mat-divider style="width: 100%"></mat-divider>
-            <div class="content" fxFlex>
-              <mat-action-list style="padding-top: 0px;" *ngIf="selectedContact == null">
-                <button mat-list-item (click)="selectContact()">
-                  <img matListAvatar src="/assets/images/people/patients/frank.jpg" alt="contact image">
-                  <h4 class="contact-name" mat-line>Frank</h4>
-                  <p mat-line></p>
-                </button>
-                <button mat-list-item (click)="selectContact()">
-                  <img matListAvatar src="/assets/images/people/patients/duke.jpg" alt="contact image">
-                  <h4 class="contact-name" mat-line>Duke</h4>
-                  <p mat-line></p>
-                </button>
-                <button mat-list-item (click)="selectContact()">
-                  <img matListAvatar src="/assets/images/people/patients/cathy.jpg" alt="contact image">
-                  <h4 class="contact-name" mat-line>Cathy</h4>
-                  <p mat-line></p>
-                </button>
-              </mat-action-list>
-              <div class="chat-header" fxLayout="row" *ngIf="selectedContact != null">
-                <button mat-icon-button class="back-btn" style="color: #04376a;" (click)="selectedContact = null">
-                  <fa-icon [icon]="faAngleLeft" size="3x"></fa-icon>
-                </button>
-                <div fxFlex class="contact-header-text">{{selectedContact?.name}}</div>
-              </div>
-              <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.00267 57.57043" style="margin-top: -45px;" *ngIf="selectedContact != null">
-                <title>heartbeat</title>
-                <path d="M282.5,245.5" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#000;stroke-miterlimit:10" />
-                <path d="M249.5,264.5c187-1,187,0,187,0h138l6-13,6,36,5-50,6,36,9-11h20" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#3d6783;stroke-width:1px;stroke-miterlimit:10" />
-              </svg>
-              <div class="chat-window" *ngIf="selectedContact != null">
-                <div class="messages">
-                  <div class="message-container contact">
-                    <img class="message-img" src="/assets/images/people/patients/frank.jpg" alt="contact image">
-                    <div class="message contact">
-                      test
-                    </div>
-                  </div>
-                  <div class="message-container user">
-                    <div class="message user">
-                      test
-                    </div>
-                    <img class="message-img" src="/assets/images/people/patients/frank.jpg" alt="contact image">
-                  </div>
-                </div>
-                <div class="message-input">
-                  <mat-form-field fxFlex style="margin-right: 12px;">
-                    <input matInput placeholder="Message">
-                  </mat-form-field>
-                  <button mat-raised-button color="primary">Send</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <div fxFlex="1 1 50%">
@@ -376,6 +313,56 @@
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="message-section card-shadow" fxFlex *ngIf="showChat === true" [ngStyle.xs]="{'margin-left': '12px', 'margin-right': '6px'}" [ngStyle.sm]="{'margin-left': '15px', 'margin-right': '15px'}">
+          <div fxLayout="column">
+            <div class="header" fxLayout="row" fxFlex="1 1 auto">
+              <div class="module-logo" fxFlex="0 0 75px">
+                <fa-icon [icon]="faComments" size="3x" [inverse]="true"></fa-icon>
+              </div>
+              <div class="header-text" fxFlex="1 1 auto">Messages</div>
+            </div>
+            <mat-divider style="width: 100%"></mat-divider>
+            <div class="content" fxFlex>
+              <mat-action-list style="padding-top: 0px;" *ngIf="selectedContact == null">
+                <button mat-list-item (click)="selectContact()">
+                  <img matListAvatar src="/assets/images/people/family/stephaniejames.png" alt="contact image">
+                  <h4 class="contact-name" mat-line>Stephanie James</h4>
+                  <p mat-line></p>
+                </button>
+              </mat-action-list>
+              <div class="chat-header" fxLayout="row" *ngIf="selectedContact != null">
+                <button mat-icon-button class="back-btn" style="color: #04376a;" (click)="selectedContact = null">
+                  <fa-icon [icon]="faAngleLeft" size="3x"></fa-icon>
+                </button>
+                <div fxFlex class="contact-header-text">{{selectedContact?.name}}</div>
+              </div>
+              <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.00267 57.57043" style="margin-top: -45px;" *ngIf="selectedContact != null">
+                <title>heartbeat</title>
+                <path d="M282.5,245.5" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#000;stroke-miterlimit:10" />
+                <path d="M249.5,264.5c187-1,187,0,187,0h138l6-13,6,36,5-50,6,36,9-11h20" transform="translate(-249.49733 -233.71479)" style="fill:#fff;stroke:#3d6783;stroke-width:1px;stroke-miterlimit:10" />
+              </svg>
+              <div class="chat-window" *ngIf="selectedContact != null">
+                <div class="messages">
+                  <div class="message-container" [ngClass]="{'contact': message.user.UserType !== 'Patient', 'user': message.user.UserType === 'Patient'}" *ngFor="let message of messages; let i = index">
+                    <img class="message-img" [src]="message.userPhoto" alt="contact image" *ngIf="message.user.UserType !== 'Patient'">
+                    <div class="message contact">
+                      {{ message?.Message }}
+                    </div>
+                    <img class="message-img" [src]="message.userPhoto" alt="contact image" *ngIf="message.user.UserType === 'Patient'">
+                  </div>
+                </div>
+                <div style="color: #000;">
+                  <form (ngSubmit)="sendMessage()" [formGroup]="messageForm" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+                    <mat-form-field fxFlex style="margin-right: 12px;">
+                      <input matInput type="text" placeholder="Message" formControlName="Message">
+                    </mat-form-field>
+                    <button mat-raised-button color="primary" style="max-height: 36px;">Send</button>
+                  </form>
                 </div>
               </div>
             </div>
