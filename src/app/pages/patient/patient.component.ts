@@ -26,8 +26,12 @@ export class PatientComponent implements OnInit {
   activeDay: Date;
   newNote: any;
   selectedContact: any;
+  showChat: boolean;
+  showCreateNote: boolean;
+  showCreateNeed: boolean;
   //Patient Object
   patient: User;
+  activeUser: any;
   patientPhoto: string;
   sub: any;
   id: string;
@@ -80,6 +84,7 @@ export class PatientComponent implements OnInit {
     this.showNewNote = false;
     this.selectedContact = null;    
     this.activeDay = new Date();
+    this.getActiveUser();
 
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
@@ -95,6 +100,19 @@ export class PatientComponent implements OnInit {
       this.patientPhoto = `url(/assets/images/people/patient/${this.patient.NameFirst.toLowerCase()}${this.patient.NameLast.toLowerCase()}.png)`;
     });
   };
+
+  getActiveUser(): void {
+    this.userService.getActiveUser().subscribe(user => {
+      this.activeUser = user;
+      if (this.activeUser.UserType.toLowerCase() !== 'caretaker') {
+        this.showChat = true;
+        this.showCreateNeed = true;
+      }
+      if (this.activeUser.UserType.toLowerCase() === 'caretaker') {
+        this.showCreateNote = true;
+      }
+    });
+  }
 
   selectContact(contact: any) {
     this.selectedContact = {
@@ -113,7 +131,6 @@ export class PatientComponent implements OnInit {
   getsNeeds() {
     this.needsService.getNeeds(this.id).subscribe(needs => {
       this.needs = needs;
-      console.log(this.needs);
     });
   };
 
@@ -141,7 +158,6 @@ export class PatientComponent implements OnInit {
     };    
 
     this.needsService.addNeed(this.newNeed).subscribe(need => {
-      console.log(need);
       this.needs.push(need);
     });
     
