@@ -48,7 +48,11 @@ export class LoginComponent implements OnInit {
         this.error = err.error.message;
       },
       next: (user) => { 
-        this.router.navigate(['dashboard']);
+        if (user.UserType.toLowerCase() === 'caretaker') {
+          this.router.navigate(['dashboard']);
+        } else {
+          this.router.navigateByUrl(`/patient/${user.UserID}`);
+        }
       }
     });
   }
